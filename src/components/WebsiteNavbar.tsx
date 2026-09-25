@@ -57,64 +57,70 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
             : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:pl-8 lg:pr-[104px] flex items-center justify-between gap-4">
-          {/* Official Demirtürk Logo (Centered vertically with page links: shifted 2.5px down) */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }}
-            className="group flex-shrink-0 translate-y-[2.5px]"
-          >
-            <DemirturkLogo variant="dark-bg" emblemSize={36} />
-          </a>
-
-          {/* Desktop Navigation Links (Always Single Line / No Wrap - Position Unchanged) */}
-          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-5 flex-shrink-0">
-            {navLinks.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollTo(item.href)}
-                className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-3 xl:space-x-4 flex-shrink-0">
-            {/* Direct Phone */}
+        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
+          {/* Left Group: Logo + Desktop Navigation Links */}
+          <div className="flex items-center space-x-6 xl:space-x-10 min-w-0">
+            {/* Official Demirtürk Logo (Centered vertically with page links: shifted 2.5px down) */}
             <a
-              href={`tel:${COMPANY_INFO.phone}`}
-              className="text-xs text-[#fffff1]/85 hover:text-[#fffff1] flex items-center space-x-1.5 px-3 py-2 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+              className="group flex-shrink-0 translate-y-[2.5px]"
             >
-              <Phone size={13} className="text-[#fffff1] flex-shrink-0" />
-              <span>{COMPANY_INFO.phone}</span>
+              <DemirturkLogo variant="dark-bg" emblemSize={36} />
             </a>
 
-            {/* Free Tour CTA Button on Right (Signature Glass Blur) */}
-            <button
-              onClick={() => {
-                if (onOpenTour) onOpenTour()
-                else scrollTo('#tanitim-turu')
-              }}
-              className="glass-blur-box text-xs font-semibold tracking-wider uppercase px-4 py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40"
-            >
-              <span>Ücretsiz Tanıtım Turu</span>
-            </button>
+            {/* Desktop Navigation Links (Always Single Line / No Wrap) */}
+            <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 flex-shrink-0">
+              {navLinks.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => scrollTo(item.href)}
+                  className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center space-x-2 lg:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#fffff1]/90 hover:text-[#fffff1] focus:outline-none"
-              aria-label="Menüyü aç/kapat"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          {/* Right Group: Phone + Free Tour CTA Button & Mobile Trigger */}
+          <div className="flex items-center space-x-3 xl:space-x-4 flex-shrink-0">
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center space-x-3 xl:space-x-4">
+              {/* Direct Phone */}
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
+                className="text-xs text-[#fffff1]/85 hover:text-[#fffff1] flex items-center space-x-1.5 px-3 py-2 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap"
+              >
+                <Phone size={13} className="text-[#fffff1] flex-shrink-0" />
+                <span>{COMPANY_INFO.phone}</span>
+              </a>
+
+              {/* Free Tour CTA Button on Right (Signature Glass Blur) */}
+              <button
+                onClick={() => {
+                  if (onOpenTour) onOpenTour()
+                  else scrollTo('#tanitim-turu')
+                }}
+                className="glass-blur-box text-xs font-semibold tracking-wider uppercase px-4 py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40"
+              >
+                <span>Ücretsiz Tanıtım Turu</span>
+              </button>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <div className="flex items-center lg:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-[#fffff1]/90 hover:text-[#fffff1] focus:outline-none"
+                aria-label="Menüyü aç/kapat"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
