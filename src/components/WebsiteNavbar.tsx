@@ -57,10 +57,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
             : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent py-5'
         }`}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
-          {/* Left Group: Logo + Desktop Navigation Links */}
-          <div className="flex items-center space-x-6 xl:space-x-10 min-w-0">
-            {/* Official Demirtürk Logo (Centered vertically with page links: shifted 2.5px down) */}
+        <div className="relative w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Left: Demirtürk Logo */}
+          <div className="flex items-center flex-shrink-0 z-10">
             <a
               href="#"
               onClick={(e) => {
@@ -71,23 +70,23 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
             >
               <DemirturkLogo variant="dark-bg" emblemSize={36} />
             </a>
-
-            {/* Desktop Navigation Links (Always Single Line / No Wrap) */}
-            <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 flex-shrink-0">
-              {navLinks.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollTo(item.href)}
-                  className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
           </div>
 
-          {/* Right Group: Phone + Free Tour CTA Button & Mobile Trigger */}
-          <div className="flex items-center space-x-3 xl:space-x-4 flex-shrink-0">
+          {/* Center: Pages / Navigation Links (Centered horizontally on the screen) */}
+          <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 absolute left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
+            {navLinks.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => scrollTo(item.href)}
+                className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          {/* Right: Phone + Free Tour CTA Button & Mobile Trigger */}
+          <div className="flex items-center space-x-3 xl:space-x-4 flex-shrink-0 z-10">
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-3 xl:space-x-4">
               {/* Direct Phone */}
