@@ -105,8 +105,8 @@ export const ContactSection: React.FC = () => {
             {/* Interactive Map Preview */}
             <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[16/9] bg-[#23201e] relative">
               <iframe
-                title="Demirtürk Üniversite Caddesi Harita"
-                src="https://maps.google.com/maps?q=%C3%9Cniversite+Caddesi+Demirt%C3%BCrk+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                title="Demirtürk İnşaat - Ata Sahil Sitesi Harita"
+                src="https://maps.google.com/maps?q=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(110%)' }}

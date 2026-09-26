@@ -181,8 +181,8 @@ export const ReachUsSection: React.FC = () => {
               {/* Interactive Map */}
               <div className="rounded-2xl overflow-hidden border border-[#fffff1]/10 aspect-[16/9] bg-[#313941] relative group">
                 <iframe
-                  title="Demirtürk Üniversite Caddesi Harita"
-                  src="https://maps.google.com/maps?q=%C3%9Cniversite+Caddesi+Demirt%C3%BCrk+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  title="Demirtürk İnşaat - Ata Sahil Sitesi Harita"
+                  src="https://maps.google.com/maps?q=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(110%)' }}
@@ -191,7 +191,7 @@ export const ReachUsSection: React.FC = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=%C3%9Cniversite+Caddesi+Demirt%C3%BCrk+Karasu+Sakarya"
+                  href="https://www.google.com/maps/search/?api=1&query=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya"
                   target="_blank"
                   rel="noreferrer"
                   className="absolute bottom-3 right-3 text-[11px] bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3 py-1.5 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
