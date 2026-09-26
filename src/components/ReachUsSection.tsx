@@ -179,10 +179,10 @@ export const ReachUsSection: React.FC = () => {
               </div>
 
               {/* Interactive Map */}
-              <div className="rounded-2xl overflow-hidden border border-[#fffff1]/10 aspect-[16/9] bg-[#313941] relative">
+              <div className="rounded-2xl overflow-hidden border border-[#fffff1]/10 aspect-[16/9] bg-[#313941] relative group">
                 <iframe
-                  title="Demirtürk İnşaat Karasu Harita"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48066.863375822935!2d30.6657904!3d41.1032128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x409dd7dca52d4399%3A0xebe7fe34c56c2f90!2sKarasu%2C%20Sakarya!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str"
+                  title="Demirtürk Üniversite Caddesi Harita"
+                  src="https://maps.google.com/maps?q=%C3%9Cniversite+Caddesi+Demirt%C3%BCrk+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(110%)' }}
@@ -190,6 +190,15 @@ export const ReachUsSection: React.FC = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=%C3%9Cniversite+Caddesi+Demirt%C3%BCrk+Karasu+Sakarya"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="absolute bottom-3 right-3 text-[11px] bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3 py-1.5 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
+                >
+                  <span>Haritada Aç</span>
+                  <ArrowUpRight size={13} className="text-[#fffff1]/80" />
+                </a>
               </div>
             </div>
 

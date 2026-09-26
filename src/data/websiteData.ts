@@ -6,16 +6,16 @@ export const COMPANY_INFO = {
   sinceYear: 2003,
   tagline: 'Doğa, Deniz ve Çağdaş Mimarinin Karasu\'daki Prestijli Buluşması',
   subtagline: '20 yılı aşkın mühendislik birikimiyle temelden çatıya geleceğe değer katan yaşam alanları inşa ediyoruz.',
-  address: 'Yalı Mahallesi, Doğu Karadeniz Caddesi No: 30B, Karasu / Sakarya',
+  address: 'Aziziye Mah. Üniversite Caddesi, Demirtürk, Karasu / Sakarya',
   phone: '0264 718 18 54',
   mobilePhone: '0530 102 40 01',
   whatsapp: '905301024001',
   email: 'info@demirturkinsaat.com',
   workingHours: 'Pazartesi - Pazar: 09:00 - 19:30',
   mapCoordinates: {
-    lat: 41.1032,
-    lng: 30.6865,
-    query: 'Demirtürk+İnşaat+Karasu+Sakarya'
+    lat: 41.0965,
+    lng: 30.6908,
+    query: 'Demirtürk+Üniversite+Caddesi+Karasu+Sakarya'
   }
 }
 
