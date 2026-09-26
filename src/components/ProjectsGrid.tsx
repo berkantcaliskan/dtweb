@@ -72,58 +72,54 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className={`group relative cursor-pointer bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#fffff1]/40 hover:shadow-2xl flex flex-col ${
+                className={`group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between ${
                   isWide ? 'lg:col-span-2' : 'col-span-1'
-                }`}
+                } min-h-[400px] sm:min-h-[440px]`}
               >
-                {/* Media Container (16:9 on desktop, responsive) */}
-                <div className={`relative overflow-hidden ${isWide ? 'aspect-[16/9]' : 'aspect-[4/3]'} bg-[#252c33]`}>
-                  <img
-                    src={project.heroMedia.poster || project.gallery[0]?.url}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                {/* 100% Full-Bleed Background Image */}
+                <img
+                  src={project.heroMedia.poster || project.gallery[0]?.url}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
 
-                  {/* Status Badges */}
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 rounded">
+                {/* Subtle Top Vignette (for status badges contrast) */}
+                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+
+                {/* Top Bar: Status Badges & Quick Arrow */}
+                <div className="relative z-10 p-5 flex items-start justify-between gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
                       {project.status}
                     </span>
                     {project.installmentMonths && (
-                      <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded">
+                      <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
                         Elden Senet
                       </span>
                     )}
                   </div>
 
-                  {/* Top Right Quick Icon */}
-                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/15 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/40 transition-all">
+                  <div className="w-9 h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
                     <ArrowUpRight size={16} />
                   </div>
                 </div>
 
-                {/* Content Details */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase mb-1.5 font-medium">
-                      {project.categoryLabel} — {project.year}
-                    </div>
-                    <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1] group-hover:text-[#fffff1] transition-colors mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-[#fffff1]/70 line-clamp-2 font-light leading-relaxed mb-4">
-                      {project.subtitle}
-                    </p>
-                  </div>
+                {/* Bottom Overlay: Architectural Glass Blur & Darkening for Maximum Readability */}
+                <div className="relative z-10 pt-20 pb-6 px-6 bg-gradient-to-t from-black/92 via-[#191e24]/75 to-transparent backdrop-blur-[3px]">
+                  <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-2 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#fffff1]/85 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow-sm">
+                    {project.subtitle}
+                  </p>
 
-                  {/* Specs & Pricing */}
-                  <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-xs">
-                    <span className="text-[#fffff1]/50 flex items-center">
-                      <MapPin size={12} className="mr-1 text-[#fffff1]" /> Karasu
+                  {/* Specs & Projeyi İncele */}
+                  <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs">
+                    <span className="text-[#fffff1]/75 flex items-center font-medium">
+                      <MapPin size={12} className="mr-1.5 text-[#fffff1]" /> Karasu
                     </span>
-                    <span className="text-[#fffff1] font-medium flex items-center group-hover:text-[#fffff1] transition-colors">
+                    <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
                       <span>Projeyi İncele</span>
                       <ArrowUpRight size={13} className="ml-1" />
                     </span>
