@@ -105,12 +105,26 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   </div>
                 </div>
 
-                {/* Bottom Overlay: Architectural Glass Blur & Darkening for Maximum Readability */}
-                <div className="relative z-10 pt-20 pb-6 px-6 bg-gradient-to-t from-black/92 via-[#191e24]/75 to-transparent backdrop-blur-[3px]">
+                {/* Progressive Gradient Blur Layer (Seamless fade - No hard cut) */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                  style={{
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
+                  }}
+                />
+
+                {/* Soft Architectural Darkening Gradient */}
+                <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/80 via-40% to-transparent" />
+
+                {/* Bottom Content Details */}
+                <div className="relative z-10 pt-10 pb-6 px-6">
                   <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-2 drop-shadow-md group-hover:translate-x-1 transition-transform">
                     {project.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#fffff1]/85 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow-sm">
+                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow">
                     {project.subtitle}
                   </p>
 
