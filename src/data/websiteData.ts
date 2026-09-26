@@ -130,13 +130,18 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architecturalPhilosophy:
       'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan şeffaf mimari yaklaşım. Emre Arolat tarzı gölge oyunları ve teras kademelendirmeleriyle rüzgar yükü dengelenmiş ve her bağımsız bölüm için mahremiyet sağlanmıştır.',
     heroMedia: {
-      type: 'video',
-      desktopSrc: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-beach-resort-with-swimming-pools-40916-large.mp4',
-      mobileSrc: 'https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-the-facade-of-a-tall-building-41419-large.mp4',
-      poster: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Almina Evleri - Karasu Denize Sıfır'
+      type: 'image',
+      desktopSrc: '/images/alminaforweb.jpeg',
+      mobileSrc: '/images/alminaforweb.jpeg',
+      poster: '/images/alminaforweb.jpeg',
+      alt: 'Almina Evleri - Karasu Sahil Şeridi'
     },
     gallery: [
+      {
+        url: '/images/alminaforweb.jpeg',
+        title: 'Gece Mimarisi ve Dış Cephe Aydınlatması',
+        aspect: '16:9'
+      },
       {
         url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
         title: 'Geniş Açık Havuz ve Dinlenme Alanı',
@@ -247,12 +252,17 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve brütalist cephe çizgileriyle modern şehir konforunu doğayla buluşturan yalın mimari dil.',
     heroMedia: {
       type: 'image',
-      desktopSrc: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80',
-      mobileSrc: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80',
-      poster: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80',
+      desktopSrc: '/images/yenisehirforweb.jpeg',
+      mobileSrc: '/images/yenisehirforweb.jpeg',
+      poster: '/images/yenisehirforweb.jpeg',
       alt: 'Yeni Şehir Rezidans Karasu'
     },
     gallery: [
+      {
+        url: '/images/yenisehirforweb.jpeg',
+        title: 'Doğal Taş Kaplama & Geniş Balkonlar',
+        aspect: '16:9'
+      },
       {
         url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
         title: 'Özel Yüzme Havuzu & Peyzaj',
