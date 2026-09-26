@@ -20,15 +20,15 @@ const AMBIENT_SLIDES: SlideLayer[] = [
   },
   {
     id: 'ambient-almina-resort',
-    title: 'Almina Sahil Sitesi - Sahil & Havuz',
+    title: 'Almina Evleri - Sahil & Havuz',
     src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80',
     top: '16%',
     height: '22%',
     mask: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)',
   },
   {
-    id: 'ambient-akasya-villa',
-    title: 'Akasya Doğa Villaları - Müstakil Lüks & Taş Doku',
+    id: 'ambient-yenisehir-rezidans',
+    title: 'Yeni Şehir Rezidans - Modern Mimari',
     src: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80',
     top: '32%',
     height: '22%',

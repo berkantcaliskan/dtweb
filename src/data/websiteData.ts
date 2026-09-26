@@ -113,9 +113,9 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: true
   },
   {
-    id: 'almina-sitesi',
-    slug: 'almina-sitesi',
-    title: 'Almina Sahil Sitesi',
+    id: 'almina-evleri',
+    slug: 'almina-evleri',
+    title: 'Almina Evleri',
     subtitle: 'Karasu Sahil Şeridinde Denize Sıfır Modern Rezidans',
     category: 'luxury-residence',
     categoryLabel: 'Denize Sıfır Rezidans',
@@ -126,7 +126,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '72 Daire',
     unitTypes: ['1+1', '2+1', '3+1 Penthouse'],
     description:
-      'Almina Sahil Sitesi; Karasu kumsalına sadece 50 metre mesafede, kesintisiz gün batımı manzarası ve modern sahil mimarisiyle yükseliyor. Geniş cam cepheleri, deniz havasını içeri alan ferah balkonları ve özel havuzu ile seçkin bir sahil yaşamı vadediyor.',
+      'Almina Evleri; Karasu kumsalına sadece 50 metre mesafede, kesintisiz gün batımı manzarası ve modern sahil mimarisiyle yükseliyor. Geniş cam cepheleri, deniz havasını içeri alan ferah balkonları ve özel havuzu ile seçkin bir sahil yaşamı vadediyor.',
     architecturalPhilosophy:
       'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan şeffaf mimari yaklaşım. Emre Arolat tarzı gölge oyunları ve teras kademelendirmeleriyle rüzgar yükü dengelenmiş ve her bağımsız bölüm için mahremiyet sağlanmıştır.',
     heroMedia: {
@@ -134,7 +134,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       desktopSrc: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-beach-resort-with-swimming-pools-40916-large.mp4',
       mobileSrc: 'https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-the-facade-of-a-tall-building-41419-large.mp4',
       poster: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Almina Sahil Sitesi - Karasu Denize Sıfır'
+      alt: 'Almina Evleri - Karasu Denize Sıfır'
     },
     gallery: [
       {
@@ -229,55 +229,55 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: false
   },
   {
-    id: 'akasya-villalari',
-    slug: 'akasya-villalari',
-    title: 'Akasya Doğa Villaları',
-    subtitle: 'Müstakil Havuzlu ve Özel Bahçeli Lüks Villa Yaşamı',
-    category: 'villa',
-    categoryLabel: 'Müstakil Villa',
-    location: 'Karasu Sahil Ormanı Yolu, Sakarya',
-    year: '2023 - 2024',
+    id: 'yenisehir-rezidans',
+    slug: 'yenisehir-rezidans',
+    title: 'Yeni Şehir Rezidans',
+    subtitle: 'Karasu Yenişehir\'de Prestijli, Modern ve Havuzlu Rezidans Yaşamı',
+    category: 'luxury-residence',
+    categoryLabel: 'Lüks Rezidans',
+    location: 'Yenişehir Mah., Karasu / Sakarya',
+    year: '2024 - 2025',
     status: 'Satışta',
-    totalArea: '18.500 m²',
-    totalUnits: '18 Müstakil Villa',
-    unitTypes: ['4+1 Müstakil', '5+1 Özel Havuzlu'],
+    totalArea: '16.500 m²',
+    totalUnits: '84 Bağımsız Bölüm',
+    unitTypes: ['1+1 Bahçe Katı', '2+1 Geniş Teraslı', '3+1 Dubleks'],
     description:
-      'Akasya Villaları, yüksek mahremiyet, bağımsız 450 m² müstakil bahçe parselleri ve her villaya özel yüzme havuzu ile lüksün sınırlarını yeniden çiziyor. Doğal taş duvarlar, geniş cam cepheler ve ahşap pergola detayları ile Karasu\'nun en prestijli villa projesi.',
+      'Yeni Şehir Rezidans; Karasu\'nun hızla gelişen ve değer kazanan Yenişehir bölgesinde, çağdaş mimariyi geniş peyzaj alanları ve açık yüzme havuzuyla buluşturuyor. Deprem yönetmeliğine tam uyumlu radye temel mühendisliği ve elden senetli esnek ödeme kolaylığıyla güvenli ve prestijli bir yaşam sunar.',
     architecturalPhilosophy:
-      'Topografyaya saygılı yerleşim planı ile her villanın ışık ve rüzgar alma açısı optimize edilmiştir. Doğal taş ve ahşabın yalın uyumu zamansız bir estetik yaratır.',
+      'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve brütalist cephe çizgileriyle modern şehir konforunu doğayla buluşturan yalın mimari dil.',
     heroMedia: {
       type: 'image',
       desktopSrc: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80',
       mobileSrc: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80',
       poster: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Akasya Doğa Villaları Karasu'
+      alt: 'Yeni Şehir Rezidans Karasu'
     },
     gallery: [
       {
         url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
-        title: 'Özel Müstakil Havuz & Bahçe',
+        title: 'Özel Yüzme Havuzu & Peyzaj',
         aspect: '16:9'
       },
       {
         url: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
-        title: 'Şömineli Geniş Salon Tasarımı',
+        title: 'Ferah Teras Balkonları & Yaşam Alanı',
         aspect: '16:9'
       }
     ],
     features: [
-      'Her Villaya Özel 32 m² Müstakil Yüzme Havuzu',
-      '450 m² Müstakil Bahçe Alanı',
-      'Özel Şömine & Barbekü Alanı',
-      '2 Araçlık Müstakil Kapalı Otopark',
-      'Otomatik Bahçe Sulama & Peyzaj Bakımı'
+      'Geniş Açık Yüzme Havuzu ve Çocuk Havuzu',
+      'Yerden Isıtma & Birinci Sınıf Ses/Isı Yalıtımı',
+      'Kapalı ve Açık Otopark Alanları',
+      '7/24 Güvenlik ve Kamera Altyapısı',
+      'Elden Senetle 36 Aya Varan Vade Kolaylığı'
     ],
     floorPlans: [
       {
-        name: '4+1 Müstakil Havuzlu Villa',
-        area: '240 m² Brüt / 210 m² Net',
-        rooms: '4 Yatak Odası, Ebeveyn Banyoları, Şömineli Salon, Mutfak-Ada, Teraslar',
+        name: '2+1 Geniş Teraslı Rezidans',
+        area: '88 m² Brüt / 74 m² Net',
+        rooms: '2 Yatak Odası, Salon, Ada Mutfak, Teras Balkon, Banyo',
         image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
-        description: 'Çift katlı ferah galeri boşluğu ve havuza açılan sürgülü cam cepheli salon.'
+        description: 'Ferah iç mekan planı ve gün boyu doğal ışık alan geniş teras balkonu.'
       }
     ],
     installmentMonths: 36,
