@@ -22,9 +22,8 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   const isDarkBg = variant === 'dark-bg'
 
   // Official emblem asset:
-  // For dark backgrounds: Red + Crisp White
-  // For light backgrounds: Red + Dark Charcoal (#313941)
-  const emblemSrc = isDarkBg ? '/demirturk-emblem-white.png' : '/demirturk-emblem.png'
+  // Red + Signature Anthracite (#313941)
+  const emblemSrc = '/demirturk-emblem.png'
 
   const titleColor = isDarkBg ? 'text-[#fffff1]' : 'text-[#313941]'
   const subtitleColor = isDarkBg ? 'text-[#fffff1]/85' : 'text-[#313941]/85'
