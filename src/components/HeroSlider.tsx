@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight, ArrowDown, MapPin, Calendar, CheckCircle2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { PROJECTS_DATA, COMPANY_INFO } from '../data/websiteData'
 import { ResponsiveMedia } from './ResponsiveMedia'
 import { ProjectItem } from '../types'
@@ -86,34 +86,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject }) => {
             {currentProject.title}
           </h1>
 
-          <p className="text-base sm:text-xl text-[#fffff1]/90 font-light max-w-2xl leading-relaxed mb-6 drop-shadow">
+          <p className="text-base sm:text-xl text-[#fffff1]/90 font-light max-w-2xl leading-relaxed mb-8 drop-shadow">
             {currentProject.subtitle}
           </p>
 
-          {/* Quick Specs Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 py-3 sm:py-4 border-t-0 border-b-0 sm:border-t sm:border-b border-[#fffff1]/15 max-w-xl text-xs sm:text-sm">
-            <div>
-              <span className="block text-[10px] uppercase tracking-wider text-[#fffff1]/50">Konum</span>
-              <span className="text-[#fffff1]/90 font-medium flex items-center mt-0.5">
-                <MapPin size={13} className="mr-1 text-[#fffff1]" /> Karasu Sahili
-              </span>
-            </div>
-            <div>
-              <span className="block text-[10px] uppercase tracking-wider text-[#fffff1]/50">Ödeme Modeli</span>
-              <span className="text-[#fffff1] font-semibold mt-0.5 block">
-                Elden Senet
-              </span>
-            </div>
-            <div className="col-span-2 sm:col-span-1">
-              <span className="block text-[10px] uppercase tracking-wider text-[#fffff1]/50">Proje Durumu</span>
-              <span className="text-[#fffff1]/90 font-medium mt-0.5 block">
-                {currentProject.status}
-              </span>
-            </div>
-          </div>
-
           {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-4">
             <button
               onClick={() => onSelectProject(currentProject)}
               className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/20 font-semibold text-xs uppercase tracking-widest rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/40 hover:scale-105 active:scale-95"
