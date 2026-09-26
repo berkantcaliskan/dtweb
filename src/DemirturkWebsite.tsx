@@ -12,6 +12,7 @@ import { FinancingAndTourSection } from './components/FinancingAndTourSection'
 import { WebsiteFooter } from './components/WebsiteFooter'
 import { ProjectDetailModal } from './components/ProjectDetailModal'
 import { TourBookingModal } from './components/TourBookingModal'
+import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
 
 export const DemirturkWebsite: React.FC = () => {
@@ -74,6 +75,9 @@ export const DemirturkWebsite: React.FC = () => {
         isOpen={isTourModalOpen}
         onClose={() => setIsTourModalOpen(false)}
       />
+
+      {/* Floating Scroll To Top Button */}
+      <ScrollToTop />
     </div>
   )
 }
