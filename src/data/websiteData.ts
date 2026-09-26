@@ -45,15 +45,18 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architecturalPhilosophy:
       'Proje, Emre Arolat mimarisinin bağlamsal yaklaşımını benimseyerek doğal peyzajla homojen bir bütünlük kurar. Ahşap dokulu kompozit güneş kırıcılar, brüt beton ve traverten kaplamalar yapıyı Karasu\'nun sahil dokusuyla organik olarak kaynaştırır.',
     heroMedia: {
-      type: 'video',
-      // Desktop 16:9 cinematic architectural video
-      desktopSrc: 'https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-building-at-sunset-41416-large.mp4',
-      // Mobile 9:16 vertical architectural video
-      mobileSrc: 'https://assets.mixkit.co/videos/preview/mixkit-vertical-view-of-a-modern-residential-building-41417-large.mp4',
-      poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80',
+      type: 'image',
+      desktopSrc: '/images/aselforweb.jpeg',
+      mobileSrc: '/images/aselforweb.jpeg',
+      poster: '/images/aselforweb.jpeg',
       alt: 'Asel Doğa Evleri - Demirtürk İnşaat Karasu'
     },
     gallery: [
+      {
+        url: '/images/aselforweb.jpeg',
+        title: 'Ön Cephe Mimarisi & Özel Balkonlar',
+        aspect: '16:9'
+      },
       {
         url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
         title: 'Özel Yüzme Havuzu ve Güneşlenme Terasları',

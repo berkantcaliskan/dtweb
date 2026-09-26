@@ -12,8 +12,8 @@ interface SlideLayer {
 const AMBIENT_SLIDES: SlideLayer[] = [
   {
     id: 'ambient-asel-sunset',
-    title: 'Asel Doğa Evleri - Gün Batımı Mimarisi',
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80',
+    title: 'Asel Doğa Evleri - Çağdaş Mimari',
+    src: '/images/aselforweb.jpeg',
     top: '0%',
     height: '22%',
     mask: 'linear-gradient(to bottom, black 0%, black 55%, transparent 100%)',
