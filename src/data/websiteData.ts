@@ -7,11 +7,20 @@ export const COMPANY_INFO = {
   tagline: 'Doğa, Deniz ve Çağdaş Mimarinin Karasu\'daki Prestijli Buluşması',
   subtagline: '20 yılı aşkın mühendislik birikimiyle temelden çatıya geleceğe değer katan yaşam alanları inşa ediyoruz.',
   address: 'Doğu Karadeniz Cd., Ata Sahil Sitesi No: 1, Karasu / Sakarya',
+  phoneNumbers: [
+    '0264 718 18 54',
+    '+90 536 902 98 20',
+    '+90 530 102 40 01'
+  ],
   phone: '0264 718 18 54',
-  mobilePhone: '0530 102 40 01',
-  whatsapp: '905301024001',
+  mobilePhone: '+90 536 902 98 20',
+  secondaryPhone: '+90 530 102 40 01',
+  whatsapp: '905369029820',
   email: 'info@demirturkinsaat.com',
-  workingHours: 'Pazartesi - Pazar: 09:00 - 19:30',
+  workingHoursNote: 'Her gün açığız',
+  workingHoursWeekday: 'Hafta içi 09:00 - 20:00',
+  workingHoursWeekend: 'Hafta sonu 09:00 - 21:00',
+  workingHours: 'Hafta içi 09:00 - 20:00 | Hafta sonu 09:00 - 21:00 (Her gün açığız)',
   mapCoordinates: {
     lat: 41.1032,
     lng: 30.6865,

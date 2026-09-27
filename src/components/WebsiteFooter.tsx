@@ -3,7 +3,11 @@ import { COMPANY_INFO, PROJECTS_DATA } from '../data/websiteData'
 import { ArrowUp, Phone, Mail, MapPin } from 'lucide-react'
 import { DemirturkLogo } from './DemirturkLogo'
 
-export const WebsiteFooter: React.FC = () => {
+interface WebsiteFooterProps {
+  onOpenReachUs?: () => void
+}
+
+export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -51,7 +55,20 @@ export const WebsiteFooter: React.FC = () => {
               <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
               <li><a href="#makaleler" className="hover:text-white transition-colors">Makaleler</a></li>
               <li><a href="#insa-surecleri" className="hover:text-white transition-colors">İnşa Süreçleri</a></li>
-              <li><a href="#ulasin" className="hover:text-white transition-colors">Ulaşın (İletişim & Kariyer)</a></li>
+              <li>
+                <a
+                  href="#ulasin"
+                  onClick={(e) => {
+                    if (onOpenReachUs) {
+                      e.preventDefault()
+                      onOpenReachUs()
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Ulaşın (İletişim & Kariyer)
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -62,8 +79,17 @@ export const WebsiteFooter: React.FC = () => {
             </h4>
             <div className="space-y-2 text-xs text-[#fffff1]/70 font-light">
               <p className="leading-relaxed">{COMPANY_INFO.address}</p>
-              <p className="text-[#fffff1]/90 pt-1">{COMPANY_INFO.phone}</p>
-              <p className="text-[#fffff1] font-medium">{COMPANY_INFO.mobilePhone}</p>
+              <div className="pt-1 space-y-1">
+                {COMPANY_INFO.phoneNumbers.map((num) => (
+                  <a
+                    key={num}
+                    href={`tel:${num.replace(/\s+/g, '')}`}
+                    className="text-[#fffff1]/90 hover:text-white block transition-colors"
+                  >
+                    {num}
+                  </a>
+                ))}
+              </div>
               <p className="pt-1">{COMPANY_INFO.email}</p>
             </div>
           </div>

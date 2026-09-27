@@ -12,12 +12,14 @@ import { FinancingAndTourSection } from './components/FinancingAndTourSection'
 import { WebsiteFooter } from './components/WebsiteFooter'
 import { ProjectDetailModal } from './components/ProjectDetailModal'
 import { TourBookingModal } from './components/TourBookingModal'
+import { ReachUsModal } from './components/ReachUsModal'
 import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
 
 export const DemirturkWebsite: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
   const [isTourModalOpen, setIsTourModalOpen] = useState(false)
+  const [isReachUsModalOpen, setIsReachUsModalOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1]">
@@ -26,7 +28,10 @@ export const DemirturkWebsite: React.FC = () => {
         Pages: Projeler, Mimari Yaklaşım, Yapı Malzemeleri, Makaleler, İnşa Süreçleri, Ulaşın
         Right Action: Ücretsiz Tanıtım Turu (Cam blur kutucuklu)
       */}
-      <WebsiteNavbar onOpenTour={() => setIsTourModalOpen(true)} />
+      <WebsiteNavbar 
+        onOpenTour={() => setIsTourModalOpen(true)} 
+        onOpenReachUs={() => setIsReachUsModalOpen(true)}
+      />
 
       {/* Main Fullscreen Responsive Hero Slider (16:9 Desktop, 9:16 Mobile) */}
       <HeroSlider 
@@ -63,7 +68,7 @@ export const DemirturkWebsite: React.FC = () => {
           <ReachUsSection />
 
           {/* Footer */}
-          <WebsiteFooter />
+          <WebsiteFooter onOpenReachUs={() => setIsReachUsModalOpen(true)} />
         </div>
       </div>
 
@@ -71,6 +76,12 @@ export const DemirturkWebsite: React.FC = () => {
       <ProjectDetailModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
+      />
+
+      {/* Tam Ekran Ulaşın & Kariyer Sayfası Modalı */}
+      <ReachUsModal
+        isOpen={isReachUsModalOpen}
+        onClose={() => setIsReachUsModalOpen(false)}
       />
 
       {/* Ücretsiz Tanıtım Turu Hızlı Rezervasyon Modalı */}

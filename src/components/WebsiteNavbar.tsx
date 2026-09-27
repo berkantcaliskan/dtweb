@@ -6,9 +6,10 @@ import { DemirturkLogo } from './DemirturkLogo'
 interface WebsiteNavbarProps {
   activeSection?: string
   onOpenTour?: () => void
+  onOpenReachUs?: () => void
 }
 
-export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
+export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpenReachUs }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -32,6 +33,15 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
     { label: 'İNŞA SÜREÇLERİ', href: '#insa-surecleri' },
     { label: 'ULAŞIN', href: '#ulasin' },
   ]
+
+  const handleNavClick = (item: { label: string; href: string }) => {
+    setMobileMenuOpen(false)
+    if (item.label === 'ULAŞIN' && onOpenReachUs) {
+      onOpenReachUs()
+      return
+    }
+    scrollTo(item.href)
+  }
 
   const scrollTo = (href: string) => {
     setMobileMenuOpen(false)
@@ -77,8 +87,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
             {navLinks.map((item) => (
               <button
                 key={item.label}
-                onClick={() => scrollTo(item.href)}
-                className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300"
+                onClick={() => handleNavClick(item)}
+                className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
               >
                 {item.label}
               </button>
@@ -135,8 +145,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
               {navLinks.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => scrollTo(item.href)}
-                  className="text-left text-lg font-theSeasons font-semibold tracking-wider text-[#fffff1]/90 hover:text-[#fffff1] transition-colors py-1 flex items-center justify-between border-b border-[#fffff1]/5"
+                  onClick={() => handleNavClick(item)}
+                  className="text-left text-lg font-theSeasons font-semibold tracking-wider text-[#fffff1]/90 hover:text-[#fffff1] transition-colors py-1 flex items-center justify-between border-b border-[#fffff1]/5 cursor-pointer"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight size={16} className="text-[#fffff1]/60" />
