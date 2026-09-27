@@ -28,7 +28,7 @@ const AMBIENT_SLIDES: SlideLayer[] = [
   },
   {
     id: 'ambient-yenisehir-rezidans',
-    title: 'Yeni Şehir Rezidans - Modern Mimari',
+    title: 'Yeni Şehir Etapları - Modern Mimari',
     src: '/images/yenisehirforweb.jpeg',
     top: '32%',
     height: '22%',

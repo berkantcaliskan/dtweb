@@ -236,8 +236,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
-    title: 'Yeni Şehir Rezidans',
-    subtitle: 'Karasu Yenişehir\'de Prestijli, Modern ve Havuzlu Rezidans Yaşamı',
+    title: 'Yeni Şehir Etapları',
+    subtitle: 'Karasu Yenişehir\'de Prestijli, Modern ve Havuzlu Yaşam Alanı',
     category: 'luxury-residence',
     categoryLabel: 'Lüks Rezidans',
     location: 'Yenişehir Mah., Karasu / Sakarya',
@@ -247,7 +247,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '84 Bağımsız Bölüm',
     unitTypes: ['1+1 Bahçe Katı', '2+1 Geniş Teraslı', '3+1 Dubleks'],
     description:
-      'Yeni Şehir Rezidans; Karasu\'nun hızla gelişen ve değer kazanan Yenişehir bölgesinde, çağdaş mimariyi geniş peyzaj alanları ve açık yüzme havuzuyla buluşturuyor. Deprem yönetmeliğine tam uyumlu radye temel mühendisliği ve elden senetli esnek ödeme kolaylığıyla güvenli ve prestijli bir yaşam sunar.',
+      'Yeni Şehir Etapları; Karasu\'nun hızla gelişen ve değer kazanan Yenişehir bölgesinde, çağdaş mimariyi geniş peyzaj alanları ve açık yüzme havuzuyla buluşturuyor. Deprem yönetmeliğine tam uyumlu radye temel mühendisliği ve elden senetli esnek ödeme kolaylığıyla güvenli ve prestijli bir yaşam sunar.',
     architecturalPhilosophy:
       'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve brütalist cephe çizgileriyle modern şehir konforunu doğayla buluşturan yalın mimari dil.',
     heroMedia: {
@@ -255,7 +255,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       desktopSrc: '/images/yenisehirforweb.jpeg',
       mobileSrc: '/images/yenisehirforweb.jpeg',
       poster: '/images/yenisehirforweb.jpeg',
-      alt: 'Yeni Şehir Rezidans Karasu'
+      alt: 'Yeni Şehir Etapları Karasu'
     },
     gallery: [
       {
