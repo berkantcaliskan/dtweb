@@ -52,7 +52,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     description:
       'Asel Doğa Evleri; Karadeniz sahil çam ormanlarının ferahlatıcı oksijeni ile çağdaş mimarinin dingin çizgilerini bir araya getiriyor. Geniş yüzme havuzu, çocuk oyun alanları, peyzaj yürüyüş parkurları ve müstakil bahçe alanları ile dört mevsim tatil konforunda bir yaşam sunar.',
     architecturalPhilosophy:
-      'Proje, Emre Arolat mimarisinin bağlamsal yaklaşımını benimseyerek doğal peyzajla homojen bir bütünlük kurar. Ahşap dokulu kompozit güneş kırıcılar, brüt beton ve traverten kaplamalar yapıyı Karasu\'nun sahil dokusuyla organik olarak kaynaştırır.',
+      'Doğal peyzajla uyumlu modern mimari hatlar, ferah balkonlar ve geniş bahçe alanlarıyla Karasu’nun sahil dokusuna değer katan, dört mevsim konfor sunan fonksiyonel bir yaşam kurgusu.',
     heroMedia: {
       type: 'image',
       desktopSrc: '/images/aselforweb.jpeg',
@@ -137,7 +137,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     description:
       'Almina Evleri; Karasu kumsalına sadece 50 metre mesafede, kesintisiz gün batımı manzarası ve modern sahil mimarisiyle yükseliyor. Geniş cam cepheleri, deniz havasını içeri alan ferah balkonları ve özel havuzu ile seçkin bir sahil yaşamı vadediyor.',
     architecturalPhilosophy:
-      'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan şeffaf mimari yaklaşım. Emre Arolat tarzı gölge oyunları ve teras kademelendirmeleriyle rüzgar yükü dengelenmiş ve her bağımsız bölüm için mahremiyet sağlanmıştır.',
+      'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan ferah ve modern mimari. Kademeli teraslar ve geniş cam açıklıklarıyla gün ışığını maksimum düzeyde içeri alan, her bağımsız bölüm için mahremiyet sağlayan çağdaş tasarım.',
     heroMedia: {
       type: 'image',
       desktopSrc: '/images/alminaforweb.jpeg',
@@ -203,7 +203,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     description:
       'Demirtürk Suite; Karasu ilçe merkezinde resmi kurumlara, bankalara, hastaneye ve alışveriş noktalarına yürüme mesafesinde butik bir rezidans projesidir. Zemin kattaki seçkin ticari alanları ve üst katlardaki akıllı daireleriyle hem iş hem yaşam için idealdir.',
     architecturalPhilosophy:
-      'Kentsel dokuda brütalist ve minimalist unsurların modern cam yüzeylerle dengelendiği kentsel bir nirengi noktası.',
+      'İlçe merkezinin dinamizmine uygun, estetik cephe tasarımı ve modern cam yüzeylerle hem konforu hem de ticari prestiji bir arada sunan fonksiyonel mimari.',
     heroMedia: {
       type: 'image',
       desktopSrc: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
@@ -258,7 +258,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     description:
       'Yeni Şehir Etapları; Karasu\'nun hızla gelişen ve değer kazanan Yenişehir bölgesinde, çağdaş mimariyi geniş peyzaj alanları ve açık yüzme havuzuyla buluşturuyor. Deprem yönetmeliğine tam uyumlu radye temel mühendisliği ve elden senetli esnek ödeme kolaylığıyla güvenli ve prestijli bir yaşam sunar.',
     architecturalPhilosophy:
-      'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve brütalist cephe çizgileriyle modern şehir konforunu doğayla buluşturan yalın mimari dil.',
+      'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve modern cephe hatlarıyla şehir konforunu doğayla buluşturan estetik mimari dil.',
     heroMedia: {
       type: 'image',
       desktopSrc: '/images/yenisehirforweb.jpeg',

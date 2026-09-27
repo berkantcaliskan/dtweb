@@ -81,7 +81,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           </div>
         </div>
 
-        {/* Center / Hero Typography (Emre Arolat Style) */}
+        {/* Center / Hero Typography */}
         <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-6 sm:py-8">
           <h1 className="font-theSeasons text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#fffff1] leading-[1.05] mb-4 drop-shadow-md">
             {currentProject.title}

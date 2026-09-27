@@ -15,18 +15,18 @@ export interface ArticleItem {
 
 export const ARTICLES_DATA: ArticleItem[] = [
   {
-    id: 'baglamsal-sahil-mimarisi',
-    title: 'Karasu Kıyı Şeridinde Bağlamsal Mimari: Rüzgar, Dalga ve Doğal Işık',
-    subtitle: 'Deniz ikliminin zorluklarını mimari avantaja dönüştüren tasarım kriterleri.',
+    id: 'dogal-sahil-mimarisi',
+    title: 'Karasu Kıyı Şeridinde Doğal Mimari: Rüzgar, Dalga ve Gün Işığı',
+    subtitle: 'Deniz ikliminin dinamiklerini mimari avantaja dönüştüren tasarım kriterleri.',
     category: 'Mimari & Tasarım',
     readTime: '4 dk okuma',
     date: '14 Şubat 2025',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
     summary:
-      'Emre Arolat mimarisinin bağlamsal felsefesinden ilham alan sahil konutlarımız, Karadeniz’in güçlü poyraz rüzgarlarını ve tuzlu deniz havasını yapı fiziğine uygun biçimde göğüslüyor.',
+      'Doğayla uyumlu sahil konutlarımız, Karadeniz’in güçlü poyraz rüzgarlarını ve tuzlu deniz havasını yapı fiziğine uygun dayanıklı malzemelerle karşılıyor.',
     paragraphs: [
-      'Karasu’nun zengin sahil topoğrafyasında bir yapı tasarlamak, yalnızca dört duvar örmek değildir; doğanın kendi ritmiyle konuşabilen bir kabuk oluşturmaktır. Kıyı şeridinde inşa edilen yapılarda rüzgar yükü, cephe yönelimi ve güneş ışığı açıları, tasarımın temel belirleyicileridir.',
-      'Demirtürk projelerinde, binaların kütle yerleşimi rüzgarı bloke etmek yerine yönlendiren aerodinamik formlarla kurgulanır. Kademeli balkonlar ve ahşap dokulu güneş kırıcılar, hem doğal havalandırmayı sağlar hem de iç mekanlarda mahremiyet oluşturur.',
+      'Karasu’nun sahil şeridinde bir yapı tasarlamak, yalnızca dört duvar örmek değil; doğayla uyum sağlayan ferah yaşam alanları oluşturmaktır. Kıyı şeridinde inşa edilen yapılarda rüzgar yönü, cephe yerleşimi ve güneş ışığı açıları tasarımın temel belirleyicileridir.',
+      'Demirtürk projelerinde, binaların kütle yerleşimi rüzgarı bloke etmek yerine yönlendiren dengeli formlarla kurgulanır. Kademeli balkonlar ve güneş kırıcılar, hem doğal havalandırmayı sağlar hem de iç mekanlarda mahremiyet oluşturur.',
       'Geniş cam yüzeyler, ufuk çizgisini ve gün batımını yaşayan mekanların merkezine taşırken; çift katmanlı ısı yalıtımı ve marin tipi cephe boyaları yapının yıllarca ilk günkü estetiğini korumasını temin eder.'
     ]
   },

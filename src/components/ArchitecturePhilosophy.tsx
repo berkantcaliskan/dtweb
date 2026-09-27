@@ -13,10 +13,10 @@ export const ArchitecturePhilosophy: React.FC = () => {
             <span>MİMARİ YAKLAŞIM & KURUMSAL FELSEFE</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-tight">
-            Bağlam, Doğa ve 20+ Yıllık Sarsılmaz Mühendislik Birikimi
+            Doğa, Konfor ve 20+ Yıllık Sarsılmaz Mühendislik Birikimi
           </h2>
           <p className="mt-6 text-base sm:text-lg text-[#fffff1]/80 font-light leading-relaxed">
-            Demirtürk İnşaat olarak 2003 yılından bu yana Sakarya Karasu’nun eşsiz sahil bandında sadece yapılar değil; nesilden nesile aktarılacak yaşam kültürleri inşa ediyoruz. Emre Arolat mimarisinin bağlamsal yaklaşımını referans alarak; arazinin topografyasına, Karadeniz’in rüzgarına ve yeşilin dinginliğine saygı duyan projeler tasarlıyoruz.
+            Demirtürk İnşaat olarak 2003 yılından bu yana Sakarya Karasu’nun eşsiz sahil bandında sadece yapılar değil; nesilden nesile aktarılacak güvenli ve konforlu yaşam alanları inşa ediyoruz. Karadeniz’in doğasına, temiz havasına ve sahil dokusuna saygı duyan, modern ve sağlam projeler üretiyoruz.
           </p>
         </div>
 
@@ -44,7 +44,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
               <Compass size={22} />
             </div>
             <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
-              Bağlamsal Tasarım & Manzara
+              Doğal Uyum & Sahil Manzarası
             </h3>
             <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
               Her projemiz Karasu’nun sahil şeridi, orman dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
