@@ -121,25 +121,25 @@ export const ReachUsSection: React.FC = () => {
                   Karasu Merkez Ofis
                 </h3>
 
-                <div className="space-y-4 text-xs font-light">
-                  <div className="flex items-start space-x-3">
-                    <MapPin size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                <div className="space-y-5 text-sm font-light">
+                  <div className="flex items-start space-x-3.5">
+                    <MapPin size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-0.5">Adres</span>
-                      <span className="text-[#fffff1]/90 leading-relaxed block">{COMPANY_INFO.address}</span>
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-0.5">Adres</span>
+                      <span className="text-[#fffff1]/95 text-sm sm:text-base leading-relaxed block">{COMPANY_INFO.address}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
-                    <Phone size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Phone size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">İletişim Numaraları</span>
-                      <div className="space-y-1">
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-1">İletişim Numaraları</span>
+                      <div className="space-y-1.5">
                         {COMPANY_INFO.phoneNumbers.map((num) => (
                           <a
                             key={num}
                             href={`tel:${num.replace(/\s+/g, '')}`}
-                            className="text-[#fffff1]/90 hover:text-white block text-sm font-medium transition-colors"
+                            className="text-[#fffff1]/95 hover:text-white block text-sm sm:text-base font-medium transition-colors"
                           >
                             {num}
                           </a>
@@ -148,26 +148,26 @@ export const ReachUsSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
-                    <Mail size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Mail size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-0.5">E-Posta</span>
-                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#fffff1]/90 hover:text-white block">
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-0.5">E-Posta</span>
+                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#fffff1]/95 text-sm sm:text-base hover:text-white block">
                         {COMPANY_INFO.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
-                    <Clock size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Clock size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <div className="flex items-center space-x-2 mb-1">
-                        <span className="text-[10px] uppercase text-[#fffff1]/50">Ziyaret Saatleri</span>
-                        <span className="px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-full">
+                      <div className="flex items-center space-x-2 mb-1.5">
+                        <span className="text-xs uppercase text-[#fffff1]/60">Ziyaret Saatleri</span>
+                        <span className="px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-full">
                           Her gün açığız
                         </span>
                       </div>
-                      <div className="space-y-1 text-xs text-[#fffff1]/90 font-light">
+                      <div className="space-y-1 text-sm text-[#fffff1]/90 font-light">
                         <p>{COMPANY_INFO.workingHoursWeekday}</p>
                         <p>{COMPANY_INFO.workingHoursWeekend}</p>
                       </div>
@@ -181,7 +181,7 @@ export const ReachUsSection: React.FC = () => {
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20Demirt%C3%BCrk%20%C4%B0n%C5%9Faat%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
+                    className="w-full py-3.5 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-xl text-emerald-300 text-sm font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
                   >
                     <MessageSquare size={16} />
                     <span>WhatsApp Canlı Destek</span>
@@ -205,10 +205,10 @@ export const ReachUsSection: React.FC = () => {
                   href="https://www.google.com/maps/search/?api=1&query=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya"
                   target="_blank"
                   rel="noreferrer"
-                  className="absolute bottom-3 right-3 text-[11px] bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3 py-1.5 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
+                  className="absolute bottom-3 right-3 text-xs bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3.5 py-2 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
                 >
                   <span>Haritada Aç</span>
-                  <ArrowUpRight size={13} className="text-[#fffff1]/80" />
+                  <ArrowUpRight size={14} className="text-[#fffff1]/80" />
                 </a>
               </div>
             </div>
@@ -216,13 +216,13 @@ export const ReachUsSection: React.FC = () => {
             {/* Message & Appointment Form (7 Cols) */}
             <div className="lg:col-span-7 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   RANDEVU & BİLGİ TALEBİ
                 </span>
                 <h3 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
                   Bize Mesaj Gönderin
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   Satış danışmanlarımızın en kısa sürede sizinle iletişime geçmesi için bilgilerinizi bırakın.
                 </p>
               </div>
@@ -233,7 +233,7 @@ export const ReachUsSection: React.FC = () => {
                     <Check size={20} />
                     <span className="font-semibold text-base">Talebiniz Alındı!</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 leading-relaxed">
+                  <p className="text-sm text-emerald-300/80 leading-relaxed">
                     Mesajınız müşteri ilişkileri birimimize iletildi. En kısa sürede geri dönüş yapılacaktır.
                   </p>
                 </div>
@@ -241,7 +241,7 @@ export const ReachUsSection: React.FC = () => {
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Adınız Soyadınız
                       </label>
                       <input
@@ -249,11 +249,11 @@ export const ReachUsSection: React.FC = () => {
                         placeholder="Adınız Soyadınız"
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Telefon Numaranız <span className="text-[#fffff1]/70">*</span>
                       </label>
                       <input
@@ -262,19 +262,19 @@ export const ReachUsSection: React.FC = () => {
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Görüşmek İstediğiniz Konu
                     </label>
                     <select
                       value={formSubject}
                       onChange={(e) => setFormSubject(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
                     >
                       <option value="Satılık Daireler & Siteler">Satılık Daireler & Siteler</option>
                       <option value="Müstakil Villalar">Müstakil Villalar</option>
@@ -285,7 +285,7 @@ export const ReachUsSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Mesajınız
                     </label>
                     <textarea
@@ -293,15 +293,15 @@ export const ReachUsSection: React.FC = () => {
                       placeholder="Bütçeniz, ilgilendiğiniz proje veya sormak istedikleriniz..."
                       value={formMessage}
                       onChange={(e) => setFormMessage(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-widest rounded-lg transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01]"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01] cursor-pointer"
                   >
-                    <Send size={15} />
+                    <Send size={16} />
                     <span>Bilgi ve Randevu Talebini Gönder</span>
                   </button>
                 </form>
@@ -318,13 +318,13 @@ export const ReachUsSection: React.FC = () => {
             {/* Open Positions List (6 Cols) */}
             <div className="lg:col-span-6 space-y-4">
               <div className="mb-6">
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block mb-1 font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block mb-1 font-medium">
                   DEMİRTÜRK EKİBİNE KATILIN
                 </span>
                 <h3 className="font-theSeasons text-3xl font-bold text-[#fffff1]">
                   Açık Pozisyonlar
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   Karasu’da geleceğin sahil mimarisini inşa eden dinamik ve tecrübeli ekibimizin bir parçası olun.
                 </p>
               </div>
@@ -344,14 +344,14 @@ export const ReachUsSection: React.FC = () => {
                       <h4 className="font-theSeasons text-xl font-semibold text-[#fffff1]">
                          {pos.title}
                       </h4>
-                      <span className="px-2 py-0.5 text-[10px] uppercase bg-[#fffff1]/15 text-[#fffff1] border border-[#fffff1]/20 rounded font-medium">
+                      <span className="px-2.5 py-1 text-xs uppercase bg-[#fffff1]/15 text-[#fffff1] border border-[#fffff1]/20 rounded font-medium">
                         {pos.type}
                       </span>
                     </div>
-                    <div className="text-[11px] text-[#fffff1]/70 mb-2 font-medium">
+                    <div className="text-xs text-[#fffff1]/70 mb-2 font-medium">
                       {pos.location}
                     </div>
-                    <p className="text-xs text-[#fffff1]/70 font-light leading-relaxed">
+                    <p className="text-sm text-[#fffff1]/80 font-light leading-relaxed">
                       {pos.desc}
                     </p>
                   </div>
@@ -362,13 +362,13 @@ export const ReachUsSection: React.FC = () => {
             {/* Quick Job Application Form (6 Cols) */}
             <div className="lg:col-span-6 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   İŞ BAŞVURU FORMU
                 </span>
                 <h3 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
                   Özgeçmişinizi İletin
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   Başvurunuz doğrudan İnsan Kaynakları birimimiz tarafından değerlendirilecektir.
                 </p>
               </div>
@@ -379,20 +379,20 @@ export const ReachUsSection: React.FC = () => {
                     <Check size={20} />
                     <span className="font-semibold text-base">Başvurunuz Alındı!</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 leading-relaxed">
+                  <p className="text-sm text-emerald-300/80 leading-relaxed">
                     Kariyer başvurunuz Demirtürk İK birimine iletildi. Nitelikleriniz açık pozisyonla eşleştiğinde sizinle mülakat planlaması için iletişime geçilecektir.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleCareerSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Başvurulan Pozisyon
                     </label>
                     <select
                       value={careerPosition}
                       onChange={(e) => setCareerPosition(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
                     >
                       {openPositions.map((p, i) => (
                         <option key={i} value={p.title}>
@@ -404,7 +404,7 @@ export const ReachUsSection: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Adınız Soyadınız <span className="text-[#fffff1]/70">*</span>
                       </label>
                       <input
@@ -413,11 +413,11 @@ export const ReachUsSection: React.FC = () => {
                         value={careerName}
                         onChange={(e) => setCareerName(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Telefon Numaranız <span className="text-[#fffff1]/70">*</span>
                       </label>
                       <input
@@ -426,13 +426,13 @@ export const ReachUsSection: React.FC = () => {
                         value={careerPhone}
                         onChange={(e) => setCareerPhone(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       E-Posta Adresiniz
                     </label>
                     <input
@@ -440,12 +440,12 @@ export const ReachUsSection: React.FC = () => {
                       placeholder="ornek@domain.com"
                       value={careerEmail}
                       onChange={(e) => setCareerEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Eğitim, Deneyim ve Ön Yazı
                     </label>
                     <textarea
@@ -453,15 +453,15 @@ export const ReachUsSection: React.FC = () => {
                       placeholder="Mezun olduğunuz okul, toplam deneyim süreniz veya belirtmek istediğiniz notlar..."
                       value={careerNote}
                       onChange={(e) => setCareerNote(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-widest rounded-lg transition-all shadow-lg flex items-center justify-center space-x-2"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
                   >
-                    <Briefcase size={15} />
+                    <Briefcase size={16} />
                     <span>Başvuruyu İlet</span>
                   </button>
                 </form>

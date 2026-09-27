@@ -144,39 +144,39 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <h1 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-[1.1]">
               {project.title}
             </h1>
-            <p className="text-base sm:text-xl text-[#fffff1]/80 font-light max-w-3xl leading-relaxed mt-3">
+            <p className="text-lg sm:text-2xl text-[#fffff1]/90 font-light max-w-3xl leading-relaxed mt-3">
               {project.subtitle}
             </p>
           </div>
 
           {/* Quick Technical Specs Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
-              <MapPin size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div>
-                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Konum</span>
-                <span className="text-xs font-bold text-[#fffff1] truncate block">{project.location}</span>
+                <span className="text-xs uppercase text-[#fffff1]/50 block">Konum</span>
+                <span className="text-sm font-bold text-[#fffff1] truncate block">{project.location}</span>
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
-              <Layers size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <Layers size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div>
-                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Toplam Alan</span>
-                <span className="text-xs font-bold text-[#fffff1] block">{project.totalArea}</span>
+                <span className="text-xs uppercase text-[#fffff1]/50 block">Toplam Alan</span>
+                <span className="text-sm font-bold text-[#fffff1] block">{project.totalArea}</span>
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
-              <Building2 size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <Building2 size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div>
-                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Bağımsız Bölüm</span>
-                <span className="text-xs font-bold text-[#fffff1] block">{project.totalUnits}</span>
+                <span className="text-xs uppercase text-[#fffff1]/50 block">Bağımsız Bölüm</span>
+                <span className="text-sm font-bold text-[#fffff1] block">{project.totalUnits}</span>
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
-              <Home size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div>
-                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Konut Tipleri</span>
-                <span className="text-xs font-bold text-[#fffff1] block truncate">{project.unitTypes.join(', ')}</span>
+                <span className="text-xs uppercase text-[#fffff1]/50 block">Konut Tipleri</span>
+                <span className="text-sm font-bold text-[#fffff1] block truncate">{project.unitTypes.join(', ')}</span>
               </div>
             </div>
           </div>
@@ -193,14 +193,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           <div className="lg:col-span-8 space-y-8">
             {/* Story */}
             <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase">
+              <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
                 <span>KONSEPT & YAŞAM ALANI</span>
               </div>
               <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
                 Doğanın Kalbinde Çağdaş Bir Yaşam
               </h3>
-              <p className="text-base text-[#fffff1]/90 leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-[#fffff1]/95 leading-relaxed font-light">
                 {project.description}
               </p>
             </div>
@@ -208,10 +208,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             {/* Architectural Philosophy Quote */}
             {project.architecturalPhilosophy && (
               <div className="p-6 bg-[#313941]/40 border-l-4 border-[#fffff1]/60 rounded-r-2xl space-y-2">
-                <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
+                <span className="text-xs tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
                   MİMARİ DİL & TASARIM FELSEFESİ
                 </span>
-                <p className="text-sm sm:text-base text-[#fffff1]/90 leading-relaxed italic font-light">
+                <p className="text-base sm:text-lg text-[#fffff1]/95 leading-relaxed italic font-light">
                   "{project.architecturalPhilosophy}"
                 </p>
               </div>
@@ -219,14 +219,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
             {/* Features & Donatılar */}
             <div className="space-y-4 pt-4 border-t border-[#fffff1]/10">
-              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase">
+              <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
                 <span>DONATILAR & AYRICALIKLAR</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {project.features.map((feat, i) => (
-                  <div key={i} className="flex items-center space-x-3 text-xs text-[#fffff1]/90 bg-[#313941]/50 p-3 rounded-xl border border-[#fffff1]/10">
-                    <Check size={16} className="text-[#fffff1] flex-shrink-0" />
+                  <div key={i} className="flex items-center space-x-3 text-sm text-[#fffff1]/95 bg-[#313941]/50 p-3.5 rounded-xl border border-[#fffff1]/10">
+                    <Check size={18} className="text-[#fffff1] flex-shrink-0" />
                     <span className="font-medium">{feat}</span>
                   </div>
                 ))}
@@ -238,7 +238,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           <div className="lg:col-span-4">
             <div className="sticky top-24 bg-[#2c343d] border border-[#fffff1]/15 p-6 sm:p-7 rounded-2xl space-y-6 shadow-xl">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
+                <span className="text-xs tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
                   PROJE BİLGİ FORMU
                 </span>
                 <h4 className="font-theSeasons text-xl font-bold text-[#fffff1] mt-0.5">
@@ -246,7 +246,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </h4>
               </div>
 
-              <div className="space-y-3.5 text-xs">
+              <div className="space-y-4 text-sm">
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Konum:</span>
                   <span className="text-[#fffff1]/95 font-medium text-right">{project.location}</span>
@@ -277,12 +277,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
               {/* Free Tour Callout Inside Card */}
               <div className="pt-4 border-t border-[#fffff1]/10 space-y-3">
-                <p className="text-[11px] text-[#fffff1]/70 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
                   Bu projeyi ve örnek daireyi yerinde görmek için ücretsiz Karasu tanıtım turumuza katılabilirsiniz.
                 </p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full py-3 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95"
+                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   {COMPANY_INFO.phone} ile Bilgi Al
                 </a>
@@ -341,17 +341,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                       {project.floorPlans[selectedPlanIndex].name}
                     </h4>
                   </div>
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3.5 text-sm">
                     <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
                       <span className="text-[#fffff1]/50">Net / Brüt Alan:</span>
-                      <span className="text-[#fffff1] font-bold text-sm">{project.floorPlans[selectedPlanIndex].area}</span>
+                      <span className="text-[#fffff1] font-bold text-base">{project.floorPlans[selectedPlanIndex].area}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
                       <span className="text-[#fffff1]/50">Oda Dağılımı:</span>
                       <span className="text-[#fffff1]/95 font-medium text-right">{project.floorPlans[selectedPlanIndex].rooms}</span>
                     </div>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#fffff1]/80 leading-relaxed font-light">
+                  <p className="text-sm sm:text-base text-[#fffff1]/85 leading-relaxed font-light">
                     {project.floorPlans[selectedPlanIndex].description}
                   </p>
                 </div>

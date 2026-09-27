@@ -33,7 +33,7 @@ export const FinancingAndTourSection: React.FC = () => {
           <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
             Banka Kredisiz, Kefilsiz — Elden Senet Modeli
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#fffff1]/70 font-light leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-[#fffff1]/80 font-light leading-relaxed">
             Demirtürk İnşaat ile ev sahibi olmak çok daha zahmetsiz ve güvenli. Banka bürokrasisi ve kredi faizleri olmadan, doğrudan şirket bünyesinde elden senet modeliyle hayalinizdeki sahil evine hemen adım atın.
           </p>
         </div>
@@ -46,13 +46,13 @@ export const FinancingAndTourSection: React.FC = () => {
               className="p-6 rounded-xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 hover:border-[#fffff1]/40 transition-all flex flex-col justify-between"
             >
               <div>
-                <span className="inline-block px-2.5 py-1 text-[10px] tracking-wider uppercase bg-[#252c33] text-[#fffff1] border border-[#fffff1]/20 rounded mb-4 font-semibold">
+                <span className="inline-block px-2.5 py-1 text-xs tracking-wider uppercase bg-[#252c33] text-[#fffff1] border border-[#fffff1]/20 rounded mb-4 font-semibold">
                   {adv.highlight}
                 </span>
                 <h3 className="font-theSeasons text-xl font-semibold text-[#fffff1] mb-2">
                   {adv.title}
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light leading-relaxed">
+                <p className="text-sm text-[#fffff1]/75 font-light leading-relaxed">
                   {adv.description}
                 </p>
               </div>
@@ -72,7 +72,7 @@ export const FinancingAndTourSection: React.FC = () => {
                 <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
                   Elden Senetli Satış Modeli İlkelerimiz
                 </h3>
-                <p className="text-xs text-[#fffff1]/50">
+                <p className="text-sm text-[#fffff1]/65 font-light">
                   Şeffaf, güvenilir ve doğrudan üretici garantili gayrimenkul edinimi.
                 </p>
               </div>
@@ -82,9 +82,9 @@ export const FinancingAndTourSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-white/[0.02] border border-[#fffff1]/5 space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <FileCheck size={18} />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#fffff1]">Banka ve Kredi Yok</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Banka ve Kredi Yok</span>
                 </div>
-                <p className="text-xs text-[#fffff1]/65 leading-relaxed font-light">
+                <p className="text-sm text-[#fffff1]/75 leading-relaxed font-light">
                   Kredi notu sorgulaması, dosya masrafı, banka komisyonu veya kefil zorunluluğu bulunmaz.
                 </p>
               </div>
@@ -92,9 +92,9 @@ export const FinancingAndTourSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-white/[0.02] border border-[#fffff1]/5 space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <Layers size={18} />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#fffff1]">Esnek Vade</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Esnek Vade</span>
                 </div>
-                <p className="text-xs text-[#fffff1]/65 leading-relaxed font-light">
+                <p className="text-sm text-[#fffff1]/75 leading-relaxed font-light">
                   Gelir durumunuza ve bütçenize göre esnek, proje bazlı kişiselleştirilmiş vade planı sunulur.
                 </p>
               </div>
@@ -102,9 +102,9 @@ export const FinancingAndTourSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-white/[0.02] border border-[#fffff1]/5 space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <Award size={18} />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#fffff1]">Doğrudan Üreticiden</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Doğrudan Üreticiden</span>
                 </div>
-                <p className="text-xs text-[#fffff1]/65 leading-relaxed font-light">
+                <p className="text-sm text-[#fffff1]/75 leading-relaxed font-light">
                   Senetleriniz 3. parti finans kurumlarına devredilmez, doğrudan Demirtürk İnşaat bünyesinde tutulur.
                 </p>
               </div>
@@ -112,9 +112,9 @@ export const FinancingAndTourSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-white/[0.02] border border-[#fffff1]/5 space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <CheckCircle2 size={18} />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#fffff1]">Resmi Noter Güvencesi</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Resmi Noter Güvencesi</span>
                 </div>
-                <p className="text-xs text-[#fffff1]/65 leading-relaxed font-light">
+                <p className="text-sm text-[#fffff1]/75 leading-relaxed font-light">
                   Tüm satış ve taahhüt süreçleri yasal noter sözleşmesi ve şeffaf şartnamelerle güvence altına alınır.
                 </p>
               </div>
@@ -129,7 +129,7 @@ export const FinancingAndTourSection: React.FC = () => {
                 <span className="font-theSeasons text-2xl font-bold text-[#fffff1] mt-1 block">
                   Size Özel Vade Planını Konuşalım
                 </span>
-                <span className="text-[11px] text-[#fffff1]/50 block mt-1">
+                <span className="text-xs text-[#fffff1]/60 block mt-1">
                   Satış danışmanlarımız projelere özel alternatif ödeme planlarını sizin için hazırlasın.
                 </span>
               </div>
@@ -138,7 +138,7 @@ export const FinancingAndTourSection: React.FC = () => {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba,%20elden%20senetli%20%C3%B6deme%20planlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-3 bg-[#fffff1] hover:bg-white text-[#252c33] text-xs font-semibold uppercase tracking-wider rounded text-center whitespace-nowrap transition-all shadow-md hover:scale-105"
+                className="px-5 py-3 bg-[#fffff1] hover:bg-white text-[#252c33] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-lg text-center whitespace-nowrap transition-all shadow-md hover:scale-105 cursor-pointer"
               >
                 Bilgi Alın
               </a>
@@ -161,39 +161,39 @@ export const FinancingAndTourSection: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
+            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
               İstanbul ve çevre illerden Karasu’ya özel VIP araçlarımızla transfer sağlıyoruz. Havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak görün.
             </p>
 
-            <div className="space-y-2 text-xs text-[#fffff1]/80">
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 size={14} className="text-[#fffff1] flex-shrink-0" />
+            <div className="space-y-2.5 text-sm text-[#fffff1]/90">
+              <div className="flex items-center space-x-2.5">
+                <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
                 <span>İstanbul Anadolu ve Avrupa yakasından VIP transfer</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 size={14} className="text-[#fffff1] flex-shrink-0" />
+              <div className="flex items-center space-x-2.5">
+                <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
                 <span>Örnek daire, peyzaj ve havuz alanlarının gezilmesi</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 size={14} className="text-[#fffff1] flex-shrink-0" />
+              <div className="flex items-center space-x-2.5">
+                <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
                 <span>Karasu sahil bandı ve bölge gelişimi hakkında brifing</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 size={14} className="text-[#fffff1] flex-shrink-0" />
+              <div className="flex items-center space-x-2.5">
+                <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
                 <span>Öğle yemeği ve ikramlar dahil — tamamen ücretsiz</span>
               </div>
             </div>
 
             {/* Quick Reservation Form */}
             {tourSubmitted ? (
-              <div className="p-4 bg-emerald-900/30 border border-emerald-500/40 rounded-lg text-xs text-emerald-300 flex items-center space-x-2">
-                <CheckCircle2 size={16} />
+              <div className="p-4 bg-emerald-900/30 border border-emerald-500/40 rounded-lg text-sm text-emerald-300 flex items-center space-x-2">
+                <CheckCircle2 size={18} />
                 <span>Tur talebiniz alındı! Müşteri temsilcimiz transfer detayları için sizi arayacaktır.</span>
               </div>
             ) : (
-              <form onSubmit={handleTourSubmit} className="space-y-3 pt-2">
+              <form onSubmit={handleTourSubmit} className="space-y-3.5 pt-2">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-[#fffff1]/60 mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
                     Adınız Soyadınız
                   </label>
                   <input
@@ -201,13 +201,13 @@ export const FinancingAndTourSection: React.FC = () => {
                     value={tourName}
                     onChange={(e) => setTourName(e.target.value)}
                     placeholder="Ad Soyad"
-                    className="w-full px-3 py-2 bg-white/5 border border-[#fffff1]/10 rounded text-xs text-[#fffff1] placeholder-[#fffff1]/30 focus:border-[#fffff1]/50 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 bg-white/5 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/30 focus:border-[#fffff1]/50 focus:outline-none"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[10px] uppercase tracking-wider text-[#fffff1]/60 mb-1">
+                    <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
                       Telefon *
                     </label>
                     <input
@@ -216,7 +216,7 @@ export const FinancingAndTourSection: React.FC = () => {
                       value={tourPhone}
                       onChange={(e) => setTourPhone(e.target.value)}
                       placeholder="05XX XXX XX XX"
-                      className="w-full px-3 py-2 bg-white/5 border border-[#fffff1]/10 rounded text-xs text-[#fffff1] placeholder-[#fffff1]/30 focus:border-[#fffff1]/50 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white/5 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/30 focus:border-[#fffff1]/50 focus:outline-none"
                     />
                   </div>
                   <div>

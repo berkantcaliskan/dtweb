@@ -15,7 +15,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
           <h2 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-tight">
             Bağlam, Doğa ve 20+ Yıllık Sarsılmaz Mühendislik Birikimi
           </h2>
-          <p className="mt-6 text-base text-[#fffff1]/70 font-light leading-relaxed">
+          <p className="mt-6 text-base sm:text-lg text-[#fffff1]/80 font-light leading-relaxed">
             Demirtürk İnşaat olarak 2003 yılından bu yana Sakarya Karasu’nun eşsiz sahil bandında sadece yapılar değil; nesilden nesile aktarılacak yaşam kültürleri inşa ediyoruz. Emre Arolat mimarisinin bağlamsal yaklaşımını referans alarak; arazinin topografyasına, Karadeniz’in rüzgarına ve yeşilin dinginliğine saygı duyan projeler tasarlıyoruz.
           </p>
         </div>
@@ -27,10 +27,10 @@ export const ArchitecturePhilosophy: React.FC = () => {
               <span className="font-theSeasons text-4xl sm:text-5xl font-bold text-[#fffff1] block">
                 {stat.value}
               </span>
-              <span className="text-xs uppercase tracking-wider text-[#fffff1]/90 mt-1 block">
+              <span className="text-sm uppercase tracking-wider text-[#fffff1]/90 mt-1.5 block font-medium">
                 {stat.label}
               </span>
-              <span className="text-[11px] text-[#fffff1]/50 block mt-0.5">
+              <span className="text-xs text-[#fffff1]/60 block mt-0.5">
                 {stat.sublabel}
               </span>
             </div>
@@ -46,7 +46,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
             <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
               Bağlamsal Tasarım & Manzara
             </h3>
-            <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
+            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
               Her projemiz Karasu’nun sahil şeridi, orman dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
             </p>
           </div>
@@ -58,7 +58,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
             <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
               Temelden Çatıya Malzeme Gücü
             </h3>
-            <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
+            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
               Demirtürk, aynı zamanda bölgenin önde gelen yapı malzemeleri tedarikçisidir. Kendi sertifikalı nervürlü demirimiz ve C35 betonumuzla ödün vermeyen deprem güvenliği sağlarız.
             </p>
           </div>
@@ -70,7 +70,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
             <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
               Kredisiz & Güvene Dayalı Finansman
             </h3>
-            <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
+            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
               Banka faizlerine veya kefil şartlarına takılmadan, doğrudan Demirtürk bünyesinde elden senet ve esnek vade modeliyle ev sahibi olma sürecini şeffaf ve kolay kılıyoruz.
             </p>
           </div>

@@ -42,7 +42,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
               Karasu'da Hayat Bulan Projelerimiz
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-[#fffff1]/65 max-w-md font-light leading-relaxed">
+          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
             Her biri kendine özgü mimari kimliğe sahip, doğayla uyumlu, havuzlu ve kredisiz elden senetli konut projelerimizi keşfedin.
           </p>
         </div>
@@ -53,7 +53,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
             <button
               key={tab.id}
               onClick={() => setSelectedFilter(tab.id)}
-              className={`px-4 py-2 rounded text-xs tracking-wider uppercase transition-all whitespace-nowrap ${
+              className={`px-4 py-2.5 rounded-lg text-xs sm:text-sm tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer ${
                 selectedFilter === tab.id
                   ? 'bg-[#313941] text-[#fffff1] border border-[#fffff1]/30 font-semibold shadow-md'
                   : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/5'
@@ -90,11 +90,11 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 {/* Top Bar: Status Badges & Quick Arrow */}
                 <div className="relative z-10 p-5 flex items-start justify-between gap-3">
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
+                    <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
                       {project.status}
                     </span>
                     {project.installmentMonths && (
-                      <span className="px-2.5 py-1 text-[10px] tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
+                      <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
                         Elden Senet
                       </span>
                     )}
@@ -124,18 +124,18 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-2 drop-shadow-md group-hover:translate-x-1 transition-transform">
                     {project.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow">
+                  <p className="text-sm sm:text-base text-[#fffff1]/95 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow">
                     {project.subtitle}
                   </p>
 
                   {/* Specs & Projeyi İncele */}
-                  <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs">
-                    <span className="text-[#fffff1]/75 flex items-center font-medium">
-                      <MapPin size={12} className="mr-1.5 text-[#fffff1]" /> Karasu
+                  <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-sm">
+                    <span className="text-[#fffff1]/80 flex items-center font-medium">
+                      <MapPin size={14} className="mr-1.5 text-[#fffff1]" /> Karasu
                     </span>
                     <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
                       <span>Projeyi İncele</span>
-                      <ArrowUpRight size={13} className="ml-1" />
+                      <ArrowUpRight size={15} className="ml-1" />
                     </span>
                   </div>
                 </div>

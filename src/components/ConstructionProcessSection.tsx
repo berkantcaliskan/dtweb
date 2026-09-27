@@ -85,7 +85,7 @@ export const ConstructionProcessSection: React.FC = () => {
               Temelden Anahtar Teslimine İnşa Süreçleri
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-[#fffff1]/65 max-w-md font-light leading-relaxed">
+          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
             Demirtürk İnşaat’ın 20+ yıllık saha tecrübesiyle uyguladığı 6 aşamalı tavizsiz şantiye ve kalite kontrol protokolü.
           </p>
         </div>
@@ -96,14 +96,14 @@ export const ConstructionProcessSection: React.FC = () => {
             <button
               key={s.step}
               onClick={() => setActiveStep(idx)}
-              className={`p-3.5 rounded-xl border text-left transition-all ${
+              className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 activeStep === idx
                   ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] shadow-lg font-semibold'
                   : 'bg-[#313941]/90 backdrop-blur-md text-[#fffff1]/70 border-[#fffff1]/10 hover:border-[#fffff1]/40 hover:text-[#fffff1]'
               }`}
             >
               <span className="text-[10px] block opacity-80 mb-0.5">AŞAMA {s.step}</span>
-              <span className="text-xs font-medium line-clamp-1 block">{s.title.split('&')[0]}</span>
+              <span className="text-xs sm:text-sm font-medium line-clamp-1 block">{s.title.split('&')[0]}</span>
             </button>
           ))}
         </div>
@@ -133,12 +133,12 @@ export const ConstructionProcessSection: React.FC = () => {
                 <h3 className="font-theSeasons text-3xl font-semibold text-[#fffff1]">
                   {current.title}
                 </h3>
-                <p className="text-xs text-[#fffff1]/80 font-light mt-1">
+                <p className="text-sm sm:text-base text-[#fffff1]/85 font-light mt-1">
                   {current.subtitle}
                 </p>
               </div>
 
-              <p className="text-sm text-[#fffff1]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#fffff1]/90 font-light leading-relaxed">
                 {current.description}
               </p>
 
@@ -146,10 +146,10 @@ export const ConstructionProcessSection: React.FC = () => {
                 <span className="text-[10px] uppercase tracking-wider text-[#fffff1]/50 block">
                   BU AŞAMADA UYGULANAN STANDARTLAR
                 </span>
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {current.standards.map((std, i) => (
-                    <div key={i} className="flex items-center space-x-2.5 text-xs text-[#fffff1]/90">
-                      <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
+                    <div key={i} className="flex items-center space-x-2.5 text-sm text-[#fffff1]/95">
+                      <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
                       <span>{std}</span>
                     </div>
                   ))}
@@ -162,19 +162,19 @@ export const ConstructionProcessSection: React.FC = () => {
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                className="px-4 py-2 text-xs uppercase tracking-wider rounded border border-[#fffff1]/10 hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1]"
+                className="px-4 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded border border-[#fffff1]/10 hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
               >
                 ← Önceki Aşama
               </button>
 
-              <span className="text-xs text-[#fffff1]/40">
+              <span className="text-xs sm:text-sm text-[#fffff1]/50">
                 {activeStep + 1} / {CONSTRUCTION_STEPS.length}
               </span>
 
               <button
                 disabled={activeStep === CONSTRUCTION_STEPS.length - 1}
                 onClick={() => setActiveStep((prev) => Math.min(CONSTRUCTION_STEPS.length - 1, prev + 1))}
-                className="px-4 py-2 text-xs uppercase tracking-wider rounded bg-[#fffff1] text-[#252c33] font-semibold hover:bg-white disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md"
+                className="px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded bg-[#fffff1] text-[#252c33] font-semibold hover:bg-white disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md cursor-pointer"
               >
                 Sonraki Aşama →
               </button>

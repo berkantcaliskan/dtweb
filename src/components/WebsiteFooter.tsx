@@ -20,10 +20,10 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <DemirturkLogo variant="dark-bg" emblemSize={42} />
-            <p className="text-xs text-[#fffff1]/60 font-light leading-relaxed max-w-sm">
+            <p className="text-sm text-[#fffff1]/70 font-light leading-relaxed max-w-sm">
               2003 yılından bu yana Sakarya Karasu’da doğa ve mimariyi buluşturan güvenilir yaşam alanları inşa ediyor; temelden çatıya yapı malzemeleri tedariki sağlıyoruz.
             </p>
-            <div className="text-[11px] text-[#fffff1]/80 pt-2 font-medium">
+            <div className="text-xs sm:text-sm text-[#fffff1]/85 pt-2 font-medium">
               Banka Kredisiz — Elden Senet İmkânı
             </div>
           </div>
@@ -33,7 +33,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
               PROJELER
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#fffff1]/70 font-light">
+            <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
               {PROJECTS_DATA.slice(0, 5).map((p) => (
                 <li key={p.id}>
                   <a href="#projeler" className="hover:text-white transition-colors">
@@ -49,7 +49,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
               SAYFALAR
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#fffff1]/70 font-light">
+            <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
               <li><a href="#projeler" className="hover:text-white transition-colors">Projeler</a></li>
               <li><a href="#mimari-yaklasim" className="hover:text-white transition-colors">Mimari Yaklaşım</a></li>
               <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
@@ -77,7 +77,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
               MERKEZ OFİS
             </h4>
-            <div className="space-y-2 text-xs text-[#fffff1]/70 font-light">
+            <div className="space-y-2 text-sm text-[#fffff1]/75 font-light">
               <p className="leading-relaxed">{COMPANY_INFO.address}</p>
               <div className="pt-1 space-y-1">
                 {COMPANY_INFO.phoneNumbers.map((num) => (
@@ -96,7 +96,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#fffff1]/50 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#fffff1]/60 gap-4">
           <div>
             © 2003 - 2025 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.
           </div>

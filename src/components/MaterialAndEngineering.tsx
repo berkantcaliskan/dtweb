@@ -17,7 +17,7 @@ export const MaterialAndEngineering: React.FC = () => {
               Temelden Çatıya Sarsılmaz Malzeme Kalitesi
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-[#fffff1]/65 max-w-md font-light leading-relaxed">
+          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
             Demirtürk İnşaat, bölgenin en büyük yapı malzemeleri tedarik ağlarından birine sahiptir. Kendi projelerimizde kullandığımız yüksek standartlı malzemeleri bölgedeki tüm şantiyelere de ulaştırıyoruz.
           </p>
         </div>
@@ -38,7 +38,7 @@ export const MaterialAndEngineering: React.FC = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#313941] via-black/30 to-transparent" />
-                  <span className="absolute top-4 left-4 px-2.5 py-1 text-[10px] tracking-widest uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                  <span className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
                     Sertifikalı Tedarik
                   </span>
                 </div>
@@ -47,14 +47,14 @@ export const MaterialAndEngineering: React.FC = () => {
                   <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1] mb-2 group-hover:text-[#fffff1] transition-colors">
                     {cat.title}
                   </h3>
-                  <p className="text-xs text-[#fffff1]/70 font-light leading-relaxed mb-4">
+                  <p className="text-sm sm:text-base text-[#fffff1]/80 font-light leading-relaxed mb-4">
                     {cat.description}
                   </p>
 
                   <div className="space-y-2 pt-2 border-t border-[#fffff1]/5">
                     {cat.items.map((item, idx) => (
-                      <div key={idx} className="flex items-center space-x-2 text-xs text-[#fffff1]/80">
-                        <Check size={13} className="text-[#fffff1] flex-shrink-0" />
+                      <div key={idx} className="flex items-center space-x-2 text-sm text-[#fffff1]/90">
+                        <Check size={15} className="text-[#fffff1] flex-shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -67,10 +67,10 @@ export const MaterialAndEngineering: React.FC = () => {
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20${encodeURIComponent(cat.title)}%20fiyat%20ve%20tedarik%20bilgisi%20almak%20istiyorum.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 px-4 bg-white/5 hover:bg-[#313941] hover:text-[#fffff1] border border-[#fffff1]/10 rounded text-xs tracking-wider uppercase transition-all flex items-center justify-between group-hover:border-[#fffff1]/30"
+                  className="w-full py-3 px-4 bg-white/5 hover:bg-[#313941] hover:text-[#fffff1] border border-[#fffff1]/10 rounded text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center justify-between group-hover:border-[#fffff1]/30 cursor-pointer"
                 >
                   <span>Fiyat Teklifi Al</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={15} />
                 </a>
               </div>
             </div>
@@ -86,7 +86,7 @@ export const MaterialAndEngineering: React.FC = () => {
             <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] mt-1">
               Şantiyeniz İçin Hızlı Fiyat ve Lojistik Teklifi
             </h3>
-            <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+            <p className="text-sm sm:text-base text-[#fffff1]/75 font-light mt-1">
               Karasu, Kocaali, Ferizli ve Sakarya geneline doğrudan şantiye teslimi sevkiyat.
             </p>
           </div>
@@ -94,16 +94,16 @@ export const MaterialAndEngineering: React.FC = () => {
           <div className="flex items-center space-x-4 flex-shrink-0">
             <a
               href={`tel:${COMPANY_INFO.phone}`}
-              className="px-5 py-3 rounded bg-white/5 hover:bg-white/10 border border-[#fffff1]/15 text-xs flex items-center space-x-2 text-[#fffff1]"
+              className="px-5 py-3 rounded bg-white/5 hover:bg-white/10 border border-[#fffff1]/15 text-xs sm:text-sm flex items-center space-x-2 text-[#fffff1]"
             >
-              <Phone size={14} className="text-[#fffff1]" />
+              <Phone size={15} className="text-[#fffff1]" />
               <span>{COMPANY_INFO.phone}</span>
             </a>
             <a
               href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20in%C5%9Faat%20malzemeleri%20i%C3%A7in%20teklif%20almak%20istiyorum.`}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-wider rounded transition-all shadow-md"
+              className="px-6 py-3 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded transition-all shadow-md cursor-pointer"
             >
               WhatsApp Teklif
             </a>

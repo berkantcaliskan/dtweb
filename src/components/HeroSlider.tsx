@@ -87,7 +87,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             {currentProject.title}
           </h1>
 
-          <p className="text-base sm:text-xl text-[#fffff1]/90 font-light max-w-2xl leading-relaxed mb-8 drop-shadow">
+          <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-light max-w-2xl leading-relaxed mb-8 drop-shadow">
             {currentProject.subtitle}
           </p>
 
@@ -96,7 +96,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/30 font-bold text-xs uppercase tracking-widest rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/50 hover:scale-105 active:scale-95"
+              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/30 font-bold text-sm uppercase tracking-wider rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/50 hover:scale-105 active:scale-95 cursor-pointer"
             >
               Proje Detayları & Kat Planları
             </button>
@@ -111,7 +111,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-xs uppercase tracking-widest rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40"
+              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer"
             >
               Ücretsiz Tanıtım Turu
             </button>
@@ -123,13 +123,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           {/* Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
-            className="flex items-center space-x-3 text-[#fffff1]/70 hover:text-[#fffff1] transition-all group"
+            className="flex items-center space-x-3 text-[#fffff1]/70 hover:text-[#fffff1] transition-all group cursor-pointer"
             aria-label="Projeleri Keşfedin"
           >
             <div className="w-5 h-8 rounded-full border border-[#fffff1]/30 group-hover:border-[#fffff1] flex justify-center pt-1.5 transition-colors">
               <div className="w-1 h-2 rounded-full bg-[#fffff1] animate-scroll-dot" />
             </div>
-            <span className="text-[11px] tracking-[0.25em] font-medium uppercase text-[#fffff1]/80 group-hover:text-[#fffff1] transition-colors">
+            <span className="text-xs tracking-[0.2em] font-medium uppercase text-[#fffff1]/80 group-hover:text-[#fffff1] transition-colors">
               Projeleri Keşfedin
             </span>
           </button>

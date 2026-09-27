@@ -88,7 +88,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item)}
-                className="text-[11px] xl:text-[12px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/80 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                className="text-xs xl:text-[13px] tracking-[0.14em] xl:tracking-[0.16em] font-medium text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
               >
                 {item.label}
               </button>
@@ -102,9 +102,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               {/* Direct Phone */}
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="text-xs text-[#fffff1]/85 hover:text-[#fffff1] flex items-center space-x-1.5 px-3 py-2 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap"
+                className="text-xs sm:text-sm text-[#fffff1]/90 hover:text-[#fffff1] flex items-center space-x-1.5 px-3 py-2 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap"
               >
-                <Phone size={13} className="text-[#fffff1] flex-shrink-0" />
+                <Phone size={14} className="text-[#fffff1] flex-shrink-0" />
                 <span>{COMPANY_INFO.phone}</span>
               </a>
 
@@ -138,7 +138,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-[#252c33]/98 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 lg:hidden animate-mobile-drawer">
           <div className="space-y-6">
-            <div className="text-[10px] tracking-[0.25em] uppercase text-[#fffff1] border-b border-[#fffff1]/10 pb-2">
+            <div className="text-[11px] tracking-[0.25em] uppercase text-[#fffff1] border-b border-[#fffff1]/10 pb-2">
               MENÜ & BÖLÜMLER
             </div>
             <div className="flex flex-col space-y-4">
@@ -181,7 +181,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
                 if (onOpenTour) onOpenTour()
                 else scrollTo('#tanitim-turu')
               }}
-              className="glass-blur-box w-full py-3 text-white font-semibold text-center uppercase tracking-wider text-xs rounded-xl shadow-lg border border-white/20"
+              className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-xl shadow-lg border border-white/20"
             >
               Ücretsiz Tanıtım Turu Talep Et
             </button>

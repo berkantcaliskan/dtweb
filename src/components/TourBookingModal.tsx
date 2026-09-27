@@ -65,46 +65,46 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
         {/* Modal Body */}
         <div className="p-6 sm:p-8 space-y-6">
-          <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
             İstanbul ve çevre illerden Karasu’ya özel VIP transfer aracımızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak inceleyin.
           </p>
 
-          <div className="grid grid-cols-2 gap-2 text-xs text-[#fffff1]/80">
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-2.5 rounded border border-[#fffff1]/5">
-              <CheckCircle2 size={13} className="text-[#fffff1] flex-shrink-0" />
+          <div className="grid grid-cols-2 gap-2.5 text-sm text-[#fffff1]/90">
+            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+              <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Gidiş - Dönüş Transfer</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-2.5 rounded border border-[#fffff1]/5">
-              <CheckCircle2 size={13} className="text-[#fffff1] flex-shrink-0" />
+            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+              <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Örnek Daire Gezisi</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-2.5 rounded border border-[#fffff1]/5">
-              <CheckCircle2 size={13} className="text-[#fffff1] flex-shrink-0" />
+            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+              <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Öğle Yemeği İkramı</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-2.5 rounded border border-[#fffff1]/5">
-              <CheckCircle2 size={13} className="text-[#fffff1] flex-shrink-0" />
+            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+              <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Sıfır Satın Alma Şartı</span>
             </div>
           </div>
 
           {submitted ? (
-            <div className="p-5 bg-emerald-900/40 border border-emerald-500/40 rounded-xl text-xs text-emerald-300 space-y-2">
-              <p className="font-semibold text-sm">Talebiniz Alındı!</p>
+            <div className="p-5 bg-emerald-900/40 border border-emerald-500/40 rounded-xl text-sm text-emerald-300 space-y-2">
+              <p className="font-semibold text-base">Talebiniz Alındı!</p>
               <p className="leading-relaxed">
                 Müşteri danışmanımız hareket saati ve biniş noktası planlaması için sizi en kısa sürede arayacaktır.
               </p>
               <button
                 onClick={onClose}
-                className="mt-3 px-4 py-1.5 bg-white/10 hover:bg-[#313941] rounded text-[11px] text-[#fffff1]"
+                className="mt-3 px-4 py-2 bg-white/10 hover:bg-[#313941] rounded-lg text-xs sm:text-sm text-[#fffff1] cursor-pointer"
               >
                 Tamam
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3.5">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">
+                <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                   Adınız Soyadınız
                 </label>
                 <input
@@ -112,12 +112,12 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   placeholder="Adınız Soyadınız"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">
+                <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                   Telefon Numaranız <span className="text-[#fffff1]/70">*</span>
                 </label>
                 <input
@@ -126,19 +126,19 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
-                  className="w-full px-3.5 py-2.5 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">
+                  <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                     Bulunduğunuz Şehir
                   </label>
                   <select
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full px-3 py-2 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                    className="w-full px-3.5 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
                   >
                     <option value="İstanbul">İstanbul</option>
                     <option value="Kocaeli/İzmit">Kocaeli / İzmit</option>
@@ -149,7 +149,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">
+                  <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                     Tercih Edilen Gün
                   </label>
                   <input
@@ -157,7 +157,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                     placeholder="Örn: Cumartesi"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                    className="w-full px-3.5 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                   />
                 </div>
               </div>

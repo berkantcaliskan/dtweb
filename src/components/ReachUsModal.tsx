@@ -170,7 +170,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             <h1 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
               Bize Ulaşın
             </h1>
-            <p className="text-xs sm:text-sm text-[#fffff1]/70 font-light max-w-2xl mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#fffff1]/80 font-light max-w-2xl mt-2 leading-relaxed">
               Karasu merkez ofisimizde kahve eşliğinde projelerimizi inceleyebilir veya uzman satış danışmanlarımızla hemen iletişime geçebilirsiniz.
             </p>
           </div>
@@ -179,7 +179,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
           <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/10">
             <button
               onClick={() => setActiveTab('contact')}
-              className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'contact'
                   ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
@@ -189,7 +189,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             </button>
             <button
               onClick={() => setActiveTab('career')}
-              className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'career'
                   ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
@@ -210,27 +210,27 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   Karasu Merkez Ofis
                 </h3>
 
-                <div className="space-y-4 text-xs font-light">
+                <div className="space-y-5 text-sm font-light">
                   {/* Adres */}
-                  <div className="flex items-start space-x-3">
-                    <MapPin size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <MapPin size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-0.5">Adres</span>
-                      <span className="text-[#fffff1]/90 leading-relaxed block">{COMPANY_INFO.address}</span>
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-0.5">Adres</span>
+                      <span className="text-[#fffff1]/95 text-sm sm:text-base leading-relaxed block">{COMPANY_INFO.address}</span>
                     </div>
                   </div>
 
                   {/* İletişim Numaraları (Hiçbirinde GSM/Ofis yazmıyor) */}
-                  <div className="flex items-start space-x-3">
-                    <Phone size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Phone size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-1">İletişim Numaraları</span>
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-1">İletişim Numaraları</span>
                       <div className="space-y-1.5">
                         {COMPANY_INFO.phoneNumbers.map((num) => (
                           <a
                             key={num}
                             href={`tel:${num.replace(/\s+/g, '')}`}
-                            className="text-[#fffff1]/95 hover:text-white block text-sm font-medium transition-colors tracking-wide"
+                            className="text-[#fffff1]/95 hover:text-white block text-sm sm:text-base font-medium transition-colors tracking-wide"
                           >
                             {num}
                           </a>
@@ -240,27 +240,27 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   </div>
 
                   {/* E-Posta */}
-                  <div className="flex items-start space-x-3">
-                    <Mail size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Mail size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase text-[#fffff1]/50 mb-0.5">E-Posta</span>
-                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#fffff1]/90 hover:text-white block">
+                      <span className="block text-xs uppercase text-[#fffff1]/60 mb-0.5">E-Posta</span>
+                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#fffff1]/95 text-sm sm:text-base hover:text-white block">
                         {COMPANY_INFO.email}
                       </a>
                     </div>
                   </div>
 
                   {/* Ziyaret Saatleri (Her gün açığız badge) */}
-                  <div className="flex items-start space-x-3">
-                    <Clock size={18} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3.5">
+                    <Clock size={20} className="text-[#fffff1]/90 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="flex items-center space-x-2 mb-1.5">
-                        <span className="text-[10px] uppercase text-[#fffff1]/50">Ziyaret Saatleri</span>
-                        <span className="px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-full">
+                        <span className="text-xs uppercase text-[#fffff1]/60">Ziyaret Saatleri</span>
+                        <span className="px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-full">
                           Her gün açığız
                         </span>
                       </div>
-                      <div className="space-y-1 text-xs text-[#fffff1]/90 font-light">
+                      <div className="space-y-1 text-sm text-[#fffff1]/90 font-light">
                         <p>{COMPANY_INFO.workingHoursWeekday}</p>
                         <p>{COMPANY_INFO.workingHoursWeekend}</p>
                       </div>
@@ -274,7 +274,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20Demirt%C3%BCrk%20%C4%B0n%C5%9Faat%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3.5 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
+                    className="w-full py-3.5 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-xl text-emerald-300 text-sm font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
                   >
                     <MessageSquare size={16} />
                     <span>WhatsApp Canlı Destek</span>
@@ -298,10 +298,10 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   href="https://www.google.com/maps/search/?api=1&query=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya"
                   target="_blank"
                   rel="noreferrer"
-                  className="absolute bottom-3 right-3 text-[11px] bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3 py-1.5 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
+                  className="absolute bottom-3 right-3 text-xs bg-[#313941]/90 hover:bg-[#313941] text-[#fffff1] px-3.5 py-2 rounded-lg border border-[#fffff1]/20 backdrop-blur-md flex items-center space-x-1.5 transition-all shadow-md group-hover:border-[#fffff1]/40"
                 >
                   <span>Haritada Aç</span>
-                  <ArrowUpRight size={13} className="text-[#fffff1]/80" />
+                  <ArrowUpRight size={14} className="text-[#fffff1]/80" />
                 </a>
               </div>
             </div>
@@ -309,13 +309,13 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             {/* Right Column: Message & Appointment Form (7 Cols) */}
             <div className="lg:col-span-7 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6 shadow-xl">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   RANDEVU & BİLGİ TALEBİ
                 </span>
                 <h3 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
                   Bize Mesaj Gönderin
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   Satış danışmanlarımızın en kısa sürede sizinle iletişime geçmesi için bilgilerinizi bırakın.
                 </p>
               </div>
@@ -326,7 +326,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     <Check size={20} />
                     <span className="font-semibold text-base">Talebiniz Alındı!</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 leading-relaxed">
+                  <p className="text-sm text-emerald-300/80 leading-relaxed">
                     Mesajınız müşteri ilişkileri birimimize iletildi. En kısa sürede geri dönüş yapılacaktır.
                   </p>
                 </div>
@@ -334,7 +334,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Adınız Soyadınız
                       </label>
                       <input
@@ -342,11 +342,11 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                         placeholder="Adınız Soyadınız"
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Telefon Numaranız <span className="text-[#fffff1]/70">*</span>
                       </label>
                       <input
@@ -355,19 +355,19 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       İlgilendiğiniz Konu
                     </label>
                     <select
                       value={formSubject}
                       onChange={(e) => setFormSubject(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
                     >
                       <option value="Genel Bilgi & Satış" className="bg-[#252c33] text-[#fffff1]">Genel Bilgi & Satış</option>
                       <option value="Asel Doğa Evleri Bilgi Talebi" className="bg-[#252c33] text-[#fffff1]">Asel Doğa Evleri Bilgi Talebi</option>
@@ -379,7 +379,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Mesajınız / Notunuz
                     </label>
                     <textarea
@@ -387,19 +387,19 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                       placeholder="Görüşmek istediğiniz gün, saat veya merak ettiğiniz detayları buraya yazabilirsiniz..."
                       value={formMessage}
                       onChange={(e) => setFormMessage(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50 resize-none"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50 resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
-                    <Send size={15} />
+                    <Send size={16} />
                     <span>Mesajı Gönder (WhatsApp ile İlet)</span>
                   </button>
 
-                  <p className="text-[10px] text-center text-[#fffff1]/40 pt-2">
+                  <p className="text-xs text-center text-[#fffff1]/50 pt-2">
                     Formu ilettiğinizde talebiniz doğrudan yetkili müşteri temsilcimizin WhatsApp hattına yönlendirilir.
                   </p>
                 </form>
@@ -414,14 +414,14 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             {/* Open Positions List (6 Cols) */}
             <div className="lg:col-span-6 space-y-4">
               <div className="p-6 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 shadow-xl">
-                <div className="flex items-center space-x-2 text-[10px] tracking-widest text-[#fffff1]/80 uppercase mb-1">
+                <div className="flex items-center space-x-2 text-xs tracking-widest text-[#fffff1]/80 uppercase mb-1">
                   <Briefcase size={14} className="text-[#fffff1]" />
                   <span>Açık Pozisyonlar</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl font-bold text-[#fffff1]">
                   Demirtürk Ailesine Katılın
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   20 yılı aşkın süredir Sakarya ve Karasu’da nitelikli yapılar inşa ediyoruz. Güçlü ekibimize katılmak için açık pozisyonlarımızı inceleyebilirsiniz.
                 </p>
               </div>
@@ -433,18 +433,18 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     className="p-5 rounded-xl bg-[#313941]/70 border border-[#fffff1]/10 hover:border-[#fffff1]/30 transition-all space-y-2 group shadow-md"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-sm font-semibold text-[#fffff1] group-hover:text-white">
+                      <h4 className="text-base font-semibold text-[#fffff1] group-hover:text-white">
                         {pos.title}
                       </h4>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-[#fffff1]/80 border border-[#fffff1]/10">
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-[#fffff1]/80 border border-[#fffff1]/10">
                         {pos.type}
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2 text-[11px] text-[#fffff1]/50">
-                      <MapPin size={12} />
+                    <div className="flex items-center space-x-2 text-xs text-[#fffff1]/60">
+                      <MapPin size={13} />
                       <span>{pos.location}</span>
                     </div>
-                    <p className="text-xs text-[#fffff1]/70 font-light leading-relaxed">
+                    <p className="text-sm text-[#fffff1]/80 font-light leading-relaxed">
                       {pos.desc}
                     </p>
                   </div>
@@ -455,13 +455,13 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             {/* Career Application Form (6 Cols) */}
             <div className="lg:col-span-6 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6 shadow-xl">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   BAŞVURU FORMU
                 </span>
                 <h3 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
                   Özgeçmişinizi İletin
                 </h3>
-                <p className="text-xs text-[#fffff1]/60 font-light mt-1">
+                <p className="text-sm text-[#fffff1]/75 font-light mt-1">
                   Bilgilerinizi doldurarak İnsan Kaynakları birimimize başvuruda bulunabilirsiniz.
                 </p>
               </div>
@@ -472,14 +472,14 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     <Check size={20} />
                     <span className="font-semibold text-base">Başvurunuz Alındı!</span>
                   </div>
-                  <p className="text-xs text-emerald-300/80 leading-relaxed">
+                  <p className="text-sm text-emerald-300/80 leading-relaxed">
                     Kariyer başvurunuz İK departmanımıza yönlendirildi. Özgeçmişiniz değerlendirilerek uygun pozisyonlar için sizinle irtibata geçilecektir.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleCareerSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Adınız Soyadınız <span className="text-[#fffff1]/70">*</span>
                     </label>
                     <input
@@ -488,13 +488,13 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                       value={careerName}
                       onChange={(e) => setCareerName(e.target.value)}
                       required
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         Telefon Numaranız <span className="text-[#fffff1]/70">*</span>
                       </label>
                       <input
@@ -503,11 +503,11 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                         value={careerPhone}
                         onChange={(e) => setCareerPhone(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                      <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                         E-Posta Adresiniz
                       </label>
                       <input
@@ -515,19 +515,19 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                         placeholder="ornek@domain.com"
                         value={careerEmail}
                         onChange={(e) => setCareerEmail(e.target.value)}
-                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                        className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Başvurulan Pozisyon
                     </label>
                     <select
                       value={careerPosition}
                       onChange={(e) => setCareerPosition(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
                     >
                       <option value="Şantiye Şefi / İnşaat Mühendisi" className="bg-[#252c33] text-[#fffff1]">Şantiye Şefi / İnşaat Mühendisi</option>
                       <option value="Mimar / İç Mimar & 3D Görselleştirme" className="bg-[#252c33] text-[#fffff1]">Mimar / İç Mimar & 3D Görselleştirme</option>
@@ -538,7 +538,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase text-[#fffff1]/50 mb-1">
+                    <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                       Deneyim Özeti & Ek Notlar
                     </label>
                     <textarea
@@ -546,19 +546,19 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                       placeholder="Eğitiminiz, tecrübeleriniz veya CV'niz hakkında kısaca bilgi verin..."
                       value={careerNote}
                       onChange={(e) => setCareerNote(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-xs text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50 resize-none"
+                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50 resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
-                    <Send size={15} />
+                    <Send size={16} />
                     <span>Başvuruyu İlet (İK WhatsApp)</span>
                   </button>
 
-                  <p className="text-[10px] text-center text-[#fffff1]/40 pt-2">
+                  <p className="text-xs text-center text-[#fffff1]/50 pt-2">
                     Aday bilgileriniz 6698 sayılı KVKK kapsamında gizli tutulmakta ve sadece istihdam amacıyla değerlendirilmektedir.
                   </p>
                 </form>

@@ -97,7 +97,7 @@ export const ArticlesSection: React.FC = () => {
               Mimari ve Mühendislik Makaleleri
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-[#fffff1]/65 max-w-md font-light leading-relaxed">
+          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
             Karasu kıyı mimarisi, deprem mühendisliği, malzeme bilimi ve sayfiye yaşamının geleceğine dair uzman yazılarımız.
           </p>
         </div>
@@ -119,19 +119,19 @@ export const ArticlesSection: React.FC = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#313941] via-black/30 to-transparent" />
-                  <div className="absolute top-4 left-4 px-2.5 py-1 text-[10px] tracking-widest uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                  <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
                     {article.category}
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center space-x-3 text-[11px] text-[#fffff1]/50 mb-2">
+                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60 mb-2">
                     <span className="flex items-center">
-                      <Calendar size={12} className="mr-1 text-[#fffff1]/80" /> {article.date}
+                      <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {article.date}
                     </span>
                     <span>•</span>
                     <span className="flex items-center">
-                      <Clock size={12} className="mr-1 text-[#fffff1]/80" /> {article.readTime}
+                      <Clock size={13} className="mr-1 text-[#fffff1]/80" /> {article.readTime}
                     </span>
                   </div>
 
@@ -139,16 +139,16 @@ export const ArticlesSection: React.FC = () => {
                     {article.title}
                   </h3>
 
-                  <p className="text-xs text-[#fffff1]/70 line-clamp-3 font-light leading-relaxed mb-4">
+                  <p className="text-sm text-[#fffff1]/80 line-clamp-3 font-light leading-relaxed mb-4">
                     {article.summary}
                   </p>
                 </div>
               </div>
 
               <div className="p-6 pt-0">
-                <div className="pt-4 border-t border-[#fffff1]/5 flex items-center justify-between text-xs text-[#fffff1] font-medium">
+                <div className="pt-4 border-t border-[#fffff1]/5 flex items-center justify-between text-sm text-[#fffff1] font-medium">
                   <span>Makaleyi Oku</span>
-                  <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
             </article>
@@ -202,11 +202,11 @@ export const ArticlesSection: React.FC = () => {
                 {selectedArticle.title}
               </h2>
 
-              <p className="text-sm sm:text-base text-[#fffff1]/90 font-light italic leading-relaxed border-l-2 border-[#fffff1]/60 pl-4">
+              <p className="text-base sm:text-lg text-[#fffff1]/90 font-light italic leading-relaxed border-l-2 border-[#fffff1]/60 pl-4">
                 "{selectedArticle.subtitle}"
               </p>
 
-              <div className="space-y-4 text-sm text-[#fffff1]/80 font-light leading-relaxed pt-4 border-t border-[#fffff1]/10">
+              <div className="space-y-5 text-base sm:text-lg text-[#fffff1]/85 font-light leading-relaxed pt-5 border-t border-[#fffff1]/10">
                 {selectedArticle.paragraphs.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
@@ -215,7 +215,7 @@ export const ArticlesSection: React.FC = () => {
               <div className="pt-6 border-t border-[#fffff1]/10 flex justify-end">
                 <button
                   onClick={() => setSelectedArticle(null)}
-                  className="px-6 py-2.5 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-xs uppercase tracking-wider rounded transition-colors text-[#fffff1]"
+                  className="px-6 py-2.5 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-xs sm:text-sm uppercase tracking-wider rounded transition-colors text-[#fffff1] cursor-pointer"
                 >
                   Kapat
                 </button>
