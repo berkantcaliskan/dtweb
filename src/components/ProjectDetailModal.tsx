@@ -31,17 +31,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/45 backdrop-blur-sm flex justify-center p-0 md:p-6 lg:p-10 animate-modal-backdrop"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex justify-center p-0 md:p-6 lg:p-10 animate-modal-backdrop"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
     >
       <div 
-        className="relative w-full max-w-5xl bg-[#1e242b]/75 backdrop-blur-2xl border border-[#fffff1]/20 md:rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
+        className="relative w-full max-w-5xl bg-[#1e242b] border border-[#fffff1]/20 md:rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Header Bar */}
-        <div className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#1e242b]/65 backdrop-blur-xl border-b border-[#fffff1]/15">
+        <div className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#1e242b] border-b border-[#fffff1]/15">
           <div>
             <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
               {project.categoryLabel} — {project.year}
@@ -118,7 +118,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
 
             {/* Technical Specifications Card */}
-            <div className="bg-[#313941]/55 backdrop-blur-xl border border-[#fffff1]/15 p-6 rounded-xl space-y-5 h-fit shadow-lg">
+            <div className="bg-[#2c343d] border border-[#fffff1]/15 p-6 rounded-xl space-y-5 h-fit shadow-lg">
               <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase pb-2 border-b border-[#fffff1]/10 font-medium">
                 TEKNİK KÜNYE
               </h3>
@@ -198,7 +198,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </div>
 
               {project.floorPlans[selectedPlanIndex] && (
-                <div className="bg-[#313941]/55 backdrop-blur-xl border border-[#fffff1]/15 rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center shadow-lg">
+                <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center shadow-lg">
                   <div className="rounded-lg overflow-hidden border border-[#fffff1]/10 aspect-[4/3] bg-black/40">
                     <img
                       src={project.floorPlans[selectedPlanIndex].image}
