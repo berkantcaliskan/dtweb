@@ -570,7 +570,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
       {/* Modal Bottom Footer */}
       <footer className="w-full border-t border-[#fffff1]/10 py-6 px-4 sm:px-6 lg:px-[104px] bg-[#1c2126]/60 text-center text-xs text-[#fffff1]/50">
-        <p>© 2003 - 2025 Demirtürk İnşaat San. ve Tic. Ltd. Şti. — Tüm hakları saklıdır.</p>
+        <p>© 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. — Tüm hakları saklıdır.</p>
       </footer>
     </div>
   )

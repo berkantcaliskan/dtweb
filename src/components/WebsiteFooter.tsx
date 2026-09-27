@@ -98,7 +98,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#fffff1]/60 gap-4">
           <div>
-            © 2003 - 2025 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.
+            © 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.
           </div>
 
           <div className="flex items-center space-x-6">
