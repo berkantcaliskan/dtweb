@@ -192,13 +192,6 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.btn-cta-bold {
-  font-weight: 800 !important;
-  -webkit-text-stroke: 0.45px currentColor;
-  text-shadow: 0 0 1px rgba(255, 255, 241, 0.4);
-  letter-spacing: 0.08em;
-}
-
 .glass-blur-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);

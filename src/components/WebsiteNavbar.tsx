@@ -104,7 +104,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour }) => {
                   if (onOpenTour) onOpenTour()
                   else scrollTo('#tanitim-turu')
                 }}
-                className="btn-cta-bold glass-blur-box text-xs uppercase px-4 py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40"
+                className="glass-blur-box text-xs font-normal tracking-wider uppercase px-4 py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40"
               >
                 <span>Ücretsiz Tanıtım Turu</span>
               </button>
