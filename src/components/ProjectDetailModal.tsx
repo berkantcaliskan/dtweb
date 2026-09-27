@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { X, MapPin, Calendar, Layers, ShieldCheck, Check, MessageSquare, Phone, ChevronRight, Download, Send } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { ArrowLeft, X, MapPin, Calendar, Layers, ShieldCheck, Check, MessageSquare, Phone, ChevronRight, Send, Compass, Building2, Home } from 'lucide-react'
 import { ProjectItem } from '../types'
 import { ResponsiveMedia } from './ResponsiveMedia'
 import { COMPANY_INFO } from '../data/websiteData'
@@ -15,13 +15,33 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   const [leadPhone, setLeadPhone] = useState('')
   const [leadFormSubmitted, setLeadFormSubmitted] = useState(false)
 
+  // Body scroll lock & Escape key listener
+  useEffect(() => {
+    if (!project) return
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [project, onClose])
+
   if (!project) return null
 
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!leadPhone.trim()) return
 
-    // Create WhatsApp direct link or record
     const text = encodeURIComponent(
       `Merhaba, ${project.title} projeniz hakkında detaylı bilgi ve tanıtım turu talebinde bulunmak istiyorum.\nİsim: ${leadName || 'Belirtilmedi'}\nTelefon: ${leadPhone}`
     )
@@ -31,246 +51,363 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex justify-center p-0 md:p-6 lg:p-10 animate-modal-backdrop"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose()
-      }}
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
+      style={{ WebkitOverflowScrolling: 'touch' }}
     >
-      <div 
-        className="relative w-full max-w-5xl bg-[#1e242b] border border-[#fffff1]/20 md:rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Sticky Header Bar */}
-        <div className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#1e242b] border-b border-[#fffff1]/15">
-          <div>
-            <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block font-medium">
+      {/* 
+        Top Sticky Architectural Navigation Bar 
+        Sol üstte belirgin Geri Dön butonu, sağda hızlı iletişim butonları
+      */}
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+        {/* Sol Üst: Geri Butonu & Proje Başlık İntrosu */}
+        <div className="flex items-center space-x-4 sm:space-x-6">
+          <button
+            onClick={onClose}
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm"
+            aria-label="Projeler listesine geri dön"
+          >
+            <ArrowLeft size={18} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
+            <span className="text-xs font-bold uppercase tracking-wider">Geri Dön</span>
+          </button>
+
+          <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
+
+          <div className="hidden sm:block">
+            <span className="text-[10px] tracking-widest text-[#fffff1]/60 uppercase block font-medium">
               {project.categoryLabel} — {project.year}
             </span>
-            <h2 className="font-theSeasons text-2xl font-bold text-[#fffff1]">
+            <h2 className="font-theSeasons text-lg font-bold text-[#fffff1] leading-tight">
               {project.title}
             </h2>
           </div>
-
-          <div className="flex items-center space-x-3">
-            <a
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20${encodeURIComponent(project.title)}%20projesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-900/40 border border-emerald-500/30 text-emerald-400 rounded text-xs hover:bg-emerald-900/60 transition-colors"
-            >
-              <MessageSquare size={13} />
-              <span>WhatsApp Bilgi</span>
-            </a>
-            <button
-              onClick={onClose}
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#313941] text-[#fffff1] flex items-center justify-center transition-colors"
-              aria-label="Kapat"
-            >
-              <X size={18} />
-            </button>
-          </div>
         </div>
 
-        {/* Modal Scrollable Content */}
-        <div className="overflow-y-auto max-h-[85vh] p-6 lg:p-8 space-y-10">
-          {/* Main Hero Media (Responsive 16:9 Desktop, 9:16 Mobile) */}
-          <div className="rounded-xl overflow-hidden border border-[#fffff1]/10 shadow-lg">
+        {/* Sağ Üst: Hızlı İletişim & Kapat */}
+        <div className="flex items-center space-x-3">
+          <a
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20${encodeURIComponent(project.title)}%20projesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden md:flex items-center space-x-2 px-4 py-2 bg-emerald-900/40 hover:bg-emerald-800/60 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+          >
+            <MessageSquare size={14} />
+            <span>WhatsApp Bilgi</span>
+          </a>
+
+          <a
+            href={`tel:${COMPANY_INFO.phone}`}
+            className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-[#fffff1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+          >
+            <Phone size={14} />
+            <span>{COMPANY_INFO.phone}</span>
+          </a>
+
+          <button
+            onClick={onClose}
+            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+            aria-label="Sayfayı Kapat"
+            title="Kapat"
+          >
+            <X size={18} />
+          </button>
+        </div>
+      </header>
+
+      {/* Main Full-Screen Presentation Container */}
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] py-8 sm:py-12 w-full space-y-14">
+        {/* Project Header & Hero Media */}
+        <section className="space-y-6">
+          {/* Breadcrumb & Badges */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center space-x-2 text-[11px] tracking-widest uppercase text-[#fffff1]/60">
+              <button onClick={onClose} className="hover:text-[#fffff1] transition-colors underline-offset-4 hover:underline">
+                PROJELERİMİZ
+              </button>
+              <span>/</span>
+              <span className="text-[#fffff1] font-semibold">{project.title}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
+                {project.status}
+              </span>
+              {project.installmentMonths && (
+                <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-md">
+                  Elden Senet Modeli
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Project Display Typography */}
+          <div>
+            <h1 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-[1.1]">
+              {project.title}
+            </h1>
+            <p className="text-base sm:text-xl text-[#fffff1]/80 font-light max-w-3xl leading-relaxed mt-3">
+              {project.subtitle}
+            </p>
+          </div>
+
+          {/* Quick Technical Specs Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
+              <MapPin size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+              <div>
+                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Konum</span>
+                <span className="text-xs font-bold text-[#fffff1] truncate block">{project.location}</span>
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
+              <Layers size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+              <div>
+                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Toplam Alan</span>
+                <span className="text-xs font-bold text-[#fffff1] block">{project.totalArea}</span>
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
+              <Building2 size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+              <div>
+                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Bağımsız Bölüm</span>
+                <span className="text-xs font-bold text-[#fffff1] block">{project.totalUnits}</span>
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3">
+              <Home size={18} className="text-[#fffff1]/60 flex-shrink-0" />
+              <div>
+                <span className="text-[10px] uppercase text-[#fffff1]/50 block">Konut Tipleri</span>
+                <span className="text-xs font-bold text-[#fffff1] block truncate">{project.unitTypes.join(', ')}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Full-Bleed Cinematic Hero Render */}
+          <div className="rounded-2xl overflow-hidden border border-[#fffff1]/15 shadow-2xl bg-black/40">
             <ResponsiveMedia media={project.heroMedia} className="w-full" showControls={true} />
           </div>
+        </section>
 
-          {/* Architectural Overview & Philosophy */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-6">
-              <div>
-                <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase mb-2 font-medium">
-                  PROJE KONSEPTİ VE HİKAYESİ
-                </h3>
-                <p className="text-base text-[#fffff1]/90 leading-relaxed font-light">
-                  {project.description}
+        {/* Section 2: Story, Architectural Philosophy & Technical Künye */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Left Column (8 cols): Concept, Philosophy & Features */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Story */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+                <span>KONSEPT & YAŞAM ALANI</span>
+              </div>
+              <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
+                Doğanın Kalbinde Çağdaş Bir Yaşam
+              </h3>
+              <p className="text-base text-[#fffff1]/90 leading-relaxed font-light">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Architectural Philosophy Quote */}
+            {project.architecturalPhilosophy && (
+              <div className="p-6 bg-[#313941]/40 border-l-4 border-[#fffff1]/60 rounded-r-2xl space-y-2">
+                <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
+                  MİMARİ DİL & TASARIM FELSEFESİ
+                </span>
+                <p className="text-sm sm:text-base text-[#fffff1]/90 leading-relaxed italic font-light">
+                  "{project.architecturalPhilosophy}"
                 </p>
               </div>
+            )}
 
-              {project.architecturalPhilosophy && (
-                <div className="p-5 bg-white/5 border-l-2 border-[#fffff1]/50 rounded-r-lg space-y-2">
-                  <h4 className="text-xs tracking-wider text-[#fffff1]/90 uppercase font-medium">
-                    MİMARİ YAKLAŞIM (EAA DİLİ VE BAĞLAM)
-                  </h4>
-                  <p className="text-sm text-[#fffff1]/80 leading-relaxed italic">
-                    "{project.architecturalPhilosophy}"
-                  </p>
-                </div>
-              )}
-
-              {/* Features & Donatılar */}
-              <div>
-                <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase mb-3 font-medium">
-                  ÖNE ÇIKAN DONATILAR & AYRICALIKLAR
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {project.features.map((feat, i) => (
-                    <div key={i} className="flex items-center space-x-2.5 text-xs text-[#fffff1]/80 bg-white/[0.03] p-2.5 rounded border border-[#fffff1]/5">
-                      <Check size={14} className="text-[#fffff1] flex-shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* Features & Donatılar */}
+            <div className="space-y-4 pt-4 border-t border-[#fffff1]/10">
+              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+                <span>DONATILAR & AYRICALIKLAR</span>
               </div>
-            </div>
-
-            {/* Technical Specifications Card */}
-            <div className="bg-[#2c343d] border border-[#fffff1]/15 p-6 rounded-xl space-y-5 h-fit shadow-lg">
-              <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase pb-2 border-b border-[#fffff1]/10 font-medium">
-                TEKNİK KÜNYE
-              </h3>
-
-              <div className="space-y-3.5 text-xs">
-                <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                  <span className="text-[#fffff1]/50">Konum:</span>
-                  <span className="text-[#fffff1]/90 font-medium text-right">{project.location}</span>
-                </div>
-                <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                  <span className="text-[#fffff1]/50">Toplam Alan:</span>
-                  <span className="text-[#fffff1]/90 font-medium">{project.totalArea}</span>
-                </div>
-                <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                  <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
-                  <span className="text-[#fffff1]/90 font-medium">{project.totalUnits}</span>
-                </div>
-                <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                  <span className="text-[#fffff1]/50">Konut Tipleri:</span>
-                  <span className="text-[#fffff1]/90 font-medium">{project.unitTypes.join(', ')}</span>
-                </div>
-                <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                  <span className="text-[#fffff1]/50">Durum:</span>
-                  <span className="text-[#fffff1] font-semibold">{project.status}</span>
-                </div>
-                {project.installmentMonths && (
-                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/5">
-                    <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
-                    <span className="text-[#fffff1] font-semibold">Elden Senet</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Tour Booking Box */}
-              <div className="pt-4 border-t border-[#fffff1]/10">
-                <p className="text-[11px] text-[#fffff1]/60 mb-3">
-                  Bu projeyi ve örnek daireyi yerinde görmek için ücretsiz Karasu tanıtım turumuza katılabilirsiniz.
-                </p>
-                <a
-                  href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full py-2.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-wider rounded text-center block transition-colors shadow-md"
-                >
-                  0264 718 18 54 ile Bilgi Al
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Floor Plans Section */}
-          {project.floorPlans && project.floorPlans.length > 0 && (
-            <div className="space-y-6 pt-6 border-t border-[#fffff1]/10">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase font-medium">
-                    MİMARİ KAT PLANLARI & YERLEŞİM
-                  </h3>
-                  <p className="text-xs text-[#fffff1]/60 font-light">
-                    Farklı yaşam ihtiyaçlarına göre optimize edilmiş fonksiyonel mimari planlar.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.floorPlans.map((plan, idx) => (
-                    <button
-                      key={plan.name}
-                      onClick={() => setSelectedPlanIndex(idx)}
-                      className={`px-3 py-1.5 rounded text-xs uppercase transition-all ${
-                        selectedPlanIndex === idx
-                          ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md'
-                          : 'bg-white/5 text-[#fffff1]/70 hover:bg-white/10'
-                      }`}
-                    >
-                      {plan.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {project.floorPlans[selectedPlanIndex] && (
-                <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center shadow-lg">
-                  <div className="rounded-lg overflow-hidden border border-[#fffff1]/10 aspect-[4/3] bg-black/40">
-                    <img
-                      src={project.floorPlans[selectedPlanIndex].image}
-                      alt={project.floorPlans[selectedPlanIndex].name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div>
-                      <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase font-medium">
-                        SEÇİLEN PLAN DETAYI
-                      </span>
-                      <h4 className="font-theSeasons text-2xl font-semibold text-[#fffff1] mt-1">
-                        {project.floorPlans[selectedPlanIndex].name}
-                      </h4>
-                    </div>
-                    <div className="space-y-2 text-xs">
-                      <div className="flex justify-between py-1.5 border-b border-[#fffff1]/5">
-                        <span className="text-[#fffff1]/50">Net/Brüt Alan:</span>
-                        <span className="text-[#fffff1] font-semibold">{project.floorPlans[selectedPlanIndex].area}</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 border-b border-[#fffff1]/5">
-                        <span className="text-[#fffff1]/50">Oda Dağılımı:</span>
-                        <span className="text-[#fffff1]/90 text-right">{project.floorPlans[selectedPlanIndex].rooms}</span>
-                      </div>
-                    </div>
-                    <p className="text-xs text-[#fffff1]/70 leading-relaxed font-light">
-                      {project.floorPlans[selectedPlanIndex].description}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* High Res Gallery */}
-          {project.gallery && project.gallery.length > 0 && (
-            <div className="space-y-4 pt-6 border-t border-[#fffff1]/10">
-              <h3 className="text-xs tracking-[0.2em] text-[#fffff1]/80 uppercase font-medium">
-                FOTOĞRAF VE MİMARİ PERSPEKTİF GALERİSİ
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {project.gallery.map((item, idx) => (
-                  <div key={idx} className="group relative rounded-lg overflow-hidden border border-[#fffff1]/10 bg-[#313941] aspect-video">
-                    <img
-                      src={item.url}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                      <span className="text-[11px] text-[#fffff1]/90">{item.title}</span>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {project.features.map((feat, i) => (
+                  <div key={i} className="flex items-center space-x-3 text-xs text-[#fffff1]/90 bg-[#313941]/50 p-3 rounded-xl border border-[#fffff1]/10">
+                    <Check size={16} className="text-[#fffff1] flex-shrink-0" />
+                    <span className="font-medium">{feat}</span>
                   </div>
                 ))}
               </div>
             </div>
-          )}
+          </div>
 
-          {/* Direct Lead Form */}
-          <div className="bg-gradient-to-br from-[#313941]/60 to-[#252c33]/60 backdrop-blur-xl border border-[#fffff1]/20 rounded-xl p-6 lg:p-8 shadow-lg">
-            <h3 className="font-theSeasons text-2xl font-bold text-[#fffff1] mb-2">
-              {project.title} Hakkında Hızlı Bilgi & Tanıtım Turu Talebi
+          {/* Right Column (4 cols): Sticky Technical Specifications Card */}
+          <div className="lg:col-span-4">
+            <div className="sticky top-24 bg-[#2c343d] border border-[#fffff1]/15 p-6 sm:p-7 rounded-2xl space-y-6 shadow-xl">
+              <div>
+                <span className="text-[10px] tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
+                  PROJE BİLGİ FORMU
+                </span>
+                <h4 className="font-theSeasons text-xl font-bold text-[#fffff1] mt-0.5">
+                  Teknik Künye
+                </h4>
+              </div>
+
+              <div className="space-y-3.5 text-xs">
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Konum:</span>
+                  <span className="text-[#fffff1]/95 font-medium text-right">{project.location}</span>
+                </div>
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Toplam Alan:</span>
+                  <span className="text-[#fffff1]/95 font-medium">{project.totalArea}</span>
+                </div>
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
+                  <span className="text-[#fffff1]/95 font-medium">{project.totalUnits}</span>
+                </div>
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Konut Tipleri:</span>
+                  <span className="text-[#fffff1]/95 font-medium">{project.unitTypes.join(', ')}</span>
+                </div>
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Proje Durumu:</span>
+                  <span className="text-[#fffff1] font-bold">{project.status}</span>
+                </div>
+                {project.installmentMonths && (
+                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                    <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
+                    <span className="text-[#fffff1] font-bold">Elden Senet</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Free Tour Callout Inside Card */}
+              <div className="pt-4 border-t border-[#fffff1]/10 space-y-3">
+                <p className="text-[11px] text-[#fffff1]/70 leading-relaxed font-light">
+                  Bu projeyi ve örnek daireyi yerinde görmek için ücretsiz Karasu tanıtım turumuza katılabilirsiniz.
+                </p>
+                <a
+                  href={`tel:${COMPANY_INFO.phone}`}
+                  className="w-full py-3 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95"
+                >
+                  {COMPANY_INFO.phone} ile Bilgi Al
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Interactive Floor Plans */}
+        {project.floorPlans && project.floorPlans.length > 0 && (
+          <section className="space-y-6 pt-8 border-t border-[#fffff1]/10">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+                  <span>MİMARİ YERLEŞİM</span>
+                </div>
+                <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
+                  Kat Planları & Yaşam Seçenekleri
+                </h3>
+              </div>
+
+              {/* Plan Tabs */}
+              <div className="flex flex-wrap gap-2">
+                {project.floorPlans.map((plan, idx) => (
+                  <button
+                    key={plan.name}
+                    onClick={() => setSelectedPlanIndex(idx)}
+                    className={`px-4 py-2 rounded-xl text-xs uppercase font-bold tracking-wider transition-all ${
+                      selectedPlanIndex === idx
+                        ? 'bg-[#fffff1] text-[#252c33] shadow-md scale-105'
+                        : 'bg-[#313941] text-[#fffff1]/80 hover:bg-[#3a444e] border border-[#fffff1]/15'
+                    }`}
+                  >
+                    {plan.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {project.floorPlans[selectedPlanIndex] && (
+              <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-2xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center shadow-xl">
+                <div className="rounded-xl overflow-hidden border border-[#fffff1]/10 aspect-[4/3] bg-black/40">
+                  <img
+                    src={project.floorPlans[selectedPlanIndex].image}
+                    alt={project.floorPlans[selectedPlanIndex].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold">
+                      SEÇİLEN PLAN DETAYI
+                    </span>
+                    <h4 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
+                      {project.floorPlans[selectedPlanIndex].name}
+                    </h4>
+                  </div>
+                  <div className="space-y-3 text-xs">
+                    <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
+                      <span className="text-[#fffff1]/50">Net / Brüt Alan:</span>
+                      <span className="text-[#fffff1] font-bold text-sm">{project.floorPlans[selectedPlanIndex].area}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
+                      <span className="text-[#fffff1]/50">Oda Dağılımı:</span>
+                      <span className="text-[#fffff1]/95 font-medium text-right">{project.floorPlans[selectedPlanIndex].rooms}</span>
+                    </div>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#fffff1]/80 leading-relaxed font-light">
+                    {project.floorPlans[selectedPlanIndex].description}
+                  </p>
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Section 4: Photo & Architecture Perspective Gallery */}
+        {project.gallery && project.gallery.length > 0 && (
+          <section className="space-y-6 pt-8 border-t border-[#fffff1]/10">
+            <div>
+              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+                <span>GÖRSEL ARŞİV</span>
+              </div>
+              <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
+                Mimari Perspektif & Galeri
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.gallery.map((item, idx) => (
+                <div key={idx} className="group relative rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-[#313941] aspect-[16/10] shadow-md">
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <span className="text-xs font-medium text-[#fffff1]">{item.title}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Section 5: Direct Lead & Appointment Form */}
+        <section className="bg-gradient-to-br from-[#313941]/90 to-[#252c33]/90 border border-[#fffff1]/20 rounded-2xl p-6 sm:p-10 shadow-2xl">
+          <div className="max-w-3xl">
+            <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
+              BİLGİ & REZERVASYON TALEBİ
+            </span>
+            <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] mt-1 mb-2">
+              {project.title} Hakkında Detaylı Bilgi Alın
             </h3>
-            <p className="text-xs text-[#fffff1]/60 mb-6 max-w-xl">
-              İletişim bilgilerinizi bırakın, satış temsilcimiz proje detayları, güncel kat planları ve senetli ödeme tablosunu WhatsApp üzerinden iletsin.
+            <p className="text-xs sm:text-sm text-[#fffff1]/70 font-light mb-6">
+              İletişim bilgilerinizi iletin; satış temsilcimiz proje broşürü, güncel kat planları ve senetli ödeme tablosunu WhatsApp üzerinden paylaşsın.
             </p>
 
             {leadFormSubmitted ? (
-              <div className="p-4 bg-emerald-900/30 border border-emerald-500/40 rounded-lg text-sm text-emerald-300 flex items-center space-x-2">
-                <Check size={18} />
-                <span>Talebiniz iletildi. Müşteri temsilcimiz en kısa sürede sizinle iletişime geçecektir.</span>
+              <div className="p-4 bg-emerald-900/40 border border-emerald-500/50 rounded-xl text-sm text-emerald-300 flex items-center space-x-3">
+                <Check size={20} />
+                <span>Talebiniz WhatsApp üzerinden iletildi. Müşteri temsilcimiz kısa sürede sizinle bağlantı kuracaktır.</span>
               </div>
             ) : (
               <form onSubmit={handleLeadSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -279,7 +416,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   placeholder="Adınız Soyadınız"
                   value={leadName}
                   onChange={(e) => setLeadName(e.target.value)}
-                  className="px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="px-4 py-3.5 bg-black/40 border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/60"
                 />
                 <input
                   type="tel"
@@ -287,20 +424,38 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   value={leadPhone}
                   onChange={(e) => setLeadPhone(e.target.value)}
                   required
-                  className="px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="px-4 py-3.5 bg-black/40 border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/60"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-wider rounded transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
+                  className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95"
                 >
-                  <Send size={14} />
+                  <Send size={15} />
                   <span>WhatsApp ile Gönder</span>
                 </button>
               </form>
             )}
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* Section 6: Bottom Navigation Bar to return to projects */}
+        <section className="pt-8 pb-12 border-t border-[#fffff1]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <button
+            onClick={onClose}
+            className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95"
+          >
+            <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
+            <span className="text-xs font-bold uppercase tracking-wider">Tüm Projelere Geri Dön</span>
+          </button>
+
+          <div className="flex items-center space-x-6 text-xs text-[#fffff1]/60 font-light">
+            <span>© Demirtürk İnşaat</span>
+            <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-white transition-colors">
+              {COMPANY_INFO.phone}
+            </a>
+          </div>
+        </section>
+      </main>
     </div>
   )
 }
