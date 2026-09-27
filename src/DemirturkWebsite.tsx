@@ -29,7 +29,10 @@ export const DemirturkWebsite: React.FC = () => {
       <WebsiteNavbar onOpenTour={() => setIsTourModalOpen(true)} />
 
       {/* Main Fullscreen Responsive Hero Slider (16:9 Desktop, 9:16 Mobile) */}
-      <HeroSlider onSelectProject={(p) => setSelectedProject(p)} />
+      <HeroSlider 
+        onSelectProject={(p) => setSelectedProject(p)} 
+        onOpenTour={() => setIsTourModalOpen(true)}
+      />
 
       {/* Slaytın Altı: Sürekli ve Pürüzsüz Blurlu Arka Plan & İçerik Katmanı */}
       <div className="relative w-full overflow-hidden">

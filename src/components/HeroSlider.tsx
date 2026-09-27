@@ -6,9 +6,10 @@ import { ProjectItem } from '../types'
 
 interface HeroSliderProps {
   onSelectProject: (project: ProjectItem) => void
+  onOpenTour?: () => void
 }
 
-export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject }) => {
+export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenTour }) => {
   const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlay, setIsAutoPlay] = useState(true)
@@ -93,18 +94,27 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject }) => {
           {/* Call to Actions */}
           <div className="flex flex-wrap items-center gap-4">
             <button
+              type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/20 font-semibold text-xs uppercase tracking-widest rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/40 hover:scale-105 active:scale-95"
+              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/25 font-bold text-xs uppercase tracking-widest rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/40 hover:scale-105 active:scale-95"
             >
               Proje Detayları & Kat Planları
             </button>
 
-            <a
-              href="#tanitim-turu"
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 text-xs uppercase tracking-widest rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40"
+            <button
+              type="button"
+              onClick={() => {
+                if (onOpenTour) {
+                  onOpenTour()
+                } else {
+                  const el = document.getElementById('tanitim-turu')
+                  if (el) el.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-bold text-xs uppercase tracking-widest rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40"
             >
               Ücretsiz Tanıtım Turu
-            </a>
+            </button>
           </div>
         </div>
 
