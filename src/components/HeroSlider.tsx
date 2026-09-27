@@ -96,8 +96,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/30 font-extrabold text-xs sm:text-[13px] uppercase tracking-wider rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/50 hover:scale-105 active:scale-95"
-              style={{ fontWeight: 800 }}
+              className="btn-cta-bold px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/30 text-xs sm:text-[13px] uppercase rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/50 hover:scale-105 active:scale-95"
             >
               Proje Detayları & Kat Planları
             </button>
@@ -112,8 +111,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="px-6 py-3.5 bg-[#252c33]/85 hover:bg-[#313941] text-[#fffff1] border border-[#fffff1]/30 font-extrabold text-xs sm:text-[13px] uppercase tracking-wider rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/60 shadow-lg"
-              style={{ fontWeight: 800 }}
+              className="btn-cta-bold glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 text-xs sm:text-[13px] uppercase rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40"
             >
               Ücretsiz Tanıtım Turu
             </button>
