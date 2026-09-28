@@ -7,7 +7,7 @@ interface ProjectsGridProps {
   onSelectProject: (project: ProjectItem) => void
 }
 
-type FilterCategory = 'all' | 'ongoing' | 'luxury-residence' | 'villa' | 'completed'
+type FilterCategory = 'all' | 'ongoing' | 'completed'
 
 export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) => {
   const [selectedFilter, setSelectedFilter] = useState<FilterCategory>('all')
@@ -15,8 +15,6 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   const filterTabs: { id: FilterCategory; label: string }[] = [
     { id: 'all', label: 'TÜM PROJELER' },
     { id: 'ongoing', label: 'SATIŞTA & DEVAM EDENLER' },
-    { id: 'luxury-residence', label: 'HAVUZLU SİTELER' },
-    { id: 'villa', label: 'MÜSTAKİL VİLLALAR' },
     { id: 'completed', label: 'TAMAMLANANLAR' },
   ]
 
@@ -25,7 +23,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
     if (selectedFilter === 'ongoing') {
       return PROJECTS_DATA.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında')
     }
-    return PROJECTS_DATA.filter((p) => p.category === selectedFilter)
+    if (selectedFilter === 'completed') {
+      return PROJECTS_DATA.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed')
+    }
+    return PROJECTS_DATA
   }, [selectedFilter])
 
   const standardProjects = useMemo(() => {
@@ -40,17 +41,15 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
     <section id="projeler" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Architectural Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-8 border-b border-[#fffff1]/10">
-          <div>
-            <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-              <span>MİMARİ PORTFÖY / WORKS</span>
-            </div>
-            <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
-              Karasu'da Hayat Bulan Projelerimiz
-            </h2>
+        <div className="mb-10">
+          <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+            <span>MİMARİ PORTFÖY / WORKS</span>
           </div>
-          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
+          <h2 className="font-theSeasons text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fffff1] md:whitespace-nowrap">
+            Karasu'da Hayat Bulan Projelerimiz
+          </h2>
+          <p className="mt-3.5 text-sm sm:text-base text-[#fffff1]/80 max-w-2xl font-light leading-relaxed">
             Her biri kendine özgü mimari kimliğe sahip, doğayla uyumlu, havuzlu ve kredisiz elden senetli konut projelerimizi keşfedin.
           </p>
         </div>
