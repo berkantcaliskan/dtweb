@@ -515,7 +515,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'demirturk-yali',
     slug: 'demirturk-yali',
     title: 'Demirtürk Yalı',
-    seriesInfo: '2 proje',
+    seriesInfo: 'Tamamlanan 2 proje',
     cardSize: 'compact',
     subtitle: 'Karasu Yalı sahil bandında tamamlanan 1. ve 2. prestijli konut projesi',
     category: 'completed',
