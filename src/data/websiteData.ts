@@ -192,6 +192,50 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: true
   },
   {
+    id: 'seaside-house',
+    slug: 'seaside-house',
+    title: 'Seaside House',
+    seriesInfo: 'Tamamlandı',
+    cardSize: 'standard',
+    subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
+    category: 'completed',
+    categoryLabel: 'Tamamlanan proje',
+    location: 'Doğu Karadeniz Cad., Karasu / Sakarya',
+    distanceToSea: 'Plaja 100 Metre',
+    year: '2022 - 2023',
+    status: 'Tamamlandı',
+    totalArea: '9.500 m²',
+    totalUnits: '1+1 ve 2+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler', 'Bahçe Dubleksi'],
+    description:
+      'Seaside House, Karasu sahil şeridinde başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı, açık yüzme havuzu ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
+    architecturalPhilosophy:
+      'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
+      mobileSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80',
+      poster: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
+      alt: 'Seaside House Karasu'
+    },
+    gallery: [
+      {
+        url: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80',
+        title: 'Tamamlanan Cephe ve Peyzaj',
+        aspect: '16:9'
+      }
+    ],
+    features: [
+      'Eksiksiz Teslim Edilmiş ve İskanı Alınmış',
+      'Ortak Açık Yüzme Havuzu',
+      'Site İçi Çocuk Oyun Parkı',
+      'Plaja 100 Metre Mesafe',
+      'Yerden Isıtmalı Daireler'
+    ],
+    floorPlans: [],
+    isFeatured: true
+  },
+  {
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
@@ -377,50 +421,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       }
     ],
     installmentMonths: 40,
-    isFeatured: true
-  },
-  {
-    id: 'seaside-house',
-    slug: 'seaside-house',
-    title: 'Seaside House',
-    seriesInfo: 'Tamamlandı',
-    cardSize: 'standard',
-    subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
-    category: 'completed',
-    categoryLabel: 'Tamamlanan proje',
-    location: 'Doğu Karadeniz Cad., Karasu / Sakarya',
-    distanceToSea: 'Plaja 100 Metre',
-    year: '2022 - 2023',
-    status: 'Tamamlandı',
-    totalArea: '9.500 m²',
-    totalUnits: '1+1 ve 2+1 Daireler',
-    unitTypes: ['1+1 Daireler', '2+1 Daireler', 'Bahçe Dubleksi'],
-    description:
-      'Seaside House, Karasu sahil şeridinde başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı, açık yüzme havuzu ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
-    architecturalPhilosophy:
-      'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
-    heroMedia: {
-      type: 'image',
-      desktopSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
-      mobileSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80',
-      poster: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Seaside House Karasu'
-    },
-    gallery: [
-      {
-        url: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80',
-        title: 'Tamamlanan Cephe ve Peyzaj',
-        aspect: '16:9'
-      }
-    ],
-    features: [
-      'Eksiksiz Teslim Edilmiş ve İskanı Alınmış',
-      'Ortak Açık Yüzme Havuzu',
-      'Site İçi Çocuk Oyun Parkı',
-      'Plaja 100 Metre Mesafe',
-      'Yerden Isıtmalı Daireler'
-    ],
-    floorPlans: [],
     isFeatured: true
   },
   {
