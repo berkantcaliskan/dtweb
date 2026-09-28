@@ -16,7 +16,7 @@ export default {
         codec: ['"Codec Pro"', '"Codec"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        normal: '0.03em',
+        normal: '0.045em',
       },
       colors: {
         canvas: '#252c33',
