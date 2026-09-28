@@ -532,6 +532,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <h1 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-[1.1]">
               {project.title}
             </h1>
+            {project.seriesInfo && (
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#fffff1]/15 backdrop-blur-md border border-[#fffff1]/20 text-xs sm:text-sm text-[#fffff1] font-medium mt-3 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span>{project.seriesInfo}</span>
+              </div>
+            )}
             <p className="text-lg sm:text-2xl text-[#fffff1]/90 font-light max-w-3xl leading-relaxed mt-3">
               {project.subtitle}
             </p>
@@ -826,6 +832,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
                   <span className="text-[#fffff1]/95 font-medium">{project.totalUnits}</span>
                 </div>
+                {project.seriesInfo && (
+                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                    <span className="text-[#fffff1]/50">Proje Kapsamı:</span>
+                    <span className="text-[#fffff1] font-bold">{project.seriesInfo}</span>
+                  </div>
+                )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Proje Durumu:</span>
                   <span className="text-[#fffff1] font-bold">{project.status}</span>

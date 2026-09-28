@@ -40,6 +40,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'asel-doga-evleri',
     slug: 'asel-doga-evleri',
     title: 'Asel Doğa Evleri',
+    seriesInfo: '1 ve 2 Var • 3 ve 4 Yakında',
+    cardSize: 'standard',
     subtitle: 'Doğanın Kalbinde, Müstakil Bahçeli ve Havuzlu Lüks Yaşam',
     category: 'ongoing',
     categoryLabel: 'Havuzlu Yaşam Kompleksi',
@@ -125,6 +127,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'almina-evleri',
     slug: 'almina-evleri',
     title: 'Almina Evleri',
+    seriesInfo: '1 Var • 2 Devam Ediyor',
+    cardSize: 'standard',
     subtitle: 'Karasu Sahil Şeridinde Denize Sıfır Modern Rezidans',
     category: 'luxury-residence',
     categoryLabel: 'Denize Sıfır Rezidans',
@@ -188,64 +192,11 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: true
   },
   {
-    id: 'demirturk-suite',
-    slug: 'demirturk-suite',
-    title: 'Demirtürk Suite Karasu',
-    subtitle: 'Şehir Merkezinde Butik ve Konforlu Şehir Yaşamı',
-    category: 'ongoing',
-    categoryLabel: 'Butik Rezidans',
-    location: 'İnönü Cad. Karasu Merkez, Sakarya',
-    year: '2024 - 2025',
-    status: 'Yapım Aşamasında',
-    totalArea: '6.400 m²',
-    totalUnits: '44 Rezidans + 6 Ticari Alan',
-    unitTypes: ['1+1', '2+1', 'Ofis & Ticari'],
-    description:
-      'Demirtürk Suite; Karasu ilçe merkezinde resmi kurumlara, bankalara, hastaneye ve alışveriş noktalarına yürüme mesafesinde butik bir rezidans projesidir. Zemin kattaki seçkin ticari alanları ve üst katlardaki akıllı daireleriyle hem iş hem yaşam için idealdir.',
-    architecturalPhilosophy:
-      'İlçe merkezinin dinamizmine uygun, estetik cephe tasarımı ve modern cam yüzeylerle hem konforu hem de ticari prestiji bir arada sunan fonksiyonel mimari.',
-    heroMedia: {
-      type: 'image',
-      desktopSrc: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
-      mobileSrc: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1080&q=80',
-      poster: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Demirtürk Suite Karasu Merkez'
-    },
-    gallery: [
-      {
-        url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
-        title: 'Modern Şehir Mimarisi',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-        title: 'Butik Rezidans Lobi & Giriş',
-        aspect: '16:9'
-      }
-    ],
-    features: [
-      'Kapalı Otopark Alanı',
-      'Akıllı Ev Altyapısı',
-      'Cadde Cepheli Ticari Dükkanlar',
-      'Asansör & Jeneratör Altyapısı',
-      'Deprem Yönetmeliğine %100 Uyumlu C35 Beton'
-    ],
-    floorPlans: [
-      {
-        name: '1+1 Şehir Suiti',
-        area: '52 m²',
-        rooms: '1+1',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
-        description: 'Merkezi konumda minimal ve konforlu şehir evi.'
-      }
-    ],
-    installmentMonths: 40,
-    isFeatured: false
-  },
-  {
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
+    seriesInfo: '1 ve 2 Var • 3 Devam Ediyor',
+    cardSize: 'standard',
     subtitle: 'Karasu Yalı Mahallesi’nde 1.000.000₺ Peşinat ve 40 Ay Vadeyle 3 Etaplı Yaşam Alanı',
     category: 'luxury-residence',
     categoryLabel: 'Lüks Rezidans Kompleksi',
@@ -431,20 +382,23 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: 'seaside-house',
     slug: 'seaside-house',
-    title: 'Seaside House Karasu',
-    subtitle: 'Karadeniz Kıyısında Dinamik ve Dinlendirici Tatil Evi',
+    title: 'Seaside House',
+    seriesInfo: '1 Proje (Tamamlandı) • 4. Gözde Proje',
+    cardSize: 'standard',
+    subtitle: 'Karadeniz Kıyısında Dinamik ve Dinlendirici Sahil Yaşamı',
     category: 'completed',
     categoryLabel: 'Tamamlanan Proje',
     location: 'Doğu Karadeniz Cad., Karasu / Sakarya',
+    distanceToSea: 'Plaja 100 Metre',
     year: '2022 - 2023',
     status: 'Tamamlandı',
     totalArea: '9.500 m²',
-    totalUnits: '60 Daire',
-    unitTypes: ['1+1', '2+1', 'Bahçe Dubleksi'],
+    totalUnits: '1+1 ve 2+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler', 'Bahçe Dubleksi'],
     description:
-      'Seaside House, 2023 yılında başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
+      'Seaside House, Karasu sahil şeridinde başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı, açık yüzme havuzu ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
     architecturalPhilosophy:
-      'Dalgaların ritmini yansıtan akışkan balkon korkulukları ve dayanıklı marin tipi dış cephe kaplamalarıyla Karadeniz iklimine tam uyum.',
+      'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
     heroMedia: {
       type: 'image',
       desktopSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
@@ -461,49 +415,143 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     features: [
       'Eksiksiz Teslim Edilmiş ve İskanı Alınmış',
-      'Ortak Yüzme Havuzu',
+      'Ortak Açık Yüzme Havuzu',
       'Site İçi Çocuk Oyun Parkı',
-      'Plaja 100 Metre Mesafe'
+      'Plaja 100 Metre Mesafe',
+      'Yerden Isıtmalı Daireler'
     ],
     floorPlans: [],
-    isFeatured: false
+    isFeatured: true
   },
   {
-    id: 'yenisehir-konaklari',
-    slug: 'yenisehir-konaklari',
-    title: 'Yenişehir Konakları',
-    subtitle: 'Geniş Aileler İçin Ferah ve Güvenli Yaşam Alanı',
+    id: 'aziziye-sitesi',
+    slug: 'aziziye-sitesi',
+    title: 'Aziziye Sitesi',
+    seriesInfo: '1 Proje (Tamamlandı)',
+    cardSize: 'compact',
+    subtitle: 'Karasu Aziziye Mahallesi’nde Tamamlanan Güvenli ve Huzurlu Aile Sitesi',
     category: 'completed',
     categoryLabel: 'Tamamlanan Proje',
-    location: 'Yenişehir Mah., Karasu / Sakarya',
-    year: '2021 - 2022',
+    location: 'Aziziye Mah., Karasu / Sakarya',
+    year: '2023',
     status: 'Tamamlandı',
-    totalArea: '8.200 m²',
-    totalUnits: '48 Daire',
-    unitTypes: ['2+1', '3+1'],
+    totalArea: '6.200 m²',
+    totalUnits: '2+1 ve 3+1 Daireler',
+    unitTypes: ['2+1 Daireler', '3+1 Daireler'],
     description:
-      'Geniş balkonları, çocuk oyun alanları ve ferah oda planları ile aile konseptine uygun olarak geliştirilen ve yaşamın başladığı prestijli projemiz.',
+      'Aziziye Sitesi; Karasu Aziziye Mahallesi’nde aile odaklı plan şeması, ferah balkonları ve güvenli bahçe alanlarıyla tamamlanıp kat maliklerine eksiksiz teslim edilmiş seçkin bir projedir.',
     architecturalPhilosophy:
-      'Geleneksel mahalle sıcaklığını çağdaş site konforu ve güvenlik standartlarıyla buluşturan mimari kurgu.',
+      'Geniş peyzaj alanları ve sağlam radye temel mühendisliğiyle huzurlu ve güvenli aile yaşamı.',
     heroMedia: {
       type: 'image',
       desktopSrc: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=80',
       mobileSrc: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1080&q=80',
       poster: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=80',
-      alt: 'Yenişehir Konakları Karasu'
+      alt: 'Aziziye Sitesi Karasu'
     },
     gallery: [
       {
         url: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=80',
-        title: 'Site Peyzajı ve Bloklar',
+        title: 'Site Peyzajı ve Konut Blokları',
         aspect: '16:9'
       }
     ],
     features: [
-      'Yaşam Başladı, İskanlı ve Kat Mülkiyetli',
-      'Geniş Yeşil Alanlar ve Kamelyalar',
-      'Açık Otopark',
-      'Güvenlik ve Giriş Kontrolü'
+      'Tamamlandı & Yaşam Başladı',
+      'Karasu Aziziye Mahallesi',
+      'Geniş Peyzaj & Yeşil Alanlar',
+      'Site İçi Açık Otopark',
+      'Çocuk Oyun Alanı & Kamelyalar',
+      '24/7 Güvenlik & Kamera Sistemi'
+    ],
+    floorPlans: [],
+    isFeatured: false
+  },
+  {
+    id: 'cagdas-evleri',
+    slug: 'cagdas-evleri',
+    title: 'Çağdaş Evleri',
+    seriesInfo: '1 Proje (Tamamlandı)',
+    cardSize: 'compact',
+    subtitle: 'Karasu’da Çağdaş Çizgilerle Tamamlanan Butik ve Konforlu Konutlar',
+    category: 'completed',
+    categoryLabel: 'Tamamlanan Proje',
+    location: 'Yalı Mah., Karasu / Sakarya',
+    distanceToSea: 'Denize ~300 Metre',
+    year: '2024',
+    status: 'Tamamlandı',
+    totalArea: '5.500 m²',
+    totalUnits: '1+1 ve 2+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler'],
+    description:
+      'Çağdaş Evleri; modern dış cephe mimarisi, açık yüzme havuzu ve kaliteli yapı malzemeleriyle tamamlanarak kat maliklerine teslim edilmiştir. Yalı Mahallesi sahil bandında konforlu ve huzurlu bir yaşam sunar.',
+    architecturalPhilosophy:
+      'Yalın mimari hatlar, kaliteli yapı elemanları ve sahil iklimine tam uyumlu dayanıklı malzeme standartları.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: '/images/aselforweb.jpeg',
+      mobileSrc: '/images/aselforweb.jpeg',
+      poster: '/images/aselforweb.jpeg',
+      alt: 'Çağdaş Evleri Karasu'
+    },
+    gallery: [
+      {
+        url: '/images/aselforweb.jpeg',
+        title: 'Çağdaş Evleri Dış Cephe',
+        aspect: '16:9'
+      }
+    ],
+    features: [
+      'Tamamlandı & İskanı Alınmış',
+      'Yalı Mahallesi Sahil Bölgesi',
+      'Açık Yüzme Havuzu',
+      'Yerden Isıtmalı Isınma Konforu',
+      'Açık Otopark Alanı'
+    ],
+    floorPlans: [],
+    isFeatured: false
+  },
+  {
+    id: 'demirturk-yali',
+    slug: 'demirturk-yali',
+    title: 'Demirtürk Yalı',
+    seriesInfo: '1 ve 2 Var (2 Proje)',
+    cardSize: 'compact',
+    subtitle: 'Karasu Yalı Sahil Bandında Tamamlanan 1. ve 2. Prestijli Konut Projesi',
+    category: 'completed',
+    categoryLabel: 'Tamamlanan Proje Serisi',
+    location: 'Yalı Mah., Karasu / Sakarya',
+    distanceToSea: 'Kordon Boyu & Sahile 150m',
+    year: '2024 - 2025',
+    status: 'Tamamlandı',
+    totalArea: '9.800 m²',
+    totalUnits: '1+1, 2+1 ve 3+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler', '3+1 Daireler'],
+    description:
+      'Demirtürk Yalı; Karasu sahilinde 1. ve 2. etaplarıyla inşa edilen, yüzme havuzları, geniş balkonları ve sahil kordonuna yürüme mesafesindeki konumuyla seçkin bir tatil ve yaşam projesidir.',
+    architecturalPhilosophy:
+      'Denize yakın konumu, kademeli balkon tasarımı ve güçlü malzeme altyapısıyla Karadeniz sahilinde estetik mimari.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: '/images/alminaforweb.jpeg',
+      mobileSrc: '/images/alminaforweb.jpeg',
+      poster: '/images/alminaforweb.jpeg',
+      alt: 'Demirtürk Yalı Karasu'
+    },
+    gallery: [
+      {
+        url: '/images/alminaforweb.jpeg',
+        title: 'Demirtürk Yalı Cephe & Havuz',
+        aspect: '16:9'
+      }
+    ],
+    features: [
+      '1. ve 2. Proje Tamamlandı',
+      'Karasu Yalı Sahil Kordonuna Yakın',
+      'Açık Yüzme Havuzu & Güneşlenme Terası',
+      'Yerden Isıtmalı Konutlar',
+      'Peyzaj Alanları & Kamelyalar',
+      'Site Güvenliği'
     ],
     floorPlans: [],
     isFeatured: false

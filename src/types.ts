@@ -53,6 +53,8 @@ export interface ProjectItem {
   unitTypes: string[]
   description: string
   architecturalPhilosophy: string
+  seriesInfo?: string
+  cardSize?: 'standard' | 'compact'
   heroMedia: ProjectMedia
   gallery: {
     url: string
