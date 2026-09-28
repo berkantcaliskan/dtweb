@@ -130,16 +130,15 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
                   {/* Bottom Content Details */}
                   <div className="relative z-10 pt-10 pb-6 px-6">
-                    <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-1.5 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                    <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
                       {project.title}
                     </h3>
 
-                    {/* Series & Progression Info Tag */}
+                    {/* Series & Progression Info (No shape, clean text) */}
                     {project.seriesInfo && (
-                      <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#fffff1]/15 backdrop-blur-md border border-[#fffff1]/20 text-xs text-[#fffff1] font-medium mb-3 shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span>{project.seriesInfo}</span>
-                      </div>
+                      <p className="text-xs sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-2.5 drop-shadow">
+                        {project.seriesInfo}
+                      </p>
                     )}
 
                     <p className="text-sm sm:text-base text-[#fffff1]/95 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow">
@@ -163,85 +162,74 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
           </div>
         )}
 
-        {/* 2. Compact 3-Column Side-by-Side Projects (Aziziye Sitesi, Çağdaş Evleri, Demirtürk Yalı) */}
+        {/* 2. Compact 3-Column Side-by-Side Projects (No divider line, no separate title) */}
         {compactProjects.length > 0 && (
-          <div className="mt-14 pt-10 border-t border-[#fffff1]/10 space-y-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                <span>TAMAMLANAN & BUTİK PROJELERİMİZ</span>
-              </div>
-              <span className="text-xs text-[#fffff1]/50 font-light">3 Butik Proje</span>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            {compactProjects.map((project) => (
+              <div
+                key={project.id}
+                onClick={() => onSelectProject(project)}
+                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[350px] sm:min-h-[370px]"
+              >
+                {/* Background Image */}
+                <img
+                  src={project.heroMedia.poster || project.gallery[0]?.url}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {compactProjects.map((project) => (
-                <div
-                  key={project.id}
-                  onClick={() => onSelectProject(project)}
-                  className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[350px] sm:min-h-[370px]"
-                >
-                  {/* Background Image */}
-                  <img
-                    src={project.heroMedia.poster || project.gallery[0]?.url}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="lazy"
-                  />
-
-                  {/* Top Bar */}
-                  <div className="relative z-10 p-4 flex items-start justify-between gap-2">
-                    <span className="px-2.5 py-1 text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
-                      {project.status}
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
-                      <ArrowUpRight size={15} />
-                    </div>
-                  </div>
-
-                  {/* Progressive Gradient Blur Layer */}
-                  <div
-                    className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
-                    style={{
-                      backdropFilter: 'blur(8px)',
-                      WebkitBackdropFilter: 'blur(8px)',
-                      maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
-                      WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
-                    }}
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/85 via-40% to-transparent" />
-
-                  {/* Bottom Content Details */}
-                  <div className="relative z-10 pt-8 pb-5 px-5">
-                    <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-1.5 drop-shadow-md group-hover:translate-x-1 transition-transform">
-                      {project.title}
-                    </h4>
-
-                    {/* Series / Progression Info Badge */}
-                    {project.seriesInfo && (
-                      <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#fffff1]/15 backdrop-blur-md border border-[#fffff1]/20 text-xs text-[#fffff1] font-medium mb-2.5 shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span>{project.seriesInfo}</span>
-                      </div>
-                    )}
-
-                    <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-3 drop-shadow">
-                      {project.subtitle}
-                    </p>
-
-                    <div className="pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                      <span className="text-[#fffff1]/80 flex items-center font-medium">
-                        <MapPin size={13} className="mr-1 text-[#fffff1]" /> {project.location.split(',')[0]}
-                      </span>
-                      <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
-                        <span>İncele</span>
-                        <ArrowUpRight size={14} className="ml-1" />
-                      </span>
-                    </div>
+                {/* Top Bar */}
+                <div className="relative z-10 p-4 flex items-start justify-between gap-2">
+                  <span className="px-2.5 py-1 text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
+                    {project.status}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
+                    <ArrowUpRight size={15} />
                   </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Progressive Gradient Blur Layer */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                  style={{
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 100%)',
+                  }}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/85 via-40% to-transparent" />
+
+                {/* Bottom Content Details */}
+                <div className="relative z-10 pt-8 pb-5 px-5">
+                  <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                    {project.title}
+                  </h4>
+
+                  {/* Series / Progression Info (No shape, clean text) */}
+                  {project.seriesInfo && (
+                    <p className="text-xs sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-2 drop-shadow">
+                      {project.seriesInfo}
+                    </p>
+                  )}
+
+                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-3 drop-shadow">
+                    {project.subtitle}
+                  </p>
+
+                  <div className="pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
+                    <span className="text-[#fffff1]/80 flex items-center font-medium">
+                      <MapPin size={13} className="mr-1 text-[#fffff1]" /> {project.location.split(',')[0]}
+                    </span>
+                    <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
+                      <span>İncele</span>
+                      <ArrowUpRight size={14} className="ml-1" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>

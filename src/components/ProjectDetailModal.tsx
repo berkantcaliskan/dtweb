@@ -533,10 +533,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               {project.title}
             </h1>
             {project.seriesInfo && (
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#fffff1]/15 backdrop-blur-md border border-[#fffff1]/20 text-xs sm:text-sm text-[#fffff1] font-medium mt-3 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>{project.seriesInfo}</span>
-              </div>
+              <p className="text-xs sm:text-sm text-[#fffff1]/80 font-medium tracking-wide mt-2">
+                {project.seriesInfo}
+              </p>
             )}
             <p className="text-lg sm:text-2xl text-[#fffff1]/90 font-light max-w-3xl leading-relaxed mt-3">
               {project.subtitle}
