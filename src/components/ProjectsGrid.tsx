@@ -82,7 +82,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   onClick={() => onSelectProject(project)}
                   className={`group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between ${
                     isWide ? 'lg:col-span-2' : 'col-span-1'
-                  } min-h-[400px] sm:min-h-[440px]`}
+                  } aspect-[16/10] sm:aspect-auto min-h-[240px] sm:min-h-[440px]`}
                 >
                   {/* 100% Full-Bleed Background Image */}
                   <img
@@ -93,25 +93,25 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   />
 
                   {/* Subtle Top Vignette (for status badges contrast) */}
-                  <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
 
                   {/* Top Bar: Status Badges & Quick Arrow */}
-                  <div className="relative z-10 p-5 flex items-start justify-between gap-3">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="relative z-10 p-3.5 sm:p-5 flex items-start justify-between gap-3">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.status !== 'Tamamlandı' && (
-                        <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
+                        <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
                           {project.status}
                         </span>
                       )}
                       {project.installmentMonths && (
-                        <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
+                        <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
                           Elden Senet
                         </span>
                       )}
                     </div>
 
-                    <div className="w-9 h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
-                      <ArrowUpRight size={16} />
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
+                      <ArrowUpRight size={15} />
                     </div>
                   </div>
 
@@ -130,30 +130,30 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/80 via-40% to-transparent" />
 
                   {/* Bottom Content Details */}
-                  <div className="relative z-10 pt-10 pb-6 px-6">
-                    <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                  <div className="relative z-10 pt-4 pb-4 px-4 sm:pt-10 sm:pb-6 sm:px-6">
+                    <h3 className="font-theSeasons text-xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
                       {project.title}
                     </h3>
 
                     {/* Series & Progression Info (No shape, clean text) */}
                     {project.seriesInfo && (
-                      <p className="text-xs sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-2.5 drop-shadow">
+                      <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2.5 drop-shadow">
                         {project.seriesInfo}
                       </p>
                     )}
 
-                    <p className="text-sm sm:text-base text-[#fffff1]/95 font-light line-clamp-2 leading-relaxed mb-4 drop-shadow">
+                    <p className="text-xs sm:text-base text-[#fffff1]/95 font-light line-clamp-1 sm:line-clamp-2 leading-relaxed mb-2.5 sm:mb-4 drop-shadow">
                       {project.subtitle}
                     </p>
 
                     {/* Specs & Projeyi İncele */}
-                    <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-sm">
+                    <div className="pt-2 sm:pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
                       <span className="text-[#fffff1]/80 flex items-center font-medium">
-                        <MapPin size={14} className="mr-1.5 text-[#fffff1]" /> Karasu
+                        <MapPin size={13} className="mr-1 sm:mr-1.5 text-[#fffff1]" /> Karasu
                       </span>
                       <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
                         <span>Projeyi İncele</span>
-                        <ArrowUpRight size={15} className="ml-1" />
+                        <ArrowUpRight size={14} className="ml-1" />
                       </span>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[350px] sm:min-h-[370px]"
+                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between aspect-[16/10] sm:aspect-auto min-h-[220px] sm:min-h-[370px]"
               >
                 {/* Background Image */}
                 <img
@@ -181,9 +181,9 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 />
 
                 {/* Top Bar */}
-                <div className="relative z-10 p-4 flex items-start justify-between gap-2">
+                <div className="relative z-10 p-3.5 sm:p-4 flex items-start justify-between gap-2">
                   {project.status !== 'Tamamlandı' ? (
-                    <span className="px-2.5 py-1 text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
+                    <span className="px-2.5 py-1 text-[11px] sm:text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
                       {project.status}
                     </span>
                   ) : (
@@ -207,29 +207,29 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/85 via-40% to-transparent" />
 
                 {/* Bottom Content Details */}
-                <div className="relative z-10 pt-8 pb-5 px-5">
-                  <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                <div className="relative z-10 pt-4 pb-4 px-4 sm:pt-8 sm:pb-5 sm:px-5">
+                  <h4 className="font-theSeasons text-xl sm:text-2xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
                     {project.title}
                   </h4>
 
                   {/* Series / Progression Info (No shape, clean text) */}
                   {project.seriesInfo && (
-                    <p className="text-xs sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-2 drop-shadow">
+                    <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2 drop-shadow">
                       {project.seriesInfo}
                     </p>
                   )}
 
-                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-3 drop-shadow">
+                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-1 sm:line-clamp-2 leading-relaxed mb-2.5 sm:mb-3 drop-shadow">
                     {project.subtitle}
                   </p>
 
-                  <div className="pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
+                  <div className="pt-2 sm:pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
                     <span className="text-[#fffff1]/80 flex items-center font-medium">
-                      <MapPin size={13} className="mr-1 text-[#fffff1]" /> {project.location.split(',')[0]}
+                      <MapPin size={12} className="mr-1 text-[#fffff1]" /> {project.location.split(',')[0]}
                     </span>
                     <span className="text-[#fffff1] font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
                       <span>İncele</span>
-                      <ArrowUpRight size={14} className="ml-1" />
+                      <ArrowUpRight size={13} className="ml-1" />
                     </span>
                   </div>
                 </div>
