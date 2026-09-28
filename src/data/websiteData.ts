@@ -246,19 +246,20 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
-    subtitle: 'Karasu Yenişehir\'de Prestijli, Modern ve Havuzlu Yaşam Alanı',
+    subtitle: 'Karasu Yalı Mahallesi’nde 1.000.000₺ Peşinat ve 40 Ay Vadeyle 3 Etaplı Yaşam Alanı',
     category: 'luxury-residence',
-    categoryLabel: 'Lüks Rezidans',
-    location: 'Yenişehir Mah., Karasu / Sakarya',
-    year: '2024 - 2025',
+    categoryLabel: 'Lüks Rezidans Kompleksi',
+    location: 'Yalı Mah., Karasu / Sakarya',
+    distanceToSea: 'Denize ~800 Metre',
+    year: '2025 - 2028',
     status: 'Satışta',
-    totalArea: '16.500 m²',
-    totalUnits: '84 Bağımsız Bölüm',
-    unitTypes: ['1+1 Bahçe Katı', '2+1 Geniş Teraslı', '3+1 Dubleks'],
+    totalArea: '17.400 m²',
+    totalUnits: '1+1 ve 2+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler'],
     description:
-      'Yeni Şehir Etapları; Karasu\'nun hızla gelişen ve değer kazanan Yenişehir bölgesinde, çağdaş mimariyi geniş peyzaj alanları ve açık yüzme havuzuyla buluşturuyor. Deprem yönetmeliğine tam uyumlu radye temel mühendisliği ve elden senetli esnek ödeme kolaylığıyla güvenli ve prestijli bir yaşam sunar.',
+      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize yaklaşık 800 metre mesafede çağdaş sahil mimarisini geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
     architecturalPhilosophy:
-      'Güneş ışığını maksimum alan geniş cam açıklıkları, ferah teras kademelendirmeleri ve modern cephe hatlarıyla şehir konforunu doğayla buluşturan estetik mimari dil.',
+      'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik sahil mimarisi.',
     heroMedia: {
       type: 'image',
       desktopSrc: '/images/yenisehirforweb.jpeg',
@@ -269,37 +270,162 @@ export const PROJECTS_DATA: ProjectItem[] = [
     gallery: [
       {
         url: '/images/yenisehirforweb.jpeg',
-        title: 'Doğal Taş Kaplama & Geniş Balkonlar',
+        title: 'Yeni Şehir Etapları - Modern Dış Cephe',
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
-        title: 'Özel Yüzme Havuzu & Peyzaj',
+        url: '/images/yenisehirforweb.jpeg',
+        title: 'Özel Havuz Alanı ve Balkonlar',
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
-        title: 'Ferah Teras Balkonları & Yaşam Alanı',
+        url: '/images/yenisehirforweb.jpeg',
+        title: 'Bahçe ve Yeşil Peyzaj',
         aspect: '16:9'
+      }
+    ],
+    paymentHighlight: {
+      downPayment: '1.000.000₺',
+      installment: '40 Ay Vade',
+      tradeIn: 'Araç Takası Kabul Edilir',
+      badgeText: '1.000.000₺ Peşinat — 40 Ay Vade — Araç Takası'
+    },
+    featureDetails: [
+      {
+        icon: 'Sun',
+        title: 'Güneş Paneli',
+        description: 'Enerji tasarrufu sağlayan güneş paneli sistemi ile çevreci ve ekonomik bir yaşam altyapısı sunulmaktadır.'
+      },
+      {
+        icon: 'Waves',
+        title: 'Aqua Havuz & Yüzme Alanları',
+        description: 'Aqua havuz konsepti ile tatil konforunda yaşam. Çocuk ve yetişkinler için ayrı yüzme alanları sayesinde ailece güvenli ve keyifli vakit geçirebilirsiniz.'
+      },
+      {
+        icon: 'Smile',
+        title: 'Çocuk Oyun Alanı',
+        description: 'Güvenli oyun parkı sayesinde çocuklar eğlenirken siz de site içinde huzurlu bir yaşamın keyfini çıkarabilirsiniz.'
+      },
+      {
+        icon: 'Zap',
+        title: 'Araç Şarj İstasyonu',
+        description: 'Elektrikli araç kullanıcıları için site içerisinde modern araç şarj altyapısı bulunmaktadır.'
+      },
+      {
+        icon: 'Home',
+        title: '1+1 & 2+1 Daire Seçenekleri',
+        description: 'Yatırım ve oturum için ideal, modern mimariye sahip 1+1 ve 2+1 daire seçenekleriyle konforlu yaşam alanları sunulmaktadır.'
+      },
+      {
+        icon: 'BadgePercent',
+        title: 'Avantajlı Ödeme Fırsatları',
+        description: '1.000.000₺ peşinat, 40 ay vade seçeneği ile kolay ödeme imkanı. Ayrıca peşinat yerine araç takası kabul edilerek yatırımınızı daha esnek hale getiriyoruz.'
       }
     ],
     features: [
-      'Geniş Açık Yüzme Havuzu ve Çocuk Havuzu',
-      'Yerden Isıtma & Birinci Sınıf Ses/Isı Yalıtımı',
-      'Kapalı ve Açık Otopark Alanları',
-      '7/24 Güvenlik ve Kamera Altyapısı',
-      'Elden Senetle 36 Aya Varan Vade Kolaylığı'
+      '1.000.000₺ Peşinat – 40 Ay Vade – Araç Takas',
+      'Yalı Mahallesi – Denize Yaklaşık 800 Metre',
+      '1+1 & 2+1 Daire Seçenekleri',
+      'Havuzlu, Müstakil Bahçeli Lüks Yazlık Evler',
+      'Yerden Isıtmalı Lüks Konsept',
+      'Aqua Havuz & Yarı Olimpik Yüzme Alanı',
+      'Güneş Paneli Enerji Altyapısı',
+      'Elektrikli Araç Şarj İstasyonu',
+      'Güvenli Çocuk Oyun Parkı'
+    ],
+    stages: [
+      {
+        id: 'yenisehir-etap-3',
+        stageNumber: 3,
+        title: 'Yeni Şehir 3. Etap',
+        subtitle: 'Yalı Mahallesi’nde En Güncel, Havuzlu, Yerden Isıtmalı ve Güneş Panelli Etap',
+        status: 'Yapım Aşamasında',
+        year: '2028',
+        deliveryDate: '2028',
+        location: 'Yalı Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~800 Metre',
+        unitTypes: ['1+1 Daireler', '2+1 Daireler'],
+        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
+        features: [
+          'Teslim Tarihi: 2028 (Yapım Aşamasında)',
+          'Yalı Mahallesi — Denize ~800 Metre',
+          '1+1 ve 2+1 Daire Seçenekleri',
+          'Yerden Isıtmalı Lüks Yazlık Evler',
+          'Aqua Havuz & Yarı Olimpik Yüzme Alanları',
+          'Güneş Paneli Enerji Sistemi',
+          'Elektrikli Araç Şarj İstasyonu',
+          'Güvenli Çocuk Oyun Parkı & Peyzaj',
+          'Müstakil Bahçeli ve Teraslı Seçenekler'
+        ],
+        image: '/images/yenisehirforweb.jpeg',
+        totalArea: '8.400 m²'
+      },
+      {
+        id: 'yenisehir-etap-2',
+        stageNumber: 2,
+        title: 'Yeni Şehir 2. Etap',
+        subtitle: 'Yalı Mahallesi’nde Tamamlanan ve Yaşamın Başladığı Butik Etap',
+        status: 'Tamamlandı',
+        year: '2025',
+        deliveryDate: '2025',
+        location: 'Yalı Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~800 Metre',
+        unitTypes: ['1+1 Daireler', '2+1 Daireler'],
+        description: '2025 yılında eksiksiz tamamlanan Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla yaşamın başladığı seçkin bir sahil sitesidir.',
+        features: [
+          'Tamamlandı & Yaşam Başladı (2025)',
+          'Yalı Mahallesi — Denize ~800 Metre',
+          '1+1 ve 2+1 Daire Seçenekleri',
+          'Yerden Isıtmalı Isınma Konforu',
+          'Açık Yüzme Havuzu & Çocuk Havuzu',
+          'Çocuk Oyun Parkı & Kamelyalar',
+          'Güvenlik ve Kamera Altyapısı'
+        ],
+        image: '/images/yenisehirforweb.jpeg',
+        totalArea: '4.800 m²'
+      },
+      {
+        id: 'yenisehir-etap-1',
+        stageNumber: 1,
+        title: 'Yeni Şehir 1. Etap',
+        subtitle: 'Yalı Mahallesi’nde Tamamlanan ve Teslim Edilen İlk Etap',
+        status: 'Tamamlandı',
+        year: '2025',
+        deliveryDate: '2025',
+        location: 'Yalı Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~800 Metre',
+        unitTypes: ['1+1 Daireler', '2+1 Daireler'],
+        description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; 2025 yılında başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
+        features: [
+          'Tamamlandı & Teslim Edildi (2025)',
+          'Yalı Mahallesi — Denize ~800 Metre',
+          '1+1 ve 2+1 Daire Seçenekleri',
+          'Yerden Isıtmalı Isınma Altyapısı',
+          'Açık Yüzme Havuzu',
+          'Site İçi Yeşil Alanlar ve Otopark',
+          '24/7 Güvenlikli Giriş'
+        ],
+        image: '/images/yenisehirforweb.jpeg',
+        totalArea: '4.200 m²'
+      }
     ],
     floorPlans: [
       {
-        name: '2+1 Geniş Teraslı Rezidans',
+        name: '2+1 Geniş Teraslı Daire',
         area: '88 m² Brüt / 74 m² Net',
         rooms: '2 Yatak Odası, Salon, Ada Mutfak, Teras Balkon, Banyo',
         image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
-        description: 'Ferah iç mekan planı ve gün boyu doğal ışık alan geniş teras balkonu.'
+        description: 'Yerden ısıtmalı, ferah iç mekan planı ve gün boyu doğal ışık alan geniş teras balkonu.'
+      },
+      {
+        name: '1+1 Bahçe & Balkonlu Daire',
+        area: '58 m² Brüt / 49 m² Net',
+        rooms: '1 Yatak Odası, Salon & Mutfak, Geniş Balkon, Banyo',
+        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
+        description: 'Yazlık kullanım ve yüksek kira getirisi için ideal kompakt, yerden ısıtmalı ve konforlu plan.'
       }
     ],
-    installmentMonths: 36,
+    installmentMonths: 40,
     isFeatured: true
   },
   {

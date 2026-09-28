@@ -14,6 +14,29 @@ export interface FloorPlan {
   description: string
 }
 
+export interface FeatureDetail {
+  icon: string
+  title: string
+  description: string
+}
+
+export interface ProjectStage {
+  id: string
+  stageNumber: number
+  title: string
+  subtitle: string
+  status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı'
+  year: string
+  deliveryDate?: string
+  location: string
+  distanceToSea?: string
+  unitTypes: string[]
+  features: string[]
+  description: string
+  image: string
+  totalArea?: string
+}
+
 export interface ProjectItem {
   id: string
   slug: string
@@ -22,6 +45,7 @@ export interface ProjectItem {
   category: 'all' | 'ongoing' | 'luxury-residence' | 'villa' | 'completed'
   categoryLabel: string
   location: string
+  distanceToSea?: string
   year: string
   status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı' | 'Ön Talep'
   totalArea: string
@@ -36,9 +60,17 @@ export interface ProjectItem {
     aspect?: '16:9' | '9:16' | '4:3' | '1:1'
   }[]
   features: string[]
+  featureDetails?: FeatureDetail[]
   floorPlans: FloorPlan[]
   installmentMonths?: number
   isFeatured?: boolean
+  stages?: ProjectStage[]
+  paymentHighlight?: {
+    downPayment: string
+    installment: string
+    tradeIn: string
+    badgeText?: string
+  }
 }
 
 export interface MaterialCategory {
