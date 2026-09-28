@@ -15,6 +15,9 @@ export default {
         serif: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         codec: ['"Codec Pro"', '"Codec"', 'system-ui', 'sans-serif'],
       },
+      letterSpacing: {
+        normal: '0.03em',
+      },
       colors: {
         canvas: '#252c33',
         anthracite: {
