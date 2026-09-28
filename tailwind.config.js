@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Codec Pro"', '"Codec"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-        mono: ['"Codec Pro"', '"Codec"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        sans: ['"Google Sans"', '"Product Sans"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        mono: ['"Google Sans"', '"Product Sans"', '"Plus Jakarta Sans"', 'system-ui', 'monospace', 'sans-serif'],
         theSeasons: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         heading: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         serif: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
