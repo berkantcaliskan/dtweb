@@ -511,9 +511,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
-                {project.status}
-              </span>
+              {project.status !== 'Tamamlandı' && (
+                <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
+                  {project.status}
+                </span>
+              )}
               {project.installmentMonths && (
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-md">
                   Elden Senet Modeli

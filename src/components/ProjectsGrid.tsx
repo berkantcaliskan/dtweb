@@ -98,9 +98,11 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   {/* Top Bar: Status Badges & Quick Arrow */}
                   <div className="relative z-10 p-5 flex items-start justify-between gap-3">
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
-                        {project.status}
-                      </span>
+                      {project.status !== 'Tamamlandı' && (
+                        <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
+                          {project.status}
+                        </span>
+                      )}
                       {project.installmentMonths && (
                         <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
                           Elden Senet
@@ -180,9 +182,13 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
                 {/* Top Bar */}
                 <div className="relative z-10 p-4 flex items-start justify-between gap-2">
-                  <span className="px-2.5 py-1 text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
-                    {project.status}
-                  </span>
+                  {project.status !== 'Tamamlandı' ? (
+                    <span className="px-2.5 py-1 text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
+                      {project.status}
+                    </span>
+                  ) : (
+                    <div />
+                  )}
                   <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
                     <ArrowUpRight size={15} />
                   </div>
