@@ -224,34 +224,34 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
             {/* Quick Specs */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-                <div>
-                  <span className="text-xs uppercase text-[#fffff1]/50 block">Konum</span>
-                  <span className="text-sm font-bold text-[#fffff1] truncate block">{activeStage.location}</span>
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Konum</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.location}</span>
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Waves size={20} className="text-sky-300 flex-shrink-0" />
-                <div>
-                  <span className="text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
-                  <span className="text-sm font-bold text-[#fffff1] block">{activeStage.distanceToSea || 'Denize ~800m'}</span>
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.distanceToSea || 'Denize ~800m'}</span>
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Calendar size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-                <div>
-                  <span className="text-xs uppercase text-[#fffff1]/50 block">Teslim / Durum</span>
-                  <span className="text-sm font-bold text-[#fffff1] block">
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Teslim / Durum</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                     {activeStage.deliveryDate ? `Teslim: ${activeStage.deliveryDate}` : activeStage.year}
                   </span>
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-                <div>
-                  <span className="text-xs uppercase text-[#fffff1]/50 block">Daire Tipleri</span>
-                  <span className="text-sm font-bold text-[#fffff1] block truncate">{activeStage.unitTypes.join(' & ')}</span>
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Tipleri</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.unitTypes.join(' & ')}</span>
                 </div>
               </div>
             </div>
@@ -546,32 +546,32 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
           {/* Quick Technical Specs Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
               <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-              <div>
-                <span className="text-xs uppercase text-[#fffff1]/50 block">Konum</span>
-                <span className="text-sm font-bold text-[#fffff1] truncate block">{project.location}</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Konum</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.location}</span>
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
               <Waves size={20} className="text-sky-300 flex-shrink-0" />
-              <div>
-                <span className="text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
-                <span className="text-sm font-bold text-[#fffff1] block">{project.distanceToSea || 'Denize ~800m'}</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.distanceToSea || 'Denize ~800m'}</span>
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
               <Building2 size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-              <div>
-                <span className="text-xs uppercase text-[#fffff1]/50 block">Daire Seçenekleri</span>
-                <span className="text-sm font-bold text-[#fffff1] block truncate">{project.totalUnits}</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Seçenekleri</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.totalUnits}</span>
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
               <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
-              <div>
-                <span className="text-xs uppercase text-[#fffff1]/50 block">Ödeme & Vade</span>
-                <span className="text-sm font-bold text-[#fffff1] block truncate">
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Ödeme & Vade</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                   {project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli'}
                 </span>
               </div>
