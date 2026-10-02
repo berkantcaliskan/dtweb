@@ -213,14 +213,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
     heroMedia: {
       type: 'image',
-      desktopSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
-      mobileSrc: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80',
-      poster: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1920&q=80',
+      desktopSrc: '/images/seasideforweb.jpeg',
+      mobileSrc: '/images/seasideforweb.jpeg',
+      poster: '/images/seasideforweb.jpeg',
       alt: 'Seaside House Karasu'
     },
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/seasideforweb.jpeg',
         title: 'Tamamlanan Cephe ve Peyzaj',
         aspect: '16:9'
       }
