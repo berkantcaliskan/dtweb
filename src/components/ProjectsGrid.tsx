@@ -43,10 +43,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
     return filteredProjects.filter((p) => p.cardSize === 'compact')
   }, [filteredProjects])
 
-  // Show first 3 projects when filter is 'all' and !showAll
+  // Show first 4 standard projects (Asel, Almina, Seaside, Yeni Şehir) by default when filter is 'all' and !showAll
   const displayedStandardProjects = useMemo(() => {
     if (selectedFilter === 'all' && !showAll) {
-      return standardProjects.slice(0, 3)
+      return standardProjects.slice(0, 4)
     }
     return standardProjects
   }, [standardProjects, selectedFilter, showAll])
@@ -261,24 +261,24 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
           </div>
         )}
 
-        {/* "Hepsini Gör" / Expand Control */}
+        {/* "Hepsini Göster" / Expand Control (Katmansız, sadece yazı ve ok) */}
         {selectedFilter === 'all' && (
-          <div className="mt-10 sm:mt-12 flex flex-col items-center justify-center">
+          <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center">
             {!showAll ? (
               <button
                 onClick={() => setShowAll(true)}
-                className="group inline-flex items-center space-x-2.5 px-8 py-3.5 rounded-xl bg-[#313941] hover:bg-[#3b4550] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 font-medium text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer backdrop-blur-md"
+                className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/80 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
-                <span>Hepsini Gör ({filteredProjects.length} Proje)</span>
-                <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform text-[#fffff1]/80" />
+                <span>Hepsini Göster</span>
+                <ChevronDown size={16} className="text-[#fffff1]/70 group-hover:text-[#fffff1] group-hover:translate-y-0.5 transition-all" />
               </button>
             ) : (
               <button
                 onClick={() => setShowAll(false)}
-                className="group inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#fffff1]/80 hover:text-[#fffff1] border border-[#fffff1]/15 text-xs sm:text-sm font-medium tracking-wider uppercase transition-all cursor-pointer backdrop-blur-md"
+                className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/60 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
                 <span>Daha Az Göster</span>
-                <ChevronUp size={15} className="group-hover:-translate-y-0.5 transition-transform" />
+                <ChevronUp size={16} className="text-[#fffff1]/50 group-hover:text-[#fffff1] group-hover:-translate-y-0.5 transition-all" />
               </button>
             )}
           </div>
