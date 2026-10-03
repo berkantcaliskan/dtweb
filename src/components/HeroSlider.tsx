@@ -92,11 +92,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center"
             >
               Proje Detayları & Kat Planları
             </button>
@@ -111,7 +111,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer"
+              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center"
             >
               Ücretsiz Tanıtım Turu
             </button>
@@ -119,7 +119,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
         </div>
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
-        <div className="flex items-center justify-between pt-4 sm:pt-6 border-t-0 sm:border-t border-[#fffff1]/10">
+        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 pt-4 sm:pt-6 border-t-0 sm:border-t border-[#fffff1]/10">
           {/* Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
@@ -135,7 +135,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           </button>
 
           {/* Right Controls: Portal Links + Arrow navigation */}
-          <div className="flex items-center space-x-2 sm:space-x-2.5">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {/* 1. Instagram */}
             <a
               href={COMPANY_INFO.social?.instagram || 'https://www.instagram.com/demirturkinsaat'}
@@ -143,11 +143,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
               rel="noreferrer"
               aria-label="Instagram"
               title="Instagram: @demirturkinsaat"
-              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] hover:text-[#E1306C] flex items-center justify-center transition-all hover:scale-105 cursor-pointer group"
+              className="p-1.5 text-[#fffff1]/80 hover:text-white transition-all hover:scale-110 cursor-pointer flex items-center justify-center"
             >
               <svg
                 viewBox="0 0 24 24"
-                className="w-[18px] h-[18px] stroke-current fill-none transition-transform group-hover:scale-110"
+                className="w-5 h-5 stroke-current fill-none"
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -166,10 +166,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
               rel="noreferrer"
               aria-label="Sahibinden.com"
               title="Sahibinden.com Mağazamız"
-              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer group"
+              className="p-1.5 text-[#fffff1]/80 hover:text-white transition-all hover:scale-110 cursor-pointer flex items-center justify-center"
             >
-              <svg viewBox="0 0 32 32" className="w-[18px] h-[18px] fill-[#FFE800] group-hover:scale-110 transition-transform" aria-hidden="true">
-                <path fillRule="evenodd" clipRule="evenodd" d="M0 0v32h32v-32zM15.354 6.297c0.75-0.010 1.51-0.005 2.255 0.083 3.214 0.073 6.469 2.906 6.505 6.010h-4.427c0.016-0.922-0.802-2.073-1.703-2.307-1.474-0.359-3.281-0.474-4.573 0.391-0.984 0.594-1.422 2.229-0.125 2.74 3.047 1.448 6.875 1.13 9.63 3.167 2.266 1.609 2.13 4.885 0.365 6.781-2.292 2.453-6.182 2.844-9.464 2.375-3.266-0.156-6.344-2.995-6.427-6.083h4.417c-0.078 1.109 0.849 2.078 1.943 2.427 1.698 0.37 3.635 0.479 5.24-0.25 1.281-0.432 1.37-2.057 0.38-2.807-2.125-1.193-4.75-1.229-7.063-2.021-2.682-0.521-4.854-3.036-4.344-5.599 0.563-3.12 4.167-4.969 7.391-4.906z"/>
+              <svg viewBox="0 0 32 32" className="w-5 h-5 fill-current" aria-hidden="true">
+                <path d="M15.354 6.297c0.75-0.010 1.51-0.005 2.255 0.083 3.214 0.073 6.469 2.906 6.505 6.010h-4.427c0.016-0.922-0.802-2.073-1.703-2.307-1.474-0.359-3.281-0.474-4.573 0.391-0.984 0.594-1.422 2.229-0.125 2.74 3.047 1.448 6.875 1.13 9.63 3.167 2.266 1.609 2.13 4.885 0.365 6.781-2.292 2.453-6.182 2.844-9.464 2.375-3.266-0.156-6.344-2.995-6.427-6.083h4.417c-0.078 1.109 0.849 2.078 1.943 2.427 1.698 0.37 3.635 0.479 5.24-0.25 1.281-0.432 1.37-2.057 0.38-2.807-2.125-1.193-4.75-1.229-7.063-2.021-2.682-0.521-4.854-3.036-4.344-5.599 0.563-3.12 4.167-4.969 7.391-4.906z"/>
               </svg>
             </a>
 
@@ -180,18 +180,23 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
               rel="noreferrer"
               aria-label="Hepsiemlak"
               title="Hepsiemlak Mağazamız"
-              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer group"
+              className="p-1.5 text-[#fffff1]/80 hover:text-white transition-all hover:scale-110 cursor-pointer flex items-center justify-center"
             >
-              <div className="w-[18px] h-[18px] rounded-[4px] bg-[#E02828] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 10L12 3L21 10V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V10Z" />
-                  <path d="M9 21V13H15V21" />
-                </svg>
-              </div>
+              <svg
+                viewBox="0 0 24 24"
+                className="w-5 h-5 fill-none stroke-current"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 10L12 3l9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z" />
+                <path d="M9 21V12h6v9" />
+              </svg>
             </a>
 
             {/* Divider */}
-            <div className="h-6 w-[1px] bg-[#fffff1]/20 mx-1 hidden sm:block" />
+            <div className="h-5 w-[1px] bg-[#fffff1]/20 mx-1 hidden sm:block" />
 
             {/* Arrow navigation (25% rounded squircle) */}
             <button
