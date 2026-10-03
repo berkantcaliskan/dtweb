@@ -8,11 +8,11 @@ export const COMPANY_INFO = {
   subtagline: '20 yılı aşkın mühendislik birikimiyle temelden çatıya geleceğe değer katan yaşam alanları inşa ediyoruz.',
   address: 'Doğu Karadeniz Cd., Ata Sahil Sitesi No: 1, Karasu / Sakarya',
   phoneNumbers: [
-    '0264 718 18 54',
+    '0264 718 00 54',
     '+90 536 902 98 20',
     '+90 530 102 40 01'
   ],
-  phone: '0264 718 18 54',
+  phone: '0264 718 00 54',
   mobilePhone: '+90 536 902 98 20',
   secondaryPhone: '+90 530 102 40 01',
   whatsapp: '905369029820',
