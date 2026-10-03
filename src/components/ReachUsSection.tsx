@@ -75,8 +75,8 @@ export const ReachUsSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-[#fffff1]/10">
           <div>
-            <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
+            <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
               <span>İLETİŞİM & KARİYER / REACH US</span>
             </div>
             <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
@@ -85,12 +85,12 @@ export const ReachUsSection: React.FC = () => {
           </div>
 
           {/* Sub Navigation Switcher */}
-          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/10">
+          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
               className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all ${
                 activeTab === 'contact'
-                  ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-md border border-[#fffff1]/30'
+                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
               }`}
             >
@@ -100,7 +100,7 @@ export const ReachUsSection: React.FC = () => {
               onClick={() => setActiveTab('career')}
               className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all ${
                 activeTab === 'career'
-                  ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-md border border-[#fffff1]/30'
+                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
               }`}
             >
@@ -116,7 +116,7 @@ export const ReachUsSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-in fade-in duration-300">
             {/* Contact Information & Office Details (5 Cols) */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6">
+              <div className="p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 space-y-6">
                 <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1] pb-3 border-b border-[#fffff1]/10">
                   Karasu Merkez Ofis
                 </h3>
@@ -214,7 +214,7 @@ export const ReachUsSection: React.FC = () => {
             </div>
 
             {/* Message & Appointment Form (7 Cols) */}
-            <div className="lg:col-span-7 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6">
+            <div className="lg:col-span-7 p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 space-y-6">
               <div>
                 <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   RANDEVU & BİLGİ TALEBİ
@@ -337,7 +337,7 @@ export const ReachUsSection: React.FC = () => {
                     className={`p-5 rounded-xl border transition-all cursor-pointer ${
                       careerPosition === pos.title
                         ? 'bg-white/10 border-[#fffff1] shadow-lg'
-                        : 'bg-[#313941]/90 backdrop-blur-md border-[#fffff1]/10 hover:border-[#fffff1]/40'
+                        : 'bg-transparent backdrop-blur-sm border-[#fffff1]/15 hover:border-[#fffff1]/35'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
@@ -360,7 +360,7 @@ export const ReachUsSection: React.FC = () => {
             </div>
 
             {/* Quick Job Application Form (6 Cols) */}
-            <div className="lg:col-span-6 p-8 rounded-2xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-6">
+            <div className="lg:col-span-6 p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 space-y-6">
               <div>
                 <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   İŞ BAŞVURU FORMU

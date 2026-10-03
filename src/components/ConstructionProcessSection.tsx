@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CheckCircle2, Shield, Layers, HardHat, Compass, FileCheck } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 
 interface ProcessStep {
   step: string
@@ -18,7 +18,7 @@ const CONSTRUCTION_STEPS: ProcessStep[] = [
     description:
       'Karasu’nun sahil zemin dinamiklerine uygun olarak, her parselimizde çok noktalı jeolojik sondaj ve sismik kırılma analizleri yapılır. Zemin taşıma gücü ve yeraltı su seviyesi modellenerek temel tipi bilimsel verilerle kesinleştirilir.',
     standards: ['T.C. Çevre ve Şehircilik Bakanlığı Zemin Standartları', 'Sismik Hız ve Rezistivite Ölçümleri', 'Sıvılaşma Riski Analiz Raporu'],
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=1200&q=80'
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80'
   },
   {
     step: '02',
@@ -74,32 +74,30 @@ export const ConstructionProcessSection: React.FC = () => {
   return (
     <section id="insa-surecleri" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-8 border-b border-[#fffff1]/10">
-          <div>
-            <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-              <span>MÜHENDİSLİK DİSİPLİNİ / CONSTRUCTION PROCESS</span>
-            </div>
-            <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
-              Temelden Anahtar Teslimine İnşa Süreçleri
-            </h2>
+        {/* Section Header: Description placed directly below title */}
+        <div className="mb-14 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
+          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
+            <span>MÜHENDİSLİK DİSİPLİNİ / CONSTRUCTION PROCESS</span>
           </div>
-          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
+          <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
+            Temelden Anahtar Teslimine İnşa Süreçleri
+          </h2>
+          <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
             Demirtürk İnşaat’ın 20+ yıllık saha tecrübesiyle uyguladığı 6 aşamalı tavizsiz şantiye ve kalite kontrol protokolü.
           </p>
         </div>
 
-        {/* Horizontal Step Navigation Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-12">
+        {/* Horizontal Step Navigation Bar (Contour-based) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-10">
           {CONSTRUCTION_STEPS.map((s, idx) => (
             <button
               key={s.step}
               onClick={() => setActiveStep(idx)}
-              className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+              className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 activeStep === idx
-                  ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] shadow-lg font-semibold'
-                  : 'bg-[#313941]/90 backdrop-blur-md text-[#fffff1]/70 border-[#fffff1]/10 hover:border-[#fffff1]/40 hover:text-[#fffff1]'
+                  ? 'bg-white/10 text-[#fffff1] border-[#fffff1] shadow-md font-medium'
+                  : 'bg-transparent text-[#fffff1]/65 border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:text-[#fffff1]'
               }`}
             >
               <span className="text-[10px] block opacity-80 mb-0.5">AŞAMA {s.step}</span>
@@ -108,17 +106,18 @@ export const ConstructionProcessSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Active Step Feature Box */}
-        <div className="bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
+        {/* Active Step Feature Box: Transparent contour-only container */}
+        <div className="bg-transparent backdrop-blur-sm border border-[#fffff1]/15 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
           {/* Step Media (5 Cols) */}
-          <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto min-h-[300px] bg-black/40">
+          <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto min-h-[300px] sm:min-h-[380px] bg-black/40 overflow-hidden">
             <img
               src={current.image}
               alt={current.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-opacity duration-300"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#313941] via-transparent to-transparent lg:hidden" />
-            <div className="absolute top-4 left-4 px-3 py-1.5 text-xs tracking-widest uppercase bg-black/75 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#161a1f]/80 via-transparent to-black/30 lg:hidden" />
+            <div className="absolute top-4 left-4 px-3 py-1.5 text-xs tracking-widest uppercase bg-black/75 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/15 rounded-md font-medium">
               AŞAMA {current.step} / 06
             </div>
           </div>
@@ -127,29 +126,29 @@ export const ConstructionProcessSection: React.FC = () => {
           <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div>
-                <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase block mb-1 font-medium">
+                <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block mb-1.5 font-medium">
                   ŞANTİYE VE DENETİM STANDARDI
                 </span>
-                <h3 className="font-theSeasons text-3xl font-semibold text-[#fffff1]">
+                <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] leading-tight">
                   {current.title}
                 </h3>
-                <p className="text-sm sm:text-base text-[#fffff1]/85 font-light mt-1">
+                <p className="text-sm sm:text-base text-[#fffff1]/85 font-light mt-1.5 leading-relaxed">
                   {current.subtitle}
                 </p>
               </div>
 
-              <p className="text-base sm:text-lg text-[#fffff1]/90 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#fffff1]/80 font-light leading-relaxed">
                 {current.description}
               </p>
 
               <div className="space-y-2.5 pt-4 border-t border-[#fffff1]/10">
-                <span className="text-[10px] uppercase tracking-wider text-[#fffff1]/50 block">
+                <span className="text-[11px] uppercase tracking-wider text-[#fffff1]/60 block font-medium">
                   BU AŞAMADA UYGULANAN STANDARTLAR
                 </span>
-                <div className="space-y-2.5">
+                <div className="space-y-2">
                   {current.standards.map((std, i) => (
-                    <div key={i} className="flex items-center space-x-2.5 text-sm text-[#fffff1]/95">
-                      <CheckCircle2 size={16} className="text-[#fffff1] flex-shrink-0" />
+                    <div key={i} className="flex items-center space-x-2.5 text-xs sm:text-sm text-[#fffff1]/90">
+                      <CheckCircle2 size={15} className="text-[#fffff1]/80 flex-shrink-0" />
                       <span>{std}</span>
                     </div>
                   ))}
@@ -162,19 +161,19 @@ export const ConstructionProcessSection: React.FC = () => {
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                className="px-4 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded border border-[#fffff1]/10 hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
+                className="px-4 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-lg border border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
               >
                 ← Önceki Aşama
               </button>
 
-              <span className="text-xs sm:text-sm text-[#fffff1]/50">
+              <span className="text-xs sm:text-sm text-[#fffff1]/60 font-mono">
                 {activeStep + 1} / {CONSTRUCTION_STEPS.length}
               </span>
 
               <button
                 disabled={activeStep === CONSTRUCTION_STEPS.length - 1}
                 onClick={() => setActiveStep((prev) => Math.min(CONSTRUCTION_STEPS.length - 1, prev + 1))}
-                className="px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded bg-[#fffff1] text-[#252c33] font-semibold hover:bg-white disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md cursor-pointer"
+                className="glass-blur-box px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-lg text-[#fffff1] hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md cursor-pointer"
               >
                 Sonraki Aşama →
               </button>

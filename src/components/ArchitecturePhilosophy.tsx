@@ -8,8 +8,8 @@ export const ArchitecturePhilosophy: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
+          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>MİMARİ YAKLAŞIM & KURUMSAL FELSEFE</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-tight">
@@ -20,8 +20,8 @@ export const ArchitecturePhilosophy: React.FC = () => {
           </p>
         </div>
 
-        {/* Company Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 p-8 rounded-2xl bg-[#313941]/50 backdrop-blur-sm border border-[#fffff1]/10">
+        {/* Company Stats Grid (Transparent contour-only container) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 sm:mb-20 p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15">
           {COMPANY_STATS.map((stat, i) => (
             <div key={i} className="text-center md:text-left border-r last:border-r-0 border-[#fffff1]/10 pr-4">
               <span className="font-theSeasons text-4xl sm:text-5xl font-bold text-[#fffff1] block">
@@ -37,42 +37,57 @@ export const ArchitecturePhilosophy: React.FC = () => {
           ))}
         </div>
 
-        {/* 3 Pillars of Demirtürk Architecture */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-4 hover:border-[#fffff1]/40 transition-colors">
-            <div className="w-12 h-12 rounded-lg bg-[#252c33] border border-[#fffff1]/15 flex items-center justify-center text-[#fffff1]">
-              <Compass size={22} />
+        {/* 3 Pillars of Demirtürk Architecture (Contour-only, icons to the left of titles) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* Pillar 1 */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+            <div className="flex items-start space-x-3.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+                <Compass size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                  Doğal Uyum & Sahil Manzarası
+                </h3>
+                <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
+                  Her projemiz Karasu’nun sahil şeridi, orman dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
+                </p>
+              </div>
             </div>
-            <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
-              Doğal Uyum & Sahil Manzarası
-            </h3>
-            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-              Her projemiz Karasu’nun sahil şeridi, orman dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
-            </p>
           </div>
 
-          <div className="p-8 rounded-xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-4 hover:border-[#fffff1]/40 transition-colors">
-            <div className="w-12 h-12 rounded-lg bg-[#252c33] border border-[#fffff1]/15 flex items-center justify-center text-[#fffff1]">
-              <ShieldCheck size={22} />
+          {/* Pillar 2 */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+            <div className="flex items-start space-x-3.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+                <ShieldCheck size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                  Temelden Çatıya Malzeme Gücü
+                </h3>
+                <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
+                  Demirtürk, aynı zamanda bölgenin önde gelen yapı malzemeleri tedarikçisidir. Kendi sertifikalı nervürlü demirimiz ve C35 betonumuzla ödün vermeyen deprem güvenliği sağlarız.
+                </p>
+              </div>
             </div>
-            <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
-              Temelden Çatıya Malzeme Gücü
-            </h3>
-            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-              Demirtürk, aynı zamanda bölgenin önde gelen yapı malzemeleri tedarikçisidir. Kendi sertifikalı nervürlü demirimiz ve C35 betonumuzla ödün vermeyen deprem güvenliği sağlarız.
-            </p>
           </div>
 
-          <div className="p-8 rounded-xl bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 space-y-4 hover:border-[#fffff1]/40 transition-colors">
-            <div className="w-12 h-12 rounded-lg bg-[#252c33] border border-[#fffff1]/15 flex items-center justify-center text-[#fffff1]">
-              <Sparkles size={22} />
+          {/* Pillar 3 */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+            <div className="flex items-start space-x-3.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+                <Sparkles size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                  Kredisiz & Güvene Dayalı Finansman
+                </h3>
+                <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
+                  Banka faizlerine veya kefil şartlarına takılmadan, doğrudan Demirtürk bünyesinde elden senet ve esnek vade modeliyle ev sahibi olma sürecini şeffaf ve kolay kılıyoruz.
+                </p>
+              </div>
             </div>
-            <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
-              Kredisiz & Güvene Dayalı Finansman
-            </h3>
-            <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-              Banka faizlerine veya kefil şartlarına takılmadan, doğrudan Demirtürk bünyesinde elden senet ve esnek vade modeliyle ev sahibi olma sürecini şeffaf ve kolay kılıyoruz.
-            </p>
           </div>
         </div>
       </div>

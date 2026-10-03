@@ -87,17 +87,15 @@ export const ArticlesSection: React.FC = () => {
     <section id="makaleler" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-8 border-b border-[#fffff1]/10">
-          <div>
-            <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-              <span>YAYINLAR & DÜŞÜNCELER / ARTICLES</span>
-            </div>
-            <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
-              Mimari ve Mühendislik Makaleleri
-            </h2>
+        <div className="mb-14 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
+          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
+            <span>YAYINLAR & DÜŞÜNCELER / ARTICLES</span>
           </div>
-          <p className="mt-4 md:mt-0 text-base text-[#fffff1]/80 max-w-lg font-light leading-relaxed">
+          <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
+            Mimari ve Mühendislik Makaleleri
+          </h2>
+          <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
             Karasu kıyı mimarisi, deprem mühendisliği, malzeme bilimi ve sayfiye yaşamının geleceğine dair uzman yazılarımız.
           </p>
         </div>
@@ -108,7 +106,7 @@ export const ArticlesSection: React.FC = () => {
             <article
               key={article.id}
               onClick={() => setSelectedArticle(article)}
-              className="group cursor-pointer bg-[#313941]/90 backdrop-blur-md border border-[#fffff1]/10 rounded-xl overflow-hidden hover:border-[#fffff1]/40 transition-all duration-300 flex flex-col justify-between"
+              className="group cursor-pointer bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="relative aspect-[16/9] overflow-hidden bg-black/40">
@@ -118,7 +116,7 @@ export const ArticlesSection: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#313941] via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/90 via-black/30 to-transparent" />
                   <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
                     {article.category}
                   </div>
