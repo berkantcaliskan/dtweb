@@ -106,33 +106,33 @@ export const ConstructionProcessSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Active Step Feature Box: Transparent contour-only container */}
-        <div className="bg-transparent backdrop-blur-sm border border-[#fffff1]/15 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
-          {/* Step Media (5 Cols) */}
-          <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto min-h-[300px] sm:min-h-[380px] bg-black/40 overflow-hidden">
+        {/* Active Step Content (Open Layout: Fixed aspect ratio image on left, explanations on right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Step Media (5 Cols) - Fixed aspect ratio so height stays 100% stable across all steps */}
+          <div className="lg:col-span-5 relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-black/30 shadow-xl flex-shrink-0">
             <img
+              key={current.step}
               src={current.image}
               alt={current.title}
-              className="w-full h-full object-cover transition-opacity duration-300"
+              className="w-full h-full object-cover animate-in fade-in duration-300"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#161a1f]/80 via-transparent to-black/30 lg:hidden" />
             <div className="absolute top-4 left-4 px-3 py-1.5 text-xs tracking-widest uppercase bg-black/75 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/15 rounded-md font-medium">
               AŞAMA {current.step} / 06
             </div>
           </div>
 
-          {/* Step Details (7 Cols) */}
-          <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+          {/* Step Details (7 Cols) - Open layout without outer enclosing layer */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-6 min-h-[380px] lg:min-h-[420px]">
             <div className="space-y-4">
               <div>
-                <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block mb-1.5 font-medium">
+                <span className="text-xs tracking-widest text-[#fffff1]/70 uppercase block mb-1.5 font-medium">
                   ŞANTİYE VE DENETİM STANDARDI
                 </span>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] leading-tight">
                   {current.title}
                 </h3>
-                <p className="text-sm sm:text-base text-[#fffff1]/85 font-light mt-1.5 leading-relaxed">
+                <p className="text-sm sm:text-base text-[#fffff1]/85 font-light mt-2 leading-relaxed">
                   {current.subtitle}
                 </p>
               </div>
