@@ -351,7 +351,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title} - ${activeStage.title} hakkında detaylı bilgi almak istiyorum.`)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                   >
                     WhatsApp ile Fiyat & Bilgi Al
                   </a>
@@ -397,7 +397,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+                    className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                   >
                     <Send size={15} />
                     <span>WhatsApp ile Gönder</span>
@@ -414,7 +414,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 setActiveStage(null)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
+              className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
             >
               <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
               <span className="text-xs font-bold uppercase tracking-wider">{project.title}'na Geri Dön</span>
@@ -862,7 +862,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
+                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   {COMPANY_INFO.phone} ile Bilgi Al
                 </a>
@@ -891,7 +891,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <button
                     key={plan.name}
                     onClick={() => setSelectedPlanIndex(idx)}
-                    className={`px-4 py-2 rounded-xl text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
+                    className={`px-4 py-2 rounded-2xl text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
                       selectedPlanIndex === idx
                         ? 'bg-[#fffff1] text-[#252c33] shadow-md scale-105'
                         : 'bg-[#313941] text-[#fffff1]/80 hover:bg-[#3a444e] border border-[#fffff1]/15'
@@ -1008,7 +1008,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+                  className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                 >
                   <Send size={15} />
                   <span>WhatsApp ile Gönder</span>
@@ -1022,7 +1022,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         <section className="pt-8 pb-12 border-t border-[#fffff1]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             onClick={onClose}
-            className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
+            className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
             <span className="text-xs font-bold uppercase tracking-wider">Tüm Projelere Geri Dön</span>

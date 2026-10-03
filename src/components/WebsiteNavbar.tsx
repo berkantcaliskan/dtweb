@@ -325,7 +325,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
                 if (onOpenTour) onOpenTour()
                 else scrollTo('#tanitim-turu')
               }}
-              className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
+              className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
             >
               <span className="hidden min-[420px]:inline">Ücretsiz </span>
               <span>Tanıtım Turu</span>
@@ -363,7 +363,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
             {showHamburger && (
               <button
                 onClick={() => setIsMenuOpen(true)}
-                className="p-2 sm:p-2.5 rounded-xl text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
+                className="p-2 sm:p-2.5 rounded-2xl text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
                 aria-label="Menüyü aç"
               >
                 <Menu size={22} />
@@ -536,7 +536,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               if (onOpenTour) onOpenTour()
               else scrollTo('#tanitim-turu')
             }}
-            className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
+            className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-2xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
           >
             Ücretsiz Tanıtım Turu Talep Et
           </button>

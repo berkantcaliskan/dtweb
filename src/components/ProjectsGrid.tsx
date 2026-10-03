@@ -81,7 +81,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
             <button
               key={tab.id}
               onClick={() => handleFilterChange(tab.id)}
-              className={`px-4 py-2.5 rounded-lg text-xs sm:text-sm tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer ${
                 selectedFilter === tab.id
                   ? 'bg-[#313941] text-[#fffff1] border border-[#fffff1]/30 font-semibold shadow-md'
                   : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/5'

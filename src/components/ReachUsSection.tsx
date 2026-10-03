@@ -85,7 +85,7 @@ export const ReachUsSection: React.FC = () => {
           </div>
 
           {/* Sub Navigation Switcher */}
-          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/15">
+          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-2xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
               className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all ${
@@ -299,7 +299,7 @@ export const ReachUsSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Bilgi ve Randevu Talebini Gönder</span>
@@ -459,7 +459,7 @@ export const ReachUsSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
                   >
                     <Briefcase size={16} />
                     <span>Başvuruyu İlet</span>

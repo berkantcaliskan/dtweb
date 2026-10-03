@@ -138,7 +138,7 @@ export const FinancingAndTourSection: React.FC = () => {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba,%20elden%20senetli%20%C3%B6deme%20planlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                 target="_blank"
                 rel="noreferrer"
-                className="glass-blur-box px-5 py-2.5 sm:px-6 sm:py-3 text-[#fffff1] font-normal text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center whitespace-nowrap transition-all shadow-md hover:border-[#fffff1]/40 cursor-pointer flex-shrink-0"
+                className="glass-blur-box px-5 py-2.5 sm:px-6 sm:py-3 text-[#fffff1] font-normal text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center whitespace-nowrap transition-all shadow-md hover:border-[#fffff1]/40 cursor-pointer flex-shrink-0"
               >
                 Bilgi Alın
               </a>
@@ -244,7 +244,7 @@ export const FinancingAndTourSection: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="glass-blur-box w-full py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider font-medium text-[#fffff1] hover:border-[#fffff1]/40 transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer mt-2"
+                  className="glass-blur-box w-full py-3.5 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-medium text-[#fffff1] hover:border-[#fffff1]/40 transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer mt-2"
                 >
                   <Send size={14} />
                   <span>Ücretsiz Tur Rezervasyonu Yap</span>

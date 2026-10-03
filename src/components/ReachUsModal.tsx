@@ -176,7 +176,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Sub Navigation Switcher */}
-          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/15">
+          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-2xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
@@ -393,7 +393,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Mesajı Gönder (WhatsApp ile İlet)</span>
@@ -552,7 +552,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Başvuruyu İlet (İK WhatsApp)</span>

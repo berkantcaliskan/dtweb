@@ -94,7 +94,7 @@ export const ContactSection: React.FC = () => {
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20Demirt%C3%BCrk%20%C4%B0n%C5%9Faat%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
+                  className="w-full py-3 px-4 bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-500/40 rounded-2xl text-emerald-300 text-xs tracking-wider flex items-center justify-center space-x-2 transition-all shadow-md"
                 >
                   <MessageSquare size={16} />
                   <span>WhatsApp Canlı Destek Hattı</span>

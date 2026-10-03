@@ -96,7 +96,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center"
+              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center"
             >
               Proje Detayları & Kat Planları
             </button>
@@ -111,7 +111,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center"
+              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center"
             >
               Ücretsiz Tanıtım Turu
             </button>
@@ -198,18 +198,18 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             {/* Divider */}
             <div className="h-5 w-[1px] bg-[#fffff1]/20 mx-1 hidden sm:block" />
 
-            {/* Arrow navigation (25% rounded squircle) */}
+            {/* Arrow navigation (soft rounded squircle) */}
             <button
               onClick={prevSlide}
               aria-label="Önceki Proje"
-              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
+              className="w-10 h-10 rounded-2xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={nextSlide}
               aria-label="Sonraki Proje"
-              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
+              className="w-10 h-10 rounded-2xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
             >
               <ChevronRight size={18} />
             </button>
