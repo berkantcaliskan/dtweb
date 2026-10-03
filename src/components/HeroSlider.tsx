@@ -96,9 +96,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center"
+              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-2 group"
             >
-              Proje Detayları & Kat Planları
+              <span>Proje Detayları</span>
+              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
             </button>
 
             <button
