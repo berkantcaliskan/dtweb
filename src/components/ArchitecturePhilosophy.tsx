@@ -8,8 +8,8 @@ export const ArchitecturePhilosophy: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>MİMARİ YAKLAŞIM & KURUMSAL FELSEFE</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-tight">

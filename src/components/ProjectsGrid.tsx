@@ -63,8 +63,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Architectural Section Header */}
         <div className="mb-10">
-          <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+          <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
+            <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>MİMARİ PORTFÖY / WORKS</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fffff1] md:whitespace-nowrap">
@@ -116,21 +116,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   {/* Subtle Top Vignette (for status badges contrast) */}
                   <div className="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
 
-                  {/* Top Bar: Status Badges & Quick Arrow */}
-                  <div className="relative z-10 p-3 sm:p-5 flex items-start justify-between gap-2">
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {project.status !== 'Tamamlandı' && (
-                        <span className="px-2 sm:px-3 py-0.5 sm:py-1.5 text-[10px] sm:text-xs tracking-wider uppercase bg-black/65 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
-                          {project.status}
-                        </span>
-                      )}
-                      {project.installmentMonths && (
-                        <span className="px-2 sm:px-3 py-0.5 sm:py-1.5 text-[10px] sm:text-xs tracking-wider uppercase bg-[#313941]/85 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/25 font-semibold rounded-md shadow-sm">
-                          Elden Senet
-                        </span>
-                      )}
-                    </div>
-
+                  {/* Top Bar: Quick Arrow */}
+                  <div className="relative z-10 p-3 sm:p-5 flex items-start justify-end">
                     <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
                       <ArrowUpRight size={14} className="sm:hidden" />
                       <ArrowUpRight size={16} className="hidden sm:block" />
@@ -159,9 +146,19 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
                     {/* Series & Progression Info (No shape, clean text) */}
                     {project.seriesInfo && (
-                      <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2.5 drop-shadow">
+                      <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2 drop-shadow">
                         {project.seriesInfo}
                       </p>
+                    )}
+
+                    {/* Şimdi satışta ibaresi */}
+                    {project.status === 'Satışta' && (
+                      <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                        <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-emerald-400">
+                          Şimdi satışta
+                        </span>
+                      </div>
                     )}
 
                     <p className="text-xs sm:text-base text-[#fffff1]/95 font-light line-clamp-2 leading-relaxed mb-2.5 sm:mb-4 drop-shadow">
@@ -173,9 +170,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                       <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
                         <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                       </span>
-                      <span className="text-[#fffff1] font-semibold flex items-center flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
-                        <span className="hidden sm:inline">Projeyi </span><span>İncele</span>
-                        <ArrowUpRight size={13} className="ml-1 flex-shrink-0" />
+                      <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                        <span className="hidden sm:inline">Projeyi</span>
+                        <span>İncele</span>
+                        <ArrowUpRight size={13} className="flex-shrink-0" />
                       </span>
                     </div>
                   </div>
@@ -203,14 +201,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 />
 
                 {/* Top Bar */}
-                <div className="relative z-10 p-3 sm:p-4 flex items-start justify-between gap-2">
-                  {project.status !== 'Tamamlandı' ? (
-                    <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs tracking-wider uppercase bg-emerald-950/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 font-medium rounded-md shadow-sm">
-                      {project.status}
-                    </span>
-                  ) : (
-                    <div />
-                  )}
+                <div className="relative z-10 p-3 sm:p-4 flex items-start justify-end">
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
                     <ArrowUpRight size={14} className="sm:hidden" />
                     <ArrowUpRight size={15} className="hidden sm:block" />
@@ -242,6 +233,16 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     </p>
                   )}
 
+                  {/* Şimdi satışta ibaresi */}
+                  {project.status === 'Satışta' && (
+                    <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                      <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-emerald-400">
+                        Şimdi satışta
+                      </span>
+                    </div>
+                  )}
+
                   <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-2.5 sm:mb-3 drop-shadow">
                     {project.subtitle}
                   </p>
@@ -250,9 +251,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
                       <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                     </span>
-                    <span className="text-[#fffff1] font-semibold flex items-center flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
-                      <span className="hidden sm:inline">Projeyi </span><span>İncele</span>
-                      <ArrowUpRight size={13} className="ml-1 flex-shrink-0" />
+                    <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                      <span className="hidden sm:inline">Projeyi</span>
+                      <span>İncele</span>
+                      <ArrowUpRight size={13} className="flex-shrink-0" />
                     </span>
                   </div>
                 </div>

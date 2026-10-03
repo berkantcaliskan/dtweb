@@ -75,8 +75,8 @@ export const ReachUsSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-[#fffff1]/10">
           <div>
-            <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
+            <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
               <span>İLETİŞİM & KARİYER / REACH US</span>
             </div>
             <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
