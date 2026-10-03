@@ -27,25 +27,42 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  // Language state: default Turkish, switchable to English (content translation planned for when site is complete)
+  const [currentLang, setCurrentLang] = useState<'TR' | 'EN'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('demirturk_lang')
+      if (saved === 'EN' || saved === 'TR') return saved
+    }
+    return 'TR'
+  })
+
+  const handleLanguageChange = (lang: 'TR' | 'EN') => {
+    setCurrentLang(lang)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('demirturk_lang', lang)
+    }
+  }
+
   // Responsive adaptive navigation state
   // Initial estimate based on window width
   const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1200
   const [visibleCount, setVisibleCount] = useState<number>(() => {
-    if (initialWidth >= 1380) return 6
-    if (initialWidth >= 1180) return 5
-    if (initialWidth >= 1024) return 4
-    if (initialWidth >= 840) return 3
-    if (initialWidth >= 680) return 2
-    if (initialWidth >= 520) return 1
+    if (initialWidth >= 1420) return 6
+    if (initialWidth >= 1220) return 5
+    if (initialWidth >= 1060) return 4
+    if (initialWidth >= 880) return 3
+    if (initialWidth >= 700) return 2
+    if (initialWidth >= 540) return 1
     return 0
   })
-  const [showPhone, setShowPhone] = useState<boolean>(() => initialWidth >= 1380)
-  const [showHamburger, setShowHamburger] = useState<boolean>(() => initialWidth < 1380)
+  const [showPhone, setShowPhone] = useState<boolean>(() => initialWidth >= 1420)
+  const [showHamburger, setShowHamburger] = useState<boolean>(() => initialWidth < 1420)
 
   const navContainerRef = useRef<HTMLDivElement>(null)
   const measureRulerRef = useRef<HTMLDivElement>(null)
   const logoMeasureRef = useRef<HTMLDivElement>(null)
   const ctaMeasureRef = useRef<HTMLDivElement>(null)
+  const langMeasureRef = useRef<HTMLDivElement>(null)
   const phoneMeasureRef = useRef<HTMLDivElement>(null)
   const hamburgerMeasureRef = useRef<HTMLDivElement>(null)
   const linkMeasureRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -91,6 +108,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
 
     const logoW = logoMeasureRef.current?.offsetWidth || 180
     const ctaW = ctaMeasureRef.current?.offsetWidth || 165
+    const langW = langMeasureRef.current?.offsetWidth || 65
     const phoneW = phoneMeasureRef.current?.offsetWidth || 155
     const hamburgerW = hamburgerMeasureRef.current?.offsetWidth || 44
 
@@ -101,7 +119,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
     })
 
     const GAP_NAV = innerWidth > 1300 ? 20 : 12
-    const GAP_ACTIONS = 12
+    const GAP_ACTIONS = 10
     const GAP_SECTIONS = 18
 
     const getLinksCost = (cnt: number) => {
@@ -114,7 +132,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
     }
 
     const totalLinksWidthAll = getLinksCost(NAV_LINKS.length)
-    const rightActionsWidthWithPhone = phoneW + GAP_ACTIONS + ctaW
+    const rightActionsWidthWithPhone = phoneW + GAP_ACTIONS + ctaW + GAP_ACTIONS + langW
     const totalNeededForEverything = logoW + GAP_SECTIONS + totalLinksWidthAll + GAP_SECTIONS + rightActionsWidthWithPhone
 
     // Case 1: Everything fits on the top bar!
@@ -130,7 +148,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
     setShowPhone(false)
     setShowHamburger(true)
 
-    const rightActionsWidthWithMenu = ctaW + GAP_ACTIONS + hamburgerW
+    const rightActionsWidthWithMenu = ctaW + GAP_ACTIONS + langW + GAP_ACTIONS + hamburgerW
     const availableForLinks = innerWidth - logoW - (GAP_SECTIONS * 2) - rightActionsWidthWithMenu
 
     let count = NAV_LINKS.length
@@ -222,6 +240,14 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
         >
           <span>Ücretsiz Tanıtım Turu</span>
         </div>
+        <div
+          ref={langMeasureRef}
+          className="flex items-center p-0.5 rounded-lg border text-[11px] whitespace-nowrap"
+        >
+          <span className="px-2 py-1">TR</span>
+          <span>|</span>
+          <span className="px-2 py-1">EN</span>
+        </div>
         <div ref={hamburgerMeasureRef} className="p-2">
           <Menu size={22} />
         </div>
@@ -280,7 +306,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
             </nav>
           )}
 
-          {/* Right: Phone (if fits) + Free Tour CTA + 3-line Hamburger Menu (if anything overflowed) */}
+          {/* Right: Phone (if fits) + Free Tour CTA + Language Selector (TR/EN) + 3-line Hamburger Menu (if anything overflowed) */}
           <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 z-10">
             {/* Direct Phone (Visible if fits in available space) */}
             {showPhone && (
@@ -301,9 +327,38 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               }}
               className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
             >
-              <span className="hidden min-[380px]:inline">Ücretsiz </span>
+              <span className="hidden min-[420px]:inline">Ücretsiz </span>
               <span>Tanıtım Turu</span>
             </button>
+
+            {/* Language Selector (TR / EN) - Placed to the right of Free Tour CTA */}
+            <div className="flex items-center p-0.5 rounded-lg border border-[#fffff1]/15 bg-white/5 backdrop-blur-md text-[11px] font-medium tracking-wider flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('TR')}
+                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                  currentLang === 'TR'
+                    ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-sm border border-[#fffff1]/20'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                }`}
+                aria-label="Türkçe"
+              >
+                TR
+              </button>
+              <span className="text-[#fffff1]/20 text-[10px] select-none">|</span>
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('EN')}
+                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                  currentLang === 'EN'
+                    ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-sm border border-[#fffff1]/20'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                }`}
+                aria-label="English"
+              >
+                EN
+              </button>
+            </div>
 
             {/* 3-Line Hamburger Menu Button (Appears as soon as phone or any link overflows) */}
             {showHamburger && (
@@ -334,18 +389,48 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
           isMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         }`}
       >
-        {/* Top: Header with Logo emblem & Close button */}
+        {/* Top: Header with Logo emblem, Language Selector & Close button */}
         <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-[#fffff1]/10">
           <div className="flex items-center space-x-2.5">
             <DemirturkLogo variant="dark-bg" emblemSize={28} />
           </div>
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="p-2 rounded-lg text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 transition-colors cursor-pointer"
-            aria-label="Menüyü kapat"
-          >
-            <X size={22} />
-          </button>
+
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Drawer Language Switcher */}
+            <div className="flex items-center p-0.5 rounded-lg border border-[#fffff1]/15 bg-white/5 text-[11px] font-medium tracking-wider">
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('TR')}
+                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                  currentLang === 'TR'
+                    ? 'bg-[#313941] text-[#fffff1] font-semibold border border-[#fffff1]/20 shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                }`}
+              >
+                TR
+              </button>
+              <span className="text-[#fffff1]/20 text-[10px] select-none">|</span>
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('EN')}
+                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                  currentLang === 'EN'
+                    ? 'bg-[#313941] text-[#fffff1] font-semibold border border-[#fffff1]/20 shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 rounded-lg text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 transition-colors cursor-pointer"
+              aria-label="Menüyü kapat"
+            >
+              <X size={22} />
+            </button>
+          </div>
         </div>
 
         {/* Middle: Links & Direct Actions */}
