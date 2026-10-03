@@ -1,6 +1,6 @@
 import React from 'react'
 import { COMPANY_INFO, PROJECTS_DATA } from '../data/websiteData'
-import { ArrowUp, Phone, Mail, MapPin } from 'lucide-react'
+import { ChevronUp, Phone, Mail, MapPin } from 'lucide-react'
 import { DemirturkLogo } from './DemirturkLogo'
 
 interface WebsiteFooterProps {
@@ -152,7 +152,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
               aria-label="Yukarı çık"
             >
               <span>YUKARI</span>
-              <ArrowUp size={12} className="text-[#fffff1]" />
+              <ChevronUp size={14} className="text-[#fffff1]" />
             </button>
           </div>
         </div>

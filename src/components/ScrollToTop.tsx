@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowUp } from 'lucide-react'
+import { ChevronUp } from 'lucide-react'
 
 export const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -30,17 +30,18 @@ export const ScrollToTop: React.FC = () => {
     <button
       type="button"
       onClick={scrollToTop}
-      aria-label="Yukarı Dön"
-      title="Yukarı Dön"
-      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.14] text-[#fffff1]/80 hover:text-[#fffff1] backdrop-blur-md border border-[#fffff1]/20 hover:border-[#fffff1]/50 shadow-[0_8px_32px_rgba(0,0,0,0.25)] transition-all duration-300 transform group ${
+      aria-label="Yukarı Çık"
+      title="Yukarı Çık"
+      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-[#1c2126]/90 hover:bg-[#252c33] active:bg-[#313941] text-[#fffff1]/90 hover:text-white backdrop-blur-md border border-[#fffff1]/20 hover:border-[#fffff1]/50 shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all duration-300 group cursor-pointer select-none overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fffff1]/40 ${
         isVisible
-          ? 'opacity-100 translate-y-0 pointer-events-auto hover:scale-105 active:scale-95'
+          ? 'opacity-100 translate-y-0 pointer-events-auto hover:shadow-2xl active:translate-y-0.5'
           : 'opacity-0 translate-y-4 pointer-events-none'
-      } focus:outline-none focus:ring-1 focus:ring-[#fffff1]/40`}
+      }`}
     >
-      <ArrowUp 
+      <ChevronUp 
         className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" 
-        strokeWidth={1.25} 
+        strokeWidth={2.4} 
+        aria-hidden="true"
       />
     </button>
   )
