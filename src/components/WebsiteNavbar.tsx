@@ -144,11 +144,11 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
     }
 
     // Case 2: Not everything fits.
-    // Rule: Move phone number to menu, show hamburger menu button, and keep whatever pages fit.
+    // Rule: Move phone number and language options to menu, show hamburger menu button, and keep whatever pages fit.
     setShowPhone(false)
     setShowHamburger(true)
 
-    const rightActionsWidthWithMenu = ctaW + GAP_ACTIONS + langW + GAP_ACTIONS + hamburgerW
+    const rightActionsWidthWithMenu = ctaW + GAP_ACTIONS + hamburgerW
     const availableForLinks = innerWidth - logoW - (GAP_SECTIONS * 2) - rightActionsWidthWithMenu
 
     let count = NAV_LINKS.length
@@ -331,33 +331,35 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               <span>Tanıtım Turu</span>
             </button>
 
-            {/* Language Selector (TR / EN) - Placed to the right of Free Tour CTA */}
-            <div className="flex items-center gap-1 text-[11px] sm:text-xs font-medium tracking-wider flex-shrink-0">
-              <button
-                type="button"
-                onClick={() => handleLanguageChange('TR')}
-                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
-                  currentLang === 'TR'
-                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
-                }`}
-                aria-label="Türkçe"
-              >
-                TR
-              </button>
-              <button
-                type="button"
-                onClick={() => handleLanguageChange('EN')}
-                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
-                  currentLang === 'EN'
-                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
-                }`}
-                aria-label="English"
-              >
-                EN
-              </button>
-            </div>
+            {/* Language Selector (TR / EN) - Visible on large desktop, moved into menu when screen shrinks */}
+            {showPhone && (
+              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-medium tracking-wider flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleLanguageChange('TR')}
+                  className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
+                    currentLang === 'TR'
+                      ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                      : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
+                  }`}
+                  aria-label="Türkçe"
+                >
+                  TR
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLanguageChange('EN')}
+                  className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
+                    currentLang === 'EN'
+                      ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                      : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
+                  }`}
+                  aria-label="English"
+                >
+                  EN
+                </button>
+              </div>
+            )}
 
             {/* 3-Line Hamburger Menu Button (Appears as soon as phone or any link overflows) */}
             {showHamburger && (
@@ -528,8 +530,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
           </div>
         </div>
 
-        {/* Bottom: Free Tour CTA */}
-        <div className="pt-4 border-t border-[#fffff1]/10">
+        {/* Bottom: Free Tour CTA + Language Selector (at the bottom) */}
+        <div className="pt-4 border-t border-[#fffff1]/10 space-y-4">
           <button
             onClick={() => {
               setIsMenuOpen(false)
@@ -540,6 +542,39 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
           >
             Ücretsiz Tanıtım Turu Talep Et
           </button>
+
+          {/* Dil Seçenekleri (En alta) */}
+          <div className="flex items-center justify-between px-1 pt-1 border-t border-[#fffff1]/10">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-[#fffff1]/50 font-medium">
+              Dil / Language
+            </span>
+            <div className="flex items-center gap-1.5 text-xs font-medium tracking-wider">
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('TR')}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  currentLang === 'TR'
+                    ? 'glass-blur-box text-[#fffff1] font-semibold border border-[#fffff1]/30 shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
+                }`}
+                aria-label="Türkçe"
+              >
+                TR
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLanguageChange('EN')}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  currentLang === 'EN'
+                    ? 'glass-blur-box text-[#fffff1] font-semibold border border-[#fffff1]/30 shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
+                }`}
+                aria-label="English"
+              >
+                EN
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
