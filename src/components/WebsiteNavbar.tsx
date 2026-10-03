@@ -332,27 +332,26 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
             </button>
 
             {/* Language Selector (TR / EN) - Placed to the right of Free Tour CTA */}
-            <div className="flex items-center p-0.5 rounded-lg border border-[#fffff1]/15 bg-white/5 backdrop-blur-md text-[11px] font-medium tracking-wider flex-shrink-0">
+            <div className="flex items-center gap-1 text-[11px] sm:text-xs font-medium tracking-wider flex-shrink-0">
               <button
                 type="button"
                 onClick={() => handleLanguageChange('TR')}
-                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                   currentLang === 'TR'
-                    ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-sm border border-[#fffff1]/20'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
                 aria-label="Türkçe"
               >
                 TR
               </button>
-              <span className="text-[#fffff1]/20 text-[10px] select-none">|</span>
               <button
                 type="button"
                 onClick={() => handleLanguageChange('EN')}
-                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                   currentLang === 'EN'
-                    ? 'bg-[#313941] text-[#fffff1] font-semibold shadow-sm border border-[#fffff1]/20'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
                 aria-label="English"
               >
@@ -397,26 +396,25 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
 
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Drawer Language Switcher */}
-            <div className="flex items-center p-0.5 rounded-lg border border-[#fffff1]/15 bg-white/5 text-[11px] font-medium tracking-wider">
+            <div className="flex items-center gap-1 text-[11px] font-medium tracking-wider">
               <button
                 type="button"
                 onClick={() => handleLanguageChange('TR')}
-                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                   currentLang === 'TR'
-                    ? 'bg-[#313941] text-[#fffff1] font-semibold border border-[#fffff1]/20 shadow-sm'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
               >
                 TR
               </button>
-              <span className="text-[#fffff1]/20 text-[10px] select-none">|</span>
               <button
                 type="button"
                 onClick={() => handleLanguageChange('EN')}
-                className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                   currentLang === 'EN'
-                    ? 'bg-[#313941] text-[#fffff1] font-semibold border border-[#fffff1]/20 shadow-sm'
-                    : 'text-[#fffff1]/60 hover:text-[#fffff1]'
+                    ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
+                    : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
               >
                 EN
