@@ -96,7 +96,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#313941] hover:bg-[#3a444e] text-[#fffff1] border border-[#fffff1]/30 font-bold text-sm uppercase tracking-wider rounded transition-all shadow-lg hover:shadow-xl hover:border-[#fffff1]/50 hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
             >
               Proje Detayları & Kat Planları
             </button>
@@ -111,7 +111,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer"
+              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer"
             >
               Ücretsiz Tanıtım Turu
             </button>
@@ -134,19 +134,19 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             </span>
           </button>
 
-          {/* Arrow navigation */}
+          {/* Arrow navigation (25% rounded squircle) */}
           <div className="flex items-center space-x-3">
             <button
               onClick={prevSlide}
               aria-label="Önceki Proje"
-              className="w-10 h-10 rounded-full border border-[#fffff1]/20 bg-black/40 hover:bg-[#313941] hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105"
+              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={nextSlide}
               aria-label="Sonraki Proje"
-              className="w-10 h-10 rounded-full border border-[#fffff1]/20 bg-black/40 hover:bg-[#313941] hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105"
+              className="w-10 h-10 rounded-xl border border-[#fffff1]/20 bg-black/40 hover:bg-white/10 hover:border-[#fffff1]/40 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
             >
               <ChevronRight size={18} />
             </button>

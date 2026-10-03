@@ -312,7 +312,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
             {showPhone && (
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="text-xs sm:text-sm text-[#fffff1]/90 hover:text-[#fffff1] flex items-center space-x-1.5 px-2.5 sm:px-3 py-2 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap flex-shrink-0 cursor-pointer"
+                className="text-xs sm:text-sm text-[#fffff1]/90 hover:text-[#fffff1] flex items-center space-x-1.5 px-2.5 sm:px-3 py-2 rounded-xl border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap flex-shrink-0 cursor-pointer"
               >
                 <Phone size={14} className="text-[#fffff1] flex-shrink-0" />
                 <span>{COMPANY_INFO.phone}</span>
@@ -325,7 +325,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
                 if (onOpenTour) onOpenTour()
                 else scrollTo('#tanitim-turu')
               }}
-              className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-lg transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
+              className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
             >
               <span className="hidden min-[420px]:inline">Ücretsiz </span>
               <span>Tanıtım Turu</span>
@@ -363,7 +363,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
             {showHamburger && (
               <button
                 onClick={() => setIsMenuOpen(true)}
-                className="p-2 sm:p-2.5 rounded-lg text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
+                className="p-2 sm:p-2.5 rounded-xl text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
                 aria-label="Menüyü aç"
               >
                 <Menu size={22} />

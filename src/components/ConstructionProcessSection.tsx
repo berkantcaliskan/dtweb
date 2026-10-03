@@ -161,7 +161,7 @@ export const ConstructionProcessSection: React.FC = () => {
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                className="px-4 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-lg border border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
+                className="px-4 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-xl border border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
               >
                 ← Önceki Aşama
               </button>
@@ -173,7 +173,7 @@ export const ConstructionProcessSection: React.FC = () => {
               <button
                 disabled={activeStep === CONSTRUCTION_STEPS.length - 1}
                 onClick={() => setActiveStep((prev) => Math.min(CONSTRUCTION_STEPS.length - 1, prev + 1))}
-                className="glass-blur-box px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-lg text-[#fffff1] hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md cursor-pointer"
+                className="glass-blur-box px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider rounded-xl text-[#fffff1] hover:border-[#fffff1]/40 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md cursor-pointer"
               >
                 Sonraki Aşama →
               </button>

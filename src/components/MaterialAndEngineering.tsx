@@ -69,7 +69,7 @@ export const MaterialAndEngineering: React.FC = () => {
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20${encodeURIComponent(cat.title)}%20fiyat%20ve%20tedarik%20bilgisi%20almak%20istiyorum.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 px-4 bg-transparent hover:bg-white/5 border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-lg text-xs tracking-wider uppercase transition-all flex items-center justify-between text-[#fffff1] cursor-pointer"
+                  className="w-full py-2.5 px-4 bg-transparent hover:bg-white/5 border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-xl text-xs tracking-wider uppercase transition-all flex items-center justify-between text-[#fffff1] cursor-pointer"
                 >
                   <span>Fiyat Teklifi Al</span>
                   <ArrowUpRight size={14} />
@@ -96,7 +96,7 @@ export const MaterialAndEngineering: React.FC = () => {
           <div className="flex items-center space-x-3 sm:space-x-4 flex-shrink-0">
             <a
               href={`tel:${COMPANY_INFO.phone}`}
-              className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent hover:bg-white/5 border border-[#fffff1]/20 text-xs sm:text-sm flex items-center space-x-2 text-[#fffff1] transition-all"
+              className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-transparent hover:bg-white/5 border border-[#fffff1]/20 text-xs sm:text-sm flex items-center space-x-2 text-[#fffff1] transition-all"
             >
               <Phone size={14} className="text-[#fffff1]" />
               <span>{COMPANY_INFO.phone}</span>
@@ -105,7 +105,7 @@ export const MaterialAndEngineering: React.FC = () => {
               href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20in%C5%9Faat%20malzemeleri%20i%C3%A7in%20teklif%20almak%20istiyorum.`}
               target="_blank"
               rel="noreferrer"
-              className="glass-blur-box px-5 py-2.5 sm:px-6 sm:py-3 text-[#fffff1] font-normal text-xs sm:text-sm uppercase tracking-wider rounded-lg transition-all shadow-md hover:border-[#fffff1]/40 cursor-pointer"
+              className="glass-blur-box px-5 py-2.5 sm:px-6 sm:py-3 text-[#fffff1] font-normal text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-md hover:border-[#fffff1]/40 cursor-pointer"
             >
               WhatsApp Teklif
             </a>

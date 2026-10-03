@@ -88,7 +88,7 @@ export const ReachUsSection: React.FC = () => {
           <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
-              className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all ${
                 activeTab === 'contact'
                   ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
@@ -98,7 +98,7 @@ export const ReachUsSection: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveTab('career')}
-              className={`px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all ${
                 activeTab === 'career'
                   ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1]'
