@@ -26,6 +26,50 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             <div className="text-xs sm:text-sm text-[#fffff1]/85 pt-2 font-medium">
               Banka Kredisiz — Elden Senet İmkânı
             </div>
+            {/* Social & Portal Links */}
+            <div className="flex items-center space-x-2.5 pt-2">
+              <a
+                href={COMPANY_INFO.social?.instagram || 'https://www.instagram.com/demirturkinsaat'}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                title="Instagram: @demirturkinsaat"
+                className="w-9 h-9 rounded-lg border border-[#fffff1]/15 bg-white/5 hover:bg-white/10 hover:border-[#fffff1]/30 text-[#fffff1] hover:text-[#E1306C] flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
+              >
+                <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a
+                href={COMPANY_INFO.social?.sahibinden || 'https://karasudemirturk.sahibinden.com/'}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Sahibinden.com"
+                title="Sahibinden.com Mağazamız"
+                className="w-9 h-9 rounded-lg border border-[#fffff1]/15 bg-white/5 hover:bg-white/10 hover:border-[#fffff1]/30 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer group"
+              >
+                <svg viewBox="0 0 32 32" className="w-4 h-4 fill-[#FFE800] group-hover:scale-110 transition-transform" aria-hidden="true">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M0 0v32h32v-32zM15.354 6.297c0.75-0.010 1.51-0.005 2.255 0.083 3.214 0.073 6.469 2.906 6.505 6.010h-4.427c0.016-0.922-0.802-2.073-1.703-2.307-1.474-0.359-3.281-0.474-4.573 0.391-0.984 0.594-1.422 2.229-0.125 2.74 3.047 1.448 6.875 1.13 9.63 3.167 2.266 1.609 2.13 4.885 0.365 6.781-2.292 2.453-6.182 2.844-9.464 2.375-3.266-0.156-6.344-2.995-6.427-6.083h4.417c-0.078 1.109 0.849 2.078 1.943 2.427 1.698 0.37 3.635 0.479 5.24-0.25 1.281-0.432 1.37-2.057 0.38-2.807-2.125-1.193-4.75-1.229-7.063-2.021-2.682-0.521-4.854-3.036-4.344-5.599 0.563-3.12 4.167-4.969 7.391-4.906z"/>
+                </svg>
+              </a>
+              <a
+                href={COMPANY_INFO.social?.hepsiemlak || 'https://www.hepsiemlak.com/emlak-ofisi/demirturk-yapi-insaat-sanayi-ve-ticaret-limited-si-159946'}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Hepsiemlak"
+                title="Hepsiemlak Mağazamız"
+                className="w-9 h-9 rounded-lg border border-[#fffff1]/15 bg-white/5 hover:bg-white/10 hover:border-[#fffff1]/30 text-[#fffff1] flex items-center justify-center transition-all hover:scale-105 cursor-pointer group"
+              >
+                <div className="w-4 h-4 rounded-[3px] bg-[#E02828] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 10L12 3L21 10V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V10Z" />
+                    <path d="M9 21V13H15V21" />
+                  </svg>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Nav: Projeler */}

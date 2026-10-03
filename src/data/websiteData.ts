@@ -25,6 +25,11 @@ export const COMPANY_INFO = {
     lat: 41.1032,
     lng: 30.6865,
     query: 'Ata+Sahil+Sitesi+Doğu+Karadeniz+Caddesi+Karasu+Sakarya'
+  },
+  social: {
+    instagram: 'https://www.instagram.com/demirturkinsaat',
+    sahibinden: 'https://karasudemirturk.sahibinden.com/',
+    hepsiemlak: 'https://www.hepsiemlak.com/emlak-ofisi/demirturk-yapi-insaat-sanayi-ve-ticaret-limited-si-159946'
   }
 }
 
