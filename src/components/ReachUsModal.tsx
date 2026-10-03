@@ -99,11 +99,11 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33]/85 backdrop-blur-2xl text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Header with Back Button */}
-      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/80 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
         {/* Left: Back Button & Title */}
         <div className="flex items-center space-x-4 sm:space-x-6">
           <button
@@ -141,7 +141,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
           <a
             href={`tel:${COMPANY_INFO.phone}`}
-            className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-[#fffff1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+            className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-white/[0.08] hover:bg-white/[0.18] border border-[#fffff1]/20 text-[#fffff1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
           >
             <Phone size={14} />
             <span>{COMPANY_INFO.phone}</span>
@@ -149,7 +149,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
             aria-label="Pencereyi Kapat"
             title="Kapat"
           >

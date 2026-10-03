@@ -29,19 +29,19 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex justify-center p-4 sm:p-6 lg:p-10 animate-modal-backdrop"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/45 backdrop-blur-md flex justify-center p-4 sm:p-6 lg:p-10 animate-modal-backdrop"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
     >
       <div 
-        className="relative w-full max-w-xl bg-[#1e242b] border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
+        className="relative w-full max-w-xl bg-[#252c33]/70 backdrop-blur-2xl border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#1e242b] border-b border-[#fffff1]/15">
+        <div className="flex items-center justify-between px-6 py-4 bg-white/[0.03] backdrop-blur-md border-b border-[#fffff1]/15">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#252c33] border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center font-bold">
+            <div className="w-8 h-8 rounded-lg bg-white/5 border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center font-bold">
               <Bus size={18} />
             </div>
             <div>
@@ -56,7 +56,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#313941] text-[#fffff1] flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/15 flex items-center justify-center transition-colors cursor-pointer"
             aria-label="Kapat"
           >
             <X size={16} />
@@ -69,20 +69,20 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
             İstanbul ve çevre illerden Karasu’ya özel VIP transfer aracımızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak inceleyin.
           </p>
 
-          <div className="grid grid-cols-2 gap-2.5 text-sm text-[#fffff1]/90">
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+          <div className="grid grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#fffff1]/90">
+            <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-[#fffff1]/15">
               <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Gidiş - Dönüş Transfer</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+            <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-[#fffff1]/15">
               <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Örnek Daire Gezisi</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+            <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-[#fffff1]/15">
               <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Öğle Yemeği İkramı</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/[0.03] p-3 rounded-lg border border-[#fffff1]/5">
+            <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-[#fffff1]/15">
               <CheckCircle2 size={15} className="text-[#fffff1] flex-shrink-0" />
               <span>Sıfır Satın Alma Şartı</span>
             </div>
@@ -96,7 +96,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
               </p>
               <button
                 onClick={onClose}
-                className="mt-3 px-4 py-2 bg-white/10 hover:bg-[#313941] rounded-lg text-xs sm:text-sm text-[#fffff1] cursor-pointer"
+                className="mt-3 px-4 py-2 glass-blur-box rounded-lg text-xs sm:text-sm text-[#fffff1] cursor-pointer"
               >
                 Tamam
               </button>
@@ -112,7 +112,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   placeholder="Adınız Soyadınız"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/40 transition-colors"
                 />
               </div>
 
@@ -126,7 +126,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
-                  className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                  className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/40 transition-colors"
                 />
               </div>
 
@@ -138,7 +138,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   <select
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full px-3.5 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                    className="w-full px-3.5 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/40 transition-colors"
                   >
                     <option value="İstanbul">İstanbul</option>
                     <option value="Kocaeli/İzmit">Kocaeli / İzmit</option>
@@ -157,14 +157,14 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                     placeholder="Örn: Cumartesi"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3.5 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/50"
+                    className="w-full px-3.5 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/40 transition-colors"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs uppercase tracking-wider rounded-lg transition-all shadow-lg flex items-center justify-center space-x-2"
+                className="glass-blur-box w-full py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider font-medium text-[#fffff1] hover:border-[#fffff1]/40 transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Send size={14} />
                 <span>Ücretsiz Tur Rezervasyonunu Tamamla</span>

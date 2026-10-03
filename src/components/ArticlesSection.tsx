@@ -157,23 +157,23 @@ export const ArticlesSection: React.FC = () => {
       {/* Article Reader Modal */}
       {selectedArticle && (
         <div 
-          className="fixed inset-0 z-50 overflow-y-auto bg-black/45 backdrop-blur-sm flex justify-center p-4 sm:p-6 lg:p-10 animate-modal-backdrop"
+          className="fixed inset-0 z-50 overflow-y-auto bg-black/45 backdrop-blur-md flex justify-center p-4 sm:p-6 lg:p-10 animate-modal-backdrop"
           onClick={(e) => {
             if (e.target === e.currentTarget) setSelectedArticle(null)
           }}
         >
           <div 
-            className="relative w-full max-w-3xl bg-[#1e242b]/75 backdrop-blur-2xl border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
+            className="relative w-full max-w-3xl bg-[#252c33]/70 backdrop-blur-2xl border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Top Bar */}
-            <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#1e242b]/65 backdrop-blur-xl border-b border-[#fffff1]/15">
+            <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/[0.03] backdrop-blur-xl border-b border-[#fffff1]/15">
               <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase font-medium">
                 {selectedArticle.category} — {selectedArticle.readTime}
               </span>
               <button
                 onClick={() => setSelectedArticle(null)}
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#313941] text-[#fffff1] flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/15 flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Kapat"
               >
                 <X size={18} />
