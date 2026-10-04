@@ -28,18 +28,21 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
   }
 
   return (
-    <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/45 backdrop-blur-md flex justify-center p-4 sm:p-6 lg:p-10 animate-modal-backdrop"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose()
-      }}
-    >
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 lg:p-10">
+      {/* 1. Temel Arka Plan (Backdrop: bu blurda) */}
       <div 
-        className="relative w-full max-w-xl bg-[#252c33]/70 backdrop-blur-2xl border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
+        className="fixed inset-0 bg-black/45 backdrop-blur-md animate-modal-backdrop transition-opacity cursor-pointer"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* 2. Pencere Arka Planı (Daha blur, sayfaların arka planı gibi: 60px blur + doygunluk + cam geçirgenliği) */}
+      <div 
+        className="relative z-10 w-full max-w-xl bg-[#252c33]/55 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-white/[0.03] backdrop-blur-md border-b border-[#fffff1]/15">
+        <div className="flex items-center justify-between px-6 py-4 bg-white/[0.04] backdrop-blur-md border-b border-[#fffff1]/15">
           <div className="flex items-center space-x-2.5">
             <div className="w-8 h-8 rounded-lg bg-white/5 border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center font-bold">
               <Bus size={18} />
@@ -164,9 +167,9 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
               <button
                 type="submit"
-                className="glass-blur-box w-full py-3.5 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-medium text-[#fffff1] hover:border-[#fffff1]/40 transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full py-3.5 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#252c33] bg-[#fffff1] hover:bg-white transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center space-x-2 cursor-pointer"
               >
-                <Send size={14} />
+                <Send size={15} />
                 <span>Ücretsiz Tur Rezervasyonunu Tamamla</span>
               </button>
             </form>

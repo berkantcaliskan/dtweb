@@ -386,7 +386,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
 
       {/* Slide-over Right Drawer Menu */}
       <div
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[400px] max-w-full bg-[#1c2126]/80 backdrop-blur-2xl border-l border-[#fffff1]/15 shadow-2xl flex flex-col justify-between p-6 sm:p-7 transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[400px] max-w-full bg-[#1c2126]/65 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border-l border-[#fffff1]/15 shadow-2xl flex flex-col justify-between p-6 sm:p-7 transition-transform duration-300 ease-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         }`}
       >
