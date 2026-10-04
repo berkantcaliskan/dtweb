@@ -267,7 +267,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#252c33]/92 backdrop-blur-xl border-b border-[#fffff1]/[0.08] py-3.5 shadow-2xl'
+            ? 'bg-[#252c33]/92 backdrop-blur-xl py-3.5 shadow-2xl'
             : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent py-5'
         }`}
       >
