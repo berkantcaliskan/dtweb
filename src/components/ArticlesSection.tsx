@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { ArrowUpRight, Clock, Calendar, BookOpen, X, ChevronRight, Share2 } from 'lucide-react'
+import { ArrowUpRight, Clock, Calendar, BookOpen, ChevronRight } from 'lucide-react'
+import { ArticleDetailView } from './ArticleDetailView'
 
 export interface ArticleItem {
   id: string
@@ -154,76 +155,14 @@ export const ArticlesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Article Reader Modal */}
+      {/* Full-Page Single Article Editorial View (Project Page style) */}
       {selectedArticle && (
-        <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 lg:p-10">
-          {/* Base Backdrop (bu blurda) */}
-          <div 
-            className="fixed inset-0 bg-black/45 backdrop-blur-md animate-modal-backdrop transition-opacity cursor-pointer"
-            onClick={() => setSelectedArticle(null)}
-            aria-hidden="true"
-          />
-
-          {/* Modal Window (Daha blur, sayfaların arka planı gibi) */}
-          <div 
-            className="relative z-10 w-full max-w-3xl bg-[#252c33]/55 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Top Bar */}
-            <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/[0.04] backdrop-blur-md border-b border-[#fffff1]/15">
-              <span className="text-[10px] tracking-widest text-[#fffff1]/80 uppercase font-medium">
-                {selectedArticle.category} — {selectedArticle.readTime}
-              </span>
-              <button
-                onClick={() => setSelectedArticle(null)}
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/15 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Kapat"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="overflow-y-auto max-h-[80vh] p-6 sm:p-10 space-y-6">
-              <div className="relative aspect-video rounded-xl overflow-hidden border border-[#fffff1]/10">
-                <img
-                  src={selectedArticle.image}
-                  alt={selectedArticle.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="flex items-center space-x-3 text-xs text-[#fffff1]/50">
-                <span>{selectedArticle.date}</span>
-                <span>•</span>
-                <span>Demirtürk Mimarlık & Mühendislik Kurulu</span>
-              </div>
-
-              <h2 className="font-theSeasons text-3xl sm:text-4xl font-bold text-[#fffff1] leading-tight">
-                {selectedArticle.title}
-              </h2>
-
-              <p className="text-base sm:text-lg text-[#fffff1]/90 font-light italic leading-relaxed border-l-2 border-[#fffff1]/60 pl-4">
-                "{selectedArticle.subtitle}"
-              </p>
-
-              <div className="space-y-5 text-base sm:text-lg text-[#fffff1]/85 font-light leading-relaxed pt-5 border-t border-[#fffff1]/10">
-                {selectedArticle.paragraphs.map((p, idx) => (
-                  <p key={idx}>{p}</p>
-                ))}
-              </div>
-
-              <div className="pt-6 border-t border-[#fffff1]/10 flex justify-end">
-                <button
-                  onClick={() => setSelectedArticle(null)}
-                  className="px-6 py-2.5 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-xs sm:text-sm uppercase tracking-wider rounded transition-colors text-[#fffff1] cursor-pointer"
-                >
-                  Kapat
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ArticleDetailView
+          article={selectedArticle}
+          allArticles={ARTICLES_DATA}
+          onClose={() => setSelectedArticle(null)}
+          onSelectArticle={(art) => setSelectedArticle(art)}
+        />
       )}
     </section>
   )
