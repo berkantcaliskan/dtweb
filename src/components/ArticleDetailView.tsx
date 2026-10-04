@@ -198,9 +198,9 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
             {article.title}
           </h1>
 
-          <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border-l-4 border-[#fffff1]/70 border border-[#fffff1]/10">
-            <p className="font-theSeasons text-lg sm:text-2xl text-[#fffff1]/95 font-light italic leading-relaxed">
-              "{article.subtitle}"
+          <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border-l-2 sm:border-l-4 border-[#fffff1]/50 border border-[#fffff1]/10 backdrop-blur-sm">
+            <p className="font-sans text-base sm:text-lg lg:text-xl text-[#fffff1]/90 font-normal leading-relaxed">
+              {article.subtitle}
             </p>
           </div>
 
