@@ -137,24 +137,24 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
         </div>
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
-        {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < >, Right = Stacked Social Icons) */}
-        <div className="flex sm:hidden items-end justify-between w-full pt-4">
+        {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < > centered to screen, Right = Stacked Social Icons) */}
+        <div className="relative flex sm:hidden items-end justify-between w-full pt-4">
           {/* Left: Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
-            className="flex items-center space-x-2 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer pb-0.5"
+            className="flex items-center space-x-1.5 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer pb-0.5 max-w-[calc(50%-42px)] overflow-hidden"
             aria-label="Projeleri Keşfedin"
           >
-            <div className="w-4 h-7 rounded-full border border-[#fffff1]/30 flex justify-center pt-1 transition-colors">
+            <div className="w-4 h-7 rounded-full border border-[#fffff1]/30 flex justify-center pt-1 transition-colors flex-shrink-0">
               <div className="w-1 h-1.5 rounded-full bg-[#fffff1] animate-scroll-dot" />
             </div>
-            <span className="text-[10px] tracking-[0.14em] font-medium uppercase text-[#fffff1]/85">
+            <span className="text-[9.5px] tracking-wider font-medium uppercase text-[#fffff1]/85 truncate whitespace-nowrap">
               Projeleri Keşfedin
             </span>
           </button>
 
-          {/* Center: Prev / Next Navigation Arrows */}
-          <div className="flex items-center space-x-1.5">
+          {/* Center: Prev / Next Navigation Arrows (Dead-centered to the screen, NOT to content) */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center space-x-1.5 z-10">
             <button
               onClick={prevSlide}
               aria-label="Önceki Proje"
@@ -172,7 +172,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           </div>
 
           {/* Right: Vertically Stacked Social Icons (Bottom aligns flush with arrow buttons) */}
-          <div className="flex flex-col items-center space-y-1">
+          <div className="flex flex-col items-center space-y-1 ml-auto z-10">
             {/* 1. Instagram */}
             <a
               href={COMPANY_INFO.social?.instagram || 'https://www.instagram.com/demirturkinsaat'}
