@@ -298,13 +298,14 @@ export const ReachUsSection: React.FC = () => {
                     <select
                       value={formSubject}
                       onChange={(e) => setFormSubject(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      style={{ colorScheme: 'dark' }}
+                      className="w-full px-4 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 cursor-pointer"
                     >
-                      <option value="Satılık Daireler & Siteler">Satılık Daireler & Siteler</option>
-                      <option value="Müstakil Villalar">Müstakil Villalar</option>
-                      <option value="Elden Senetli Ödeme Planı">Elden Senetli Ödeme Planı</option>
-                      <option value="İnşaat Malzemeleri & Toptan Tedarik">İnşaat Malzemeleri & Toptan Tedarik</option>
-                      <option value="Arsa Kat Karşılığı / Proje Geliştirme">Arsa Kat Karşılığı / Proje Geliştirme</option>
+                      <option value="Satılık Daireler & Siteler" className="bg-[#1e242b] text-[#fffff1] py-2">Satılık Daireler & Siteler</option>
+                      <option value="Müstakil Villalar" className="bg-[#1e242b] text-[#fffff1] py-2">Müstakil Villalar</option>
+                      <option value="Elden Senetli Ödeme Planı" className="bg-[#1e242b] text-[#fffff1] py-2">Elden Senetli Ödeme Planı</option>
+                      <option value="İnşaat Malzemeleri & Toptan Tedarik" className="bg-[#1e242b] text-[#fffff1] py-2">İnşaat Malzemeleri & Toptan Tedarik</option>
+                      <option value="Arsa Kat Karşılığı / Proje Geliştirme" className="bg-[#1e242b] text-[#fffff1] py-2">Arsa Kat Karşılığı / Proje Geliştirme</option>
                     </select>
                   </div>
 
@@ -416,10 +417,11 @@ export const ReachUsSection: React.FC = () => {
                     <select
                       value={careerPosition}
                       onChange={(e) => setCareerPosition(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      style={{ colorScheme: 'dark' }}
+                      className="w-full px-4 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 cursor-pointer"
                     >
                       {openPositions.map((p, i) => (
-                        <option key={i} value={p.title}>
+                        <option key={i} value={p.title} className="bg-[#1e242b] text-[#fffff1] py-2">
                           {p.title}
                         </option>
                       ))}

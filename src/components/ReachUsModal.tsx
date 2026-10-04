@@ -382,14 +382,15 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     <select
                       value={formSubject}
                       onChange={(e) => setFormSubject(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      style={{ colorScheme: 'dark' }}
+                      className="w-full px-4 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 cursor-pointer"
                     >
-                      <option value="Genel Bilgi & Satış" className="bg-[#252c33] text-[#fffff1]">Genel Bilgi & Satış</option>
-                      <option value="Asel Doğa Evleri Bilgi Talebi" className="bg-[#252c33] text-[#fffff1]">Asel Doğa Evleri Bilgi Talebi</option>
-                      <option value="Yeni Şehir Rezidans Bilgi Talebi" className="bg-[#252c33] text-[#fffff1]">Yeni Şehir Rezidans Bilgi Talebi</option>
-                      <option value="Elden Senet Modeli Danışmanlığı" className="bg-[#252c33] text-[#fffff1]">Elden Senet Modeli Danışmanlığı</option>
-                      <option value="Ücretsiz Tanıtım Turu Randevusu" className="bg-[#252c33] text-[#fffff1]">Ücretsiz Tanıtım Turu Randevusu</option>
-                      <option value="Yapı Malzemeleri & Toptan Tedarik" className="bg-[#252c33] text-[#fffff1]">Yapı Malzemeleri & Toptan Tedarik</option>
+                      <option value="Genel Bilgi & Satış" className="bg-[#1e242b] text-[#fffff1] py-2">Genel Bilgi & Satış</option>
+                      <option value="Asel Doğa Evleri Bilgi Talebi" className="bg-[#1e242b] text-[#fffff1] py-2">Asel Doğa Evleri Bilgi Talebi</option>
+                      <option value="Yeni Şehir Rezidans Bilgi Talebi" className="bg-[#1e242b] text-[#fffff1] py-2">Yeni Şehir Rezidans Bilgi Talebi</option>
+                      <option value="Elden Senet Modeli Danışmanlığı" className="bg-[#1e242b] text-[#fffff1] py-2">Elden Senet Modeli Danışmanlığı</option>
+                      <option value="Ücretsiz Tanıtım Turu Randevusu" className="bg-[#1e242b] text-[#fffff1] py-2">Ücretsiz Tanıtım Turu Randevusu</option>
+                      <option value="Yapı Malzemeleri & Toptan Tedarik" className="bg-[#1e242b] text-[#fffff1] py-2">Yapı Malzemeleri & Toptan Tedarik</option>
                     </select>
                   </div>
 
@@ -542,13 +543,14 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     <select
                       value={careerPosition}
                       onChange={(e) => setCareerPosition(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 border border-[#fffff1]/15 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50"
+                      style={{ colorScheme: 'dark' }}
+                      className="w-full px-4 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-lg text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 cursor-pointer"
                     >
-                      <option value="Şantiye Şefi / İnşaat Mühendisi" className="bg-[#252c33] text-[#fffff1]">Şantiye Şefi / İnşaat Mühendisi</option>
-                      <option value="Mimar / İç Mimar & 3D Görselleştirme" className="bg-[#252c33] text-[#fffff1]">Mimar / İç Mimar & 3D Görselleştirme</option>
-                      <option value="Gayrimenkul & Konut Satış Danışmanı" className="bg-[#252c33] text-[#fffff1]">Gayrimenkul & Konut Satış Danışmanı</option>
-                      <option value="Muhasebe & Finans Uzmanı" className="bg-[#252c33] text-[#fffff1]">Muhasebe & Finans Uzmanı</option>
-                      <option value="Genel Başvuru & Mimarlık/Mühendislik Stajı" className="bg-[#252c33] text-[#fffff1]">Genel Başvuru & Mimarlık/Mühendislik Stajı</option>
+                      <option value="Şantiye Şefi / İnşaat Mühendisi" className="bg-[#1e242b] text-[#fffff1] py-2">Şantiye Şefi / İnşaat Mühendisi</option>
+                      <option value="Mimar / İç Mimar & 3D Görselleştirme" className="bg-[#1e242b] text-[#fffff1] py-2">Mimar / İç Mimar & 3D Görselleştirme</option>
+                      <option value="Gayrimenkul & Konut Satış Danışmanı" className="bg-[#1e242b] text-[#fffff1] py-2">Gayrimenkul & Konut Satış Danışmanı</option>
+                      <option value="Muhasebe & Finans Uzmanı" className="bg-[#1e242b] text-[#fffff1] py-2">Muhasebe & Finans Uzmanı</option>
+                      <option value="Genel Başvuru & Mimarlık/Mühendislik Stajı" className="bg-[#1e242b] text-[#fffff1] py-2">Genel Başvuru & Mimarlık/Mühendislik Stajı</option>
                     </select>
                   </div>
 

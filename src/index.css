@@ -337,3 +337,14 @@ body, .font-sans {
   animation: scrollDot 1.8s ease-in-out infinite;
 }
 
+/* Select & Dropdown Option Readability (Native dark mode flyout) */
+select {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #1e242b !important;
+  color: #fffff1 !important;
+  padding: 8px 12px;
+}
+

@@ -12,7 +12,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [city, setCity] = useState('İstanbul')
-  const [date, setDate] = useState('')
+  const [transportChoice, setTransportChoice] = useState('Pazar Günü (VIP Servis)')
   const [submitted, setSubmitted] = useState(false)
 
   if (!isOpen) return null
@@ -27,13 +27,13 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
       phone: phone,
       formName: 'Ücretsiz Tanıtım Turu',
       channel: 'Web Sitesi / Ücretsiz Tanıtım Turu Modalı',
-      notes: `Kalkış / Şehir: ${city} | Tercih Edilen Tarih: ${date || 'Hafta sonu'}`,
-      tags: ['Web Sitesi', 'Tanıtım Turu', city],
+      notes: `Kalkış Şehri: ${city} | Katılım Şekli: ${transportChoice}`,
+      tags: ['Web Sitesi', 'Tanıtım Turu', city, transportChoice === 'Kendi Aracımla Geleceğim' ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })
 
     // 2. WhatsApp ile doğrudan mesaj aç
     const message = encodeURIComponent(
-      `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için rezervasyon yapmak istiyorum:\nİsim: ${name || 'Belirtilmedi'}\nTelefon: ${phone}\nŞehir: ${city}\nTercih Edilen Tarih: ${date || 'Hafta sonu'}`
+      `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için rezervasyon yapmak istiyorum:\nİsim: ${name || 'Belirtilmedi'}\nTelefon: ${phone}\nŞehir: ${city}\nKatılım Şekli: ${transportChoice}`
     )
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=${message}`, '_blank')
     setSubmitted(true)
@@ -80,8 +80,8 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
         {/* Modal Açıklaması */}
         <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-            İstanbul ve çevre illerden Karasu’ya özel VIP transfer aracımızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak inceleyin.
-          </p>
+          Her Pazar günü İstanbul, Kocaeli ve Sakarya’dan kalkan özel VIP transfer aracımızla ya da kendi aracınızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak inceleyin.
+        </p>
 
           <div className="grid grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#fffff1]/90">
             <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-[#fffff1]/15">
@@ -144,7 +144,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
                     Bulunduğunuz Şehir
@@ -152,27 +152,28 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
                   <select
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full px-3.5 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/40 transition-colors"
+                    style={{ colorScheme: 'dark' }}
+                    className="w-full px-3.5 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 transition-colors cursor-pointer"
                   >
-                    <option value="İstanbul">İstanbul</option>
-                    <option value="Kocaeli/İzmit">Kocaeli / İzmit</option>
-                    <option value="Sakarya">Sakarya Merkez</option>
-                    <option value="Bursa">Bursa</option>
-                    <option value="Diğer">Diğer</option>
+                    <option value="İstanbul" className="bg-[#1e242b] text-[#fffff1] py-2">İstanbul</option>
+                    <option value="Kocaeli" className="bg-[#1e242b] text-[#fffff1] py-2">Kocaeli</option>
+                    <option value="Sakarya" className="bg-[#1e242b] text-[#fffff1] py-2">Sakarya</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase text-[#fffff1]/60 mb-1">
-                    Tercih Edilen Gün
+                    Katılım & Ulaşım
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Örn: Cumartesi"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3.5 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/40 transition-colors"
-                  />
+                  <select
+                    value={transportChoice}
+                    onChange={(e) => setTransportChoice(e.target.value)}
+                    style={{ colorScheme: 'dark' }}
+                    className="w-full px-3.5 py-3 bg-[#1e242b] border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] focus:outline-none focus:border-[#fffff1]/50 transition-colors cursor-pointer"
+                  >
+                    <option value="Pazar Günü (VIP Servis)" className="bg-[#1e242b] text-[#fffff1] py-2">Pazar Günü (VIP Servis)</option>
+                    <option value="Kendi Aracımla Geleceğim" className="bg-[#1e242b] text-[#fffff1] py-2">Kendi Aracımla Geleceğim</option>
+                  </select>
                 </div>
               </div>
 
