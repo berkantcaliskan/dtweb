@@ -278,16 +278,28 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center h-[72px] sm:h-[78px] transition-[background-color,box-shadow] duration-300 backdrop-blur-2xl backdrop-saturate-150 ${
-          isScrolled || isSubPageOpen
-            ? 'bg-[#1c2126]/65 shadow-[0_8px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-[#1c2126]/25'
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[72px] sm:h-[78px]">
+        {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
+        <div
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
+            isScrolled || isSubPageOpen
+              ? 'opacity-100 shadow-[0_8px_32px_rgba(0,0,0,0.35)]'
+              : 'opacity-0'
+          } bg-[#1c2126]/75 backdrop-blur-2xl backdrop-saturate-150`}
+        />
+
+        {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, no harsh rectangular blur cut) */}
+        <div
+          className={`absolute top-0 left-0 right-0 h-[92px] sm:h-[105px] pointer-events-none transition-opacity duration-500 ease-in-out ${
+            isScrolled || isSubPageOpen
+              ? 'opacity-0'
+              : 'opacity-100'
+          } bg-gradient-to-b from-[#14181c]/80 via-[#14181c]/35 to-transparent [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]`}
+        />
+
         <div
           ref={navContainerRef}
-          className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 relative"
+          className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 relative z-10"
         >
           {/* Left: Demirtürk Logo */}
           <div className="flex items-center flex-shrink-0 z-10">
