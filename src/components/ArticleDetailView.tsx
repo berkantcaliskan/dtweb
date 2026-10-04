@@ -8,6 +8,7 @@ interface ArticleDetailViewProps {
   allArticles: ArticleItem[]
   onClose: () => void
   onSelectArticle: (article: ArticleItem) => void
+  onNavigate?: (href: string) => void
 }
 
 export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
@@ -15,6 +16,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
   allArticles,
   onClose,
   onSelectArticle,
+  onNavigate,
 }) => {
   // Lock body scroll and handle Escape key
   useEffect(() => {
@@ -55,6 +57,65 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
       navigator.clipboard?.writeText(window.location.href)
       alert('Makale bağlantısı panoya kopyalandı!')
     }
+  }
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    if (url.includes('demirturkinsaat.com/projeler') || url.startsWith('/projeler') || url === '#projeler') {
+      e.preventDefault()
+      if (onNavigate) {
+        onNavigate('#projeler')
+      } else {
+        onClose()
+        setTimeout(() => {
+          const target = document.querySelector('#projeler')
+          if (target) {
+            const topOffset = 70
+            const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - topOffset
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+          }
+        }, 60)
+      }
+    } else if (url === 'https://demirturkinsaat.com/' || url === 'https://demirturkinsaat.com' || url === '/' || url === '#hero' || url === '#') {
+      e.preventDefault()
+      if (onNavigate) {
+        onNavigate('#hero')
+      } else {
+        onClose()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    }
+  }
+
+  const renderTextWithLinks = (text: string) => {
+    const parts: (string | React.ReactNode)[] = []
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g
+    let lastIndex = 0
+    let match: RegExpExecArray | null
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index))
+      }
+      const linkText = match[1]
+      const url = match[2]
+      const isInternal = url.startsWith('/') || url.includes('demirturkinsaat.com') || url.startsWith('#')
+      parts.push(
+        <a
+          key={match.index}
+          href={url}
+          onClick={(e) => handleLinkClick(e, url)}
+          className="text-[#fffff1] font-medium underline underline-offset-4 decoration-[#fffff1]/50 hover:decoration-[#fffff1] hover:text-white transition-colors"
+          {...(isInternal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+        >
+          {linkText}
+        </a>
+      )
+      lastIndex = regex.lastIndex
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex))
+    }
+    return parts.length > 0 ? parts : text
   }
 
   return (
@@ -176,7 +237,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
                 )}
                 {sec.paragraphs.map((p, pIdx) => (
                   <p key={pIdx} className="text-[#fffff1]/85 font-light leading-relaxed">
-                    {p}
+                    {renderTextWithLinks(p)}
                   </p>
                 ))}
                 {sec.listItems && sec.listItems.length > 0 && (
@@ -184,7 +245,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
                     {sec.listItems.map((item, lIdx) => (
                       <li key={lIdx} className="flex items-start space-x-3 text-base sm:text-lg text-[#fffff1]/90">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1] mt-2.5 flex-shrink-0" />
-                        <span>{item}</span>
+                        <span>{renderTextWithLinks(item)}</span>
                       </li>
                     ))}
                   </ul>
@@ -194,7 +255,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
           ) : (
             article.paragraphs.map((p, idx) => (
               <p key={idx} className="first-of-type:text-lg sm:first-of-type:text-2xl first-of-type:leading-relaxed first-of-type:text-[#fffff1]">
-                {p}
+                {renderTextWithLinks(p)}
               </p>
             ))
           )}

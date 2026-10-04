@@ -117,6 +117,106 @@ export const ARTICLES_DATA: ArticleItem[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'karasuda-gayrimenkul-yatirimi',
+    slug: 'karasuda-gayrimenkul-yatirimi',
+    url: '/makaleler/karasuda-gayrimenkul-yatirimi/',
+    seoTitle: 'Karasu’da Gayrimenkul Yatırımı | Demirtürk İnşaat',
+    title: 'Karasu’da Gayrimenkul Yatırımı: Bölge ve Daire Seçimi Rehberi',
+    subtitle:
+      'Karasu’da gayrimenkul yatırımı düşünüyorsanız bölge, daire, ödeme planı ve kira potansiyelini nasıl değerlendirebileceğinizi rehberimizde keşfedin.',
+    category: 'Yatırım & Rehber',
+    readTime: '7 dk okuma',
+    date: '10 Mayıs 2026',
+    image: '/images/aselforweb.jpeg',
+    summary:
+      'Karasu’da gayrimenkul yatırımı düşünüyorsanız bölge, daire, ödeme planı ve kira potansiyelini nasıl değerlendirebileceğinizi rehberimizde keşfedin.',
+    paragraphs: [
+      'Karasu’da gayrimenkul yatırımı yapmayı düşünüyorsanız ilk adım, satın alacağınız daireden ne beklediğinizi belirlemektir. Yazlık olarak kullanacağınız bir ev, sürekli yaşayacağınız bir daire ve kiraya vermeyi düşündüğünüz bir konut için öncelikler farklılaşır.',
+      '[Karasu’da satılık daire](https://demirturkinsaat.com/) seçeneklerini incelerken konumu, yapının özelliklerini ve toplam maliyeti birlikte değerlendirmek gerekir. Yalnızca başlangıç fiyatına veya gelecekteki değer artışı beklentisine odaklanmak, seçenekler arasındaki önemli farkları gözden kaçırmanıza neden olabilir.'
+    ],
+    sections: [
+      {
+        paragraphs: [
+          'Karasu’da gayrimenkul yatırımı yapmayı düşünüyorsanız ilk adım, satın alacağınız daireden ne beklediğinizi belirlemektir. Yazlık olarak kullanacağınız bir ev, sürekli yaşayacağınız bir daire ve kiraya vermeyi düşündüğünüz bir konut için öncelikler farklılaşır.',
+          '[Karasu’da satılık daire](https://demirturkinsaat.com/) seçeneklerini incelerken konumu, yapının özelliklerini ve toplam maliyeti birlikte değerlendirmek gerekir. Yalnızca başlangıç fiyatına veya gelecekteki değer artışı beklentisine odaklanmak, seçenekler arasındaki önemli farkları gözden kaçırmanıza neden olabilir.'
+        ]
+      },
+      {
+        heading: 'Karasu’da bölge seçimi nasıl yapılmalı?',
+        paragraphs: [
+          'Karasu’da daire ararken Yalı, Aziziye ve Yenimahalle gibi bölgeleri kullanım amacınıza göre karşılaştırabilirsiniz. Ancak aynı mahalledeki iki dairenin bile ulaşımı, çevresi ve günlük kullanım avantajları farklı olabilir. Bu nedenle mahalle adının yanında taşınmazın tam konumunu incelemek önemlidir.'
+        ]
+      },
+      {
+        heading: 'Yalı Mahallesi’nde konumu değerlendirmek',
+        paragraphs: [
+          'Yalı Mahallesi’nde bir daire incelerken sahile gerçek yürüme mesafesini, plaja ulaşım güzergâhını ve günlük ihtiyaçlara erişimi kontrol edin. Yazlık kullanım düşünüyorsanız balkon, otopark ve bina yönetimi gibi ayrıntıları da karşılaştırmaya dahil edin.',
+          '“Denize yakın” ifadesini harita ve yerinde ziyaretle değerlendirmek, beklentinizle dairenin konumu arasındaki uyumu görmenizi sağlar.'
+        ]
+      },
+      {
+        heading: 'Aziziye’de proje ve çevreyi birlikte incelemek',
+        paragraphs: [
+          'Aziziye’deki konut seçeneklerinde dairenin özelliklerinin yanında çevresindeki yerleşimi, ulaşımı ve mevcut hizmetleri değerlendirin. Yeni bir projeyle ilgileniyorsanız teslim takvimini, ortak alanların kapsamını ve çevrede devam eden inşaatları sorun.',
+          'Henüz tamamlanmamış bir projenin görselleriyle mevcut durumunu birbirinden ayırarak değerlendirme yapmak, satın alacağınız konutu daha doğru anlamanıza yardımcı olur.'
+        ]
+      },
+      {
+        heading: 'Yenimahalle’de yaşam ve kullanım amacı',
+        paragraphs: [
+          'Yenimahalle, Sakarya Nehri’nin Karadeniz’e ulaştığı konumuyla öne çıkar. Nehir çevresi ve balık restoranları, bölgenin ziyaretçiler açısından dikkat çeken özellikleri arasındadır.',
+          'Bu bölgede bir daire düşünüyorsanız manzara ve çevrenin yanında günlük ulaşımı, alışveriş noktalarına erişimi ve binanın teknik özelliklerini de inceleyin. Bölgeyi ziyaret etmekten hoşlanmanızla orada yıl boyunca yaşamak istemeniz farklı ihtiyaçlara dayanabilir.'
+        ]
+      },
+      {
+        heading: 'Karasu’da daire fiyatlarını karşılaştırırken nelere bakılmalı?',
+        paragraphs: [
+          'Sağlıklı bir fiyat karşılaştırması için benzer konumdaki ve benzer özelliklerdeki daireleri değerlendirin. Oda sayısı tek başına yeterli değildir; net kullanım alanı, kat, cephe, bina yaşı, teslim durumu ve sosyal alanlar da karşılaştırmanın parçası olmalıdır.',
+          'İlan fiyatının gerçekleşmiş satış fiyatıyla aynı olmayabileceğini de göz önünde bulundurun. Güncel teklifleri incelemek ve satış kapsamını öğrenmek, daha gerçekçi bir bütçe oluşturmanızı sağlar.',
+          'Karşılaştırma yaparken şu bilgileri not edebilirsiniz:'
+        ],
+        listItems: [
+          'Dairenin net ve brüt alanı.',
+          'Toplam satış bedeli ve ödeme koşulları.',
+          'Teslim durumu ve daireye dahil özellikler.',
+          'Aidat, bakım ve olası tadilat giderleri.',
+          'Ulaşım, otopark ve günlük ihtiyaçlara erişim.'
+        ]
+      },
+      {
+        heading: 'Kira potansiyeli nasıl değerlendirilir?',
+        paragraphs: [
+          'Karasu’da kiraya vermek amacıyla daire almayı düşünüyorsanız yaz dönemiyle yıl boyunca kiralama seçeneklerini ayrı değerlendirin. Sezonluk kullanımda elde edilebilecek gelir ile düzenli kiralama koşulları aynı olmayabilir.',
+          'Beklenen kira gelirini hesaplarken yalnızca ilanlarda görülen tutarları esas almayın. Evin boş kalabileceği dönemleri, aidatı, bakım giderlerini ve varsa yönetim masraflarını da hesaba katın. Kısa süreli kiralama düşünüyorsanız ilgili izin ve yükümlülükleri ayrıca araştırın.',
+          'Bir dairenin kira potansiyeli; konumuna, durumuna, donanımına ve talebe bağlıdır. Bu nedenle tüm Karasu için tek bir gelir veya değer artışı oranı üzerinden karar vermek yerine, ilgilendiğiniz daireyi özel olarak değerlendirin.'
+        ]
+      },
+      {
+        heading: 'Ödeme planı yatırım kararını nasıl etkiler?',
+        paragraphs: [
+          'Peşinat ve vade seçenekleri, satın alma bütçenizi planlamanızı kolaylaştırabilir. Ancak uygun bir peşinat tutarı kadar, sonraki ödemelerin sürdürülebilir olması da önemlidir.',
+          'Ödeme planında toplam satış bedelini, aylık taksitleri, varsa ara ödemeleri ve ödeme tarihlerini birlikte inceleyin. Peşin ve vadeli seçenekler sunuluyorsa toplam maliyetlerini karşılaştırın.',
+          'Demirtürk İnşaat’ın [Karasu’daki konut projelerini](https://demirturkinsaat.com/projeler/) inceleyerek mevcut daireler ve güncel ödeme seçenekleri hakkında bilgi alabilirsiniz. Daireye ve kampanya dönemine göre değişen koşulları, size sunulan yazılı ödeme planı üzerinden değerlendirebilirsiniz.'
+        ]
+      },
+      {
+        heading: 'Proje seçerken hangi bilgiler istenmeli?',
+        paragraphs: [
+          'Proje seçimini yalnızca görseller veya fiyat üzerinden yapmayın. Firmanın tamamladığı projeleri inceleyin; ilgilendiğiniz dairenin tapu ve ruhsat durumunu, teslim kapsamını ve sözleşme koşullarını öğrenin.',
+          'Havuz, bahçe, spor salonu veya otopark gibi alanlar sunuluyorsa kullanım koşullarını ve bakım giderlerini sorun. Satış görüşmesinde belirtilen özelliklerin ilgili belgelerde ve sözleşmede nasıl yer aldığını kontrol edin.',
+          'Bu bilgiler, farklı projeleri aynı ölçütlerle karşılaştırmanıza ve kararınızı daha açık koşullar üzerinden vermenize yardımcı olur.'
+        ]
+      },
+      {
+        heading: 'Karasu’da size uygun daireyi birlikte değerlendirelim',
+        paragraphs: [
+          'Karasu’da gayrimenkul yatırımı için doğru seçim; kullanım amacınıza, bütçenize ve beklentilerinize uygun bir daire bulmakla başlar. Bölgeyi yerinde görmek, farklı daireleri karşılaştırmak ve ödeme koşullarını ayrıntılı öğrenmek bu süreci kolaylaştırır.',
+          'Demirtürk İnşaat olarak projelerimizi tanımanız ve mevcut daire seçeneklerini incelemeniz için sizi ofisimize bekliyoruz. Güncel fiyatlar ve size uygun ödeme planı hakkında bilgi almak için bizimle iletişime geçebilirsiniz.'
+        ]
+      }
+    ]
   }
 ]
 
@@ -138,34 +238,34 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
             Mimari ve Mühendislik Makaleleri
           </h2>
           <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
-            Karasu’da daire sahibi olma rehberi, konut alırken dikkat edilmesi gerekenler ve sayfiye yaşamının geleceğine dair uzman yazılarımız.
+            Karasu’da daire sahibi olma ve gayrimenkul yatırımı rehberi, bölge analizi ve sayfiye yaşamına dair uzman yazılarımız.
           </p>
         </div>
 
-        {/* Featured Flagship Article Card */}
-        <div className="max-w-4xl">
+        {/* Articles Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
           {ARTICLES_DATA.map((article) => (
             <article
               key={article.id}
               onClick={() => onSelectArticle && onSelectArticle(article)}
-              className="group cursor-pointer bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col md:flex-row shadow-xl hover:shadow-2xl"
+              className="group cursor-pointer bg-white/[0.02] hover:bg-white/[0.05] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-xl hover:shadow-2xl hover:-translate-y-1"
             >
-              <div className="relative md:w-1/2 aspect-[16/10] md:aspect-auto min-h-[260px] overflow-hidden bg-black/40 flex-shrink-0">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/90 via-transparent to-transparent md:hidden" />
-                <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
-                  {article.category}
+              <div>
+                <div className="relative aspect-[16/10] overflow-hidden bg-black/40 flex-shrink-0">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/80 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                    {article.category}
+                  </div>
                 </div>
-              </div>
 
-              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-between space-y-4">
-                <div>
-                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60 mb-3">
+                <div className="p-6 sm:p-8 space-y-3">
+                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60">
                     <span className="flex items-center">
                       <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {article.date}
                     </span>
@@ -175,15 +275,17 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
                     </span>
                   </div>
 
-                  <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] group-hover:text-white transition-colors mb-3 leading-snug">
+                  <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] group-hover:text-white transition-colors leading-snug line-clamp-2">
                     {article.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-4 font-light leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-3 font-light leading-relaxed">
                     {article.summary}
                   </p>
                 </div>
+              </div>
 
+              <div className="p-6 sm:p-8 pt-0">
                 <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
                   <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

@@ -34,13 +34,24 @@ export const DemirturkWebsite: React.FC = () => {
       const tourParam = params.get('tur')
       const contactParam = params.get('iletisim')
 
-      if (pathname.includes('karasuda-daire-sahibi-olmak') || articleParam === 'karasuda-daire-sahibi-olmak') {
-        const found = ARTICLES_DATA.find((a) => a.id === 'karasuda-daire-sahibi-olmak' || a.slug === 'karasuda-daire-sahibi-olmak')
-        if (found) {
-          setSelectedArticle(found)
-          setSelectedProject(null)
-          return
-        }
+      const articleFromPathOrParam = ARTICLES_DATA.find((a) =>
+        (a.slug && (pathname.includes(a.slug.toLowerCase()) || articleParam === a.slug)) ||
+        (a.id && (pathname.includes(a.id.toLowerCase()) || articleParam === a.id))
+      )
+      if (articleFromPathOrParam) {
+        setSelectedArticle(articleFromPathOrParam)
+        setSelectedProject(null)
+        return
+      }
+
+      if (pathname === '/projeler' || pathname === '/projeler/') {
+        setSelectedArticle(null)
+        setSelectedProject(null)
+        window.history.replaceState({}, '', '/')
+        setTimeout(() => {
+          handleNavigate('#projeler')
+        }, 100)
+        return
       }
 
       if (projectParam) {
@@ -48,15 +59,6 @@ export const DemirturkWebsite: React.FC = () => {
         if (found) {
           setSelectedProject(found)
           setSelectedArticle(null)
-          return
-        }
-      }
-
-      if (articleParam) {
-        const found = ARTICLES_DATA.find((a) => a.id === articleParam)
-        if (found) {
-          setSelectedArticle(found)
-          setSelectedProject(null)
           return
         }
       }
@@ -248,6 +250,7 @@ export const DemirturkWebsite: React.FC = () => {
           allArticles={ARTICLES_DATA}
           onClose={handleCloseArticle}
           onSelectArticle={(art) => setSelectedArticle(art)}
+          onNavigate={handleNavigate}
         />
       )}
 
