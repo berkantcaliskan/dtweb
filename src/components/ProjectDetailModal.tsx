@@ -891,10 +891,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <button
                     key={plan.name}
                     onClick={() => setSelectedPlanIndex(idx)}
-                    className={`px-4 py-2 rounded-2xl text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
+                    className={`px-4 py-2 rounded-xl text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
                       selectedPlanIndex === idx
-                        ? 'bg-[#fffff1] text-[#252c33] shadow-md scale-105'
-                        : 'bg-[#313941] text-[#fffff1]/80 hover:bg-[#3a444e] border border-[#fffff1]/15'
+                        ? 'bg-[#fffff1] text-[#252c33] shadow-md border border-[#fffff1]'
+                        : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/10'
                     }`}
                   >
                     {plan.name}

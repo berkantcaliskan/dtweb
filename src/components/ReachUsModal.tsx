@@ -181,8 +181,8 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
               onClick={() => setActiveTab('contact')}
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'contact'
-                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
-                  : 'text-[#fffff1]/70 hover:text-[#fffff1]'
+                  ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
+                  : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
               Temel İletişim Bilgileri
@@ -191,8 +191,8 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
               onClick={() => setActiveTab('career')}
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'career'
-                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
-                  : 'text-[#fffff1]/70 hover:text-[#fffff1]'
+                  ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
+                  : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
               Kariyer & İK

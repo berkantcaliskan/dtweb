@@ -88,20 +88,20 @@ export const ReachUsSection: React.FC = () => {
           <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-2xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
-              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'contact'
-                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
-                  : 'text-[#fffff1]/70 hover:text-[#fffff1]'
+                  ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
+                  : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
               Temel İletişim Bilgileri
             </button>
             <button
               onClick={() => setActiveTab('career')}
-              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'career'
-                  ? 'bg-white/10 text-[#fffff1] font-medium shadow-md border border-[#fffff1]/30'
-                  : 'text-[#fffff1]/70 hover:text-[#fffff1]'
+                  ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
+                  : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
               Kariyer & İK
