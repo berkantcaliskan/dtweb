@@ -84,9 +84,9 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
               <span>/</span>
               <span className="text-[#fffff1]/80 truncate">{article.category}</span>
             </div>
-            <h2 className="font-theSeasons text-sm sm:text-base font-bold text-[#fffff1] truncate max-w-md hidden md:block">
+            <span className="font-theSeasons text-sm sm:text-base font-bold text-[#fffff1] truncate max-w-md hidden md:block">
               {article.title}
-            </h2>
+            </span>
           </div>
         </div>
 
@@ -165,12 +165,39 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
         </div>
 
         {/* Editorial Body Text */}
-        <article className="prose prose-invert max-w-none space-y-6 sm:space-y-8 text-base sm:text-lg lg:text-xl text-[#fffff1]/90 font-light leading-relaxed">
-          {article.paragraphs.map((p, idx) => (
-            <p key={idx} className="first-of-type:text-lg sm:first-of-type:text-2xl first-of-type:leading-relaxed first-of-type:text-[#fffff1]">
-              {p}
-            </p>
-          ))}
+        <article className="max-w-none space-y-6 sm:space-y-8 text-base sm:text-lg lg:text-xl text-[#fffff1]/90 font-light leading-relaxed">
+          {article.sections && article.sections.length > 0 ? (
+            article.sections.map((sec, sIdx) => (
+              <div key={sIdx} className="space-y-4">
+                {sec.heading && (
+                  <h2 className="font-theSeasons text-2xl sm:text-3xl lg:text-4xl font-bold text-[#fffff1] tracking-tight pt-6 first-of-type:pt-0 leading-snug">
+                    {sec.heading}
+                  </h2>
+                )}
+                {sec.paragraphs.map((p, pIdx) => (
+                  <p key={pIdx} className="text-[#fffff1]/85 font-light leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+                {sec.listItems && sec.listItems.length > 0 && (
+                  <ul className="my-5 space-y-2.5 pl-2 sm:pl-4">
+                    {sec.listItems.map((item, lIdx) => (
+                      <li key={lIdx} className="flex items-start space-x-3 text-base sm:text-lg text-[#fffff1]/90">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1] mt-2.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))
+          ) : (
+            article.paragraphs.map((p, idx) => (
+              <p key={idx} className="first-of-type:text-lg sm:first-of-type:text-2xl first-of-type:leading-relaxed first-of-type:text-[#fffff1]">
+                {p}
+              </p>
+            ))
+          )}
         </article>
 
         {/* Interactive Architectural Assurance Callout Box */}

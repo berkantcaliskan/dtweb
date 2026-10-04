@@ -57,30 +57,16 @@
     </image:image>
   </url>
 
-  <!-- Makaleler / Blog -->
+  <!-- Makaleler / Rehber -->
   <url>
-    <loc>https://demirturkinsaat.com/?makale=dogal-sahil-mimarisi</loc>
-    <lastmod>2025-02-14</lastmod>
+    <loc>https://demirturkinsaat.com/makaleler/karasuda-daire-sahibi-olmak/</loc>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://demirturkinsaat.com/?makale=deprem-guvenligi-c35-beton</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://demirturkinsaat.com/?makale=sayfiye-yasamindan-surdurulebilir-eve</loc>
-    <lastmod>2024-12-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://demirturkinsaat.com/?makale=malzeme-tedarikinde-ozkaynak-gucu</loc>
-    <lastmod>2024-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/yenisehirforweb.jpeg</image:loc>
+      <image:title>Karasu’da Daire Sahibi Olmak: Yazlık ve Yıl Boyu Yaşam Rehberi</image:title>
+    </image:image>
   </url>
 
   <!-- Önemli Sayfa Bölümleri -->

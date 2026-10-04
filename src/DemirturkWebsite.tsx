@@ -27,11 +27,21 @@ export const DemirturkWebsite: React.FC = () => {
   // SEO & Deep-linking: sync URL and meta on mount and on selection changes
   useEffect(() => {
     const handleUrlState = () => {
+      const pathname = window.location.pathname.toLowerCase()
       const params = new URLSearchParams(window.location.search)
       const projectParam = params.get('proje')
       const articleParam = params.get('makale')
       const tourParam = params.get('tur')
       const contactParam = params.get('iletisim')
+
+      if (pathname.includes('karasuda-daire-sahibi-olmak') || articleParam === 'karasuda-daire-sahibi-olmak') {
+        const found = ARTICLES_DATA.find((a) => a.id === 'karasuda-daire-sahibi-olmak' || a.slug === 'karasuda-daire-sahibi-olmak')
+        if (found) {
+          setSelectedArticle(found)
+          setSelectedProject(null)
+          return
+        }
+      }
 
       if (projectParam) {
         const found = PROJECTS_DATA.find((p) => p.slug === projectParam || p.id === projectParam)
@@ -79,20 +89,24 @@ export const DemirturkWebsite: React.FC = () => {
       url.searchParams.delete('makale')
       window.history.replaceState({}, '', url.toString())
     } else if (selectedArticle) {
-      document.title = `${selectedArticle.title} | Demirtürk İnşaat Blog`
+      document.title = selectedArticle.seoTitle || `${selectedArticle.title} | Demirtürk İnşaat`
       if (metaDesc) metaDesc.setAttribute('content', selectedArticle.summary.slice(0, 155))
-      const url = new URL(window.location.href)
-      url.searchParams.set('makale', selectedArticle.id)
-      url.searchParams.delete('proje')
-      window.history.replaceState({}, '', url.toString())
+      const targetUrl = selectedArticle.url || `/makaleler/${selectedArticle.slug}/`
+      if (window.location.pathname !== targetUrl) {
+        window.history.replaceState({}, '', targetUrl)
+      }
     } else {
       document.title = defaultTitle
       if (metaDesc) metaDesc.setAttribute('content', defaultDesc)
-      const url = new URL(window.location.href)
-      if (url.searchParams.has('proje') || url.searchParams.has('makale')) {
-        url.searchParams.delete('proje')
-        url.searchParams.delete('makale')
-        window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash)
+      if (window.location.pathname.startsWith('/makaleler/')) {
+        window.history.replaceState({}, '', '/')
+      } else {
+        const url = new URL(window.location.href)
+        if (url.searchParams.has('proje') || url.searchParams.has('makale')) {
+          url.searchParams.delete('proje')
+          url.searchParams.delete('makale')
+          window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash)
+        }
       }
     }
   }, [selectedProject, selectedArticle])

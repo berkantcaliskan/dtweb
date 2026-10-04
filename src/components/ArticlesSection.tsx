@@ -1,81 +1,121 @@
 import React from 'react'
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react'
 
+export interface ArticleSection {
+  heading?: string // rendered as <h2> in article body
+  paragraphs: string[]
+  listItems?: string[]
+}
+
 export interface ArticleItem {
   id: string
+  slug: string
+  url: string
   title: string
+  seoTitle?: string
   subtitle: string
   category: string
   readTime: string
   date: string
   image: string
   summary: string
+  sections: ArticleSection[]
   paragraphs: string[]
 }
 
 export const ARTICLES_DATA: ArticleItem[] = [
   {
-    id: 'dogal-sahil-mimarisi',
-    title: 'Karasu Kıyı Şeridinde Doğal Mimari: Rüzgar, Dalga ve Gün Işığı',
-    subtitle: 'Deniz ikliminin dinamiklerini mimari avantaja dönüştüren tasarım kriterleri.',
-    category: 'Mimari & Tasarım',
-    readTime: '4 dk okuma',
-    date: '14 Şubat 2025',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    id: 'karasuda-daire-sahibi-olmak',
+    slug: 'karasuda-daire-sahibi-olmak',
+    url: '/makaleler/karasuda-daire-sahibi-olmak/',
+    seoTitle: 'Karasu’da Daire Sahibi Olmak ve Yaşam | Demirtürk İnşaat',
+    title: 'Karasu’da Daire Sahibi Olmak: Yazlık ve Yıl Boyu Yaşam Rehberi',
+    subtitle: 'Karasu’da yazlık veya sürekli yaşam için daire seçerken konum, daire planı, sosyal alanlar ve ödeme seçenekleri rehberi.',
+    category: 'Rehber & Yaşam',
+    readTime: '6 dk okuma',
+    date: '4 Ekim 2026',
+    image: '/images/yenisehirforweb.jpeg',
     summary:
-      'Doğayla uyumlu sahil konutlarımız, Karadeniz’in güçlü poyraz rüzgarlarını ve tuzlu deniz havasını yapı fiziğine uygun dayanıklı malzemelerle karşılıyor.',
+      'Karasu’da yazlık veya sürekli yaşayacağınız bir daire seçerken hangi özellikleri önceliklendirmelisiniz? Konumdan sosyal alanlara, daire planından ödeme seçeneklerine kadar kararınızı kolaylaştıracak noktaları bir araya getirdik.',
     paragraphs: [
-      'Karasu’nun sahil şeridinde bir yapı tasarlamak, yalnızca dört duvar örmek değil; doğayla uyum sağlayan ferah yaşam alanları oluşturmaktır. Kıyı şeridinde inşa edilen yapılarda rüzgar yönü, cephe yerleşimi ve güneş ışığı açıları tasarımın temel belirleyicileridir.',
-      'Demirtürk projelerinde, binaların kütle yerleşimi rüzgarı bloke etmek yerine yönlendiren dengeli formlarla kurgulanır. Kademeli balkonlar ve güneş kırıcılar, hem doğal havalandırmayı sağlar hem de iç mekanlarda mahremiyet oluşturur.',
-      'Geniş cam yüzeyler, ufuk çizgisini ve gün batımını yaşayan mekanların merkezine taşırken; çift katmanlı ısı yalıtımı ve marin tipi cephe boyaları yapının yıllarca ilk günkü estetiğini korumasını temin eder.'
-    ]
-  },
-  {
-    id: 'deprem-guvenligi-c35-beton',
-    title: 'Deprem Kuşağında Sarsılmaz Güven: C35 Beton ve Nervürlü Çelik Standartları',
-    subtitle: 'Zemin etüdünden radye temele, tavizsiz yapı güvenliğinin mühendislik anatomisi.',
-    category: 'Mühendislik & Statik',
-    readTime: '5 dk okuma',
-    date: '28 Ocak 2025',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
-    summary:
-      'Deprem güvenliği bir seçenek değil, Demirtürk İnşaat’ın 2003’ten bu yana vazgeçilmez temel ilkesidir. Kendi tedarik ağımızdaki sertifikalı demir ve C35 beton kullanımı bu güvencenin belkemiğidir.',
-    paragraphs: [
-      'Sakarya ve çevresi, 1999 yılından bu yana zemin mekaniği ve deprem bilincinin en yüksek olduğu bölgelerden biridir. Demirtürk olarak, temel tasarımında zemin etüdünün öngördüğü en üst parametreleri baz alıyoruz.',
-      'Projelerimizde standart C25 yerine C35 sınıfı yüksek dayanımlı hazır beton ve laboratuvar onaylı BÇ III nervürlü inşaat çeliği kullanıyoruz. Su geçirimsiz katkılı radye jeneral temel sistemi ile zemin sıvılaşma riskini sıfıra indiriyoruz.',
-      'Kaba inşaat aşamasında her dökümden alınan numuneler bağımsız yapı denetim kuruluşlarınca kırılma testine tabi tutulur ve sonuçlar dijital şantiye arşivimizde saklanır.'
-    ]
-  },
-  {
-    id: 'sayfiye-yasamindan-surdurulebilir-eve',
-    title: 'Sayfiye Yaşamının Evrimi: Dört Mevsim Sürdürülebilir Havuzlu Siteler',
-    subtitle: 'Karasu’da yazlık konseptinin yıl boyu yaşanabilir modern rezidanslara dönüşümü.',
-    category: 'Yaşam & Trendler',
-    readTime: '3 dk okuma',
-    date: '12 Aralık 2024',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-    summary:
-      'Artık sahil evleri yalnızca 3 aylık tatil mekanları değil; uzaktan çalışan, doğayla iç içe huzurlu bir yaşam arayan şehir insanının 365 günlük birincil yaşam adresi haline geliyor.',
-    paragraphs: [
-      'Son yıllarda Kuzey Marmara Otoyolu’nun Karasu bağlantısı sayesinde İstanbul ile Karasu arasındaki mesafe 1.5 saate inmiştir. Bu ulaşım devrimi, sahil kasabası yaşamını metropol çalışanları için kalıcı bir alternatife dönüştürdü.',
-      'Demirtürk havuzlu sitelerinde yerden ısıtma sistemleri, fiber optik internet altyapısı, 24/7 güvenlik ve akıllı ev otomasyonu gibi donatıları standart hale getirdik. Böylece kışın da sıcak, konforlu ve güvenli bir yaşam sunuyoruz.',
-      'Site sakinlerimiz sabah sahil yürüyüşünü yapıp çam ormanı kokusuyla gününe başlayabiliyor; işlerini evinden yürütüp akşam şömine ve havuz başında vakit geçirebiliyor.'
-    ]
-  },
-  {
-    id: 'malzeme-tedarikinde-ozkaynak-gucu',
-    title: 'İnşaatta Özkaynak Gücü: Kendi Malzememizle Kesintisiz Şantiye Disiplini',
-    subtitle: 'Tedarik krizlerine takılmadan, zamanında ve taahhüt edilen kalitede teslimat.',
-    category: 'Sektörel Vizyon',
-    readTime: '4 dk okuma',
-    date: '18 Kasım 2024',
-    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
-    summary:
-      'Demirtürk İnşaat’ın en büyük rekabet avantajlarından biri, bölgenin önde gelen yapı market ve hammadde tedarikçisi olmasıdır. Bu sayede maliyet ve takvim kontrolü daima elimizdedir.',
-    paragraphs: [
-      'İnşaat sektöründe yaşanan teslimat gecikmelerinin en büyük sebebi malzeme tedarik zincirindeki aksamalar ve kontrolsüz fiyat dalgalanmalarıdır.',
-      'Demirtürk, temelden çatıya demir, çimento, tuğla ve yalıtım malzemelerinin doğrudan toptancısı ve stokçusudur. Bu sayede projelerimiz hiçbir malzeme darboğazına uğramadan planlanan takvimde ilerler.',
-      'Kendi malzememizle inşa etmek; girdi kalitesini doğrudan denetleme ve aracı karını ortadan kaldırarak yatırımcılarımıza elden senetli esnek vade imkanı sunma gücümüzün de ana kaynağıdır.'
+      'Karasu’da daire sahibi olmak, bazıları için yaz aylarında kendi evinde tatil yapmak, bazıları içinse denize yakın bir yerde yeni bir yaşam kurmak anlamına geliyor. Sakarya’nın Karadeniz kıyısındaki ilçesi Karasu’yu değerlendirirken yalnızca evin görüntüsüne değil, günlük hayatınıza ne kadar uyduğuna da bakmak gerekiyor.',
+      'Peki, Karasu’da yazlık veya sürekli yaşayacağınız bir daire seçerken hangi özellikleri önceliklendirmelisiniz? Konumdan sosyal alanlara, daire planından ödeme seçeneklerine kadar kararınızı kolaylaştıracak noktaları bir araya getirdik.'
+    ],
+    sections: [
+      {
+        paragraphs: [
+          'Karasu’da daire sahibi olmak, bazıları için yaz aylarında kendi evinde tatil yapmak, bazıları içinse denize yakın bir yerde yeni bir yaşam kurmak anlamına geliyor. Sakarya’nın Karadeniz kıyısındaki ilçesi Karasu’yu değerlendirirken yalnızca evin görüntüsüne değil, günlük hayatınıza ne kadar uyduğuna da bakmak gerekiyor.',
+          'Peki, Karasu’da yazlık veya sürekli yaşayacağınız bir daire seçerken hangi özellikleri önceliklendirmelisiniz? Konumdan sosyal alanlara, daire planından ödeme seçeneklerine kadar kararınızı kolaylaştıracak noktaları bir araya getirdik.'
+        ]
+      },
+      {
+        heading: 'Karasu’da yaşam: Deniz ve doğayla zaman geçirmek',
+        paragraphs: [
+          'Deniz kenarında yürüyüş yapmak, hafta sonlarını açık havada geçirmek ve tatil dönemlerinde kendi evinizin rahatlığını yaşamak istiyorsanız Karasu değerlendirebileceğiniz seçeneklerden biri.',
+          'Bölgenin doğayla ilişkisi sahille sınırlı değil. Karasu ve Kaynarca arasında bulunan Acarlar Longozu da çevreyi keşfetmek isteyenler için farklı bir gezi seçeneği sunuyor.',
+          'Ancak yaşam tercihinizi yalnızca bir yaz ziyaretine göre yapmamak önemli. Daire düşündüğünüz çevreyi farklı gün ve saatlerde görmek; ulaşımı, çevredeki işletmeleri ve mahallenin günlük düzenini incelemek daha bilinçli bir seçim yapmanıza yardımcı olur.'
+        ]
+      },
+      {
+        heading: 'Yazlık kullanım mı, yıl boyunca yaşam mı?',
+        paragraphs: [
+          'Karasu’da ev aramaya başlamadan önce yanıtlanması gereken ilk soru, daireyi nasıl kullanacağınızdır.',
+          'Yazlık olarak kullanacağınız bir evde sahile erişim, balkon, havuz ve siz yokken binanın nasıl yönetildiği ön plana çıkabilir. Hafta sonları gelmeyi düşünüyorsanız bulunduğunuz şehirden ulaşımı ve otopark imkânını da değerlendirmelisiniz.',
+          'Yıl boyunca yaşayacağınız bir dairede ise markete, sağlık hizmetlerine, okula ve günlük ulaşım noktalarına erişim daha belirleyici olabilir. Isınma sistemi, yalıtım, depolama alanları ve internet altyapısı da evi gezerken sorulması gereken konular arasındadır.',
+          'En uygun daire, kullanım alışkanlıklarınıza ve bütçenize birlikte cevap veren dairedir.'
+        ]
+      },
+      {
+        heading: 'Karasu’da 1+1 mi, 2+1 daire mi tercih edilmeli?',
+        paragraphs: [
+          'Karasu’da 1+1 daire seçenekleri, daha kompakt bir yaşam alanı isteyenler veya dönemsel kullanım planlayanlar için değerlendirilebilir. Bununla birlikte oda sayısının yanında salonun kullanımı, mutfak yerleşimi ve depolama imkânları da önemlidir.',
+          '2+1 daireler ise çocuk odasına, çalışma alanına veya misafir odasına ihtiyaç duyanlar için daha uygun olabilir. Özellikle uzun süreli konaklamalarda ayrı bir odanın sağlayacağı esnekliği düşünmek faydalıdır.',
+          'İki daireyi karşılaştırırken yalnızca brüt metrekareye bakmayın. Net kullanım alanını, odaların yerleşimini, gün ışığını ve balkonun günlük yaşamınıza katkısını birlikte değerlendirin.'
+        ]
+      },
+      {
+        heading: 'Bahçe, havuz ve sosyal alanlar neden önemli?',
+        paragraphs: [
+          'Bir konut projesinin sunduğu ortak alanlar, evde geçirdiğiniz zamanın niteliğini etkileyebilir. Havuz, spor salonu, çocuk oyun alanı ve kafeterya gibi imkânları değerlendirirken bunlardan hangilerini gerçekten kullanacağınızı düşünün.',
+          'Bahçeli bir giriş katı arıyorsanız bahçenin büyüklüğü kadar mahremiyetini, bakım ihtiyacını ve kullanım koşullarını da sorun. Ortak alanların çalışma dönemlerini, bakım düzenini ve aidata etkisini öğrenin.',
+          'Demirtürk İnşaat’ın Yenişehir 3. Etap projesinde modern ve zamansız mimariye; iki havuz, spor salonu, kapalı çocuk oyun alanı ve kafeterya eşlik ediyor. Giriş katlarındaki müstakil bahçe seçeneklerinin yanında hidrofor sistemi, güneş enerjisi ve araç şarj istasyonu da projenin özellikleri arasında yer alıyor.',
+          'İlgilendiğiniz daireye ait özellikleri, projenin mevcut durumunu ve teslim kapsamını ekibimizden öğrenebilirsiniz.'
+        ]
+      },
+      {
+        heading: 'Karasu’da daire fiyatlarını karşılaştırırken nelere bakılmalı?',
+        paragraphs: [
+          'Karasu’da satılık daire araştırırken fiyatları aynı özelliklere sahip konutlar üzerinden karşılaştırmak daha anlamlıdır. Konum, net alan, kat, cephe, yapı özellikleri, teslim durumu ve sosyal olanaklar değerlendirmeyi etkileyebilir.',
+          'Aynı oda sayısına sahip iki dairenin kullanım alanları ve sunduğu imkânlar farklı olabilir. Bu nedenle fiyat bilgisi alırken dairenin planını ve satış kapsamını da istemek gerekir.',
+          'Peşinat ve aylık taksitlerin yanında toplam satış bedelini, varsa ara ödemeleri ve ek giderleri birlikte değerlendirin. Böylece ilk bakışta uygun görünen bir ödeme planının bütçenize uzun vadede de uyup uymadığını daha rahat görebilirsiniz.'
+        ]
+      },
+      {
+        heading: 'Size uygun ödeme planını nasıl değerlendirebilirsiniz?',
+        paragraphs: [
+          'Daire seçimi kadar ödeme planının sürdürülebilir olması da önemlidir. Ayırabileceğiniz peşinatı ve düzenli olarak karşılayabileceğiniz aylık ödemeyi belirlemek, seçenekleri daraltmanızı kolaylaştırır.',
+          'Görüşme sırasında şu bilgileri birlikte isteyin:'
+        ],
+        listItems: [
+          'İlgilendiğiniz dairenin toplam satış bedeli.',
+          'Peşinat tutarı ve ödeme tarihleri.',
+          'Aylık taksitler, vade ve varsa ara ödemeler.',
+          'Teslim takvimi ve satış bedeline dahil olan özellikler.'
+        ]
+      },
+      {
+        paragraphs: [
+          'Ödeme seçenekleri daireye ve güncel kampanya koşullarına göre değişebilir. Bu nedenle kararınızı size özel hazırlanmış, ayrıntıları açık bir plan üzerinden vermeniz faydalıdır.'
+        ]
+      },
+      {
+        heading: 'Karasu’daki daire seçeneklerini yerinde inceleyin',
+        paragraphs: [
+          'Fotoğraflar ve proje görselleri ilk değerlendirmeyi kolaylaştırır. Yerinde ziyaret ise odaların kullanımını, çevreyi ve projenin günlük yaşamınıza uygunluğunu daha iyi anlamanızı sağlar.',
+          'Demirtürk İnşaat olarak Karasu’daki projelerimizi tanımanız, daire seçeneklerini karşılaştırmanız ve bütçenize uygun ödeme planını değerlendirmeniz için sizi ofisimize bekliyoruz.',
+          'Güncel daire seçenekleri ve ödeme koşulları hakkında bilgi almak için bizimle iletişime geçin.'
+        ]
+      }
     ]
   }
 ]
@@ -98,34 +138,34 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
             Mimari ve Mühendislik Makaleleri
           </h2>
           <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
-            Karasu kıyı mimarisi, deprem mühendisliği, malzeme bilimi ve sayfiye yaşamının geleceğine dair uzman yazılarımız.
+            Karasu’da daire sahibi olma rehberi, konut alırken dikkat edilmesi gerekenler ve sayfiye yaşamının geleceğine dair uzman yazılarımız.
           </p>
         </div>
 
-        {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Featured Flagship Article Card */}
+        <div className="max-w-4xl">
           {ARTICLES_DATA.map((article) => (
             <article
               key={article.id}
               onClick={() => onSelectArticle && onSelectArticle(article)}
-              className="group cursor-pointer bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
+              className="group cursor-pointer bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col md:flex-row shadow-xl hover:shadow-2xl"
             >
-              <div>
-                <div className="relative aspect-[16/9] overflow-hidden bg-black/40">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/90 via-black/30 to-transparent" />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
-                    {article.category}
-                  </div>
+              <div className="relative md:w-1/2 aspect-[16/10] md:aspect-auto min-h-[260px] overflow-hidden bg-black/40 flex-shrink-0">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/90 via-transparent to-transparent md:hidden" />
+                <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                  {article.category}
                 </div>
+              </div>
 
-                <div className="p-6">
-                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60 mb-2">
+              <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60 mb-3">
                     <span className="flex items-center">
                       <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {article.date}
                     </span>
@@ -135,19 +175,17 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
                     </span>
                   </div>
 
-                  <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1] group-hover:text-white transition-colors mb-2.5 leading-snug">
+                  <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] group-hover:text-white transition-colors mb-3 leading-snug">
                     {article.title}
                   </h3>
 
-                  <p className="text-sm text-[#fffff1]/80 line-clamp-3 font-light leading-relaxed mb-4">
+                  <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-4 font-light leading-relaxed">
                     {article.summary}
                   </p>
                 </div>
-              </div>
 
-              <div className="p-6 pt-0">
-                <div className="pt-4 border-t border-[#fffff1]/5 flex items-center justify-between text-sm text-[#fffff1] font-medium">
-                  <span>Makaleyi Oku</span>
+                <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
+                  <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
