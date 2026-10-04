@@ -138,7 +138,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
         {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < >, Right = Stacked Social Icons) */}
-        <div className="flex sm:hidden items-end justify-between w-full pt-4 border-t border-[#fffff1]/10">
+        <div className="flex sm:hidden items-end justify-between w-full pt-4">
           {/* Left: Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
