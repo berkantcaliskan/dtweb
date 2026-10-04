@@ -1,5 +1,5 @@
-import React from 'react'
-import { ArrowUpRight, Clock, Calendar } from 'lucide-react'
+import React, { useState } from 'react'
+import { ArrowUpRight, Clock, Calendar, ChevronDown, ChevronUp } from 'lucide-react'
 
 export interface ArticleSection {
   heading?: string // rendered as <h2> in article body
@@ -217,6 +217,189 @@ export const ARTICLES_DATA: ArticleItem[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'karasuda-yazlik-almak',
+    slug: 'karasuda-yazlik-almak',
+    url: '/makaleler/karasuda-yazlik-almak/',
+    seoTitle: 'Karasu’da Yazlık Almak: Seçim Rehberi | Demirtürk İnşaat',
+    title: 'Karasu’da Yazlık Almak: Tatil Alışkanlıklarınıza Uygun Evi Nasıl Seçersiniz?',
+    subtitle:
+      'Karasu’da yazlık alırken konum, balkon, havuz, bakım giderleri ve mevsimsel kullanımı değerlendirin. İhtiyaçlarınıza uygun yazlığı seçmek için rehberimizi okuyun.',
+    category: 'Yazlık & Yaşam',
+    readTime: '6 dk okuma',
+    date: '6 Mayıs 2025',
+    image: '/images/alminaforweb.jpeg',
+    summary:
+      'Karasu’da yazlık alırken konum, balkon, havuz, bakım giderleri ve mevsimsel kullanımı değerlendirin. İhtiyaçlarınıza uygun yazlığı seçmek için rehberimizi okuyun.',
+    paragraphs: [
+      'Cuma akşamı yola çıkıp hafta sonunu kendi evinizde geçirmek, yaz tatilini rezervasyon tarihlerine göre planlamamak, her ziyaretinizde tanıdık bir çevreye dönmek… Karasu’da yazlık sahibi olma fikri, yalnızca bir daire satın almaktan daha fazlasını ifade edebilir.',
+      'Ancak güzel bir tatil geçirdiğiniz yerle size uygun yazlığın bulunduğu yer her zaman aynı olmayabilir. Doğru seçim için evin görünümünün yanında ulaşımı, kullanım alışkanlıklarınızı ve yıl boyunca oluşacak giderleri de değerlendirmek gerekir.'
+    ],
+    sections: [
+      {
+        paragraphs: [
+          'Cuma akşamı yola çıkıp hafta sonunu kendi evinizde geçirmek, yaz tatilini rezervasyon tarihlerine göre planlamamak, her ziyaretinizde tanıdık bir çevreye dönmek… Karasu’da yazlık sahibi olma fikri, yalnızca bir daire satın almaktan daha fazlasını ifade edebilir.',
+          'Ancak güzel bir tatil geçirdiğiniz yerle size uygun yazlığın bulunduğu yer her zaman aynı olmayabilir. Doğru seçim için evin görünümünün yanında ulaşımı, kullanım alışkanlıklarınızı ve yıl boyunca oluşacak giderleri de değerlendirmek gerekir.'
+        ]
+      },
+      {
+        heading: 'Önce yazlığı ne sıklıkla kullanacağınızı düşünün',
+        paragraphs: [
+          'Yazlığınıza her hafta sonu gelmekle, yılda birkaç hafta kalmak farklı ihtiyaçlar doğurur.',
+          'Kısa ve sık ziyaretler planlıyorsanız yolculuğun süresi, otopark ve eve vardığınızda günlük ihtiyaçlara kolayca ulaşabilmek önem kazanır. İstanbul’dan gelecekseniz ulaşımı yalnızca haritadaki mesafeyle değerlendirmeyin; çıkış noktanıza ve kullanacağınız günlere göre güzergâhı inceleyin.',
+          'Uzun süreli konaklamalarda ise mutfağın kullanışlılığı, depolama alanları, çamaşır düzeni ve evin farklı saatlerde aldığı gün ışığı daha belirleyici olabilir. Çocuklarla veya kalabalık aileyle tatil yapıyorsanız oda yerleşimini de buna göre düşünün.'
+        ]
+      },
+      {
+        heading: 'Denize yakınlık kadar ulaşım güzergâhı da önemli',
+        paragraphs: [
+          'Karasu’da satılık yazlık araştırırken “denize yakın” ifadesiyle sık karşılaşabilirsiniz. Bu özelliği değerlendirmenin en iyi yolu, daireden sahile gerçekten yürümektir.',
+          'Güzergâhın uzunluğu kadar karşıdan karşıya geçmeniz gereken yolları, kaldırımları ve plaja erişimi de gözlemleyin. Özellikle çocuklarla, bebek arabasıyla veya plaj eşyalarıyla yürürken kısa görünen bir mesafe farklı hissedilebilir.',
+          'Konumu ziyaret edeceğiniz saatlerde incelemek de faydalıdır. Yazlığın çevresindeki işletmeler, araç hareketliliği ve ses düzeyi, tatilden beklediğiniz sakinlikle ne kadar örtüşüyor? Sahile yakınlıkla mahremiyet arasında sizin için doğru dengeyi arayın.'
+        ]
+      },
+      {
+        heading: 'Balkon ve iç mekân: Metrekareyi nasıl kullanacaksınız?',
+        paragraphs: [
+          'Bir yazlıkta balkon, evin en çok vakit geçirilen alanlarından biri olabilir. Ancak yalnızca balkonun bulunması yeterli değildir. Masa ve sandalyelerin rahatça yerleşip yerleşmediğini, güneş aldığı saatleri ve komşu dairelerle ilişkisini değerlendirin.',
+          'İç mekânda da toplam metrekareden çok yerleşimin günlük kullanımınıza uygunluğu önemlidir. Misafir ağırlayacak mısınız? Ayrı bir çocuk odasına ihtiyacınız var mı? Plaj eşyalarını ve mevsimlik malzemeleri nerede saklayacaksınız?',
+          '1+1 daireler daha kompakt bir kullanım sunabilirken, 2+1 seçenekler ayrı oda ihtiyacı olan ailelere esneklik sağlayabilir. Kararı yalnızca oda sayısına göre değil, mobilyaların yerleşebileceği gerçek kullanım alanına göre verin.'
+        ]
+      },
+      {
+        heading: 'Havuzlu ve bahçeli yazlıklarda hangi ayrıntılar sorulmalı?',
+        paragraphs: [
+          'Havuz, bahçe ve ortak alanlar tatil deneyimini zenginleştirebilir. Bununla birlikte bu alanların kullanım ve bakım koşullarını öğrenmek gerekir.',
+          'Havuzlu bir projede sezonun hangi tarihlerde başladığını, çalışma saatlerini ve bakım düzenini sorun. Bahçeli bir giriş katında ise bahçenin kullanım hakkını, sınırlarını, mahremiyetini ve bakım sorumluluğunu netleştirin.',
+          'Otopark, çocuk oyun alanı veya kafeterya gibi özellikleri de kendi ihtiyaçlarınız üzerinden değerlendirin. Sık kullanacağınız bir imkân sizin için değerli olabilir; kullanmayacağınız alanların aidat üzerindeki etkisini ise bilmek istersiniz.'
+        ]
+      },
+      {
+        heading: 'Yazlık bütçesi yalnızca satın alma bedelinden oluşmaz',
+        paragraphs: [
+          'Karasu’da yazlık fiyatlarını karşılaştırırken dairenin konumunu, büyüklüğünü, teslim durumunu ve satış kapsamını birlikte inceleyin. Aynı oda sayısına sahip iki evin donanımı ve ihtiyaç duyacağı ek harcamalar farklı olabilir.',
+          'Satın alma bütçesinin yanında şu giderleri de planlayın:'
+        ],
+        listItems: [
+          'Eşya, beyaz eşya ve varsa eksik donanımlar.',
+          'Aidat ve ortak alan bakım giderleri.',
+          'Kullanım dışı dönemlerde evin kontrolü ve bakımı.',
+          'Ulaşım, temizlik ve olası onarım masrafları.'
+        ]
+      },
+      {
+        paragraphs: [
+          'Kendi yazlığınızda konaklamak otel ihtiyacınızı azaltabilir. Bunun toplamda ne kadar tasarruf sağlayacağı ise evi ne sıklıkla kullandığınıza ve yıllık giderlerine bağlıdır.'
+        ]
+      },
+      {
+        heading: 'Yaz dışında da kullanmak istiyorsanız',
+        paragraphs: [
+          'Yazlığınıza sonbaharda veya kışın da gelmeyi düşünüyorsanız evi bu kullanım biçimine göre inceleyin. Isınma sistemi, pencere ve kapıların durumu, havalandırma ve yalıtım hakkında bilgi alın.',
+          'Çevredeki işletmelerin yıl boyunca açık olup olmadığını ve sitenin sezon dışındaki yönetimini de sorun. Yazın birkaç gün geçirdiğiniz bir evin, farklı mevsimlerde de beklentilerinizi karşılayıp karşılamadığını böyle değerlendirebilirsiniz.',
+          'Kiraya verme seçeneğini düşünüyorsanız beklenen gelirin yanında boş kalabilecek dönemleri, bakım ve yönetim masraflarını da hesaba katın. Kiralama biçimine uygun güncel izin ve yükümlülükleri ayrıca kontrol edin.'
+        ]
+      },
+      {
+        heading: 'Karasu’daki yazlık seçeneklerini yerinde inceleyin',
+        paragraphs: [
+          'İyi bir yazlık seçimi, en fazla özelliği sunan evi bulmaktan çok tatil alışkanlıklarınıza uygun evi belirlemektir. Bazen kullanışlı bir balkon, bazen rahat ulaşım, bazen de ailenizin birlikte vakit geçirebileceği alanlar kararınızda öne çıkar.',
+          '[Demirtürk İnşaat’ın Karasu’daki projelerini](https://demirturkinsaat.com/projeler/) inceleyerek daire seçenekleri hakkında bilgi alabilirsiniz. Kullanım planınızı ve bütçenizi birlikte değerlendirmek, projelerimizi yerinde görmek ve güncel ödeme koşullarını öğrenmek için sizi ofisimize bekliyoruz.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'karasu-satilik-daire-secim-rehberi',
+    slug: 'karasu-satilik-daire-secim-rehberi',
+    url: '/makaleler/karasu-satilik-daire-secim-rehberi/',
+    seoTitle: 'Karasu Satılık Daire Seçim Rehberi | Demirtürk İnşaat',
+    title: 'Karasu’da Satılık Daire Seçerken Sorulması Gereken 7 Soru',
+    subtitle:
+      'Karasu’da satılık daireleri karşılaştırırken net alan, konum, yapı belgeleri, teslim kapsamı ve ödeme planında nelere bakmanız gerektiğini öğrenin.',
+    category: 'Rehber & Tavsiyeler',
+    readTime: '7 dk okuma',
+    date: '1 Mayıs 2025',
+    image: '/images/seasideforweb.jpeg',
+    summary:
+      'Karasu’da satılık daireleri karşılaştırırken net alan, konum, yapı belgeleri, teslim kapsamı ve ödeme planında nelere bakmanız gerektiğini öğrenin.',
+    paragraphs: [
+      'Karasu’da satılık daire ararken benzer fotoğraflar, aynı oda sayıları ve farklı fiyatlarla karşılaşabilirsiniz. İlk bakışta birbirine benzeyen iki daire; kullanılabilir alanı, yapı özellikleri, teslim kapsamı veya ödeme koşulları bakımından önemli farklar taşıyabilir.',
+      'Bu nedenle karar vermeden önce her daireye aynı soruları yöneltmek faydalıdır. Aşağıdaki yedi soru, ilanları daha anlamlı karşılaştırmanıza ve satış görüşmesinden ihtiyaç duyduğunuz bilgilerle ayrılmanıza yardımcı olabilir.'
+    ],
+    sections: [
+      {
+        paragraphs: [
+          'Karasu’da satılık daire ararken benzer fotoğraflar, aynı oda sayıları ve farklı fiyatlarla karşılaşabilirsiniz. İlk bakışta birbirine benzeyen iki daire; kullanılabilir alanı, yapı özellikleri, teslim kapsamı veya ödeme koşulları bakımından önemli farklar taşıyabilir.',
+          'Bu nedenle karar vermeden önce her daireye aynı soruları yöneltmek faydalıdır. Aşağıdaki yedi soru, ilanları daha anlamlı karşılaştırmanıza ve satış görüşmesinden ihtiyaç duyduğunuz bilgilerle ayrılmanıza yardımcı olabilir.'
+        ]
+      },
+      {
+        heading: '1. Bu daire hangi ihtiyacımı karşılayacak?',
+        paragraphs: [
+          'Daireyi sürekli yaşamak, hafta sonları kullanmak veya kiraya vermek için mi düşünüyorsunuz? Aramaya başlamadan önce bu soruya cevap vermek, seçenekleri doğru ölçütlerle değerlendirmenizi sağlar.',
+          'Sürekli yaşam için okul, market, sağlık hizmetleri ve günlük ulaşım önem kazanabilir. Dönemsel kullanımda ise sahile erişim, bakım kolaylığı ve siz yokken binanın yönetimi ön plana çıkabilir.',
+          'Önceliklerinizi üç başlıkta yazın: mutlaka bulunması gerekenler, olsa iyi olacaklar ve vazgeçebilecekleriniz. Böylece etkileyici bir görselin veya tek bir özelliğin bütün kararınızı yönlendirmesini önleyebilirsiniz.'
+        ]
+      },
+      {
+        heading: '2. İlanda yazan alanın ne kadarı gerçekten kullanılabilir?',
+        paragraphs: [
+          'Brüt ve net alan bilgilerini ayrı ayrı isteyin. Mümkünse ölçülü daire planını inceleyerek odaların, koridorların ve balkonun yerleşimini değerlendirin.',
+          'Aynı metrekaredeki iki daire farklı kullanım rahatlığı sunabilir. Geniş görünen bir salonun kapı ve pencere yerleşimi mobilya kullanımını sınırlayabilir; iyi planlanmış daha küçük bir alan ise ihtiyaçlarınıza daha uygun olabilir.',
+          'Daireyi gezerken yalnızca boş hâline bakmayın. Yemek masasının, koltukların, yatağın ve dolapların nerede duracağını düşünün. Evden çalışıyorsanız sessiz bir çalışma alanı ayırıp ayıramayacağınızı da değerlendirin.'
+        ]
+      },
+      {
+        heading: '3. Konum günlük hayatımda nasıl işleyecek?',
+        paragraphs: [
+          'Harita üzerindeki yakınlık, günlük hayattaki erişim kolaylığıyla her zaman aynı değildir. Daireden markete, sahile veya kullanacağınız ulaşım noktasına giden yolu mümkünse yerinde görün.',
+          'Mahalle kadar sokağın özellikleri de önemlidir. Araç trafiği, otopark, çevredeki işletmeler ve devam eden inşaatlar yaşam deneyimini etkileyebilir.',
+          'Daireyi farklı saatlerde ziyaret etmek; gün ışığını, çevrenin ses düzeyini ve hareketliliğini daha iyi anlamanızı sağlar. Karasu’ya başka bir şehirden gelecekseniz yolculuğu kendi çıkış noktanıza göre değerlendirin.'
+        ]
+      },
+      {
+        heading: '4. Yapı ve taşınmaz hakkında hangi belgeleri incelemeliyim?',
+        paragraphs: [
+          'Satış görüşmesinde tapu niteliği, ruhsat ve yapı kullanma izin belgesi — yaygın adıyla iskân — hakkında bilgi isteyin. İnşaatı devam eden bir projeyle tamamlanmış bir konutun belge ve teslim durumunu ayrı değerlendirin.',
+          'Yapı güvenliğine ilişkin değerlendirmeyi yalnızca binanın yeni görünmesine veya satış ifadesine dayandırmayın. Zemin ve yapı belgelerini, teknik bilgileri ve gerektiğinde bağımsız uzman görüşünü dikkate alın.',
+          'Tapu üzerindeki kayıtlar veya sözleşme hükümleri hakkında anlaşılmayan bir nokta varsa imzadan önce açıklığa kavuşturun. Belgelerle ilgili sorularınızı sürecin sonuna bırakmamak, daha bilinçli karar vermenizi sağlar.'
+        ]
+      },
+      {
+        heading: '5. Fiyata tam olarak neler dahil?',
+        paragraphs: [
+          'İncelediğiniz görseldeki her unsur satış kapsamına dahil olmayabilir. Örnek dairedeki mobilyalar, dekoratif uygulamalar, ankastre ürünler veya peyzaj düzenlemeleri için ayrı ayrı bilgi alın.',
+          'Dairenin teslim kapsamını yazılı olarak istemek faydalıdır. Mutfak ve banyo donanımı, ısıtma sistemi, kapı ve pencere özellikleri gibi ayrıntıları bu kapsam üzerinden karşılaştırabilirsiniz.',
+          'Proje görselleştirmeleriyle mevcut durumu da ayırın. Henüz tamamlanmamış sosyal alanların hangi takvimde ve hangi kapsamda teslim edileceğini sorun.'
+        ]
+      },
+      {
+        heading: '6. Sosyal alanların kullanım koşulları ve giderleri neler?',
+        paragraphs: [
+          'Havuz, spor salonu, çocuk oyun alanı, otopark ve bahçe gibi özellikler daire seçimini etkileyebilir. Ancak bu alanların bulunmasının yanında nasıl işletildiği de önemlidir.',
+          'Aidat tutarını veya yeni projelerde aidat tahmininin hangi giderlere dayandığını öğrenin. Ortak alanların kullanım saatlerini, bakım sorumluluklarını ve varsa ek ücretleri sorun.',
+          'Bahçeli bir daire düşünüyorsanız bahçenin kullanım hakkını ve sınırlarını; otopark içinse daireye ayrılmış bir yer bulunup bulunmadığını netleştirin. Bu ayrıntılar, günlük kullanımda karşılaşabileceğiniz belirsizlikleri azaltır.'
+        ]
+      },
+      {
+        heading: '7. Ödeme planının tamamı bütçeme uygun mu?',
+        paragraphs: [
+          'Başlangıç peşinatı, satın alma kararının yalnızca bir bölümüdür. Toplam satış bedelini, aylık taksitleri, varsa ara ödemeleri ve teslim dönemindeki yükümlülükleri aynı tabloda görün.',
+          'Peşin ve vadeli teklifler sunuluyorsa toplam maliyetlerini karşılaştırın. Satış bedeline dahil olmayan giderleri de sorarak bütçenizde bunlara yer ayırın.',
+          'Ödeme planını yalnızca bugünkü gelirinizle değil, diğer düzenli harcamalarınızla birlikte değerlendirin. Size uygun plan, ödemeleri sürdürebileceğiniz ve koşullarını açıkça bildiğiniz plandır.'
+        ]
+      },
+      {
+        heading: 'Daireleri aynı ölçütlerle karşılaştırın',
+        paragraphs: [
+          'Her ziyaret sonrasında konum, net alan, teslim kapsamı, sosyal alan giderleri ve toplam ödeme için kısa notlar alın. Böylece daireleri yalnızca fotoğraf veya başlangıç fiyatı üzerinden karşılaştırmamış olursunuz.',
+          '[Demirtürk İnşaat’ın projeler sayfasından](https://demirturkinsaat.com/projeler/) Karasu’daki daire seçeneklerini inceleyebilirsiniz. İlgilendiğiniz dairenin planı, proje özellikleri ve güncel ödeme koşulları hakkında bilgi almak için ekibimizle iletişime geçebilirsiniz.',
+          'İhtiyaçlarınızı birlikte değerlendirelim; size uygun daire seçeneklerini yerinde gösterelim.'
+        ]
+      }
+    ]
   }
 ]
 
@@ -225,11 +408,17 @@ export interface ArticlesSectionProps {
 }
 
 export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticle }) => {
+  const [showAll, setShowAll] = useState(false)
+
+  const topArticle = ARTICLES_DATA[0]
+  const remainingArticles = ARTICLES_DATA.slice(1)
+  const displayedRemainingArticles = showAll ? remainingArticles : remainingArticles.slice(0, 2)
+
   return (
     <section id="makaleler" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
-        <div className="mb-14 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
+        <div className="mb-12 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>YAYINLAR & DÜŞÜNCELER / ARTICLES</span>
@@ -242,58 +431,133 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
           </p>
         </div>
 
-        {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
-          {ARTICLES_DATA.map((article) => (
+        {/* 1. Üstte 1 Geniş Makale (Flagship Hero Card) */}
+        {topArticle && (
+          <div className="mb-8 max-w-6xl">
             <article
-              key={article.id}
-              onClick={() => onSelectArticle && onSelectArticle(article)}
-              className="group cursor-pointer bg-white/[0.02] hover:bg-white/[0.05] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-xl hover:shadow-2xl hover:-translate-y-1"
+              onClick={() => onSelectArticle && onSelectArticle(topArticle)}
+              className="group cursor-pointer bg-white/[0.02] hover:bg-white/[0.05] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col lg:flex-row shadow-xl hover:shadow-2xl hover:-translate-y-1"
             >
-              <div>
-                <div className="relative aspect-[16/10] overflow-hidden bg-black/40 flex-shrink-0">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/80 via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
-                    {article.category}
-                  </div>
-                </div>
-
-                <div className="p-6 sm:p-8 space-y-3">
-                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60">
-                    <span className="flex items-center">
-                      <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {article.date}
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center">
-                      <Clock size={13} className="mr-1 text-[#fffff1]/80" /> {article.readTime}
-                    </span>
-                  </div>
-
-                  <h3 className="font-theSeasons text-2xl sm:text-3xl font-semibold text-[#fffff1] group-hover:text-white transition-colors leading-snug line-clamp-2">
-                    {article.title}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-3 font-light leading-relaxed">
-                    {article.summary}
-                  </p>
+              <div className="relative lg:w-1/2 aspect-[16/10] lg:aspect-auto lg:min-h-[340px] overflow-hidden bg-black/40 flex-shrink-0">
+                <img
+                  src={topArticle.image}
+                  alt={topArticle.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/80 via-transparent to-transparent lg:hidden" />
+                <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                  {topArticle.category}
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 pt-0">
+              <div className="p-6 sm:p-10 lg:w-1/2 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60 mb-3">
+                    <span className="flex items-center">
+                      <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {topArticle.date}
+                    </span>
+                    <span>•</span>
+                    <span className="flex items-center">
+                      <Clock size={13} className="mr-1 text-[#fffff1]/80" /> {topArticle.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className="font-theSeasons text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#fffff1] group-hover:text-white transition-colors mb-3.5 leading-snug">
+                    {topArticle.title}
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-3 sm:line-clamp-4 font-light leading-relaxed">
+                    {topArticle.summary}
+                  </p>
+                </div>
+
                 <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
                   <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
             </article>
-          ))}
-        </div>
+          </div>
+        )}
+
+        {/* 2. Altta Kare İkili Grid (Tek seferde en çok 2 kare; Hepsini Göster ile tümü kare ikili veya tekli) */}
+        {displayedRemainingArticles.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
+            {displayedRemainingArticles.map((article) => (
+              <article
+                key={article.id}
+                onClick={() => onSelectArticle && onSelectArticle(article)}
+                className="group cursor-pointer bg-white/[0.02] hover:bg-white/[0.05] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-xl hover:shadow-2xl hover:-translate-y-1"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-black/40 flex-shrink-0">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#252c33]/80 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 px-3 py-1 text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/10 rounded">
+                      {article.category}
+                    </div>
+                  </div>
+
+                  <div className="p-6 sm:p-8 space-y-3">
+                    <div className="flex items-center space-x-3 text-xs text-[#fffff1]/60">
+                      <span className="flex items-center">
+                        <Calendar size={13} className="mr-1 text-[#fffff1]/80" /> {article.date}
+                      </span>
+                      <span>•</span>
+                      <span className="flex items-center">
+                        <Clock size={13} className="mr-1 text-[#fffff1]/80" /> {article.readTime}
+                      </span>
+                    </div>
+
+                    <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white transition-colors leading-snug line-clamp-2">
+                      {article.title}
+                    </h3>
+
+                    <p className="text-sm sm:text-base text-[#fffff1]/80 line-clamp-3 font-light leading-relaxed">
+                      {article.summary}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8 pt-0">
+                  <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
+                    <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
+                    <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+
+        {/* 3. "Hepsini Göster" / Expand Control (Projeler gibi) */}
+        {remainingArticles.length > 2 && (
+          <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center">
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/80 hover:text-[#fffff1] transition-all cursor-pointer py-2"
+              >
+                <span>Hepsini Göster</span>
+                <ChevronDown size={16} className="text-[#fffff1]/70 group-hover:text-[#fffff1] group-hover:translate-y-0.5 transition-all" />
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAll(false)}
+                className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/60 hover:text-[#fffff1] transition-all cursor-pointer py-2"
+              >
+                <span>Daha Az Göster</span>
+                <ChevronUp size={16} className="text-[#fffff1]/50 group-hover:text-[#fffff1] group-hover:-translate-y-0.5 transition-all" />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   )

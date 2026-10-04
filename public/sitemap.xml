@@ -78,6 +78,26 @@
       <image:title>Karasu’da Gayrimenkul Yatırımı: Bölge ve Daire Seçimi Rehberi</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://demirturkinsaat.com/makaleler/karasuda-yazlik-almak/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/alminaforweb.jpeg</image:loc>
+      <image:title>Karasu’da Yazlık Almak: Seçim Rehberi</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/makaleler/karasu-satilik-daire-secim-rehberi/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/seasideforweb.jpeg</image:loc>
+      <image:title>Karasu Satılık Daire Seçim Rehberi</image:title>
+    </image:image>
+  </url>
 
   <!-- Önemli Sayfa Bölümleri -->
   <url>

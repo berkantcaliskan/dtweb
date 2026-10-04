@@ -306,7 +306,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {otherArticles.map((item) => (
                 <div
                   key={item.id}
