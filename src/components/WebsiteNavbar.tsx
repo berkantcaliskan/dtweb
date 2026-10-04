@@ -140,27 +140,38 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
     const totalLinksWidthAll = getLinksCost(NAV_LINKS.length)
     const rightActionsWidthWithPhone = phoneW + GAP_ACTIONS + ctaW + GAP_ACTIONS + langW
-    const totalNeededForEverything = logoW + GAP_SECTIONS + totalLinksWidthAll + GAP_SECTIONS + rightActionsWidthWithPhone
 
-    // Case 1: Everything fits on the top bar!
-    if (innerWidth >= totalNeededForEverything) {
+    // For a centered menu (at 50%), available half-width on the right is:
+    // (innerWidth / 2) - rightActionsWidth - GAP_SECTIONS
+    // and on the left is:
+    // (innerWidth / 2) - logoW - GAP_SECTIONS
+    const availableHalfWithPhone = Math.min(
+      (innerWidth / 2) - rightActionsWidthWithPhone - GAP_SECTIONS,
+      (innerWidth / 2) - logoW - GAP_SECTIONS
+    )
+
+    // Case 1: All links fit symmetrically centered with Phone & all controls
+    if (availableHalfWithPhone > 0 && totalLinksWidthAll / 2 <= availableHalfWithPhone) {
       setShowPhone(true)
       setVisibleCount(NAV_LINKS.length)
       setShowHamburger(false)
       return
     }
 
-    // Case 2: Not everything fits.
-    // Rule: Move phone number and language options to menu, show hamburger menu button, and keep whatever pages fit.
+    // Case 2: Move phone and lang to hamburger drawer, keep CTA + Hamburger on right
     setShowPhone(false)
     setShowHamburger(true)
 
     const rightActionsWidthWithMenu = ctaW + GAP_ACTIONS + hamburgerW
-    const availableForLinks = innerWidth - logoW - (GAP_SECTIONS * 2) - rightActionsWidthWithMenu
+    const availableHalfWithMenu = Math.min(
+      (innerWidth / 2) - rightActionsWidthWithMenu - GAP_SECTIONS,
+      (innerWidth / 2) - logoW - GAP_SECTIONS
+    )
+    const availableCenteredWidth = Math.max(0, availableHalfWithMenu * 2)
 
     let count = NAV_LINKS.length
     while (count > 0) {
-      if (getLinksCost(count) <= availableForLinks) {
+      if (getLinksCost(count) <= availableCenteredWidth) {
         break
       }
       count--
@@ -299,9 +310,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
         <div
           ref={navContainerRef}
-          className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 relative z-10"
+          className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 relative z-10 h-full"
         >
-          {/* Left: Demirtürk Logo */}
+          {/* Left: Demirtürk Logo (Centered vertically with exact top & bottom padding) */}
           <div className="flex items-center flex-shrink-0 z-10">
             <a
               href="#"
@@ -313,15 +324,15 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }
               }}
-              className="group flex-shrink-0 translate-y-[2.5px] cursor-pointer"
+              className="group flex-shrink-0 cursor-pointer flex items-center"
             >
               <DemirturkLogo variant="dark-bg" emblemSize={36} />
             </a>
           </div>
 
-          {/* Center: Pages / Navigation Links (In natural flex flow, centered, never collides) */}
+          {/* Center: Pages / Navigation Links (Centered dead-center on header & viewport) */}
           {visibleLinks.length > 0 && (
-            <nav className="flex-1 flex items-center justify-center min-w-0 px-1 sm:px-2 z-10">
+            <nav className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 pointer-events-auto z-10">
               <div className="flex items-center space-x-2 sm:space-x-3 xl:space-x-5 overflow-hidden whitespace-nowrap">
                 {visibleLinks.map((item) => (
                   <button
@@ -336,8 +347,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             </nav>
           )}
 
-          {/* Right: Phone (if fits) + Free Tour CTA + Language Selector (TR/EN) + 3-line Hamburger Menu (if anything overflowed) */}
-          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 z-10">
+          {/* Right: Phone (if fits) + Free Tour CTA + Language Selector (TR/EN) + 3-line Hamburger Menu */}
+          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 ml-auto z-10">
             {/* Direct Phone (Visible if fits in available space) */}
             {showPhone && (
               <a
