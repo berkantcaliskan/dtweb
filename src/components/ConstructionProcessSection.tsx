@@ -72,10 +72,10 @@ export const ConstructionProcessSection: React.FC = () => {
   const current = CONSTRUCTION_STEPS[activeStep]
 
   return (
-    <section id="insa-surecleri" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="insa-surecleri" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header: Description placed directly below title */}
-        <div className="mb-14 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
+        <div className="mb-8 sm:mb-14 pb-6 sm:pb-8 border-b border-[#fffff1]/10 max-w-3xl">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>MÜHENDİSLİK DİSİPLİNİ / CONSTRUCTION PROCESS</span>
@@ -88,20 +88,20 @@ export const ConstructionProcessSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Horizontal Step Navigation Bar (Contour-based) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-10">
+        {/* Horizontal Step Navigation Bar (Contour-based - scaled for mobile) */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-1.5 sm:gap-2.5 mb-6 sm:mb-10">
           {CONSTRUCTION_STEPS.map((s, idx) => (
             <button
               key={s.step}
               onClick={() => setActiveStep(idx)}
-              className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+              className={`p-2 sm:p-3.5 rounded-lg sm:rounded-xl border text-left transition-all cursor-pointer ${
                 activeStep === idx
                   ? 'bg-white/10 text-[#fffff1] border-[#fffff1] shadow-md font-medium'
                   : 'bg-transparent text-[#fffff1]/65 border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:text-[#fffff1]'
               }`}
             >
-              <span className="text-[10px] block opacity-80 mb-0.5">AŞAMA {s.step}</span>
-              <span className="text-xs sm:text-sm font-medium line-clamp-1 block">{s.title.split('&')[0]}</span>
+              <span className="text-[9px] sm:text-[10px] block opacity-80 mb-0.5 font-medium">AŞAMA {s.step}</span>
+              <span className="text-[11px] sm:text-sm font-medium line-clamp-1 block leading-tight">{s.title.split('&')[0]}</span>
             </button>
           ))}
         </div>

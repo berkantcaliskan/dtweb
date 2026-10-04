@@ -337,6 +337,28 @@ body, .font-sans {
   animation: scrollDot 1.8s ease-in-out infinite;
 }
 
+/* Mobile Hero Slider Left-to-Right Pan Animation (8 seconds) */
+@keyframes heroMobilePanRight {
+  0% {
+    transform: scale(1.18) translateX(-5%);
+  }
+  100% {
+    transform: scale(1.18) translateX(5%);
+  }
+}
+
+.animate-hero-mobile-pan {
+  animation: heroMobilePanRight 8s linear infinite alternate;
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .animate-hero-mobile-pan {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 /* Select & Dropdown Option Readability (Native dark mode flyout) */
 select {
   color-scheme: dark;

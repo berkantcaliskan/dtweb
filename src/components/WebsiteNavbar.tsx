@@ -289,7 +289,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[72px] sm:h-[78px]">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[62px] sm:h-[78px]">
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
@@ -301,7 +301,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
         {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, no harsh rectangular blur cut) */}
         <div
-          className={`absolute top-0 left-0 right-0 h-[92px] sm:h-[105px] pointer-events-none transition-opacity duration-500 ease-in-out ${
+          className={`absolute top-0 left-0 right-0 h-[80px] sm:h-[105px] pointer-events-none transition-opacity duration-500 ease-in-out ${
             isScrolled || isSubPageOpen
               ? 'opacity-0'
               : 'opacity-100'
@@ -581,7 +581,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             }}
             className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-2xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
           >
-            Ücretsiz Tanıtım Turu Talep Et
+            Ücretsiz Tanıtım Turu İçin Rezervasyon Yap
           </button>
 
           {/* Dil Seçenekleri (En alta) */}

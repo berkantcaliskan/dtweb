@@ -31,7 +31,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`inline-flex items-center space-x-3 select-none group ${className} ${
+      className={`inline-flex items-center space-x-2.5 sm:space-x-3 select-none group ${className} ${
         onClick ? 'cursor-pointer' : ''
       }`}
     >
@@ -41,12 +41,18 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       <img
         src={emblemSrc}
         alt="Demirtürk İnşaat Logo"
-        style={{
-          height: `${emblemSize}px`,
-          width: 'auto',
-          maxHeight: `${emblemSize}px`,
-        }}
-        className="flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+        style={
+          emblemSize === 36
+            ? undefined
+            : {
+                height: `${emblemSize}px`,
+                width: 'auto',
+                maxHeight: `${emblemSize}px`,
+              }
+        }
+        className={`${
+          emblemSize === 36 ? 'h-[28px] sm:h-[36px] max-h-[28px] sm:max-h-[36px]' : ''
+        } w-auto flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-105`}
         loading="eager"
         decoding="async"
       />
@@ -59,7 +65,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       <div className="flex flex-col justify-center items-start leading-none text-left">
         {/* DEMİRTÜRK - Extra Bold Codec Pro */}
         <span
-          className={`font-codec font-black tracking-[0.06em] text-lg sm:text-xl uppercase ${titleColor} transition-colors block text-left`}
+          className={`font-codec font-black tracking-[0.06em] text-base sm:text-xl uppercase ${titleColor} transition-colors block text-left`}
           style={{
             fontFamily: "'Codec Pro', 'Plus Jakarta Sans', system-ui, sans-serif",
             fontWeight: 900,
@@ -73,7 +79,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
         {/* İ N Ş A A T - Light Codec Pro - Flush left with DEMİRTÜRK */}
         {showSubtitle && (
           <span
-            className={`font-codec font-light text-[9.5px] sm:text-[10.5px] uppercase ${subtitleColor} transition-colors mt-1 block text-left`}
+            className={`font-codec font-light text-[8.5px] sm:text-[10.5px] uppercase ${subtitleColor} transition-colors mt-0.5 sm:mt-1 block text-left`}
             style={{
               fontFamily: "'Codec Pro', 'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,

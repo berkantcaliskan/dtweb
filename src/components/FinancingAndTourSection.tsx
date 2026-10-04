@@ -29,10 +29,10 @@ export const FinancingAndTourSection: React.FC = () => {
   }
 
   return (
-    <section id="finansman" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="finansman" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-8 sm:mb-16">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>FİNANSMAN & AYRICALIKLAR / FINANCING</span>

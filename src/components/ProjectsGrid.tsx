@@ -59,10 +59,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   }, [compactProjects, selectedFilter, showAll])
 
   return (
-    <section id="projeler" className="py-24 bg-transparent text-[#fffff1]">
+    <section id="projeler" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Architectural Section Header */}
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>MİMARİ PORTFÖY / WORKS</span>
@@ -75,13 +75,13 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex items-center space-x-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+        {/* Filters (Slightly smaller on mobile, side-by-side maintained) */}
+        <div className="flex items-center space-x-2 overflow-x-auto pb-3 sm:pb-4 mb-6 sm:mb-10 no-scrollbar">
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleFilterChange(tab.id)}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm tracking-normal sm:tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer ${
                 selectedFilter === tab.id
                   ? 'bg-[#fffff1] text-[#252c33] border border-[#fffff1] font-semibold shadow-md'
                   : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/10'
@@ -94,7 +94,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
         {/* 1. Flagship / Standard Projects Grid */}
         {displayedStandardProjects.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {displayedStandardProjects.map((project, index) => {
               const isWide = index % 3 === 0
               return (
@@ -103,7 +103,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   onClick={() => onSelectProject(project)}
                   className={`group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between ${
                     isWide ? 'lg:col-span-2' : 'col-span-1'
-                  } min-h-[250px] sm:min-h-[440px]`}
+                  } min-h-[210px] sm:min-h-[440px]`}
                 >
                   {/* 100% Full-Bleed Background Image */}
                   <img
@@ -167,10 +167,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
                     {/* Specs & Projeyi İncele */}
                     <div className="pt-2 sm:pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                      <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
+                      <span className="hidden sm:flex text-[#fffff1]/80 items-center font-medium min-w-0 truncate mr-2">
                         <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                       </span>
-                      <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                      <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform ml-auto sm:ml-0">
                         <span className="hidden sm:inline">Projeyi</span>
                         <span>İncele</span>
                         <ArrowUpRight size={13} className="flex-shrink-0" />
@@ -185,12 +185,12 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
         {/* 2. Compact 3-Column Side-by-Side Projects (No divider line, no separate title) */}
         {displayedCompactProjects.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8">
             {displayedCompactProjects.map((project) => (
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[230px] sm:min-h-[370px]"
+                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[370px]"
               >
                 {/* Background Image */}
                 <img
@@ -248,10 +248,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   </p>
 
                   <div className="pt-2 sm:pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                    <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
+                    <span className="hidden sm:flex text-[#fffff1]/80 items-center font-medium min-w-0 truncate mr-2">
                       <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                     </span>
-                    <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform ml-auto sm:ml-0">
                       <span className="hidden sm:inline">Projeyi</span>
                       <span>İncele</span>
                       <ArrowUpRight size={13} className="flex-shrink-0" />

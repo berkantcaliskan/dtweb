@@ -4,10 +4,10 @@ import { ArrowUpRight, Phone } from 'lucide-react'
 
 export const MaterialAndEngineering: React.FC = () => {
   return (
-    <section id="yapi-malzemeleri" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="yapi-malzemeleri" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header: Description placed directly below title */}
-        <div className="mb-14 pb-8 border-b border-[#fffff1]/10 max-w-3xl">
+        <div className="mb-8 sm:mb-14 pb-6 sm:pb-8 border-b border-[#fffff1]/10 max-w-3xl">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
             <span>YAPI MALZEMELERİ & TEDARİK GÜCÜ</span>

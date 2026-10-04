@@ -94,10 +94,10 @@ export const ReachUsSection: React.FC = () => {
   ]
 
   return (
-    <section id="ulasin" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="ulasin" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-[#fffff1]/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-[#fffff1]/10">
           <div>
             <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
@@ -109,26 +109,28 @@ export const ReachUsSection: React.FC = () => {
           </div>
 
           {/* Sub Navigation Switcher */}
-          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-2xl border border-[#fffff1]/15">
+          <div className="mt-4 md:mt-0 flex items-center space-x-1.5 sm:space-x-2 bg-white/5 p-1 rounded-xl sm:rounded-2xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
-              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs uppercase tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                 activeTab === 'contact'
                   ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
-              Temel İletişim Bilgileri
+              <span className="sm:hidden">İletişim</span>
+              <span className="hidden sm:inline">Temel İletişim Bilgileri</span>
             </button>
             <button
               onClick={() => setActiveTab('career')}
-              className={`px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs uppercase tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                 activeTab === 'career'
                   ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
-              Kariyer & İK
+              <span className="sm:hidden">Kariyer</span>
+              <span className="hidden sm:inline">Kariyer & İK</span>
             </button>
           </div>
         </div>

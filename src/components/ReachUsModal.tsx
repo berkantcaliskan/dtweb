@@ -123,20 +123,20 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div 
-      className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
+      className="fixed top-[62px] sm:top-[78px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Header with Back Button */}
-      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3 sm:py-3.5 flex items-center justify-between shadow-lg">
         {/* Left: Back Button & Title */}
-        <div className="flex items-center space-x-4 sm:space-x-6">
+        <div className="flex items-center space-x-3 sm:space-x-6">
           <button
             onClick={onClose}
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
+            className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
             aria-label="Ana sayfaya geri dön"
           >
-            <ArrowLeft size={18} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-            <span className="text-xs font-bold uppercase tracking-wider">Geri Dön</span>
+            <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Geri Dön</span>
           </button>
 
           <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
@@ -174,9 +174,9 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
       </header>
 
       {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] py-10 sm:py-16 w-full flex-1">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] py-8 sm:py-16 w-full flex-1">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-8 border-b border-[#fffff1]/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-[#fffff1]/10">
           <div>
             <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1] uppercase mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
@@ -191,26 +191,28 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Sub Navigation Switcher */}
-          <div className="mt-6 md:mt-0 flex items-center space-x-2 bg-white/5 p-1 rounded-2xl border border-[#fffff1]/15">
+          <div className="mt-4 md:mt-0 flex items-center space-x-1.5 sm:space-x-2 bg-white/5 p-1 rounded-xl sm:rounded-2xl border border-[#fffff1]/15">
             <button
               onClick={() => setActiveTab('contact')}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm uppercase tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                 activeTab === 'contact'
                   ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
-              Temel İletişim Bilgileri
+              <span className="sm:hidden">İletişim</span>
+              <span className="hidden sm:inline">Temel İletişim Bilgileri</span>
             </button>
             <button
               onClick={() => setActiveTab('career')}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm uppercase tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                 activeTab === 'career'
                   ? 'bg-[#fffff1] text-[#252c33] font-semibold shadow-md border border-[#fffff1]'
                   : 'text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/5'
               }`}
             >
-              Kariyer & İK
+              <span className="sm:hidden">Kariyer</span>
+              <span className="hidden sm:inline">Kariyer & İK</span>
             </button>
           </div>
         </div>

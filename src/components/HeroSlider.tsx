@@ -12,26 +12,25 @@ interface HeroSliderProps {
 export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenTour }) => {
   const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true)
+  const [timerKey, setTimerKey] = useState(0)
 
   const currentProject = featuredProjects[currentIndex] || featuredProjects[0]
 
   useEffect(() => {
-    if (!isAutoPlay) return
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
-    }, 8500)
+    }, 8000)
     return () => clearInterval(interval)
-  }, [isAutoPlay, featuredProjects.length])
+  }, [timerKey, featuredProjects.length])
 
   const nextSlide = () => {
-    setIsAutoPlay(false)
     setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
+    setTimerKey((k) => k + 1)
   }
 
   const prevSlide = () => {
-    setIsAutoPlay(false)
     setCurrentIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
+    setTimerKey((k) => k + 1)
   }
 
   const scrollToNext = () => {
@@ -45,7 +44,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {featuredProjects.map((project, idx) => (
           <div
-            key={project.id}
+            key={`${project.id}-${idx === currentIndex ? 'active' : 'idle'}`}
             className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
               idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
@@ -53,6 +52,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <ResponsiveMedia
               media={project.heroMedia}
               className="w-full h-full"
+              imageClassName={idx === currentIndex ? 'animate-hero-mobile-pan' : ''}
               fillContainer={true}
               showControls={false}
               overlayGradient={false}
@@ -91,15 +91,15 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             {currentProject.subtitle}
           </p>
 
-          {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+          {/* Call to Actions (Mobile: sized down, Proje Detayları ~25% smaller; Desktop: untouched) */}
+          <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
-              className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-2 group"
+              className="px-3.5 py-2 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-[11px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
             >
               <span>Proje Detayları</span>
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
             </button>
 
             <button
@@ -112,7 +112,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="glass-blur-box px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-sm uppercase tracking-wider rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center"
+              className="glass-blur-box px-4.5 py-2.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
             >
               Ücretsiz Tanıtım Turu
             </button>
@@ -120,7 +120,105 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
         </div>
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 pt-4 sm:pt-6 border-t-0 sm:border-t border-[#fffff1]/10">
+        {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < >, Right = Stacked Social Icons) */}
+        <div className="flex sm:hidden items-center justify-between w-full pt-4 border-t border-[#fffff1]/10">
+          {/* Left: Architectural Scroll / Discovery Indicator */}
+          <button
+            onClick={scrollToNext}
+            className="flex items-center space-x-2 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer"
+            aria-label="Projeleri Keşfedin"
+          >
+            <div className="w-4 h-7 rounded-full border border-[#fffff1]/30 flex justify-center pt-1 transition-colors">
+              <div className="w-1 h-1.5 rounded-full bg-[#fffff1] animate-scroll-dot" />
+            </div>
+            <span className="text-[10px] tracking-[0.14em] font-medium uppercase text-[#fffff1]/85">
+              Projeleri Keşfedin
+            </span>
+          </button>
+
+          {/* Center: Prev / Next Navigation Arrows */}
+          <div className="flex items-center space-x-1.5">
+            <button
+              onClick={prevSlide}
+              aria-label="Önceki Proje"
+              className="w-8 h-8 rounded-xl border border-[#fffff1]/20 bg-black/40 text-[#fffff1] flex items-center justify-center active:scale-95 cursor-pointer"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={nextSlide}
+              aria-label="Sonraki Proje"
+              className="w-8 h-8 rounded-xl border border-[#fffff1]/20 bg-black/40 text-[#fffff1] flex items-center justify-center active:scale-95 cursor-pointer"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+
+          {/* Right: Vertically Stacked Social Icons (Instagram, Sahibinden, HepsiEmlak) */}
+          <div className="flex flex-col items-center space-y-1.5">
+            {/* 1. Instagram */}
+            <a
+              href={COMPANY_INFO.social?.instagram || 'https://www.instagram.com/demirturkinsaat'}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              title="Instagram: @demirturkinsaat"
+              className="p-1 text-[#fffff1]/80 hover:text-white transition-all flex items-center justify-center"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="w-3.5 h-3.5 stroke-current fill-none"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+
+            {/* 2. Sahibinden */}
+            <a
+              href={COMPANY_INFO.social?.sahibinden || 'https://karasudemirturk.sahibinden.com/'}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Sahibinden.com"
+              title="Sahibinden.com Mağazamız"
+              className="p-1 text-[#fffff1]/80 hover:text-white transition-all flex items-center justify-center"
+            >
+              <svg viewBox="4.5 4.5 22 22" className="w-[14px] h-[14px] fill-current" aria-hidden="true">
+                <path d="M15.354 6.297c0.75-0.010 1.51-0.005 2.255 0.083 3.214 0.073 6.469 2.906 6.505 6.010h-4.427c0.016-0.922-0.802-2.073-1.703-2.307-1.474-0.359-3.281-0.474-4.573 0.391-0.984 0.594-1.422 2.229-0.125 2.74 3.047 1.448 6.875 1.13 9.63 3.167 2.266 1.609 2.13 4.885 0.365 6.781-2.292 2.453-6.182 2.844-9.464 2.375-3.266-0.156-6.344-2.995-6.427-6.083h4.417c-0.078 1.109 0.849 2.078 1.943 2.427 1.698 0.37 3.635 0.479 5.24-0.25 1.281-0.432 1.37-2.057 0.38-2.807-2.125-1.193-4.75-1.229-7.063-2.021-2.682-0.521-4.854-3.036-4.344-5.599 0.563-3.12 4.167-4.969 7.391-4.906z"/>
+              </svg>
+            </a>
+
+            {/* 3. Hepsi Emlak */}
+            <a
+              href={COMPANY_INFO.social?.hepsiemlak || 'https://www.hepsiemlak.com/emlak-ofisi/demirturk-yapi-insaat-sanayi-ve-ticaret-limited-si-159946'}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Hepsiemlak"
+              title="Hepsiemlak Mağazamız"
+              className="p-1 text-[#fffff1]/80 hover:text-white transition-all flex items-center justify-center"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="w-3.5 h-3.5 fill-none stroke-current"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 10L12 3l9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z" />
+                <path d="M9 21V12h6v9" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* 2. DESKTOP CONTROLS (Preserved 100% untouched) */}
+        <div className="hidden sm:flex flex-row items-center justify-between gap-4 pt-4 sm:pt-6 border-t border-[#fffff1]/10">
           {/* Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
@@ -197,7 +295,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             </a>
 
             {/* Divider */}
-            <div className="h-5 w-[1px] bg-[#fffff1]/20 mx-1 hidden sm:block" />
+            <div className="h-5 w-[1px] bg-[#fffff1]/20 mx-1" />
 
             {/* Arrow navigation (soft rounded squircle) */}
             <button

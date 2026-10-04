@@ -9,6 +9,8 @@ interface ResponsiveMediaProps {
   showControls?: boolean
   overlayGradient?: boolean
   fillContainer?: boolean
+  imageClassName?: string
+  aspectRatio?: '16:9' | '1:1' | '9:16' | 'auto'
 }
 
 export const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
@@ -17,6 +19,8 @@ export const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
   showControls = true,
   overlayGradient = true,
   fillContainer = false,
+  imageClassName = '',
+  aspectRatio = 'auto',
 }) => {
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
   const mobileVideoRef = useRef<HTMLVideoElement>(null)
@@ -63,7 +67,7 @@ export const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
           <img
             src={isMobile && media.mobileSrc ? media.mobileSrc : media.desktopSrc}
             alt={media.alt}
-            className="w-full h-full object-cover object-center"
+            className={`w-full h-full object-cover object-center ${imageClassName}`}
             loading="eager"
           />
           {overlayGradient && (
@@ -73,24 +77,39 @@ export const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
       )
     }
 
+    // Determine aspect ratio class
+    const mobileAspectClass = aspectRatio === '16:9'
+      ? 'aspect-[16/9]'
+      : aspectRatio === '1:1'
+        ? 'aspect-square'
+        : aspectRatio === '9:16'
+          ? 'aspect-[9/16]'
+          : 'aspect-[9/16] sm:aspect-[4/5]'
+
+    const desktopAspectClass = aspectRatio === '1:1'
+      ? 'aspect-square'
+      : aspectRatio === '9:16'
+        ? 'aspect-[9/16]'
+        : 'aspect-[16/9]'
+
     return (
       <div className={`relative overflow-hidden w-full ${className}`}>
-        {/* Mobile Vertical (9:16 or 4:5) */}
-        <div className="block md:hidden w-full aspect-[9/16] sm:aspect-[4/5] relative overflow-hidden">
+        {/* Mobile View */}
+        <div className={`block md:hidden w-full ${mobileAspectClass} relative overflow-hidden`}>
           <img
-            src={media.mobileSrc || media.desktopSrc}
+            src={aspectRatio === '16:9' ? media.desktopSrc : (media.mobileSrc || media.desktopSrc)}
             alt={media.alt}
-            className="w-full h-full object-cover object-center"
+            className={`w-full h-full object-cover object-center ${imageClassName}`}
             loading="lazy"
           />
         </div>
 
-        {/* Desktop Horizontal (16:9) */}
-        <div className="hidden md:block w-full aspect-[16/9] relative overflow-hidden">
+        {/* Desktop View */}
+        <div className={`hidden md:block w-full ${desktopAspectClass} relative overflow-hidden`}>
           <img
             src={media.desktopSrc}
             alt={media.alt}
-            className="w-full h-full object-cover object-center"
+            className={`w-full h-full object-cover object-center ${imageClassName}`}
             loading="lazy"
           />
         </div>

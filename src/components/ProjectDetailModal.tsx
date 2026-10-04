@@ -140,23 +140,23 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     return (
       <div 
         ref={stageContainerRef}
-        className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
+        className="fixed top-[62px] sm:top-[78px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Stage Sticky Top Bar */}
-        <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+        <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3 sm:py-3.5 flex items-center justify-between shadow-lg">
           {/* Sol: Geri Dön (Yeni Şehir Etapları Ana Sayfasına) */}
-          <div className="flex items-center space-x-4 sm:space-x-6">
+          <div className="flex items-center space-x-3 sm:space-x-6">
             <button
               onClick={() => {
                 setActiveStage(null)
                 containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
+              className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
               aria-label={`${project.title}'na geri dön`}
             >
-              <ArrowLeft size={18} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-              <span className="text-xs font-bold uppercase tracking-wider">{project.title}'na Dön</span>
+              <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">{project.title}'na Dön</span>
             </button>
 
             <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
@@ -275,7 +275,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
 
             {/* Stage Hero Image */}
-            <div className="rounded-2xl overflow-hidden border border-[#fffff1]/15 shadow-2xl bg-black/40 aspect-[16/9] max-h-[560px]">
+            <div className="rounded-2xl overflow-hidden border border-[#fffff1]/15 shadow-2xl bg-black/40 aspect-[16/9] max-h-[300px] sm:max-h-[560px]">
               <img
                 src={activeStage.image}
                 alt={activeStage.title}
@@ -456,20 +456,20 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   return (
     <div 
       ref={containerRef}
-      className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
+      className="fixed top-[62px] sm:top-[78px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3 sm:py-3.5 flex items-center justify-between shadow-lg">
         {/* Sol Üst: Geri Butonu & Proje Başlık İntrosu */}
-        <div className="flex items-center space-x-4 sm:space-x-6">
+        <div className="flex items-center space-x-3 sm:space-x-6">
           <button
             onClick={onClose}
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
+            className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
             aria-label="Projeler listesine geri dön"
           >
-            <ArrowLeft size={18} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-            <span className="text-xs font-bold uppercase tracking-wider">Geri Dön</span>
+            <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Geri Dön</span>
           </button>
 
           <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
@@ -621,9 +621,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
           )}
 
-          {/* Full-Bleed Cinematic Hero Render */}
+          {/* Full-Bleed Cinematic Hero Render (16:9 on mobile as requested) */}
           <div className="rounded-2xl overflow-hidden border border-[#fffff1]/15 shadow-2xl bg-black/40">
-            <ResponsiveMedia media={project.heroMedia} className="w-full" showControls={true} />
+            <ResponsiveMedia media={project.heroMedia} className="w-full" aspectRatio="16:9" showControls={true} />
           </div>
         </section>
 
@@ -895,12 +895,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </div>
 
               {/* Plan Tabs */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {project.floorPlans.map((plan, idx) => (
                   <button
                     key={plan.name}
                     onClick={() => setSelectedPlanIndex(idx)}
-                    className={`px-4 py-2 rounded-xl text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
+                    className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs uppercase font-bold tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                       selectedPlanIndex === idx
                         ? 'bg-[#fffff1] text-[#252c33] shadow-md border border-[#fffff1]'
                         : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/10'
@@ -914,7 +914,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
             {project.floorPlans[selectedPlanIndex] && (
               <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-2xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center shadow-xl">
-                <div className="rounded-xl overflow-hidden border border-[#fffff1]/10 aspect-[4/3] bg-black/40">
+                <div className="rounded-xl overflow-hidden border border-[#fffff1]/10 aspect-[16/9] sm:aspect-[4/3] bg-black/40">
                   <img
                     src={project.floorPlans[selectedPlanIndex].image}
                     alt={project.floorPlans[selectedPlanIndex].name}
@@ -962,20 +962,27 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.gallery.map((item, idx) => (
-                <div key={idx} className="group relative rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-[#313941] aspect-[16/10] shadow-md">
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <span className="text-xs font-medium text-[#fffff1]">{item.title}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {project.gallery.map((item, idx) => {
+                const aspectClass = item.aspect === '1:1'
+                  ? 'aspect-square'
+                  : item.aspect === '9:16'
+                    ? 'aspect-[9/16]'
+                    : 'aspect-[16/9] sm:aspect-[16/10]'
+                return (
+                  <div key={idx} className={`group relative rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-[#313941] ${aspectClass} shadow-md`}>
+                    <img
+                      src={item.url}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                      <span className="text-xs font-medium text-[#fffff1]">{item.title}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </section>
         )}
