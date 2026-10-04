@@ -25,7 +25,7 @@ export const MaterialAndEngineering: React.FC = () => {
           {MATERIAL_CATEGORIES.map((cat) => (
             <div
               key={cat.id}
-              className="group bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
+              className="group bg-white/[0.02] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/40 hover:bg-white/[0.05] hover:scale-[1.02] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden transition-all duration-300 ease-out flex flex-col justify-between cursor-default"
             >
               <div>
                 {/* Panoramic Rectangular Image Banner */}

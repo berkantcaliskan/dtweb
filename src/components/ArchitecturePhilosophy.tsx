@@ -37,16 +37,16 @@ export const ArchitecturePhilosophy: React.FC = () => {
           ))}
         </div>
 
-        {/* 3 Pillars of Demirtürk Architecture (Contour-only, icons to the left of titles) */}
+        {/* 3 Pillars of Demirtürk Architecture (Interactive on hover: scales, elevates, and brightens) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Pillar 1 */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+          <div className="group p-6 sm:p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/40 hover:bg-white/[0.06] hover:scale-[1.02] sm:hover:scale-[1.03] hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out cursor-default">
             <div className="flex items-start space-x-3.5">
-              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:border-[#fffff1]/50 group-hover:bg-white/10 transition-all duration-300">
                 <Compass size={20} />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
                   Doğal Uyum & Sahil Manzarası
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
@@ -57,13 +57,13 @@ export const ArchitecturePhilosophy: React.FC = () => {
           </div>
 
           {/* Pillar 2 */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+          <div className="group p-6 sm:p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/40 hover:bg-white/[0.06] hover:scale-[1.02] sm:hover:scale-[1.03] hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out cursor-default">
             <div className="flex items-start space-x-3.5">
-              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:border-[#fffff1]/50 group-hover:bg-white/10 transition-all duration-300">
                 <ShieldCheck size={20} />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
                   Temelden Çatıya Malzeme Gücü
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
@@ -74,13 +74,13 @@ export const ArchitecturePhilosophy: React.FC = () => {
           </div>
 
           {/* Pillar 3 */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 transition-all">
+          <div className="group p-6 sm:p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/40 hover:bg-white/[0.06] hover:scale-[1.02] sm:hover:scale-[1.03] hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out cursor-default">
             <div className="flex items-start space-x-3.5">
-              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5">
+              <div className="w-10 h-10 rounded-lg border border-[#fffff1]/20 flex items-center justify-center text-[#fffff1] flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:border-[#fffff1]/50 group-hover:bg-white/10 transition-all duration-300">
                 <Sparkles size={20} />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] leading-snug mb-3">
+                <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
                   Kredisiz & Güvene Dayalı Finansman
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
