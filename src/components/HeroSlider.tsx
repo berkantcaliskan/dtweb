@@ -12,23 +12,35 @@ interface HeroSliderProps {
 export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenTour }) => {
   const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [timerKey, setTimerKey] = useState(0)
 
   const currentProject = featuredProjects[currentIndex] || featuredProjects[0]
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setPreviousIndex(currentIndex)
       setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
     }, 8000)
     return () => clearInterval(interval)
-  }, [timerKey, featuredProjects.length])
+  }, [currentIndex, timerKey, featuredProjects.length])
+
+  useEffect(() => {
+    if (previousIndex === null) return
+    const timeout = setTimeout(() => {
+      setPreviousIndex(null)
+    }, 1100)
+    return () => clearTimeout(timeout)
+  }, [previousIndex])
 
   const nextSlide = () => {
+    setPreviousIndex(currentIndex)
     setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
     setTimerKey((k) => k + 1)
   }
 
   const prevSlide = () => {
+    setPreviousIndex(currentIndex)
     setCurrentIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
     setTimerKey((k) => k + 1)
   }
@@ -42,23 +54,28 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
     <section className="relative w-full min-h-[100dvh] bg-[#252c33] flex items-center justify-center overflow-hidden">
       {/* Background Media (Full-Bleed 100% Cover - No Aspect Ratio Gaps) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        {featuredProjects.map((project, idx) => (
-          <div
-            key={`${project.id}-${idx === currentIndex ? 'active' : 'idle'}`}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-            }`}
-          >
-            <ResponsiveMedia
-              media={project.heroMedia}
-              className="w-full h-full"
-              imageClassName={idx === currentIndex ? 'animate-hero-mobile-pan' : ''}
-              fillContainer={true}
-              showControls={false}
-              overlayGradient={false}
-            />
-          </div>
-        ))}
+        {featuredProjects.map((project, idx) => {
+          const isActive = idx === currentIndex
+          const isOutgoing = idx === previousIndex
+
+          return (
+            <div
+              key={project.id}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+              }`}
+            >
+              <ResponsiveMedia
+                media={project.heroMedia}
+                className="w-full h-full"
+                imageClassName={isActive || isOutgoing ? 'animate-hero-mobile-pan' : ''}
+                fillContainer={true}
+                showControls={false}
+                overlayGradient={false}
+              />
+            </div>
+          )
+        })}
       </div>
 
       {/* Hero Dark/Architectural Vignette Overlays - Softened for brighter visual presence */}

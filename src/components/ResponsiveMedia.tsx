@@ -69,6 +69,8 @@ export const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
             alt={media.alt}
             className={`w-full h-full object-cover object-center ${imageClassName}`}
             loading="eager"
+            decoding="async"
+            draggable={false}
           />
           {overlayGradient && (
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
