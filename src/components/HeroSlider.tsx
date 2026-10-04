@@ -83,7 +83,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
       <div className="absolute inset-0 bg-black/15 z-10 pointer-events-none" />
 
       {/* Main Content Layer */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] w-full pt-20 sm:pt-28 pb-5 sm:pb-12 flex flex-col justify-between h-full min-h-[100dvh]">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] w-full pt-20 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between h-full min-h-[100dvh]">
         {/* Top Badges - Only slider index */}
         <div className="flex items-center justify-end text-xs text-[#fffff1]/80 tracking-widest uppercase">
           <div className="hidden sm:flex items-center space-x-3">
@@ -138,7 +138,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
         {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < > centered to screen, Right = Stacked Social Icons) */}
-        <div className="relative flex sm:hidden items-end justify-between w-full pt-4 mb-1.5">
+        <div className="relative flex sm:hidden items-end justify-between w-full pt-4 mb-3">
           {/* Left: Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
