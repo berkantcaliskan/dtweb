@@ -91,8 +91,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             {currentProject.subtitle}
           </p>
 
-          {/* Call to Actions (Mobile: sized down, Proje Detayları ~25% smaller; Desktop: untouched) */}
-          <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
+          {/* Call to Actions (Mobile: stacked vertically, Proje Detayları ~25% smaller; Desktop: untouched) */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
             <button
               type="button"
               onClick={() => onSelectProject(currentProject)}
