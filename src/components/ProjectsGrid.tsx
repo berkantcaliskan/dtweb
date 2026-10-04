@@ -103,7 +103,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   onClick={() => onSelectProject(project)}
                   className={`group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between ${
                     isWide ? 'lg:col-span-2' : 'col-span-1'
-                  } min-h-[210px] sm:min-h-[440px]`}
+                  } min-h-[155px] sm:min-h-[440px]`}
                 >
                   {/* 100% Full-Bleed Background Image */}
                   <img
@@ -114,12 +114,12 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   />
 
                   {/* Subtle Top Vignette (for status badges contrast) */}
-                  <div className="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 top-0 h-20 sm:h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
 
                   {/* Top Bar: Quick Arrow */}
-                  <div className="relative z-10 p-3 sm:p-5 flex items-start justify-end">
-                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
-                      <ArrowUpRight size={14} className="sm:hidden" />
+                  <div className="relative z-10 p-2.5 sm:p-5 flex items-start justify-end">
+                    <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
+                      <ArrowUpRight size={13} className="sm:hidden" />
                       <ArrowUpRight size={16} className="hidden sm:block" />
                     </div>
                   </div>
@@ -139,14 +139,14 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/80 via-40% to-transparent" />
 
                   {/* Bottom Content Details */}
-                  <div className="relative z-10 pt-4 pb-3.5 px-3.5 sm:pt-10 sm:pb-6 sm:px-6">
-                    <h3 className="font-theSeasons text-xl sm:text-3xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                  <div className="relative z-10 pt-2 pb-2.5 px-3 sm:pt-10 sm:pb-6 sm:px-6">
+                    <h3 className="font-theSeasons text-lg sm:text-3xl font-bold text-[#fffff1] leading-tight mb-0.5 sm:mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
                       {project.title}
                     </h3>
 
                     {/* Series & Progression Info (No shape, clean text) */}
                     {project.seriesInfo && (
-                      <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2 drop-shadow">
+                      <p className="text-[10px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-0.5 sm:mb-2 drop-shadow">
                         {project.seriesInfo}
                       </p>
                     )}
@@ -155,23 +155,23 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     {project.status === 'Satışta' && (
                       <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
-                        <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-emerald-400">
+                        <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
                           Şimdi satışta
                         </span>
                       </div>
                     )}
 
-                    <p className="text-xs sm:text-base text-[#fffff1]/95 font-light line-clamp-2 leading-relaxed mb-2.5 sm:mb-4 drop-shadow">
+                    <p className="text-xs sm:text-base text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-0 sm:mb-4 drop-shadow">
                       {project.subtitle}
                     </p>
 
-                    {/* Specs & Projeyi İncele */}
-                    <div className="pt-2 sm:pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                      <span className="hidden sm:flex text-[#fffff1]/80 items-center font-medium min-w-0 truncate mr-2">
+                    {/* Specs & Projeyi İncele (Desktop only, completely removed on mobile as requested) */}
+                    <div className="hidden sm:flex pt-3 border-t border-[#fffff1]/15 items-center justify-between text-sm">
+                      <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
                         <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                       </span>
-                      <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform ml-auto sm:ml-0">
-                        <span className="hidden sm:inline">Projeyi</span>
+                      <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                        <span>Projeyi</span>
                         <span>İncele</span>
                         <ArrowUpRight size={13} className="flex-shrink-0" />
                       </span>
@@ -190,7 +190,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[370px]"
+                className="group relative cursor-pointer rounded-2xl overflow-hidden border border-[#fffff1]/15 hover:border-[#fffff1]/45 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between min-h-[145px] sm:min-h-[370px]"
               >
                 {/* Background Image */}
                 <img
@@ -201,9 +201,9 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 />
 
                 {/* Top Bar */}
-                <div className="relative z-10 p-3 sm:p-4 flex items-start justify-end">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
-                    <ArrowUpRight size={14} className="sm:hidden" />
+                <div className="relative z-10 p-2.5 sm:p-4 flex items-start justify-end">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-black/50 backdrop-blur-md border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center group-hover:bg-[#313941] group-hover:border-[#fffff1]/50 group-hover:scale-110 transition-all shadow-md flex-shrink-0">
+                    <ArrowUpRight size={13} className="sm:hidden" />
                     <ArrowUpRight size={15} className="hidden sm:block" />
                   </div>
                 </div>
@@ -221,14 +221,14 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 <div className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none bg-gradient-to-t from-black/95 via-[#161a1f]/85 via-40% to-transparent" />
 
                 {/* Bottom Content Details */}
-                <div className="relative z-10 pt-4 pb-3.5 px-3.5 sm:pt-8 sm:pb-5 sm:px-5">
-                  <h4 className="font-theSeasons text-xl sm:text-2xl font-bold text-[#fffff1] leading-tight mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
+                <div className="relative z-10 pt-2 pb-2.5 px-3 sm:pt-8 sm:pb-5 sm:px-5">
+                  <h4 className="font-theSeasons text-lg sm:text-2xl font-bold text-[#fffff1] leading-tight mb-0.5 sm:mb-1 drop-shadow-md group-hover:translate-x-1 transition-transform">
                     {project.title}
                   </h4>
 
                   {/* Series / Progression Info (No shape, clean text) */}
                   {project.seriesInfo && (
-                    <p className="text-[11px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-1 sm:mb-2 drop-shadow">
+                    <p className="text-[10px] sm:text-sm text-[#fffff1]/85 font-medium tracking-wide mb-0.5 sm:mb-2 drop-shadow">
                       {project.seriesInfo}
                     </p>
                   )}
@@ -237,22 +237,23 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   {project.status === 'Satışta' && (
                     <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
-                      <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-emerald-400">
+                      <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
                         Şimdi satışta
                       </span>
                     </div>
                   )}
 
-                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-2.5 sm:mb-3 drop-shadow">
+                  <p className="text-xs sm:text-sm text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-0 sm:mb-3 drop-shadow">
                     {project.subtitle}
                   </p>
 
-                  <div className="pt-2 sm:pt-2.5 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                    <span className="hidden sm:flex text-[#fffff1]/80 items-center font-medium min-w-0 truncate mr-2">
+                  {/* Specs & Projeyi İncele (Desktop only, completely removed on mobile as requested) */}
+                  <div className="hidden sm:flex pt-2.5 border-t border-[#fffff1]/15 items-center justify-between text-sm">
+                    <span className="text-[#fffff1]/80 flex items-center font-medium min-w-0 truncate mr-2">
                       <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                     </span>
-                    <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform ml-auto sm:ml-0">
-                      <span className="hidden sm:inline">Projeyi</span>
+                    <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
+                      <span>Projeyi</span>
                       <span>İncele</span>
                       <ArrowUpRight size={13} className="flex-shrink-0" />
                     </span>
