@@ -121,11 +121,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
 
         {/* Bottom Bar: Slider Controls & Scroll Down */}
         {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < >, Right = Stacked Social Icons) */}
-        <div className="flex sm:hidden items-center justify-between w-full pt-4 border-t border-[#fffff1]/10">
+        <div className="flex sm:hidden items-end justify-between w-full pt-4 border-t border-[#fffff1]/10">
           {/* Left: Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
-            className="flex items-center space-x-2 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer"
+            className="flex items-center space-x-2 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer pb-0.5"
             aria-label="Projeleri Keşfedin"
           >
             <div className="w-4 h-7 rounded-full border border-[#fffff1]/30 flex justify-center pt-1 transition-colors">
@@ -154,8 +154,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             </button>
           </div>
 
-          {/* Right: Vertically Stacked Social Icons (Instagram, Sahibinden, HepsiEmlak) */}
-          <div className="flex flex-col items-center space-y-1.5">
+          {/* Right: Vertically Stacked Social Icons (Bottom aligns flush with arrow buttons) */}
+          <div className="flex flex-col items-center space-y-1">
             {/* 1. Instagram */}
             <a
               href={COMPANY_INFO.social?.instagram || 'https://www.instagram.com/demirturkinsaat'}
