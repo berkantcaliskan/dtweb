@@ -117,8 +117,8 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact & Appointment Form (7 Cols) */}
-          <div className="lg:col-span-7 p-8 rounded-2xl bg-[#23201e] border border-white/10 space-y-6">
+          {/* Contact & Appointment Form (7 Cols) - Unboxed */}
+          <div className="lg:col-span-7 space-y-6">
             <div>
               <span className="text-[10px] tracking-widest text-[#b99881] uppercase block">
                 RANDEVU & BİLGİ TALEBİ

@@ -237,8 +237,8 @@ export const ReachUsSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Message & Appointment Form (7 Cols) */}
-            <div className="lg:col-span-7 p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15 space-y-6">
+            {/* Message & Appointment Form (7 Cols) - Unboxed */}
+            <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-xs tracking-widest text-[#fffff1]/80 uppercase block font-medium">
                   RANDEVU & BİLGİ TALEBİ
