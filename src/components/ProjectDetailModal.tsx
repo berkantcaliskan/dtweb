@@ -23,6 +23,7 @@ import {
 import { ProjectItem, ProjectStage } from '../types'
 import { ResponsiveMedia } from './ResponsiveMedia'
 import { COMPANY_INFO } from '../data/websiteData'
+import { submitLeadToPortfoy } from '../services/leadService'
 
 interface ProjectDetailModalProps {
   project: ProjectItem | null
@@ -89,6 +90,19 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     if (!leadPhone.trim()) return
 
     const subject = stageTitle || project.title
+
+    // 1. Portföy CRM sistemine aktar
+    submitLeadToPortfoy({
+      fullName: leadName,
+      phone: leadPhone,
+      formName: `Proje Bilgi Talebi - ${subject}`,
+      channel: `Web Sitesi / ${project.title}`,
+      notes: `${subject} projesi hakkında detaylı bilgi, güncel fiyatlar ve tanıtım turu talebi.`,
+      tags: ['Web Sitesi', 'Proje Bilgi Talebi', project.title],
+      preferredHousingType: project.title,
+    })
+
+    // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
       `Merhaba, ${subject} projeniz hakkında detaylı bilgi, güncel fiyatlar ve tanıtım turu talebinde bulunmak istiyorum.\nİsim: ${leadName || 'Belirtilmedi'}\nTelefon: ${leadPhone}`
     )

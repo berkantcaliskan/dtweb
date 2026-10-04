@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageSquare, Send, Check, Briefcase, GraduationCap, Users, ArrowUpRight } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
+import { submitLeadToPortfoy } from '../services/leadService'
 
 export const ReachUsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'contact' | 'career'>('contact')
@@ -24,6 +25,17 @@ export const ReachUsSection: React.FC = () => {
     e.preventDefault()
     if (!formPhone.trim()) return
 
+    // 1. Portföy CRM sistemine aktar
+    submitLeadToPortfoy({
+      fullName: formName,
+      phone: formPhone,
+      formName: 'Bize Ulaşın / İletişim',
+      channel: 'Web Sitesi / İletişim Bölümü',
+      notes: `Konu: ${formSubject} | Mesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`,
+      tags: ['Web Sitesi', 'İletişim', formSubject],
+    })
+
+    // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
       `Merhaba Demirtürk İnşaat,\nKonu: ${formSubject}\nİsim: ${formName || 'Belirtilmedi'}\nTelefon: ${formPhone}\nMesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`
     )
@@ -35,6 +47,18 @@ export const ReachUsSection: React.FC = () => {
     e.preventDefault()
     if (!careerPhone.trim()) return
 
+    // 1. Portföy CRM sistemine aktar
+    submitLeadToPortfoy({
+      fullName: careerName,
+      phone: careerPhone,
+      email: careerEmail,
+      formName: 'Kariyer Başvurusu',
+      channel: 'Web Sitesi / Kariyer Bölümü',
+      notes: `Pozisyon: ${careerPosition} | Ön Yazı: ${careerNote || 'CV ektedir'}`,
+      tags: ['Web Sitesi', 'Kariyer', careerPosition],
+    })
+
+    // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
       `Merhaba Demirtürk İnşaat İnsan Kaynakları,\nKariyer Başvurusu:\nPozisyon: ${careerPosition}\nİsim: ${careerName}\nTelefon: ${careerPhone}\nE-posta: ${careerEmail}\nÖn Yazı / Deneyim: ${careerNote || 'CV ektedir'}`
     )

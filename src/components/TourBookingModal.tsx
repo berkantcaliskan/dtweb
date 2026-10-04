@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { X, Bus, CheckCircle2, Send, Phone } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
+import { submitLeadToPortfoy } from '../services/leadService'
 
 interface TourBookingModalProps {
   isOpen: boolean
@@ -20,6 +21,17 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
     e.preventDefault()
     if (!phone.trim()) return
 
+    // 1. Portföy CRM sistemine aktar
+    submitLeadToPortfoy({
+      fullName: name,
+      phone: phone,
+      formName: 'Ücretsiz Tanıtım Turu',
+      channel: 'Web Sitesi / Ücretsiz Tanıtım Turu Modalı',
+      notes: `Kalkış / Şehir: ${city} | Tercih Edilen Tarih: ${date || 'Hafta sonu'}`,
+      tags: ['Web Sitesi', 'Tanıtım Turu', city],
+    })
+
+    // 2. WhatsApp ile doğrudan mesaj aç
     const message = encodeURIComponent(
       `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için rezervasyon yapmak istiyorum:\nİsim: ${name || 'Belirtilmedi'}\nTelefon: ${phone}\nŞehir: ${city}\nTercih Edilen Tarih: ${date || 'Hafta sonu'}`
     )

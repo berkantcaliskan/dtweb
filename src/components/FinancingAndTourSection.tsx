@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
 import { Bus, CheckCircle2, ShieldCheck, Send, FileCheck, Layers, Award } from 'lucide-react'
+import { submitLeadToPortfoy } from '../services/leadService'
 
 export const FinancingAndTourSection: React.FC = () => {
   // Tour Booking State
@@ -14,6 +15,17 @@ export const FinancingAndTourSection: React.FC = () => {
     e.preventDefault()
     if (!tourPhone.trim()) return
 
+    // 1. Portföy CRM sistemine aktar
+    submitLeadToPortfoy({
+      fullName: tourName,
+      phone: tourPhone,
+      formName: 'Ücretsiz Tanıtım Turu',
+      channel: 'Web Sitesi / Finansman & Tanıtım Turu Bölümü',
+      notes: `Kalkış / Şehir: ${tourCity} | Tercih Edilen Tarih: ${tourDate || 'Hafta sonu'}`,
+      tags: ['Web Sitesi', 'Tanıtım Turu', tourCity],
+    })
+
+    // 2. WhatsApp ile doğrudan mesaj aç
     const message = encodeURIComponent(
       `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için rezervasyon yapmak istiyorum:\nİsim: ${tourName || 'Belirtilmedi'}\nTelefon: ${tourPhone}\nŞehir: ${tourCity}\nTercih Edilen Tarih: ${tourDate || 'Hafta sonu'}`
     )
