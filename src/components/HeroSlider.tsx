@@ -51,7 +51,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
   }
 
   return (
-    <section className="relative w-full min-h-[100dvh] bg-[#252c33] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-screen h-[100dvh] min-h-[100dvh] sm:min-h-screen bg-[#252c33] flex flex-col justify-between overflow-hidden">
       {/* Background Media (Full-Bleed 100% Cover - No Aspect Ratio Gaps) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {featuredProjects.map((project, idx) => {
@@ -78,12 +78,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
         })}
       </div>
 
-      {/* Hero Dark/Architectural Vignette Overlays - Softened for brighter visual presence */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#252c33] via-transparent to-black/35 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none" />
+      {/* Hero Dark/Architectural Vignette Overlays - Mobile: full visual bleed, Desktop: soft bottom blend */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/30 sm:from-[#252c33] sm:via-transparent sm:to-black/35 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/15 z-10 pointer-events-none" />
 
       {/* Main Content Layer */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] w-full pt-28 pb-10 sm:pb-12 flex flex-col justify-between min-h-[100dvh]">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px] w-full pt-20 sm:pt-28 pb-5 sm:pb-12 flex flex-col justify-between h-full min-h-[100dvh]">
         {/* Top Badges - Only slider index */}
         <div className="flex items-center justify-end text-xs text-[#fffff1]/80 tracking-widest uppercase">
           <div className="hidden sm:flex items-center space-x-3">
@@ -99,7 +99,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
         </div>
 
         {/* Center / Hero Typography */}
-        <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-6 sm:py-8">
+        <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-3 sm:py-8">
           <h1 className="font-theSeasons text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#fffff1] leading-[1.05] mb-4 drop-shadow-md">
             {currentProject.title}
           </h1>
