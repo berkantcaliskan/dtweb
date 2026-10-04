@@ -28,7 +28,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
   }
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 lg:p-10">
+    <div className="fixed inset-0 z-[70] overflow-y-auto flex items-center justify-center p-4 sm:p-6 lg:p-10">
       {/* 1. Temel Arka Plan (Backdrop: bu blurda) */}
       <div 
         className="fixed inset-0 bg-black/45 backdrop-blur-md animate-modal-backdrop transition-opacity cursor-pointer"

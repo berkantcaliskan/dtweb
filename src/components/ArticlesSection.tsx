@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { ArrowUpRight, Clock, Calendar, BookOpen, ChevronRight } from 'lucide-react'
-import { ArticleDetailView } from './ArticleDetailView'
+import React from 'react'
+import { ArrowUpRight, Clock, Calendar } from 'lucide-react'
 
 export interface ArticleItem {
   id: string
@@ -81,9 +80,11 @@ export const ARTICLES_DATA: ArticleItem[] = [
   }
 ]
 
-export const ArticlesSection: React.FC = () => {
-  const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null)
+export interface ArticlesSectionProps {
+  onSelectArticle?: (article: ArticleItem) => void
+}
 
+export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticle }) => {
   return (
     <section id="makaleler" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
@@ -106,7 +107,7 @@ export const ArticlesSection: React.FC = () => {
           {ARTICLES_DATA.map((article) => (
             <article
               key={article.id}
-              onClick={() => setSelectedArticle(article)}
+              onClick={() => onSelectArticle && onSelectArticle(article)}
               className="group cursor-pointer bg-transparent backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/35 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -154,16 +155,6 @@ export const ArticlesSection: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Full-Page Single Article Editorial View (Project Page style) */}
-      {selectedArticle && (
-        <ArticleDetailView
-          article={selectedArticle}
-          allArticles={ARTICLES_DATA}
-          onClose={() => setSelectedArticle(null)}
-          onSelectArticle={(art) => setSelectedArticle(art)}
-        />
-      )}
     </section>
   )
 }

@@ -99,11 +99,11 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33]/85 backdrop-blur-2xl text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
+      className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Header with Back Button */}
-      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/80 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
         {/* Left: Back Button & Title */}
         <div className="flex items-center space-x-4 sm:space-x-6">
           <button

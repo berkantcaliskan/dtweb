@@ -5,6 +5,8 @@ import { DemirturkLogo } from './DemirturkLogo'
 
 interface WebsiteNavbarProps {
   activeSection?: string
+  isSubPageOpen?: boolean
+  onNavigate?: (href: string) => void
   onOpenTour?: () => void
   onOpenReachUs?: () => void
 }
@@ -23,7 +25,12 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: 'ULAŞIN', href: '#ulasin' },
 ]
 
-export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpenReachUs }) => {
+export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ 
+  isSubPageOpen = false,
+  onNavigate,
+  onOpenTour, 
+  onOpenReachUs 
+}) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -192,17 +199,24 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
   const handleNavClick = (item: NavLinkItem) => {
     setIsMenuOpen(false)
     if (item.label === 'ULAŞIN' && onOpenReachUs) {
+      if (onNavigate) {
+        onNavigate('#ulasin')
+      }
       onOpenReachUs()
       return
     }
-    scrollTo(item.href)
+    if (onNavigate) {
+      onNavigate(item.href)
+    } else {
+      scrollTo(item.href)
+    }
   }
 
   const scrollTo = (href: string) => {
     setIsMenuOpen(false)
     const element = document.querySelector(href)
     if (element) {
-      const topOffset = 80
+      const topOffset = 70
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - topOffset
 
@@ -265,10 +279,10 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
       </div>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#252c33]/92 backdrop-blur-xl py-3.5 shadow-2xl'
-            : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent py-5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center ${
+          isScrolled || isSubPageOpen
+            ? 'bg-[#1c2126]/95 backdrop-blur-xl h-[68px] sm:h-[72px] shadow-2xl border-b border-[#fffff1]/10'
+            : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent h-[76px] sm:h-[84px]'
         }`}
       >
         <div
@@ -281,9 +295,13 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
               href="#"
               onClick={(e) => {
                 e.preventDefault()
-                window.scrollTo({ top: 0, behavior: 'smooth' })
+                if (onNavigate) {
+                  onNavigate('#')
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
               }}
-              className="group flex-shrink-0 translate-y-[2.5px]"
+              className="group flex-shrink-0 translate-y-[2.5px] cursor-pointer"
             >
               <DemirturkLogo variant="dark-bg" emblemSize={36} />
             </a>
@@ -379,14 +397,14 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ onOpenTour, onOpen
       {isMenuOpen && (
         <div
           onClick={() => setIsMenuOpen(false)}
-          className="fixed inset-0 z-50 bg-black/45 backdrop-blur-md transition-opacity duration-300 animate-modal-backdrop"
+          className="fixed inset-0 z-[80] bg-black/45 backdrop-blur-md transition-opacity duration-300 animate-modal-backdrop"
           aria-hidden="true"
         />
       )}
 
       {/* Slide-over Right Drawer Menu */}
       <div
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[400px] max-w-full bg-[#1c2126]/65 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border-l border-[#fffff1]/15 shadow-2xl flex flex-col justify-between p-6 sm:p-7 transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 bottom-0 z-[80] w-full sm:w-[400px] max-w-full bg-[#1c2126]/65 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border-l border-[#fffff1]/15 shadow-2xl flex flex-col justify-between p-6 sm:p-7 transition-transform duration-300 ease-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         }`}
       >

@@ -37,12 +37,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   const [leadPhone, setLeadPhone] = useState('')
   const [leadFormSubmitted, setLeadFormSubmitted] = useState(false)
 
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  const stageContainerRef = React.useRef<HTMLDivElement>(null)
+
   // Reset stage selection and scroll to top when project changes
   useEffect(() => {
     setActiveStage(null)
     setSelectedPlanIndex(0)
     setLeadFormSubmitted(false)
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: 'instant' })
+    }
   }, [project])
+
+  // Scroll to top of stage when stage changes
+  useEffect(() => {
+    if (stageContainerRef.current) {
+      stageContainerRef.current.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [activeStage])
 
   // Body scroll lock & Escape key listener
   useEffect(() => {
@@ -55,7 +68,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
       if (e.key === 'Escape') {
         if (activeStage) {
           setActiveStage(null)
-          window.scrollTo({ top: 0, behavior: 'smooth' })
+          containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
         } else {
           onClose()
         }
@@ -113,17 +126,18 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
     return (
       <div 
-        className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33]/85 backdrop-blur-2xl text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
+        ref={stageContainerRef}
+        className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Stage Sticky Top Bar */}
-        <header className="sticky top-0 z-40 w-full bg-[#1e242b]/80 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+        <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
           {/* Sol: Geri Dön (Yeni Şehir Etapları Ana Sayfasına) */}
           <div className="flex items-center space-x-4 sm:space-x-6">
             <button
               onClick={() => {
                 setActiveStage(null)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
+                containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
               aria-label={`${project.title}'na geri dön`}
@@ -184,7 +198,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <button
                   onClick={() => {
                     setActiveStage(null)
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
                   }}
                   className="hover:text-[#fffff1] transition-colors underline-offset-4 hover:underline cursor-pointer"
                 >
@@ -412,7 +426,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <button
               onClick={() => {
                 setActiveStage(null)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
+                containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
             >
@@ -437,11 +451,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   // =========================================================================
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#252c33]/85 backdrop-blur-2xl text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] min-h-screen w-full animate-modal-backdrop flex flex-col"
+      ref={containerRef}
+      className="fixed top-[68px] sm:top-[72px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/80 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
+      <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3.5 flex items-center justify-between shadow-lg">
         {/* Sol Üst: Geri Butonu & Proje Başlık İntrosu */}
         <div className="flex items-center space-x-4 sm:space-x-6">
           <button
@@ -646,7 +661,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     key={stage.id}
                     onClick={() => {
                       setActiveStage(stage)
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
                     className={`group relative cursor-pointer rounded-2xl overflow-hidden border transition-all duration-500 hover:-translate-y-1 shadow-xl hover:shadow-2xl flex flex-col justify-between min-h-[380px] sm:min-h-[420px] ${
                       isOngoing
