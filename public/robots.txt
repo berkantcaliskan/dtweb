@@ -1,0 +1,10 @@
+# Robots.txt for Demirtürk İnşaat (https://demirturkinsaat.com)
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://demirturkinsaat.com
+
+# Sitemaps
+Sitemap: https://demirturkinsaat.com/sitemap.xml

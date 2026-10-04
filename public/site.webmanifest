@@ -1,0 +1,31 @@
+{
+  "name": "Demirtürk İnşaat",
+  "short_name": "Demirtürk",
+  "description": "Karasu Lüks Konut Projeleri, Havuzlu Siteler & Elden Senetli Satış Modeli",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#252c33",
+  "theme_color": "#252c33",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/demirturk-emblem.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

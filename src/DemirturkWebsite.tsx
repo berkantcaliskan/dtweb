@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { WebsiteNavbar } from './components/WebsiteNavbar'
 import { HeroSlider } from './components/HeroSlider'
 import { AmbientSlidesBackground } from './components/AmbientSlidesBackground'
@@ -16,12 +16,86 @@ import { TourBookingModal } from './components/TourBookingModal'
 import { ReachUsModal } from './components/ReachUsModal'
 import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
+import { PROJECTS_DATA } from './data/websiteData'
 
 export const DemirturkWebsite: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
   const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null)
   const [isTourModalOpen, setIsTourModalOpen] = useState(false)
   const [isReachUsModalOpen, setIsReachUsModalOpen] = useState(false)
+
+  // SEO & Deep-linking: sync URL and meta on mount and on selection changes
+  useEffect(() => {
+    const handleUrlState = () => {
+      const params = new URLSearchParams(window.location.search)
+      const projectParam = params.get('proje')
+      const articleParam = params.get('makale')
+      const tourParam = params.get('tur')
+      const contactParam = params.get('iletisim')
+
+      if (projectParam) {
+        const found = PROJECTS_DATA.find((p) => p.slug === projectParam || p.id === projectParam)
+        if (found) {
+          setSelectedProject(found)
+          setSelectedArticle(null)
+          return
+        }
+      }
+
+      if (articleParam) {
+        const found = ARTICLES_DATA.find((a) => a.id === articleParam)
+        if (found) {
+          setSelectedArticle(found)
+          setSelectedProject(null)
+          return
+        }
+      }
+
+      if (tourParam !== null) {
+        setIsTourModalOpen(true)
+      }
+
+      if (contactParam !== null) {
+        setIsReachUsModalOpen(true)
+      }
+    }
+
+    handleUrlState()
+    window.addEventListener('popstate', handleUrlState)
+    return () => window.removeEventListener('popstate', handleUrlState)
+  }, [])
+
+  // Dynamic document.title and meta description updates for SEO
+  useEffect(() => {
+    const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
+    const defaultDesc = "2003'ten bugüne Sakarya Karasu'da kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
+    const metaDesc = document.querySelector('meta[name="description"]')
+
+    if (selectedProject) {
+      document.title = `${selectedProject.title} | Demirtürk İnşaat Karasu Projeleri`
+      if (metaDesc) metaDesc.setAttribute('content', selectedProject.description.slice(0, 155))
+      const url = new URL(window.location.href)
+      url.searchParams.set('proje', selectedProject.slug || selectedProject.id)
+      url.searchParams.delete('makale')
+      window.history.replaceState({}, '', url.toString())
+    } else if (selectedArticle) {
+      document.title = `${selectedArticle.title} | Demirtürk İnşaat Blog`
+      if (metaDesc) metaDesc.setAttribute('content', selectedArticle.summary.slice(0, 155))
+      const url = new URL(window.location.href)
+      url.searchParams.set('makale', selectedArticle.id)
+      url.searchParams.delete('proje')
+      window.history.replaceState({}, '', url.toString())
+    } else {
+      document.title = defaultTitle
+      if (metaDesc) metaDesc.setAttribute('content', defaultDesc)
+      const url = new URL(window.location.href)
+      if (url.searchParams.has('proje') || url.searchParams.has('makale')) {
+        url.searchParams.delete('proje')
+        url.searchParams.delete('makale')
+        window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash)
+      }
+    }
+  }, [selectedProject, selectedArticle])
 
   const isSubPageOpen = Boolean(selectedProject || selectedArticle || isReachUsModalOpen)
 

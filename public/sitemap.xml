@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://demirturkinsaat.com/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/aselforweb.jpeg</image:loc>
+      <image:title>Demirtürk İnşaat Karasu Projeleri</image:title>
+      <image:caption>Karasu satılık havuzlu siteler ve lüks konut projeleri</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Projeler -->
+  <url>
+    <loc>https://demirturkinsaat.com/?proje=asel-doga-evleri</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/aselforweb.jpeg</image:loc>
+      <image:title>Asel Doğa Evleri - Demirtürk İnşaat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?proje=yeni-sehir-rezidans</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/yenisehirforweb.jpeg</image:loc>
+      <image:title>Yeni Şehir Rezidans - Demirtürk İnşaat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?proje=almina-konaklari</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/alminaforweb.jpeg</image:loc>
+      <image:title>Almina Konakları - Demirtürk İnşaat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?proje=seaside-konaklari</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/seasideforweb.jpeg</image:loc>
+      <image:title>Seaside Konakları - Demirtürk İnşaat</image:title>
+    </image:image>
+  </url>
+
+  <!-- Makaleler / Blog -->
+  <url>
+    <loc>https://demirturkinsaat.com/?makale=dogal-sahil-mimarisi</loc>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?makale=deprem-guvenligi-c35-beton</loc>
+    <lastmod>2025-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?makale=sayfiye-yasamindan-surdurulebilir-eve</loc>
+    <lastmod>2024-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/?makale=malzeme-tedarikinde-ozkaynak-gucu</loc>
+    <lastmod>2024-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Önemli Sayfa Bölümleri -->
+  <url>
+    <loc>https://demirturkinsaat.com/#projeler</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/#finansman</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/#yapi-malzemeleri</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/#mimari-yaklasim</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/#insa-surecleri</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://demirturkinsaat.com/#ulasin</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+</urlset>
