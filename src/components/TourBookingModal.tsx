@@ -36,22 +36,22 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
         aria-hidden="true"
       />
 
-      {/* 2. Pencere Arka Planı (Daha blur, sayfaların arka planı gibi: 60px blur + doygunluk + cam geçirgenliği) */}
+      {/* 2. Pencere Arka Planı (Kutucuğun dahilinde, tek parça dikişsiz buzlu cam) */}
       <div 
-        className="relative z-10 w-full max-w-xl bg-[#252c33]/55 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content"
+        className="relative z-10 w-full max-w-xl bg-[#252c33]/55 backdrop-blur-[55px] sm:backdrop-blur-[70px] backdrop-saturate-150 border border-[#fffff1]/20 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col text-[#fffff1] my-auto animate-modal-content p-6 sm:p-8 space-y-6"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-white/[0.04] backdrop-blur-md border-b border-[#fffff1]/15">
-          <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center font-bold">
+        {/* Başlık & Kapat Butonu (Kutucuğun dahilinde, çizgisiz ve bar olmadan tek parça) */}
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-9 h-9 rounded-xl bg-white/[0.08] border border-[#fffff1]/20 text-[#fffff1] flex items-center justify-center font-bold flex-shrink-0">
               <Bus size={18} />
             </div>
             <div>
-              <span className="text-[10px] tracking-widest uppercase text-[#fffff1]/80 block font-medium">
+              <span className="text-[10px] tracking-widest uppercase text-[#fffff1]/70 block font-medium">
                 VIP TRANSFER & MİSAFİRLİK
               </span>
-              <h3 className="font-theSeasons text-xl font-bold text-[#fffff1]">
+              <h3 className="font-theSeasons text-xl sm:text-2xl font-bold text-[#fffff1] leading-tight mt-0.5">
                 Ücretsiz Karasu Tanıtım Turu
               </h3>
             </div>
@@ -59,16 +59,15 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/15 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/15 flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
             aria-label="Kapat"
           >
             <X size={16} />
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-6">
-          <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
+        {/* Modal Açıklaması */}
+        <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
             İstanbul ve çevre illerden Karasu’ya özel VIP transfer aracımızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak inceleyin.
           </p>
 
@@ -176,6 +175,5 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
           )}
         </div>
       </div>
-    </div>
   )
 }
