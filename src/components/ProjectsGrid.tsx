@@ -59,7 +59,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   }, [compactProjects, selectedFilter, showAll])
 
   return (
-    <section id="projeler" className="py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="projeler" className="py-24 bg-transparent text-[#fffff1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Architectural Section Header */}
         <div className="mb-10">

@@ -77,7 +77,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
   // Scroll detection for navbar background styling
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
+      setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -279,10 +279,10 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
       </div>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center h-[72px] sm:h-[78px] transition-[background-color,box-shadow] duration-300 backdrop-blur-2xl backdrop-saturate-150 ${
           isScrolled || isSubPageOpen
-            ? 'bg-[#1c2126]/95 backdrop-blur-xl h-[68px] sm:h-[72px] shadow-2xl border-b border-[#fffff1]/10'
-            : 'bg-gradient-to-b from-[#1c2126]/90 via-[#252c33]/40 to-transparent h-[76px] sm:h-[84px]'
+            ? 'bg-[#1c2126]/65 shadow-[0_8px_32px_rgba(0,0,0,0.35)]'
+            : 'bg-[#1c2126]/25'
         }`}
       >
         <div
