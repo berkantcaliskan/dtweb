@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowLeft, X, MapPin, Phone, Mail, Clock, MessageSquare, Send, Check, Briefcase, GraduationCap, Users, ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, MapPin, Phone, Mail, Clock, MessageSquare, Send, Check, Briefcase, GraduationCap, Users, ArrowUpRight } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
 
 interface ReachUsModalProps {
@@ -146,15 +146,6 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
             <Phone size={14} />
             <span>{COMPANY_INFO.phone}</span>
           </a>
-
-          <button
-            onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            aria-label="Pencereyi Kapat"
-            title="Kapat"
-          >
-            <X size={20} />
-          </button>
         </div>
       </header>
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   ArrowLeft,
-  X,
   MapPin,
   Calendar,
   Layers,
@@ -177,15 +176,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <Phone size={14} />
               <span>{COMPANY_INFO.phone}</span>
             </a>
-
-            <button
-              onClick={onClose}
-              className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              aria-label="Sayfayı Kapat"
-              title="Kapat"
-            >
-              <X size={18} />
-            </button>
           </div>
         </header>
 
@@ -499,15 +489,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <Phone size={14} />
             <span>{COMPANY_INFO.phone}</span>
           </a>
-
-          <button
-            onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            aria-label="Sayfayı Kapat"
-            title="Kapat"
-          >
-            <X size={18} />
-          </button>
         </div>
       </header>
 

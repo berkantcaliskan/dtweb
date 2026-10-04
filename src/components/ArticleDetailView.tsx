@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ArrowLeft, Clock, Calendar, Share2, MessageSquare, Phone, X, ArrowUpRight, BookOpen, Check } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, Share2, MessageSquare, Phone, ArrowUpRight, BookOpen, Check } from 'lucide-react'
 import { ArticleItem } from './ArticlesSection'
 import { COMPANY_INFO } from '../data/websiteData'
 
@@ -111,14 +111,6 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
             <MessageSquare size={14} />
             <span>WhatsApp Danışma</span>
           </a>
-
-          <button
-            onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            aria-label="Kapat"
-          >
-            <X size={18} />
-          </button>
         </div>
       </header>
 
