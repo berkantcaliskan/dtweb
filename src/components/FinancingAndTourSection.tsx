@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
-import { Bus, CheckCircle2, ShieldCheck, Send, FileCheck, Layers, Award } from 'lucide-react'
+import { Bus, CheckCircle2, ShieldCheck, Send, FileCheck, Layers, Award, MessageSquare } from 'lucide-react'
 import { submitLeadToPortfoy } from '../services/leadService'
 
 export const FinancingAndTourSection: React.FC = () => {
@@ -25,11 +25,6 @@ export const FinancingAndTourSection: React.FC = () => {
       tags: ['Web Sitesi', 'Tanıtım Turu', tourCity, tourTransportChoice === 'Kendi Aracımla Geleceğim' ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })
 
-    // 2. WhatsApp ile doğrudan mesaj aç
-    const message = encodeURIComponent(
-      `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için rezervasyon yapmak istiyorum:\nİsim: ${tourName || 'Belirtilmedi'}\nTelefon: ${tourPhone}\nŞehir: ${tourCity}\nKatılım Şekli: ${tourTransportChoice}`
-    )
-    window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=${message}`, '_blank')
     setTourSubmitted(true)
   }
 
@@ -198,14 +193,39 @@ export const FinancingAndTourSection: React.FC = () => {
 
             {/* Quick Reservation Form */}
             {tourSubmitted ? (
-              <div className="p-5 bg-emerald-900/40 border border-emerald-500/40 rounded-xl text-sm text-emerald-300 space-y-2">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 size={18} />
-                  <span className="font-semibold text-base">Talebiniz Alındı!</span>
+              <div className="p-6 bg-emerald-950/40 border border-emerald-500/30 rounded-2xl text-sm text-emerald-200 space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                    <CheckCircle2 size={22} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-base text-emerald-100">Rezervasyon Talebiniz Alındı!</h4>
+                    <p className="text-xs text-emerald-300/80">Kayıt başarıyla Portföy CRM sistemimize iletildi.</p>
+                  </div>
                 </div>
-                <p className="text-sm text-emerald-300/80 leading-relaxed">
-                  Müşteri temsilcimiz transfer detayları ve hareket noktası için sizi arayacaktır.
+
+                <p className="text-xs sm:text-sm text-[#fffff1]/80 leading-relaxed font-light">
+                  Müşteri temsilcimiz transfer detayları ve hareket noktası teyidi için sizi en kısa sürede arayacaktır. Dilerseniz başvurunuzu WhatsApp üzerinden de paylaşabilirsiniz:
                 </p>
+
+                <div className="bg-black/25 rounded-xl p-3 text-xs text-[#fffff1]/80 border border-[#fffff1]/10 space-y-1">
+                  <div><span className="text-[#fffff1]/50">Ad Soyad:</span> {tourName || 'Belirtilmedi'}</div>
+                  <div><span className="text-[#fffff1]/50">Telefon:</span> {tourPhone}</div>
+                  <div><span className="text-[#fffff1]/50">Kalkış Şehri:</span> {tourCity}</div>
+                  <div><span className="text-[#fffff1]/50">Katılım & Ulaşım:</span> {tourTransportChoice}</div>
+                </div>
+
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                    `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için web sitenizden rezervasyon başvurumu ilettim:\n\n• İsim: ${tourName || 'Belirtilmedi'}\n• Telefon: ${tourPhone}\n• Kalkış Şehri: ${tourCity}\n• Katılım & Ulaşım: ${tourTransportChoice}\n\nTur ve rezervasyon detaylarını teyit etmek istiyorum.`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-3.5 px-4 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/40 border border-emerald-500/40 hover:border-emerald-500/60 text-emerald-200 font-medium text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-md"
+                >
+                  <MessageSquare size={16} className="text-emerald-400" />
+                  <span>WhatsApp’ta Paylaş / Onayla</span>
+                </a>
               </div>
             ) : (
               <form onSubmit={handleTourSubmit} className="space-y-3.5 pt-2">
