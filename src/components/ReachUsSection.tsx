@@ -338,7 +338,7 @@ export const ReachUsSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 hover:scale-[1.01] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Bilgi ve Randevu Talebini Gönder</span>
@@ -499,7 +499,7 @@ export const ReachUsSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-2xl transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 cursor-pointer"
                   >
                     <Briefcase size={16} />
                     <span>Başvuruyu İlet</span>

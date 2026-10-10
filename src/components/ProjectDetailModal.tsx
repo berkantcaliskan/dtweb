@@ -399,7 +399,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title} - ${activeStage.title} hakkında detaylı bilgi almak istiyorum.`)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                   >
                     WhatsApp ile Fiyat & Bilgi Al
                   </a>
@@ -445,7 +445,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+                    className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                   >
                     <Send size={15} />
                     <span>WhatsApp ile Gönder</span>
@@ -462,7 +462,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 setActiveStage(null)
                 containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
+              className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
             >
               <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
               <span className="text-xs font-bold uppercase tracking-wider">{project.title}'na Geri Dön</span>
@@ -570,7 +570,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
 
             <div className="flex items-center gap-2">
-              <span className={`px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-md border ${
+              <span className={`px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase rounded-xl border ${
                 displayStatus === 'Tamamlandı'
                   ? 'bg-white/10 text-white/90 border-white/20'
                   : displayStatus === 'Yakında'
@@ -580,12 +580,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 {displayStatus}
               </span>
               {project.installmentMonths && (
-                <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-md">
+                <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-xl">
                   Elden Senet Modeli
                 </span>
               )}
               {displayDistanceToSea && (
-                <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-md">
+                <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-xl">
                   Denize {displayDistanceToSea}
                 </span>
               )}
@@ -645,9 +645,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     >
                       <span className="truncate">{stage.title}</span>
 
-                      {/* Status Pill Badge */}
+                      {/* Status Badge */}
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 flex-shrink-0 ${
+                        className={`px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 flex-shrink-0 ${
                           isCompleted
                             ? isSelected
                               ? 'bg-black/10 text-[#252c33] border border-black/10'
@@ -705,11 +705,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Durum & Vade</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Durum</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                  {currentStage
-                    ? `${currentStage.status} • ${project.installmentMonths ? `${project.installmentMonths} Ay` : 'Elden Senet'}`
-                    : `${displayStatus} • ${project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli'}`}
+                  {currentStage ? currentStage.status : displayStatus}
                 </span>
               </div>
             </div>
@@ -832,7 +830,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     {/* Top Vignette & Status Badges */}
                     <div className="relative z-10 p-5 flex items-start justify-between gap-3">
                       <div className="flex flex-wrap gap-2">
-                        <span className={`px-3 py-1.5 text-xs tracking-wider uppercase backdrop-blur-md font-semibold rounded-md shadow-sm border ${
+                        <span className={`px-3 py-1.5 text-xs tracking-wider uppercase backdrop-blur-md font-semibold rounded-xl shadow-sm border ${
                           isCompleted
                             ? 'bg-black/60 text-[#fffff1]/90 border-white/20'
                             : stage.status === 'Yakında'
@@ -841,7 +839,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                         }`}>
                           {stage.status}
                         </span>
-                        <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
+                        <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-xl shadow-sm">
                           {stage.deliveryDate ? `Teslim: ${stage.deliveryDate}` : stage.year}
                         </span>
                       </div>
@@ -1040,7 +1038,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
+                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   Telefonda Bilgi Al
                 </a>
@@ -1069,7 +1067,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <button
                     key={plan.name}
                     onClick={() => setSelectedPlanIndex(idx)}
-                    className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs uppercase font-bold tracking-normal sm:tracking-wider transition-all cursor-pointer ${
+                    className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs uppercase font-bold tracking-normal sm:tracking-wider transition-all cursor-pointer ${
                       selectedPlanIndex === idx
                         ? 'bg-[#fffff1] text-[#252c33] shadow-md border border-[#fffff1]'
                         : 'bg-white/5 text-[#fffff1]/70 hover:text-[#fffff1] hover:bg-white/10 border border-[#fffff1]/10'
@@ -1193,7 +1191,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+                  className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                 >
                   <Send size={15} />
                   <span>WhatsApp ile Gönder</span>
@@ -1207,7 +1205,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         <section className="pt-8 pb-12 border-t border-[#fffff1]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             onClick={onClose}
-            className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
+            className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
             <span className="text-xs font-bold uppercase tracking-wider">Tüm Projelere Geri Dön</span>

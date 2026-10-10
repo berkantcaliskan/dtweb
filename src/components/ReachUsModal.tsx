@@ -421,7 +421,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Mesajı Gönder (WhatsApp ile İlet)</span>
@@ -581,7 +581,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer"
                   >
                     <Send size={16} />
                     <span>Başvuruyu İlet (İK WhatsApp)</span>

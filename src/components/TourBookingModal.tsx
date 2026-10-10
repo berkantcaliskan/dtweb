@@ -205,7 +205,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#252c33] bg-[#fffff1] hover:bg-white transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#252c33] bg-[#fffff1] hover:bg-white transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Send size={15} />
                 <span>Ücretsiz Tur Rezervasyonunu Tamamla</span>

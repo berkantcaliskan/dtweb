@@ -561,7 +561,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               if (onOpenTour) onOpenTour()
               else scrollTo('#tanitim-turu')
             }}
-            className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-2xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
+            className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
           >
             Ücretsiz Tanıtım Turu İçin Rezervasyon Yap
           </button>

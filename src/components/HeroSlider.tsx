@@ -133,7 +133,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectProject(currentProject)}
-                className="px-3 py-1.5 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-extrabold text-[9.5px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
+                className="px-3 py-1.5 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-extrabold text-[9.5px] sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
               >
                 <span>Proje Detayları</span>
                 <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
@@ -149,7 +149,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                     if (el) el.scrollIntoView({ behavior: 'smooth' })
                   }
                 }}
-                className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
+                className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
               >
                 Ücretsiz Tanıtım Turu
               </button>
