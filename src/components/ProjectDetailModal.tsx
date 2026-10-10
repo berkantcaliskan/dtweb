@@ -18,7 +18,8 @@ import {
   Smile,
   Zap,
   BadgePercent,
-  Car
+  Car,
+  Trees
 } from 'lucide-react'
 import { ProjectItem, ProjectStage } from '../types'
 import { ResponsiveMedia } from './ResponsiveMedia'
@@ -136,6 +137,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         return <BadgePercent size={26} className="text-emerald-400 flex-shrink-0" />
       case 'Car':
         return <Car size={26} className="text-sky-400 flex-shrink-0" />
+      case 'Trees':
+        return <Trees size={26} className="text-emerald-400 flex-shrink-0" />
       default:
         return <Check size={26} className="text-[#fffff1] flex-shrink-0" />
     }

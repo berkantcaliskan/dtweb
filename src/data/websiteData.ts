@@ -51,7 +51,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Asel Doğa Evleri',
     seriesInfo: '2 proje • 3. ve 4. projeler yakında',
     cardSize: 'standard',
-    subtitle: 'Doğanın kalbinde, müstakil bahçeli ve havuzlu lüks yaşam',
+    subtitle: 'Doğanın kalbinde, zengin peyzajlı ve havuzlu lüks yaşam',
     slideDescription: 'Şehir ve doğayı en sade çizgiyle ayıran yaşam alanı',
     category: 'ongoing',
     categoryLabel: 'Havuzlu yaşam kompleksi',
@@ -63,7 +63,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '57 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Asel Doğa Evleri; Karadeniz sahil çam ormanlarının ferahlatıcı oksijeni ile çağdaş mimarinin dingin çizgilerini bir araya getiriyor. Geniş yüzme havuzu, çocuk oyun alanları, peyzaj yürüyüş parkurları ve müstakil bahçe alanları ile dört mevsim tatil konforunda bir yaşam sunar.',
+      'Asel Doğa Evleri; Karadeniz sahil çam ormanlarının ferahlatıcı oksijeni ile çağdaş mimarinin dingin çizgilerini bir araya getiriyor. Geniş yüzme havuzu, çocuk oyun alanları, peyzaj yürüyüş parkurları ve ferah yeşil alanları ile dört mevsim tatil konforunda bir yaşam sunar.',
     architecturalPhilosophy:
       'Doğal peyzajla uyumlu modern mimari hatlar, ferah balkonlar ve geniş bahçe alanlarıyla Karasu’nun sahil dokusuna değer katan, dört mevsim konfor sunan fonksiyonel bir yaşam kurgusu.',
     heroMedia: {
@@ -163,7 +163,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '~850 Metre',
         totalUnits: '12 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Asel Doğa Evleri serisinin devam projesi olan Asel Doğa Evleri 2; geniş açık yüzme havuzu, yerden ısıtmalı modern daireleri, zengin peyzajı ve müstakil bahçe alanları ile 2027 teslimi için satış ve yapım süreci devam etmektedir.',
+        description: 'Asel Doğa Evleri serisinin devam projesi olan Asel Doğa Evleri 2; geniş açık yüzme havuzu, yerden ısıtmalı modern daireleri, zengin peyzajı ve ferah balkon alanları ile 2027 teslimi için satış ve yapım süreci devam etmektedir.',
         features: [
           'Satışta, Devam Ediyor (Teslim: 2027)',
           'Aziziye Mahallesi – Doğayla İç İçe',
@@ -242,7 +242,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '246 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize yaklaşık 800 metre mesafede çağdaş sahil mimarisini geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
+      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize yaklaşık 800 metre mesafede çağdaş sahil mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
     architecturalPhilosophy:
       'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik sahil mimarisi.',
     heroMedia: {
@@ -282,6 +282,11 @@ export const PROJECTS_DATA: ProjectItem[] = [
         description: 'Enerji tasarrufu sağlayan güneş paneli sistemi ile çevreci ve ekonomik bir yaşam altyapısı sunulmaktadır.'
       },
       {
+        icon: 'Trees',
+        title: 'Müstakil Bahçe Alanı',
+        description: 'Zemin kat dairelerde aileye özel müstakil bahçe kullanım alanları ile doğayla iç içe, huzurlu ve ayrıcalıklı bir sahil yaşamı.'
+      },
+      {
         icon: 'Waves',
         title: 'Aqua Havuz & Yüzme Alanları',
         description: 'Aqua havuz konsepti ile tatil konforunda yaşam. Çocuk ve yetişkinler için ayrı yüzme alanları sayesinde ailece güvenli ve keyifli vakit geçirebilirsiniz.'
@@ -311,7 +316,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       '1.000.000₺ Peşinat – 40 Ay Vade – Araç Takas',
       'Yalı Mahallesi – Denize ~800 Metre (Aşağı Yukarı)',
       '1+1 & 2+1 Daire Seçenekleri',
-      'Havuzlu, Müstakil Bahçeli Lüks Yazlık Evler',
+      'Müstakil Bahçeli Zemin Kat Seçenekleri',
       'Yerden Isıtmalı Lüks Konsept',
       'Aqua Havuz & Yarı Olimpik Yüzme Alanı',
       'Güneş Paneli Enerji Altyapısı',
@@ -331,12 +336,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '~800 Metre (Aşağı Yukarı)',
         totalUnits: '48 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
+        description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, müstakil bahçe kullanım alanları, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
         features: [
           'Tamamlandı & Teslim Edildi',
           'Yalı Mahallesi, Karasu',
           'Denize ~800 Metre (Aşağı Yukarı)',
           '48 Daire (1+1 ve 2+1 Daire Seçenekleri)',
+          'Müstakil Bahçe & Teras Alanları',
           'Yerden Isıtmalı Isınma Altyapısı',
           'Açık Yüzme Havuzu',
           'Site İçi Yeşil Alanlar ve Otopark',
@@ -357,12 +363,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '~800 Metre (Aşağı Yukarı)',
         totalUnits: '48 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla satışta olan seçkin bir sahil sitesidir.',
+        description: 'Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, müstakil bahçeli zemin kat seçenekleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla satışta olan seçkin bir sahil sitesidir.',
         features: [
           'Satışta Olan Etap',
           'Yalı Mahallesi, Karasu',
           'Denize ~800 Metre (Aşağı Yukarı)',
           '48 Daire (1+1 ve 2+1 Daire Seçenekleri)',
+          'Müstakil Bahçe Kullanımlı Daireler',
           'Yerden Isıtmalı Isınma Konforu',
           'Açık Yüzme Havuzu & Çocuk Havuzu',
           'Çocuk Oyun Parkı & Kamelyalar',
@@ -383,7 +390,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '~800 Metre (Aşağı Yukarı)',
         totalUnits: '150 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
+        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, müstakil bahçe ayrıcalığı, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
         features: [
           'Teslim Tarihi: 2028 (Satışta, Devam Ediyor)',
           'Yalı Mahallesi — Denize ~800 Metre (Aşağı Yukarı)',
