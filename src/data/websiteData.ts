@@ -128,7 +128,97 @@ export const PROJECTS_DATA: ProjectItem[] = [
       }
     ],
     installmentMonths: 40,
-    isFeatured: true
+    isFeatured: true,
+    stages: [
+      {
+        id: 'asel-doga-1',
+        stageNumber: 1,
+        title: 'Asel Doğa 1',
+        subtitle: 'Tamamlanan ve anahtar teslimi yapılan ilk proje',
+        status: 'Tamamlandı',
+        year: '2023',
+        deliveryDate: '2023',
+        location: 'Aziziye Mah. 369 Nolu Sk., Karasu / Sakarya',
+        distanceToSea: 'Denize ~800 Metre',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Asel Doğa serisinin ilk adımı olarak Aziziye Mahallesi’nde inşa edilen, geniş bahçe ve havuz konseptiyle tamamlanıp anahtar teslimi yapılmış etaptır.',
+        features: [
+          'Tamamlandı & Yaşam Başladı (2023)',
+          'Aziziye Mahallesi 369 Nolu Sokak',
+          'Denize ~800 Metre Mesafe',
+          'Yüzme Havuzu & Bahçe Alanları',
+          'Yerden Isıtmalı Modern Konutlar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '6.400 m²'
+      },
+      {
+        id: 'asel-doga-2',
+        stageNumber: 2,
+        title: 'Asel Doğa 2',
+        subtitle: 'Aziziye Mahallesi’nde inşası ve satışları hızla devam eden güncel proje',
+        status: 'Devam Ediyor',
+        year: '2024 - 2025',
+        deliveryDate: '2025',
+        location: 'Aziziye Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~800 Metre',
+        unitTypes: ['1+1 Bahçe Katı', '2+1 Geniş Teraslı', '3+1 Dubleks'],
+        description: 'Asel Doğa serisinin devam projesi olan Asel Doğa 2; açık olimpik yüzme havuzu, yerden ısıtmalı modern daireleri, zengin peyzajı ve müstakil bahçe alanları ile satış ve yapım süreci devam etmektedir.',
+        features: [
+          'Yapım & Satış Süreci Devam Ediyor',
+          'Aziziye Mahallesi – Doğayla İç İçe',
+          'Açık Olimpik Yüzme Havuzu & Çocuk Havuzu',
+          '1+1, 2+1 ve 3+1 Dubleks Seçenekleri',
+          'Yerden Isıtmalı Lüks Yaşam Standardı',
+          'Elden Senetle Esnek Ödeme Modeli'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '8.400 m²'
+      },
+      {
+        id: 'asel-doga-3',
+        stageNumber: 3,
+        title: 'Asel Doğa 3',
+        subtitle: 'Aziziye Mahallesi’nde doğayla iç içe planlanan yeni etap',
+        status: 'Yakında',
+        year: 'Yakında',
+        deliveryDate: 'Yakında',
+        location: 'Aziziye Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~850 Metre',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Aziziye Mahallesi’nde planlanan Asel Doğa 3; doğa ile iç içe huzurlu mimarisi, zengin sosyal donatıları ve modern mimari detaylarıyla çok yakında başlayacaktır.',
+        features: [
+          'Yakında Başlıyor (Ön Talep Aşaması)',
+          'Aziziye Mahallesi Sakin ve Ferah Lokasyon',
+          'Modern Mimari & Doğa Manzarası',
+          'Yüzme Havuzu & Peyzaj Alanları',
+          'Lansmana Özel Avantajlı Fiyatlar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '7.200 m²'
+      },
+      {
+        id: 'asel-doga-4',
+        stageNumber: 4,
+        title: 'Asel Doğa 4',
+        subtitle: 'Asel Doğa yaşam konseptinin dördüncü halkası',
+        status: 'Yakında',
+        year: 'Yakında',
+        deliveryDate: 'Yakında',
+        location: 'Aziziye Mah., Karasu / Sakarya',
+        distanceToSea: 'Denize ~850 Metre',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Asel Doğa konseptinin dördüncü halkası; sakin ve prestijli sahil lokasyonunda, yüksek inşaat kalitesi ve esnek ödeme koşullarıyla çok yakında projelendirilecektir.',
+        features: [
+          'Yakında Projelendirilecek',
+          'Aziziye Mahallesi Lokasyonu',
+          'Yüksek Malzeme Standardı & Yalıtım',
+          'Özel Otopark & Sosyal Donatılar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '6.800 m²'
+      }
+    ]
   },
   {
     id: 'yenisehir-rezidans',
@@ -226,30 +316,28 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     stages: [
       {
-        id: 'yenisehir-etap-3',
-        stageNumber: 3,
-        title: 'Yeni Şehir 3. Etap',
-        subtitle: 'Yalı Mahallesi’nde en güncel, havuzlu, yerden ısıtmalı ve güneş panelli etap',
-        status: 'Yapım Aşamasında',
-        year: '2028',
-        deliveryDate: '2028',
-        location: 'Yalı Mah., Karasu / Sakarya',
+        id: 'yenisehir-etap-1',
+        stageNumber: 1,
+        title: 'Yeni Şehir 1. Etap',
+        subtitle: 'Yalı Mahallesi’nde tamamlanan ve teslim edilen ilk etap',
+        status: 'Tamamlandı',
+        year: '2025',
+        deliveryDate: '2025',
+        location: 'Yalı Mah. 132 Nolu Sk., Karasu / Sakarya',
         distanceToSea: 'Denize ~800 Metre',
         unitTypes: ['1+1 Daireler', '2+1 Daireler'],
-        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
+        description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; 2025 yılında başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
         features: [
-          'Teslim Tarihi: 2028 (Yapım Aşamasında)',
-          'Yalı Mahallesi — Denize ~800 Metre',
+          'Tamamlandı & Teslim Edildi (2025)',
+          'Yalı Mahallesi 132 Nolu Sokak',
           '1+1 ve 2+1 Daire Seçenekleri',
-          'Yerden Isıtmalı Lüks Yazlık Evler',
-          'Aqua Havuz & Yarı Olimpik Yüzme Alanları',
-          'Güneş Paneli Enerji Sistemi',
-          'Elektrikli Araç Şarj İstasyonu',
-          'Güvenli Çocuk Oyun Parkı & Peyzaj',
-          'Müstakil Bahçeli ve Teraslı Seçenekler'
+          'Yerden Isıtmalı Isınma Altyapısı',
+          'Açık Yüzme Havuzu',
+          'Site İçi Yeşil Alanlar ve Otopark',
+          '24/7 Güvenlikli Giriş'
         ],
         image: '/images/yenisehirforweb.jpeg',
-        totalArea: '8.400 m²'
+        totalArea: '4.200 m²'
       },
       {
         id: 'yenisehir-etap-2',
@@ -259,13 +347,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         status: 'Tamamlandı',
         year: '2025',
         deliveryDate: '2025',
-        location: 'Yalı Mah., Karasu / Sakarya',
+        location: 'Yalı Mah. 135 Nolu Sk., Karasu / Sakarya',
         distanceToSea: 'Denize ~800 Metre',
         unitTypes: ['1+1 Daireler', '2+1 Daireler'],
         description: '2025 yılında eksiksiz tamamlanan Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla yaşamın başladığı seçkin bir sahil sitesidir.',
         features: [
           'Tamamlandı & Yaşam Başladı (2025)',
-          'Yalı Mahallesi — Denize ~800 Metre',
+          'Yalı Mahallesi 135 Nolu Sokak',
           '1+1 ve 2+1 Daire Seçenekleri',
           'Yerden Isıtmalı Isınma Konforu',
           'Açık Yüzme Havuzu & Çocuk Havuzu',
@@ -276,28 +364,30 @@ export const PROJECTS_DATA: ProjectItem[] = [
         totalArea: '4.800 m²'
       },
       {
-        id: 'yenisehir-etap-1',
-        stageNumber: 1,
-        title: 'Yeni Şehir 1. Etap',
-        subtitle: 'Yalı Mahallesi’nde tamamlanan ve teslim edilen ilk etap',
-        status: 'Tamamlandı',
-        year: '2025',
-        deliveryDate: '2025',
-        location: 'Yalı Mah., Karasu / Sakarya',
+        id: 'yenisehir-etap-3',
+        stageNumber: 3,
+        title: 'Yeni Şehir 3. Etap',
+        subtitle: 'Yalı Mahallesi’nde en güncel, havuzlu, yerden ısıtmalı ve güneş panelli etap',
+        status: 'Devam Ediyor',
+        year: '2028',
+        deliveryDate: '2028',
+        location: 'Yalı Mah. 138 Nolu Sk., Karasu / Sakarya',
         distanceToSea: 'Denize ~800 Metre',
         unitTypes: ['1+1 Daireler', '2+1 Daireler'],
-        description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; 2025 yılında başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
+        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
         features: [
-          'Tamamlandı & Teslim Edildi (2025)',
-          'Yalı Mahallesi — Denize ~800 Metre',
+          'Teslim Tarihi: 2028 (Devam Ediyor)',
+          'Yalı Mahallesi 138 Nolu Sokak — Denize ~800 Metre',
           '1+1 ve 2+1 Daire Seçenekleri',
-          'Yerden Isıtmalı Isınma Altyapısı',
-          'Açık Yüzme Havuzu',
-          'Site İçi Yeşil Alanlar ve Otopark',
-          '24/7 Güvenlikli Giriş'
+          'Yerden Isıtmalı Lüks Yazlık Evler',
+          'Aqua Havuz & Yarı Olimpik Yüzme Alanları',
+          'Güneş Paneli Enerji Sistemi',
+          'Elektrikli Araç Şarj İstasyonu',
+          'Güvenli Çocuk Oyun Parkı & Peyzaj',
+          'Müstakil Bahçeli ve Teraslı Seçenekler'
         ],
         image: '/images/yenisehirforweb.jpeg',
-        totalArea: '4.200 m²'
+        totalArea: '8.400 m²'
       }
     ],
     floorPlans: [
@@ -375,6 +465,53 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Yatırımcıya Yüksek Kira Garantisi',
       'Elden Senetle Esnek Vade Kolaylığı',
       'Merkezi Konum, Kafe ve Çarşılara Yakın'
+    ],
+    stages: [
+      {
+        id: 'almina-1',
+        stageNumber: 1,
+        title: 'Almina 1',
+        subtitle: 'Sahil şeridinde tamamlanan ve teslim edilen ilk proje',
+        status: 'Tamamlandı',
+        year: '2023',
+        deliveryDate: '2023',
+        location: 'Plaj Cd. 1. Kısım, Karasu / Sakarya',
+        distanceToSea: 'Denize 50 Metre',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Almina Evleri projesinin ilk etabı; Karasu sahil kordonuna ve plaja sadece 50 metre mesafede tamamlanmış, tüm daireleri kat maliklerine eksiksiz teslim edilmiştir.',
+        features: [
+          'Tamamlandı & Yaşam Başladı (2023)',
+          'Plaj Caddesi 1. Kısım – Karasu Sahili',
+          'Denize 50 Metre Yürüme Mesafesi',
+          'Yüzme Havuzu & Güneşlenme Terası',
+          'Balkonlu ve Ferah Sahil Evleri'
+        ],
+        image: '/images/alminaforweb.jpeg',
+        totalArea: '5.200 m²'
+      },
+      {
+        id: 'almina-2',
+        stageNumber: 2,
+        title: 'Almina 2',
+        subtitle: 'Denize 50 metre mesafede satışları ve yapımı devam eden güncel proje',
+        status: 'Devam Ediyor',
+        year: '2024 - 2025',
+        deliveryDate: '2025',
+        location: 'Plaj Cd. 2. Kısım, Karasu / Sakarya',
+        distanceToSea: 'Denize 50 Metre',
+        unitTypes: ['1+1', '2+1', '3+1 Penthouse'],
+        description: 'Almina serisinin devam projesi olan Almina 2; Karasu plajına 50 metre mesafedeki eşsiz sahil konumu, açık yüzme havuzu, yerden ısıtma konforu ve lüks sahil mimarisiyle satış ve yapım süreci devam etmektedir.',
+        features: [
+          'Yapım & Satış Süreci Devam Ediyor',
+          'Plaj Caddesi 2. Kısım – Denize Sadece 50 Metre',
+          'Açık Havuz & Güneşlenme Terası',
+          '1+1, 2+1 ve 3+1 Penthouse Daireler',
+          'Elden Senet Modeliyle Kolay Ödeme',
+          'Yüksek Yazlık Kira Getirisi Potansiyeli'
+        ],
+        image: '/images/alminaforweb.jpeg',
+        totalArea: '6.000 m²'
+      }
     ],
     floorPlans: [
       {

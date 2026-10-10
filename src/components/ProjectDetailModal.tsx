@@ -32,6 +32,7 @@ interface ProjectDetailModalProps {
 
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project, onClose }) => {
   const [activeStage, setActiveStage] = useState<ProjectStage | null>(null)
+  const [selectedStageIndex, setSelectedStageIndex] = useState(0)
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0)
   const [leadName, setLeadName] = useState('')
   const [leadPhone, setLeadPhone] = useState('')
@@ -45,6 +46,15 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     setActiveStage(null)
     setSelectedPlanIndex(0)
     setLeadFormSubmitted(false)
+    if (project?.stages && project.stages.length > 0) {
+      // Find the ongoing stage or default to 0
+      const ongoingIdx = project.stages.findIndex(
+        s => s.status === 'Devam Ediyor' || s.status === 'Yapım Aşamasında' || s.status === 'Satışta'
+      )
+      setSelectedStageIndex(ongoingIdx !== -1 ? ongoingIdx : 0)
+    } else {
+      setSelectedStageIndex(0)
+    }
     if (containerRef.current) {
       containerRef.current.scrollTo({ top: 0, behavior: 'instant' })
     }
@@ -453,41 +463,52 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   // =========================================================================
   // VIEW 2: MASTER PROJECT DETAIL VIEW (ANA PROJE SAYFASI)
   // =========================================================================
+  const currentStage = (project?.stages && project.stages.length > 0 && selectedStageIndex >= 0 && selectedStageIndex < project.stages.length)
+    ? project.stages[selectedStageIndex]
+    : null
+
+  const displayLocation = currentStage ? currentStage.location : project.location
+  const displayDistanceToSea = currentStage?.distanceToSea || project.distanceToSea || 'Denize ~800m'
+  const displayUnits = currentStage ? currentStage.unitTypes.join(', ') : project.totalUnits
+  const displayStatus = currentStage ? currentStage.status : project.status
+  const displayYear = currentStage ? (currentStage.deliveryDate ? `Teslim: ${currentStage.deliveryDate}` : currentStage.year) : project.year
+
   return (
-    <div 
+    <div
       ref={containerRef}
       className="fixed top-[44px] sm:top-[52px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
-      {/* Top Sticky Architectural Navigation Bar */}
+      {/* Sticky Header Bar */}
       <header className="sticky top-0 z-40 w-full bg-[#1e242b]/95 backdrop-blur-xl border-b border-[#fffff1]/15 px-4 sm:px-6 lg:px-[104px] py-3 sm:py-3.5 flex items-center justify-between shadow-lg">
-        {/* Sol Üst: Geri Butonu & Proje Başlık İntrosu */}
+        {/* Sol: Geri Dön & Başlık */}
         <div className="flex items-center space-x-3 sm:space-x-6">
           <button
             onClick={onClose}
             className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
-            aria-label="Projeler listesine geri dön"
+            aria-label="Projeler listesine dön"
           >
             <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Geri Dön</span>
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Projeler</span>
           </button>
 
           <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
 
           <div className="hidden sm:block">
             <span className="text-[10px] tracking-widest text-[#fffff1]/60 uppercase block font-medium">
-              {project.categoryLabel} — {project.year}
+              {project.categoryLabel} • {displayYear}
             </span>
             <h2 className="font-theSeasons text-lg font-bold text-[#fffff1] leading-tight">
               {project.title}
+              {currentStage && <span className="font-sans text-sm font-normal text-[#fffff1]/75 ml-2">({currentStage.title})</span>}
             </h2>
           </div>
         </div>
 
-        {/* Sağ Üst: Hızlı İletişim & Kapat */}
+        {/* Sağ: İletişim Butonları & Kapat */}
         <div className="flex items-center space-x-3">
           <a
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20${encodeURIComponent(project.title)}%20projesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title}${currentStage ? ` - ${currentStage.title}` : ''} projeniz hakkında bilgi almak ve yerinde görmek istiyorum.`)}`}
             target="_blank"
             rel="noreferrer"
             className="hidden md:flex items-center space-x-2 px-4 py-2 bg-emerald-900/40 hover:bg-emerald-800/60 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
@@ -498,7 +519,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
           <a
             href={`tel:${COMPANY_INFO.phone}`}
-            className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-white/[0.08] hover:bg-white/[0.18] border border-[#fffff1]/20 text-[#fffff1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
+            className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-[#313941] hover:bg-[#3a444e] border border-[#fffff1]/20 text-[#fffff1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
           >
             <Phone size={14} />
             <span>{COMPANY_INFO.phone}</span>
@@ -518,22 +539,32 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </button>
               <span>/</span>
               <span className="text-[#fffff1] font-semibold">{project.title}</span>
+              {currentStage && (
+                <>
+                  <span>/</span>
+                  <span className="text-emerald-300 font-semibold">{currentStage.title}</span>
+                </>
+              )}
             </div>
 
             <div className="flex items-center gap-2">
-              {project.status !== 'Tamamlandı' && (
-                <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
-                  {project.status}
-                </span>
-              )}
+              <span className={`px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-md border ${
+                displayStatus === 'Tamamlandı'
+                  ? 'bg-white/10 text-white/80 border-white/20'
+                  : displayStatus === 'Devam Ediyor' || displayStatus === 'Yapım Aşamasında' || displayStatus === 'Satışta'
+                  ? 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30'
+                  : 'bg-sky-950/70 text-sky-200 border-sky-500/30'
+              }`}>
+                {displayStatus === 'Tamamlandı' ? 'Bitti' : displayStatus}
+              </span>
               {project.installmentMonths && (
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-md">
                   Elden Senet Modeli
                 </span>
               )}
-              {project.distanceToSea && (
+              {displayDistanceToSea && (
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-md">
-                  {project.distanceToSea}
+                  {displayDistanceToSea}
                 </span>
               )}
             </div>
@@ -554,39 +585,133 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </p>
           </div>
 
-          {/* Quick Technical Specs Strip */}
+          {/* Sub-Project / Stage Selector Tabs (Directly under project description) */}
+          {project.stages && project.stages.length > 0 && (
+            <div className="pt-3 pb-1 space-y-2.5">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#fffff1]/70 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>PROJE / ETAP SEÇİNİZ ({project.stages.length} PROJE)</span>
+                </span>
+                <span className="text-[11px] text-[#fffff1]/50 italic hidden sm:inline">
+                  Adres, teslim tarihi ve özellikler seçtiğiniz projeye göre güncellenir
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-2.5">
+                {project.stages.map((stage, idx) => {
+                  const isSelected = selectedStageIndex === idx
+                  const isCompleted = stage.status === 'Tamamlandı'
+                  const isOngoing = stage.status === 'Devam Ediyor' || stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta'
+
+                  return (
+                    <button
+                      key={stage.id}
+                      type="button"
+                      onClick={() => setSelectedStageIndex(idx)}
+                      className={`group relative flex items-center justify-between sm:justify-start gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-xl border text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] shadow-lg shadow-black/25 font-bold ring-2 ring-[#fffff1]/20 scale-[1.02]'
+                          : 'bg-[#313941]/70 hover:bg-[#313941] text-[#fffff1]/80 hover:text-[#fffff1] border-[#fffff1]/15 hover:border-[#fffff1]/35 font-medium'
+                      }`}
+                    >
+                      <span className="truncate">{stage.title}</span>
+
+                      {/* Status Pill Badge */}
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 flex-shrink-0 ${
+                          isCompleted
+                            ? isSelected
+                              ? 'bg-black/10 text-[#252c33] border border-black/10'
+                              : 'bg-white/10 text-[#fffff1]/70 border border-[#fffff1]/15'
+                            : isOngoing
+                            ? isSelected
+                              ? 'bg-emerald-700 text-[#fffff1]'
+                              : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                            : isSelected
+                            ? 'bg-sky-700 text-[#fffff1]'
+                            : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                        }`}
+                      >
+                        {isOngoing && (
+                          <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-emerald-400'} animate-pulse`} />
+                        )}
+                        {isCompleted ? 'Bitti' : isOngoing ? 'Devam Ediyor' : 'Yakında'}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Quick Technical Specs Strip (Dynamically reflects selected stage) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Konum</span>
-                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.location}</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block truncate" title={displayLocation}>
+                  {displayLocation}
+                </span>
               </div>
             </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Waves size={20} className="text-sky-300 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
-                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.distanceToSea || 'Denize ~800m'}</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
+                  {displayDistanceToSea}
+                </span>
               </div>
             </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Building2 size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Seçenekleri</span>
-                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{project.totalUnits}</span>
+                <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block truncate" title={displayUnits}>
+                  {displayUnits}
+                </span>
               </div>
             </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Ödeme & Vade</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Durum & Vade</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                  {project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli'}
+                  {currentStage
+                    ? `${currentStage.status === 'Tamamlandı' ? 'Bitti' : currentStage.status} • ${project.installmentMonths ? `${project.installmentMonths} Ay` : 'Elden Senet'}`
+                    : (project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli')}
                 </span>
               </div>
             </div>
           </div>
+
+          {/* Selected Stage Spotlight Card (When stages exist) */}
+          {currentStage && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#313941]/40 border border-[#fffff1]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-[#fffff1] text-sm sm:text-base">{currentStage.title}</span>
+                  <span className="text-[#fffff1]/40">•</span>
+                  <span className="text-[#fffff1]/80 font-medium">{currentStage.subtitle}</span>
+                </div>
+                <p className="text-[#fffff1]/70 font-light text-xs sm:text-sm leading-relaxed max-w-3xl">
+                  {currentStage.description}
+                </p>
+              </div>
+              <div className="flex items-center gap-2 flex-shrink-0 pt-1 sm:pt-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveStage(currentStage)}
+                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-[#fffff1]/20 text-[#fffff1] text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
+                >
+                  <span>Etap Detay Sayfası</span>
+                  <ArrowUpRight size={14} />
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Payment Highlight Banner (1.000.000₺ Peşinat – 40 Ay Vade – Araç Takas) */}
           {project.paymentHighlight && (
@@ -642,23 +767,28 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   {project.title} Etapları
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/70 font-light mt-1 max-w-2xl leading-relaxed">
-                  Karasu Yalı Mahallesi’nde yükselen etaplarımızı inceleyin. En güncel yapım aşamasındaki 3. Etap ve teslim edilen etaplarımızın tüm detaylarına kartlara tıklayarak ulaşabilirsiniz.
+                  {project.title} kapsamındaki tüm etaplarımızı ve devam projelerimizi inceleyin. Tamamlanan ve yapımı devam eden etaplarımızın detaylarına kartlara tıklayarak ulaşabilirsiniz.
                 </p>
               </div>
             </div>
 
-            {/* Stages Grid (Ordered: 3. Etap [En günceli], 2. Etap, 1. Etap) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {project.stages.map((stage) => {
-                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta'
+            {/* Stages Grid (Responsive for 2, 3 or 4 stages) */}
+            <div className={`grid grid-cols-1 ${project.stages.length === 2 ? 'md:grid-cols-2' : project.stages.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-6`}>
+              {project.stages.map((stage, idx) => {
+                const isSelected = selectedStageIndex === idx
+                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta' || stage.status === 'Devam Ediyor'
+                const isCompleted = stage.status === 'Tamamlandı'
                 return (
                   <div
                     key={stage.id}
                     onClick={() => {
+                      setSelectedStageIndex(idx)
                       setActiveStage(stage)
                     }}
                     className={`group relative cursor-pointer rounded-2xl overflow-hidden border transition-all duration-500 hover:-translate-y-1 shadow-xl hover:shadow-2xl flex flex-col justify-between min-h-[380px] sm:min-h-[420px] ${
-                      isOngoing
+                      isSelected
+                        ? 'border-emerald-400 ring-2 ring-emerald-500/50'
+                        : isOngoing
                         ? 'border-emerald-500/40 hover:border-emerald-400 ring-1 ring-emerald-500/20'
                         : 'border-[#fffff1]/15 hover:border-[#fffff1]/45'
                     }`}
@@ -675,11 +805,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     <div className="relative z-10 p-5 flex items-start justify-between gap-3">
                       <div className="flex flex-wrap gap-2">
                         <span className={`px-3 py-1.5 text-xs tracking-wider uppercase backdrop-blur-md font-semibold rounded-md shadow-sm border ${
-                          isOngoing
-                            ? 'bg-amber-950/80 text-amber-200 border-amber-500/40'
-                            : 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
+                          isCompleted
+                            ? 'bg-black/60 text-[#fffff1]/90 border-white/20'
+                            : isOngoing
+                            ? 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
+                            : 'bg-sky-950/80 text-sky-200 border-sky-500/40'
                         }`}>
-                          {stage.status}
+                          {isCompleted ? 'Bitti' : isOngoing ? 'Devam Ediyor' : 'Yakında'}
                         </span>
                         <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
                           {stage.deliveryDate ? `Teslim: ${stage.deliveryDate}` : stage.year}
@@ -707,7 +839,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
                     {/* Bottom Content Details */}
                     <div className="relative z-10 pt-8 pb-5 px-6">
-                      <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block font-semibold mb-1">
+                      <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block font-semibold mb-1 truncate">
                         {stage.location} • {stage.distanceToSea || 'Denize ~800m'}
                       </span>
                       <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-2 group-hover:translate-x-1 transition-transform">
@@ -718,10 +850,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                       </p>
 
                       <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                        <span className="text-[#fffff1]/75 font-medium">
+                        <span className="text-[#fffff1]/75 font-medium truncate">
                           {stage.unitTypes.join(' & ')}
                         </span>
-                        <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform">
+                        <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform flex-shrink-0 ml-2">
                           <span>Etabı İncele</span>
                           <ArrowUpRight size={15} className="ml-1" />
                         </span>
@@ -826,21 +958,21 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-4 text-sm">
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Konum:</span>
-                  <span className="text-[#fffff1]/95 font-medium text-right">{project.location}</span>
+                  <span className="text-[#fffff1]/95 font-medium text-right max-w-[200px] truncate" title={displayLocation}>{displayLocation}</span>
                 </div>
-                {project.distanceToSea && (
+                {displayDistanceToSea && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Denize Mesafe:</span>
-                    <span className="text-[#fffff1]/95 font-medium">{project.distanceToSea}</span>
+                    <span className="text-[#fffff1]/95 font-medium">{displayDistanceToSea}</span>
                   </div>
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Toplam Alan:</span>
-                  <span className="text-[#fffff1]/95 font-medium">{project.totalArea}</span>
+                  <span className="text-[#fffff1]/95 font-medium">{currentStage?.totalArea || project.totalArea}</span>
                 </div>
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
-                  <span className="text-[#fffff1]/95 font-medium">{project.totalUnits}</span>
+                  <span className="text-[#fffff1]/95 font-medium text-right max-w-[200px] truncate" title={displayUnits}>{displayUnits}</span>
                 </div>
                 {project.seriesInfo && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
@@ -850,8 +982,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Proje Durumu:</span>
-                  <span className="text-[#fffff1] font-bold">{project.status}</span>
+                  <span className="text-[#fffff1] font-bold">{displayStatus === 'Tamamlandı' ? 'Bitti' : displayStatus}</span>
                 </div>
+                {displayYear && (
+                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                    <span className="text-[#fffff1]/50">Teslim / Yıl:</span>
+                    <span className="text-[#fffff1] font-bold">{displayYear}</span>
+                  </div>
+                )}
                 {project.installmentMonths && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
