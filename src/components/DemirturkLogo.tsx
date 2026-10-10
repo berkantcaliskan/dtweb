@@ -16,7 +16,7 @@ interface DemirturkLogoProps {
 export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   variant = 'dark-bg',
   className = '',
-  emblemSize = 36,
+  emblemSize = 54,
   showSubtitle = true,
   onClick,
   isScrolled = false,
@@ -29,16 +29,16 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`inline-flex items-center space-x-2.5 sm:space-x-3 select-none group ${className} ${
+      className={`inline-flex items-center space-x-3 sm:space-x-4 select-none group ${className} ${
         onClick ? 'cursor-pointer' : ''
       }`}
     >
       {/* ============================================================== */}
-      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Desktop SVG (Anthracite to White)  */}
+      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Desktop SVG (Enlarged by 50%)       */}
       {/* ============================================================== */}
       <div
         style={
-          emblemSize === 36
+          emblemSize === 54
             ? undefined
             : {
                 height: `${emblemSize}px`,
@@ -47,7 +47,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
               }
         }
         className={`relative ${
-          emblemSize === 36 ? 'h-[28px] sm:h-[36px] w-[28px] sm:w-[36px] max-h-[28px] sm:max-h-[36px]' : ''
+          emblemSize === 54 ? 'h-[38px] sm:h-[54px] w-[38px] sm:w-[54px] max-h-[38px] sm:max-h-[54px]' : ''
         } flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
       >
         <svg
@@ -87,14 +87,14 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       </div>
 
       {/* ============================================================== */}
-      {/* TYPOGRAPHY: PLUS JAKARTA SANS                                  */}
-      {/* DEMİRTÜRK (Extra Bold 800)                                     */}
-      {/* İ N Ş A A T (Light 300, Wide Tracking)                         */}
+      {/* TYPOGRAPHY: PLUS JAKARTA SANS (Scaled up by 50%)               */}
+      {/* DEMİRTÜRK (Extra Bold 800, 30px)                               */}
+      {/* İ N Ş A A T (Light 300, 15.5px, Wide Tracking)                 */}
       {/* ============================================================== */}
       <div className="flex flex-col justify-center items-start leading-none text-left">
         {/* DEMİRTÜRK - Extra Bold Plus Jakarta Sans */}
         <span
-          className={`tracking-[0.06em] text-base sm:text-xl uppercase ${titleColor} transition-colors block text-left`}
+          className={`tracking-[0.06em] text-2xl sm:text-[30px] uppercase ${titleColor} transition-colors block text-left`}
           style={{
             fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
             fontWeight: 800,
@@ -107,7 +107,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
         {/* İ N Ş A A T - Light Plus Jakarta Sans - Flush left with DEMİRTÜRK */}
         {showSubtitle && (
           <span
-            className={`text-[8.5px] sm:text-[10.5px] uppercase ${subtitleColor} transition-colors mt-0.5 sm:mt-1 block text-left`}
+            className={`text-[12px] sm:text-[15.5px] uppercase ${subtitleColor} transition-colors mt-0.5 sm:mt-1 block text-left`}
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,

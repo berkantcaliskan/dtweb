@@ -19,7 +19,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#fffff1]/10">
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <DemirturkLogo variant="dark-bg" emblemSize={42} isScrolled={true} />
+            <DemirturkLogo variant="dark-bg" emblemSize={60} isScrolled={true} />
             <p className="text-sm text-[#fffff1]/70 font-light leading-relaxed max-w-sm">
               2003 yılından bu yana Sakarya Karasu’da doğa ve mimariyi buluşturan güvenilir yaşam alanları inşa ediyor; temelden çatıya yapı malzemeleri tedariki sağlıyoruz.
             </p>

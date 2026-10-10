@@ -250,7 +250,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         className="fixed -top-[9999px] -left-[9999px] opacity-0 pointer-events-none flex items-center space-x-3 xl:space-x-5 z-[-99]"
       >
         <div ref={logoMeasureRef} className="flex-shrink-0">
-          <DemirturkLogo variant="dark-bg" emblemSize={36} />
+          <DemirturkLogo variant="dark-bg" emblemSize={54} />
         </div>
         <div
           ref={phoneMeasureRef}
@@ -289,7 +289,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[62px] sm:h-[78px] font-sans">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[70px] sm:h-[86px] font-sans">
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
@@ -326,7 +326,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               }}
               className="group flex-shrink-0 cursor-pointer flex items-center"
             >
-              <DemirturkLogo variant="dark-bg" emblemSize={36} isScrolled={isScrolled || isSubPageOpen} />
+              <DemirturkLogo variant="dark-bg" emblemSize={54} isScrolled={isScrolled || isSubPageOpen} />
             </a>
           </div>
 
@@ -434,7 +434,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         {/* Top: Header with Logo emblem, Language Selector & Close button */}
         <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-[#fffff1]/10">
           <div className="flex items-center space-x-2.5">
-            <DemirturkLogo variant="dark-bg" emblemSize={28} isScrolled={true} />
+            <DemirturkLogo variant="dark-bg" emblemSize={42} isScrolled={true} />
           </div>
 
           <div className="flex items-center space-x-2 sm:space-x-3">
