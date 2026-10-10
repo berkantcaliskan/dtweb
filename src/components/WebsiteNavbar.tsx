@@ -20,8 +20,8 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: 'PROJELER', href: '#projeler' },
   { label: 'ÖDEME MODELLERİ', href: '#odeme-modelleri' },
   { label: 'MİMARİ YAKLAŞIM', href: '#mimari-yaklasim' },
-  { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
   { label: 'MAKALELER', href: '#makaleler' },
+  { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
   { label: 'İLETİŞİM', href: '#iletisim' },
 ]
 
@@ -120,7 +120,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     const phoneW = phoneMeasureRef.current?.offsetWidth || 155
     const hamburgerW = hamburgerMeasureRef.current?.offsetWidth || 44
 
-    const DEFAULT_LINK_WIDTHS = [85, 165, 150, 160, 95, 140, 85]
+    const DEFAULT_LINK_WIDTHS = [85, 165, 155, 95, 160, 85]
     const linkWidths = NAV_LINKS.map((_, i) => {
       const el = linkMeasureRefs.current[i]
       return el && el.offsetWidth > 0 ? el.offsetWidth : DEFAULT_LINK_WIDTHS[i]

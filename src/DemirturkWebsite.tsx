@@ -222,19 +222,19 @@ export const DemirturkWebsite: React.FC = () => {
           {/* 1. PROJELER (#projeler) */}
           <ProjectsGrid onSelectProject={(p) => setSelectedProject(p)} />
 
-          {/* 2. MİMARİ YAKLAŞIM (#mimari-yaklasim) */}
-          <ArchitecturePhilosophy />
+          {/* 2. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
+          <PaymentModelsSection />
 
-          {/* 3. YAPI MALZEMELERİ (#yapi-malzemeleri) */}
-          <MaterialAndEngineering />
+          {/* 3. MİMARİ YAKLAŞIM (#mimari-yaklasim & #insa-surecleri) */}
+          <ArchitecturePhilosophy />
 
           {/* 4. MAKALELER (#makaleler) */}
           <ArticlesSection onSelectArticle={(a) => setSelectedArticle(a)} />
 
-          {/* 5. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
-          <PaymentModelsSection />
+          {/* 5. YAPI MALZEMELERİ (#yapi-malzemeleri) */}
+          <MaterialAndEngineering />
 
-          {/* 7. İLETİŞİM (#iletisim & #ulasin) */}
+          {/* 6. İLETİŞİM (#iletisim & #ulasin) */}
           <ReachUsSection />
 
           {/* Footer */}
