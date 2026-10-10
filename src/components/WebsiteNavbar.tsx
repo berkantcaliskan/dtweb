@@ -291,9 +291,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
       </div>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center font-sans transition-all duration-300 ease-out ${
-          isLogoHovered ? 'h-[56px] sm:h-[69px]' : 'h-[44px] sm:h-[52px]'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 flex items-center font-sans h-[44px] sm:h-[52px]"
       >
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
@@ -304,11 +302,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           } bg-[#1c2126]/65 backdrop-blur-2xl backdrop-saturate-150`}
         />
 
-        {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, expands with header animation) */}
+        {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero) */}
         <div
-          className={`absolute top-0 left-0 right-0 pointer-events-none transition-all duration-300 ease-out ${
-            isLogoHovered ? 'h-[65px] sm:h-[82px]' : 'h-[50px] sm:h-[59px]'
-          } ${
+          className={`absolute top-0 left-0 right-0 pointer-events-none h-[50px] sm:h-[59px] transition-opacity duration-500 ease-in-out ${
             isScrolled || isSubPageOpen
               ? 'opacity-0'
               : 'opacity-100'
