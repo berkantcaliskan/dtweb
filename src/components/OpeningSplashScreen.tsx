@@ -157,7 +157,13 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         </div>
 
         {/* 4. Luxury Founding Badge */}
-        <div className="anim-splash-subtitle mt-4 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#313941]/50 font-medium">
+        <div
+          className="anim-splash-subtitle mt-4 text-[10px] sm:text-[12px] uppercase tracking-[0.2em] text-[#313941]/90 font-light leading-none whitespace-nowrap"
+          style={{
+            fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+            fontWeight: 300,
+          }}
+        >
           2003'TEN BERİ GÜVENLE
         </div>
       </div>
