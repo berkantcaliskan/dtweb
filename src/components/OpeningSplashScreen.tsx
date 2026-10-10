@@ -14,15 +14,15 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
       setIsLocked(true)
     }, 950)
 
-    // Step 2: Begin smooth luxury exit fade at 2.2s
+    // Step 2: Begin smooth luxury exit fade at 1.6s
     const exitTimer = setTimeout(() => {
       setIsExiting(true)
-    }, 2200)
+    }, 1600)
 
-    // Step 3: Complete and unmount at 2.9s
+    // Step 3: Complete and unmount at 2.1s (after 500ms fade)
     const completeTimer = setTimeout(() => {
       onComplete()
-    }, 2900)
+    }, 2100)
 
     // Lock body scroll during splash
     const originalOverflow = document.body.style.overflow
@@ -40,18 +40,18 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
     setIsExiting(true)
     setTimeout(() => {
       onComplete()
-    }, 350)
+    }, 300)
   }
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffff1] select-none transition-opacity duration-700 ease-out ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffff1] select-none transition-opacity duration-500 ease-out ${
         isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
         transitionProperty: 'opacity, transform',
-        transitionDuration: '700ms',
-        transform: isExiting ? 'scale(1.025)' : 'scale(1)',
+        transitionDuration: '500ms',
+        transform: isExiting ? 'scale(1.02)' : 'scale(1)',
       }}
     >
       {/* Background Architectural Watermark Grid & Ambient Glow */}

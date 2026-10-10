@@ -636,5 +636,5 @@ select option {
 }
 
 .anim-splash-sheen {
-  animation: splashGoldSheen 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+  animation: splashGoldSheen 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
 }
