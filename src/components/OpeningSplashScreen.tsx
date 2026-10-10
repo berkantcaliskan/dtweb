@@ -36,13 +36,6 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
     }
   }, [onComplete])
 
-  const handleSkip = () => {
-    setIsExiting(true)
-    setTimeout(() => {
-      onComplete()
-    }, 300)
-  }
-
   return (
     <div
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffff1] select-none transition-opacity duration-500 ease-out ${
@@ -64,15 +57,6 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
           }}
         />
       </div>
-
-      {/* Skip Button (Top Right) */}
-      <button
-        type="button"
-        onClick={handleSkip}
-        className="absolute top-6 right-6 sm:top-8 sm:right-8 z-20 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#313941]/60 hover:text-[#313941] px-3.5 py-1.5 rounded-full border border-[#313941]/15 hover:border-[#313941]/35 transition-all cursor-pointer backdrop-blur-sm"
-      >
-        Geç
-      </button>
 
       {/* Main Center Content Box */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 max-w-sm sm:max-w-md w-full">
