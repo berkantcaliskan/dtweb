@@ -118,13 +118,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         </div>
 
         {/* Center / Hero Typography */}
-        <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-3 sm:py-8">
-          <div className="translate-y-14 sm:translate-y-0">
+        <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-2 sm:py-8">
+          <div className="translate-y-20 sm:translate-y-0">
             <h1 className="font-theSeasons text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#fffff1] leading-[1.05] mb-4 drop-shadow-md">
               {currentProject.title}
             </h1>
 
-            <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-normal max-w-2xl leading-relaxed mb-8 drop-shadow hero-subtitle">
+            <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-normal max-w-2xl leading-relaxed mb-6 sm:mb-8 drop-shadow hero-subtitle">
               {currentProject.slideDescription || currentProject.subtitle}
             </p>
 
@@ -157,9 +157,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           </div>
         </div>
 
+        {/* Sol Alt: Sanal Tur Yakında Butonu (Mobilde Projeleri Keşfedin üzerinde, Desktopta çizginin üstünde) */}
+        <div className="flex items-center mb-3 sm:mb-5">
+          <button
+            type="button"
+            className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl transition-all hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl border border-[#fffff1]/20"
+          >
+            <span className="font-extrabold tracking-wider">SANAL TUR</span>
+            <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">YAKINDA</span>
+          </button>
+        </div>
+
         {/* Bottom Bar: Slider Controls & Scroll Down */}
         {/* 1. MOBILE CONTROLS (Single row: Left = Discover, Center = < > centered to screen, Right = Stacked Social Icons) */}
-        <div className="relative flex sm:hidden items-end justify-between w-full pt-4 mb-3">
+        <div className="relative flex sm:hidden items-end justify-between w-full pt-1 mb-2">
           {/* Left: Architectural Scroll / Discovery Indicator */}
           <button
             onClick={scrollToNext}
@@ -253,17 +264,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               </svg>
             </a>
           </div>
-        </div>
-
-        {/* Sol Alt: Sanal Tur Yakında Butonu (Çizginin üstünde, Proje Detayları ile aynı hizada) */}
-        <div className="flex items-center mb-3 sm:mb-5">
-          <button
-            type="button"
-            className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl border border-[#fffff1]/20"
-          >
-            <span className="font-extrabold tracking-wider">SANAL TUR</span>
-            <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">YAKINDA</span>
-          </button>
         </div>
 
         {/* 2. DESKTOP CONTROLS */}
