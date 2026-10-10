@@ -470,7 +470,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
       '24/7 Güvenlik & Kamera Sistemi'
     ],
     floorPlans: [],
-    isFeatured: false
+    isFeatured: false,
+    hidden: true
   },
   {
     id: 'cagdas-evleri',
@@ -514,7 +515,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Açık Otopark Alanı'
     ],
     floorPlans: [],
-    isFeatured: false
+    isFeatured: false,
+    hidden: true
   },
   {
     id: 'demirturk-yali',
@@ -559,9 +561,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Site Güvenliği'
     ],
     floorPlans: [],
-    isFeatured: false
+    isFeatured: false,
+    hidden: true
   }
 ]
+
+export const VISIBLE_PROJECTS_DATA: ProjectItem[] = PROJECTS_DATA.filter((p) => !p.hidden)
 
 export const MATERIAL_CATEGORIES: MaterialCategory[] = [
   {

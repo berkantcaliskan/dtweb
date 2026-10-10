@@ -76,7 +76,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
               PROJELER
             </h4>
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
-              {PROJECTS_DATA.slice(0, 5).map((p) => (
+              {PROJECTS_DATA.filter((p) => !p.hidden).slice(0, 5).map((p) => (
                 <li key={p.id}>
                   <a href="#projeler" className="hover:text-white transition-colors">
                     {p.title}

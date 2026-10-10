@@ -66,6 +66,7 @@ export interface ProjectItem {
   floorPlans: FloorPlan[]
   installmentMonths?: number
   isFeatured?: boolean
+  hidden?: boolean
   stages?: ProjectStage[]
   paymentHighlight?: {
     downPayment: string

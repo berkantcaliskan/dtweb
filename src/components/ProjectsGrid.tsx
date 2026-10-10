@@ -25,14 +25,15 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   }
 
   const filteredProjects = useMemo(() => {
-    if (selectedFilter === 'all') return PROJECTS_DATA
+    const visible = PROJECTS_DATA.filter((p) => !p.hidden)
+    if (selectedFilter === 'all') return visible
     if (selectedFilter === 'ongoing') {
-      return PROJECTS_DATA.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında')
+      return visible.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında')
     }
     if (selectedFilter === 'completed') {
-      return PROJECTS_DATA.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed')
+      return visible.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed')
     }
-    return PROJECTS_DATA
+    return visible
   }, [selectedFilter])
 
   const standardProjects = useMemo(() => {
@@ -265,7 +266,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
         )}
 
         {/* "Hepsini Göster" / Expand Control (Katmansız, sadece yazı ve ok) */}
-        {selectedFilter === 'all' && (
+        {selectedFilter === 'all' && (standardProjects.length > 4 || compactProjects.length > 0) && (
           <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center">
             {!showAll ? (
               <button

@@ -66,7 +66,7 @@ export const DemirturkWebsite: React.FC = () => {
       }
 
       if (projectParam) {
-        const found = PROJECTS_DATA.find((p) => p.slug === projectParam || p.id === projectParam)
+        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === projectParam || p.id === projectParam))
         if (found) {
           setSelectedProject(found)
           setSelectedArticle(null)

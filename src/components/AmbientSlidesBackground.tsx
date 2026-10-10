@@ -10,7 +10,7 @@ export const AmbientSlidesBackground: React.FC<AmbientSlidesBackgroundProps> = (
   activeProjectIndex = 0,
   className = '',
 }) => {
-  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
+  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured && !p.hidden)
   const safeActiveIndex = Math.abs(activeProjectIndex) % (featuredProjects.length || 1)
 
   return (

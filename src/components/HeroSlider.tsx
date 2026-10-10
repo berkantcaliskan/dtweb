@@ -17,7 +17,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   currentIndex: controlledIndex,
   onSlideChange,
 }) => {
-  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
+  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured && !p.hidden)
   const [internalIndex, setInternalIndex] = useState(0)
   const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [timerKey, setTimerKey] = useState(0)
