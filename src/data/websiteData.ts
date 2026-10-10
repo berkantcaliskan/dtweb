@@ -129,118 +129,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: true
   },
   {
-    id: 'almina-evleri',
-    slug: 'almina-evleri',
-    title: 'Almina Evleri',
-    seriesInfo: 'Tamamlanan 1 proje • 2. proje devam ediyor',
-    cardSize: 'standard',
-    subtitle: 'Karasu sahil şeridinde denize sıfır modern rezidans',
-    category: 'luxury-residence',
-    categoryLabel: 'Denize sıfır rezidans',
-    location: 'Sahil Caddesi, Karasu / Sakarya',
-    year: '2023 - 2024',
-    status: 'Satışta',
-    totalArea: '11.200 m²',
-    totalUnits: '72 Daire',
-    unitTypes: ['1+1', '2+1', '3+1 Penthouse'],
-    description:
-      'Almina Evleri; Karasu kumsalına sadece 50 metre mesafede, kesintisiz gün batımı manzarası ve modern sahil mimarisiyle yükseliyor. Geniş cam cepheleri, deniz havasını içeri alan ferah balkonları ve özel havuzu ile seçkin bir sahil yaşamı vadediyor.',
-    architecturalPhilosophy:
-      'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan ferah ve modern mimari. Kademeli teraslar ve geniş cam açıklıklarıyla gün ışığını maksimum düzeyde içeri alan, her bağımsız bölüm için mahremiyet sağlayan çağdaş tasarım.',
-    heroMedia: {
-      type: 'image',
-      desktopSrc: '/images/alminaforweb.jpeg',
-      mobileSrc: '/images/alminaforweb.jpeg',
-      poster: '/images/alminaforweb.jpeg',
-      alt: 'Almina Evleri - Karasu Sahil Şeridi'
-    },
-    gallery: [
-      {
-        url: '/images/alminaforweb.jpeg',
-        title: 'Gece Mimarisi ve Dış Cephe Aydınlatması',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
-        title: 'Geniş Açık Havuz ve Dinlenme Alanı',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
-        title: 'Modern Sahil Mimarisi Cephesi',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80',
-        title: 'Ferah İç Mekan Tasarımı',
-        aspect: '9:16'
-      }
-    ],
-    features: [
-      'Denize Yürüme Mesafesinde (50 Metre)',
-      'Açık Havuz & Güneşlenme Terası',
-      'Fitness Salonu & Sosyal Tesis',
-      'Yatırımcıya Yüksek Kira Garantisi',
-      'Elden Senetle Esnek Vade Kolaylığı',
-      'Merkezi Konum, Kafe ve Çarşılara Yakın'
-    ],
-    floorPlans: [
-      {
-        name: '2+1 Sahil Dairesi',
-        area: '82 m² Brüt / 68 m² Net',
-        rooms: '2 Oda, Salon, Amerikan Mutfak, Banyo, Balkon',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
-        description: 'Deniz rüzgarını içeri alan geniş balkon ve aydınlık yaşam alanı.'
-      }
-    ],
-    installmentMonths: 36,
-    isFeatured: true
-  },
-  {
-    id: 'seaside-house',
-    slug: 'seaside-house',
-    title: 'Seaside House',
-    seriesInfo: 'Tamamlandı',
-    cardSize: 'standard',
-    subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
-    category: 'completed',
-    categoryLabel: 'Tamamlanan proje',
-    location: 'Doğu Karadeniz Cad., Karasu / Sakarya',
-    distanceToSea: 'Plaja 100 Metre',
-    year: '2022 - 2023',
-    status: 'Tamamlandı',
-    totalArea: '9.500 m²',
-    totalUnits: '1+1 ve 2+1 Daireler',
-    unitTypes: ['1+1 Daireler', '2+1 Daireler', 'Bahçe Dubleksi'],
-    description:
-      'Seaside House, Karasu sahil şeridinde başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı, açık yüzme havuzu ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
-    architecturalPhilosophy:
-      'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
-    heroMedia: {
-      type: 'image',
-      desktopSrc: '/images/seasideforweb.jpeg',
-      mobileSrc: '/images/seasideforweb.jpeg',
-      poster: '/images/seasideforweb.jpeg',
-      alt: 'Seaside House Karasu'
-    },
-    gallery: [
-      {
-        url: '/images/seasideforweb.jpeg',
-        title: 'Tamamlanan Cephe ve Peyzaj',
-        aspect: '16:9'
-      }
-    ],
-    features: [
-      'Eksiksiz Teslim Edilmiş ve İskanı Alınmış',
-      'Ortak Açık Yüzme Havuzu',
-      'Site İçi Çocuk Oyun Parkı',
-      'Plaja 100 Metre Mesafe',
-      'Yerden Isıtmalı Daireler'
-    ],
-    floorPlans: [],
-    isFeatured: true
-  },
-  {
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
@@ -426,6 +314,118 @@ export const PROJECTS_DATA: ProjectItem[] = [
       }
     ],
     installmentMonths: 40,
+    isFeatured: true
+  },
+  {
+    id: 'almina-evleri',
+    slug: 'almina-evleri',
+    title: 'Almina Evleri',
+    seriesInfo: 'Tamamlanan 1 proje • 2. proje devam ediyor',
+    cardSize: 'standard',
+    subtitle: 'Karasu sahil şeridinde denize sıfır modern rezidans',
+    category: 'luxury-residence',
+    categoryLabel: 'Denize sıfır rezidans',
+    location: 'Sahil Caddesi, Karasu / Sakarya',
+    year: '2023 - 2024',
+    status: 'Satışta',
+    totalArea: '11.200 m²',
+    totalUnits: '72 Daire',
+    unitTypes: ['1+1', '2+1', '3+1 Penthouse'],
+    description:
+      'Almina Evleri; Karasu kumsalına sadece 50 metre mesafede, kesintisiz gün batımı manzarası ve modern sahil mimarisiyle yükseliyor. Geniş cam cepheleri, deniz havasını içeri alan ferah balkonları ve özel havuzu ile seçkin bir sahil yaşamı vadediyor.',
+    architecturalPhilosophy:
+      'Ufuk çizgisini ve deniz manzarasını yapının merkezine alan ferah ve modern mimari. Kademeli teraslar ve geniş cam açıklıklarıyla gün ışığını maksimum düzeyde içeri alan, her bağımsız bölüm için mahremiyet sağlayan çağdaş tasarım.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: '/images/alminaforweb.jpeg',
+      mobileSrc: '/images/alminaforweb.jpeg',
+      poster: '/images/alminaforweb.jpeg',
+      alt: 'Almina Evleri - Karasu Sahil Şeridi'
+    },
+    gallery: [
+      {
+        url: '/images/alminaforweb.jpeg',
+        title: 'Gece Mimarisi ve Dış Cephe Aydınlatması',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+        title: 'Geniş Açık Havuz ve Dinlenme Alanı',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
+        title: 'Modern Sahil Mimarisi Cephesi',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80',
+        title: 'Ferah İç Mekan Tasarımı',
+        aspect: '9:16'
+      }
+    ],
+    features: [
+      'Denize Yürüme Mesafesinde (50 Metre)',
+      'Açık Havuz & Güneşlenme Terası',
+      'Fitness Salonu & Sosyal Tesis',
+      'Yatırımcıya Yüksek Kira Garantisi',
+      'Elden Senetle Esnek Vade Kolaylığı',
+      'Merkezi Konum, Kafe ve Çarşılara Yakın'
+    ],
+    floorPlans: [
+      {
+        name: '2+1 Sahil Dairesi',
+        area: '82 m² Brüt / 68 m² Net',
+        rooms: '2 Oda, Salon, Amerikan Mutfak, Banyo, Balkon',
+        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
+        description: 'Deniz rüzgarını içeri alan geniş balkon ve aydınlık yaşam alanı.'
+      }
+    ],
+    installmentMonths: 36,
+    isFeatured: true
+  },
+  {
+    id: 'seaside-house',
+    slug: 'seaside-house',
+    title: 'Seaside House',
+    seriesInfo: 'Tamamlandı',
+    cardSize: 'standard',
+    subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
+    category: 'completed',
+    categoryLabel: 'Tamamlanan proje',
+    location: 'Doğu Karadeniz Cad., Karasu / Sakarya',
+    distanceToSea: 'Plaja 100 Metre',
+    year: '2022 - 2023',
+    status: 'Tamamlandı',
+    totalArea: '9.500 m²',
+    totalUnits: '1+1 ve 2+1 Daireler',
+    unitTypes: ['1+1 Daireler', '2+1 Daireler', 'Bahçe Dubleksi'],
+    description:
+      'Seaside House, Karasu sahil şeridinde başarıyla tamamlanıp tüm maliklerine eksiksiz teslim edilmiştir. Yüksek malzeme standardı, açık yüzme havuzu ve peyzajıyla Karasu sahil bölgesinin simge projelerinden biridir.',
+    architecturalPhilosophy:
+      'Geniş balkonlar ve dayanıklı dış cephe kaplamalarıyla Karadeniz iklimine tam uyumlu, konforlu sahil yaşamı.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: '/images/seasideforweb.jpeg',
+      mobileSrc: '/images/seasideforweb.jpeg',
+      poster: '/images/seasideforweb.jpeg',
+      alt: 'Seaside House Karasu'
+    },
+    gallery: [
+      {
+        url: '/images/seasideforweb.jpeg',
+        title: 'Tamamlanan Cephe ve Peyzaj',
+        aspect: '16:9'
+      }
+    ],
+    features: [
+      'Eksiksiz Teslim Edilmiş ve İskanı Alınmış',
+      'Ortak Açık Yüzme Havuzu',
+      'Site İçi Çocuk Oyun Parkı',
+      'Plaja 100 Metre Mesafe',
+      'Yerden Isıtmalı Daireler'
+    ],
+    floorPlans: [],
     isFeatured: true
   },
   {

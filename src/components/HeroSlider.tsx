@@ -7,20 +7,39 @@ import { ProjectItem } from '../types'
 interface HeroSliderProps {
   onSelectProject: (project: ProjectItem) => void
   onOpenTour?: () => void
+  currentIndex?: number
+  onSlideChange?: (index: number) => void
 }
 
-export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenTour }) => {
+export const HeroSlider: React.FC<HeroSliderProps> = ({ 
+  onSelectProject, 
+  onOpenTour,
+  currentIndex: controlledIndex,
+  onSlideChange,
+}) => {
   const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [internalIndex, setInternalIndex] = useState(0)
   const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [timerKey, setTimerKey] = useState(0)
+
+  const currentIndex = controlledIndex !== undefined ? controlledIndex : internalIndex
+
+  const updateIndex = (newIndex: number) => {
+    setPreviousIndex(currentIndex)
+    if (onSlideChange) {
+      onSlideChange(newIndex)
+    }
+    if (controlledIndex === undefined) {
+      setInternalIndex(newIndex)
+    }
+  }
 
   const currentProject = featuredProjects[currentIndex] || featuredProjects[0]
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPreviousIndex(currentIndex)
-      setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
+      const nextIndex = (currentIndex + 1) % featuredProjects.length
+      updateIndex(nextIndex)
     }, 8000)
     return () => clearInterval(interval)
   }, [currentIndex, timerKey, featuredProjects.length])
@@ -34,14 +53,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
   }, [previousIndex])
 
   const nextSlide = () => {
-    setPreviousIndex(currentIndex)
-    setCurrentIndex((prev) => (prev + 1) % featuredProjects.length)
+    const nextIndex = (currentIndex + 1) % featuredProjects.length
+    updateIndex(nextIndex)
     setTimerKey((k) => k + 1)
   }
 
   const prevSlide = () => {
-    setPreviousIndex(currentIndex)
-    setCurrentIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
+    const prevIndex = (currentIndex - 1 + featuredProjects.length) % featuredProjects.length
+    updateIndex(prevIndex)
     setTimerKey((k) => k + 1)
   }
 
@@ -100,39 +119,41 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
 
         {/* Center / Hero Typography */}
         <div key={currentProject.id} className="animate-hero-fade max-w-3xl my-auto py-3 sm:py-8">
-          <h1 className="font-theSeasons text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#fffff1] leading-[1.05] mb-4 drop-shadow-md">
-            {currentProject.title}
-          </h1>
+          <div className="translate-y-14 sm:translate-y-0">
+            <h1 className="font-theSeasons text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#fffff1] leading-[1.05] mb-4 drop-shadow-md">
+              {currentProject.title}
+            </h1>
 
-          <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-light max-w-2xl leading-relaxed mb-8 drop-shadow">
-            {currentProject.subtitle}
-          </p>
+            <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-normal max-w-2xl leading-relaxed mb-8 drop-shadow hero-subtitle">
+              {currentProject.subtitle}
+            </p>
 
-          {/* Call to Actions (Mobile: stacked vertically, Proje Detayları -2px, Tur +4px; Desktop: untouched) */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
-            <button
-              type="button"
-              onClick={() => onSelectProject(currentProject)}
-              className="px-3 py-1.5 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-semibold text-[9.5px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
-            >
-              <span>Proje Detayları</span>
-              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
-            </button>
+            {/* Call to Actions (Mobile: stacked vertically, Proje Detayları -2px, Tur +4px; Desktop: untouched) */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={() => onSelectProject(currentProject)}
+                className="px-3 py-1.5 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-extrabold text-[9.5px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
+              >
+                <span>Proje Detayları</span>
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
+              </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                if (onOpenTour) {
-                  onOpenTour()
-                } else {
-                  const el = document.getElementById('tanitim-turu')
-                  if (el) el.scrollIntoView({ behavior: 'smooth' })
-                }
-              }}
-              className="glass-blur-box px-5 py-3.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium text-[13px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
-            >
-              Ücretsiz Tanıtım Turu
-            </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (onOpenTour) {
+                    onOpenTour()
+                  } else {
+                    const el = document.getElementById('tanitim-turu')
+                    if (el) el.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
+              >
+                Ücretsiz Tanıtım Turu
+              </button>
+            </div>
           </div>
         </div>
 
@@ -234,9 +255,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
           </div>
         </div>
 
-        {/* 2. DESKTOP CONTROLS (Preserved 100% untouched) */}
+        {/* Sol Alt: Sanal Tur Yakında Butonu (Çizginin üstünde, Proje Detayları ile aynı hizada) */}
+        <div className="flex items-center mb-3 sm:mb-5">
+          <button
+            type="button"
+            className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl sm:rounded-2xl transition-all hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl border border-[#fffff1]/20"
+          >
+            <span className="font-extrabold tracking-wider">SANAL TUR</span>
+            <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">YAKINDA</span>
+          </button>
+        </div>
+
+        {/* 2. DESKTOP CONTROLS */}
         <div className="hidden sm:flex flex-row items-center justify-between gap-4 pt-4 sm:pt-6 border-t border-[#fffff1]/10">
-          {/* Architectural Scroll / Discovery Indicator */}
+          {/* Left: Architectural Scroll / Discovery Indicator (Geri yerine alındı) */}
           <button
             onClick={scrollToNext}
             className="flex items-center space-x-3 text-[#fffff1]/70 hover:text-[#fffff1] transition-all group cursor-pointer"
@@ -245,7 +277,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onSelectProject, onOpenT
             <div className="w-5 h-8 rounded-full border border-[#fffff1]/30 group-hover:border-[#fffff1] flex justify-center pt-1.5 transition-colors">
               <div className="w-1 h-2 rounded-full bg-[#fffff1] animate-scroll-dot" />
             </div>
-            <span className="text-xs tracking-[0.2em] font-medium uppercase text-[#fffff1]/80 group-hover:text-[#fffff1] transition-colors">
+            <span className="text-xs tracking-[0.2em] font-medium uppercase text-[#fffff1]/90 group-hover:text-[#fffff1] transition-colors">
               Projeleri Keşfedin
             </span>
           </button>

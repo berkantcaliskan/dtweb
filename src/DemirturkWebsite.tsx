@@ -9,7 +9,7 @@ import { ArticlesSection, ARTICLES_DATA, ArticleItem } from './components/Articl
 import { ArticleDetailView } from './components/ArticleDetailView'
 import { ConstructionProcessSection } from './components/ConstructionProcessSection'
 import { ReachUsSection } from './components/ReachUsSection'
-import { FinancingAndTourSection } from './components/FinancingAndTourSection'
+import { PaymentModelsSection } from './components/PaymentModelsSection'
 import { WebsiteFooter } from './components/WebsiteFooter'
 import { ProjectDetailModal } from './components/ProjectDetailModal'
 import { TourBookingModal } from './components/TourBookingModal'
@@ -23,6 +23,7 @@ export const DemirturkWebsite: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null)
   const [isTourModalOpen, setIsTourModalOpen] = useState(false)
   const [isReachUsModalOpen, setIsReachUsModalOpen] = useState(false)
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   // SEO & Deep-linking: sync URL and meta on mount and on selection changes
   useEffect(() => {
@@ -54,6 +55,16 @@ export const DemirturkWebsite: React.FC = () => {
         return
       }
 
+      if (pathname === '/odeme-modelleri' || pathname === '/odeme-modelleri/' || pathname === '/finansman' || params.get('odeme-modelleri') !== null) {
+        setSelectedArticle(null)
+        setSelectedProject(null)
+        window.history.replaceState({}, '', '/')
+        setTimeout(() => {
+          handleNavigate('#odeme-modelleri')
+        }, 100)
+        return
+      }
+
       if (projectParam) {
         const found = PROJECTS_DATA.find((p) => p.slug === projectParam || p.id === projectParam)
         if (found) {
@@ -67,7 +78,7 @@ export const DemirturkWebsite: React.FC = () => {
         setIsTourModalOpen(true)
       }
 
-      if (contactParam !== null) {
+      if (contactParam !== null || pathname === '/iletisim' || pathname === '/ulasin') {
         setIsReachUsModalOpen(true)
       }
     }
@@ -196,14 +207,16 @@ export const DemirturkWebsite: React.FC = () => {
 
       {/* Main Fullscreen Responsive Hero Slider (16:9 Desktop, 9:16 Mobile) */}
       <HeroSlider 
+        currentIndex={currentSlideIndex}
+        onSlideChange={setCurrentSlideIndex}
         onSelectProject={(p) => setSelectedProject(p)} 
         onOpenTour={() => setIsTourModalOpen(true)}
       />
 
       {/* Slaytın Altı: Sürekli ve Pürüzsüz Blurlu Arka Plan & İçerik Katmanı */}
       <div className="relative w-full overflow-hidden">
-        {/* Blurlu, hafif karartılmış ve pürüzsüz geçişli dikey slayt gösterisi tuvali */}
-        <AmbientSlidesBackground />
+        {/* Blurlu, hafif karartılmış ve slayt ile eşit/senkronize proje arka planı */}
+        <AmbientSlidesBackground activeProjectIndex={currentSlideIndex} />
 
         {/* İçerik Katmanı */}
         <div className="relative z-10">
@@ -222,10 +235,10 @@ export const DemirturkWebsite: React.FC = () => {
           {/* 5. İNŞA SÜREÇLERİ (#insa-surecleri) */}
           <ConstructionProcessSection />
 
-          {/* Finansman & Senet Hesaplayıcı Modülü */}
-          <FinancingAndTourSection />
+          {/* 6. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
+          <PaymentModelsSection />
 
-          {/* 6. ULAŞIN (#ulasin - Temel İletişim Bilgileri ve Kariyer) */}
+          {/* 7. İLETİŞİM (#iletisim & #ulasin) */}
           <ReachUsSection />
 
           {/* Footer */}

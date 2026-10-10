@@ -8,15 +8,25 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Google Sans"', '"Product Sans"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-        mono: ['"Google Sans"', '"Product Sans"', '"Plus Jakarta Sans"', 'system-ui', 'monospace', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        garet: ['"Garet"', 'sans-serif'],
+        mono: ['"Plus Jakarta Sans"', '"Google Sans"', 'system-ui', 'monospace', 'sans-serif'],
         theSeasons: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         heading: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         serif: ['"The Seasons"', '"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
         codec: ['"Codec Pro"', '"Codec"', 'system-ui', 'sans-serif'],
       },
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        black: '900',
+      },
       letterSpacing: {
-        normal: '0.045em',
+        normal: '0.015em',
       },
       colors: {
         canvas: '#252c33',

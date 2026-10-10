@@ -10,6 +10,7 @@ interface DemirturkLogoProps {
   emblemSize?: number
   showSubtitle?: boolean
   onClick?: () => void
+  isScrolled?: boolean
 }
 
 export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
@@ -18,12 +19,9 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   emblemSize = 36,
   showSubtitle = true,
   onClick,
+  isScrolled = false,
 }) => {
   const isDarkBg = variant === 'dark-bg'
-
-  // Official emblem asset:
-  // Red + Signature Anthracite (#313941)
-  const emblemSrc = '/demirturk-emblem.png'
 
   const titleColor = isDarkBg ? 'text-[#fffff1]' : 'text-[#313941]'
   const subtitleColor = isDarkBg ? 'text-[#fffff1]/85' : 'text-[#313941]/85'
@@ -36,11 +34,9 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       }`}
     >
       {/* ============================================================== */}
-      {/* AUTHENTIC DEMİRTÜRK EMBLEM (Exact Original Vector High-Res)    */}
+      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Smooth Anthracite to White Swap    */}
       {/* ============================================================== */}
-      <img
-        src={emblemSrc}
-        alt="Demirtürk İnşaat Logo"
+      <div
         style={
           emblemSize === 36
             ? undefined
@@ -50,12 +46,32 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
                 maxHeight: `${emblemSize}px`,
               }
         }
-        className={`${
+        className={`relative ${
           emblemSize === 36 ? 'h-[28px] sm:h-[36px] max-h-[28px] sm:max-h-[36px]' : ''
-        } w-auto flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-105`}
-        loading="eager"
-        decoding="async"
-      />
+        } w-auto flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
+      >
+        {/* 1. Emblem with Signature Anthracite lines (Active on hero slide) */}
+        <img
+          src="/demirturk-emblem-dark.png"
+          alt="Demirtürk İnşaat Logo"
+          className={`h-full w-auto object-contain transition-opacity duration-300 ${
+            isScrolled ? 'opacity-0 pointer-events-none absolute inset-0' : 'opacity-100'
+          }`}
+          loading="eager"
+          decoding="async"
+        />
+
+        {/* 2. Emblem with White lines (Active when scrolled down on dark backgrounds) */}
+        <img
+          src="/demirturk-emblem-white.png"
+          alt="Demirtürk İnşaat Logo (Beyaz)"
+          className={`h-full w-auto object-contain transition-opacity duration-300 ${
+            isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none absolute inset-0'
+          }`}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
 
       {/* ============================================================== */}
       {/* TYPOGRAPHY: CODEC PRO                                          */}

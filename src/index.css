@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'Garet';
+  src: url('/fonts/Garet-Book.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Garet Heavy';
+  src: url('/fonts/Garet-Heavy.ttf') format('truetype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Codec Pro';
   src: url('/fonts/CodecPro-Regular.ttf') format('truetype'),
        url('/fonts/CodecPro-Regular.woff') format('woff');
@@ -66,14 +82,16 @@
   body {
     background-color: #252c33;
     color: #fffff1;
-    font-family: 'Google Sans', 'Product Sans', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-synthesis: weight style;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: 0.045em;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.015em;
   }
 
   p {
-    letter-spacing: 0.045em;
+    font-weight: 400;
+    letter-spacing: 0.015em;
   }
 
   /* All headings use The Seasons (with editorial serif fallbacks) */
@@ -88,8 +106,52 @@
 }
 
 body, .font-sans {
-  font-family: 'Google Sans', 'Product Sans', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  letter-spacing: 0.045em;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+}
+
+.font-light {
+  font-weight: 300 !important;
+}
+
+.font-normal {
+  font-weight: 400 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.font-extrabold {
+  font-weight: 800 !important;
+}
+
+.hero-subtitle {
+  font-weight: 400 !important;
+  letter-spacing: 0.015em;
+}
+
+/* Sayfa adları (navbar links) and Ücretsiz Tanıtım Turu */
+.nav-page-link {
+  font-weight: 500 !important;
+}
+
+.btn-tour {
+  font-weight: 500 !important;
+}
+
+.font-garet {
+  font-family: 'Garet', system-ui, sans-serif !important;
+  font-weight: 400;
 }
 
 .font-codec {
@@ -372,5 +434,47 @@ select option {
   background-color: #1e242b !important;
   color: #fffff1 !important;
   padding: 8px 12px;
+}
+
+/* Chromatic Glass Blur Button Animation (Cycles through Yeşil, Bej, Kahve, Burgonya) */
+@keyframes chromaticGlassBlur {
+  0%, 100% {
+    /* 1. Yeşil (Architectural Sage / Forest Green) */
+    background-color: rgba(40, 68, 50, 0.55);
+    border-color: rgba(105, 168, 130, 0.45);
+    box-shadow: 0 8px 30px -4px rgba(40, 68, 50, 0.5);
+  }
+  25% {
+    /* 2. Bej (Warm Travertine / Sand Beige) */
+    background-color: rgba(145, 122, 92, 0.55);
+    border-color: rgba(220, 200, 168, 0.5);
+    box-shadow: 0 8px 30px -4px rgba(145, 122, 92, 0.5);
+  }
+  50% {
+    /* 3. Kahve (Walnut / Warm Roasted Brown) */
+    background-color: rgba(95, 58, 38, 0.58);
+    border-color: rgba(190, 140, 110, 0.5);
+    box-shadow: 0 8px 30px -4px rgba(95, 58, 38, 0.5);
+  }
+  75% {
+    /* 4. Burgonya (Deep Imperial Burgundy / Bordeaux) */
+    background-color: rgba(90, 24, 40, 0.58);
+    border-color: rgba(195, 105, 125, 0.5);
+    box-shadow: 0 8px 30px -4px rgba(90, 24, 40, 0.5);
+  }
+}
+
+.glass-blur-chromatic {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: chromaticGlassBlur 12s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  will-change: background-color, border-color, box-shadow;
+}
+
+.glass-blur-chromatic:hover {
+  filter: brightness(1.15);
+  transform: scale(1.03);
 }
 

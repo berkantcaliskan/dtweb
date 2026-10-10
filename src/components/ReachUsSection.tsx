@@ -94,17 +94,19 @@ export const ReachUsSection: React.FC = () => {
   ]
 
   return (
-    <section id="ulasin" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08]">
+    <section id="iletisim" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08] relative">
+      {/* Anchor for backward compatibility with #ulasin */}
+      <div id="ulasin" className="absolute -top-24 left-0 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-[#fffff1]/10">
           <div>
             <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-              <span>İLETİŞİM & KARİYER / REACH US</span>
+              <span>İLETİŞİM & KARİYER / CONTACT & CAREERS</span>
             </div>
             <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
-              Bize Ulaşın
+              İletişim & Merkez Ofis
             </h2>
           </div>
 

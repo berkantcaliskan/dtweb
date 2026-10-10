@@ -1,108 +1,66 @@
 import React from 'react'
+import { PROJECTS_DATA } from '../data/websiteData'
 
-interface SlideLayer {
-  id: string
-  title: string
-  src: string
-  top: string
-  height: string
-  mask: string
+interface AmbientSlidesBackgroundProps {
+  activeProjectIndex?: number
+  className?: string
 }
 
-const AMBIENT_SLIDES: SlideLayer[] = [
-  {
-    id: 'ambient-yenisehir-top',
-    title: 'Yeni Şehir Etapları - Mimari Giriş',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '0%',
-    height: '24%',
-    mask: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)',
-  },
-  {
-    id: 'ambient-yenisehir-mid1',
-    title: 'Yeni Şehir Etapları - Projeler & Mimari',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '18%',
-    height: '24%',
-    mask: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-  },
-  {
-    id: 'ambient-yenisehir-mid2',
-    title: 'Yeni Şehir Etapları - Malzeme & Mühendislik',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '36%',
-    height: '24%',
-    mask: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-  },
-  {
-    id: 'ambient-yenisehir-mid3',
-    title: 'Yeni Şehir Etapları - İnşa Süreçleri',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '54%',
-    height: '24%',
-    mask: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-  },
-  {
-    id: 'ambient-yenisehir-bottom1',
-    title: 'Yeni Şehir Etapları - İletişim & Ulaşın',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '72%',
-    height: '24%',
-    mask: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-  },
-  {
-    id: 'ambient-yenisehir-footer',
-    title: 'Yeni Şehir Etapları - Alt Bölüm',
-    src: '/images/yenisehirforweb.jpeg',
-    top: '86%',
-    height: '16%',
-    mask: 'linear-gradient(to bottom, transparent 0%, black 30%, black 100%)',
-  },
-]
+export const AmbientSlidesBackground: React.FC<AmbientSlidesBackgroundProps> = ({
+  activeProjectIndex = 0,
+  className = '',
+}) => {
+  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured)
+  const safeActiveIndex = Math.abs(activeProjectIndex) % (featuredProjects.length || 1)
 
-export const AmbientSlidesBackground: React.FC = () => {
   return (
     <div
-      className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0"
+      className={`fixed inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 ${className}`}
       aria-hidden="true"
     >
       {/* 
-        Vertically stacked slide layers:
-        Rendered with heavy Gaussian blur (60px) and progressive gradient masks so they
-        blend seamlessly into each other as one single continuous architectural visual.
+        Slayt ile Senkronize ve Eşit Proje Arka Planı:
+        Hero slaytındaki aktif projeye (Asel Doğa Evleri, Almina Evleri, Seaside House, Yeni Şehir Etapları)
+        göre dinamik olarak yumuşak cross-fade geçişi yapar.
+        Aynı imza Gaussian blur (50px / 65px) ve doygunluk seviyesini korur.
       */}
-      {AMBIENT_SLIDES.map((slide) => (
-        <div
-          key={slide.id}
-          className="absolute inset-x-0 overflow-hidden transform-gpu"
-          style={{
-            top: slide.top,
-            height: slide.height,
-            maskImage: slide.mask,
-            WebkitMaskImage: slide.mask,
-          }}
-        >
-          <img
-            src={slide.src}
-            alt={slide.title}
-            className="w-full h-full object-cover object-center scale-110 filter blur-[50px] sm:blur-[65px] saturate-125 opacity-80"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      ))}
+      {featuredProjects.map((project, idx) => {
+        const isActive = idx === safeActiveIndex
+        const imageSrc =
+          project.heroMedia?.desktopSrc ||
+          project.heroMedia?.mobileSrc ||
+          '/images/yenisehirforweb.jpeg'
+
+        return (
+          <div
+            key={project.id}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out transform-gpu will-change-[opacity] ${
+              isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            <img
+              src={imageSrc}
+              alt={project.title}
+              className="w-full h-full object-cover object-center scale-110 filter blur-[50px] sm:blur-[65px] saturate-125 opacity-80"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        )
+      })}
 
       {/* 
-        Slight darkening overlay matching corporate anthracite (#252c33):
-        Maintains high contrast and readability for all text, cards, and buttons.
+        Kurumsal Antrasit Karartma Katmanı (#252c33):
+        Tüm içerik, metin, kartlar ve butonların mükemmel kontrast ve okunabilirlikte kalmasını sağlar.
       */}
-      <div className="absolute inset-0 bg-[#252c33]/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#252c33]/70 pointer-events-none z-20" />
 
       {/* Top transition vignette smoothly blending from Hero Slider */}
-      <div className="absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-[#252c33] via-[#252c33]/70 to-transparent pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-[#252c33] via-[#252c33]/70 to-transparent pointer-events-none z-20" />
 
       {/* Bottom transition vignette smoothly blending into Website Footer */}
-      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#1c2126] via-[#1c2126]/70 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#1c2126] via-[#1c2126]/70 to-transparent pointer-events-none z-20" />
     </div>
   )
 }
+

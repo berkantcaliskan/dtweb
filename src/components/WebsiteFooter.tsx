@@ -19,7 +19,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#fffff1]/10">
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <DemirturkLogo variant="dark-bg" emblemSize={42} />
+            <DemirturkLogo variant="dark-bg" emblemSize={42} isScrolled={true} />
             <p className="text-sm text-[#fffff1]/70 font-light leading-relaxed max-w-sm">
               2003 yılından bu yana Sakarya Karasu’da doğa ve mimariyi buluşturan güvenilir yaşam alanları inşa ediyor; temelden çatıya yapı malzemeleri tedariki sağlıyoruz.
             </p>
@@ -93,13 +93,14 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             </h4>
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
               <li><a href="#projeler" className="hover:text-white transition-colors">Projeler</a></li>
+              <li><a href="#odeme-modelleri" className="hover:text-white transition-colors">Ödeme Modelleri</a></li>
               <li><a href="#mimari-yaklasim" className="hover:text-white transition-colors">Mimari Yaklaşım</a></li>
               <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
               <li><a href="#makaleler" className="hover:text-white transition-colors">Makaleler</a></li>
               <li><a href="#insa-surecleri" className="hover:text-white transition-colors">İnşa Süreçleri</a></li>
               <li>
                 <a
-                  href="#ulasin"
+                  href="#iletisim"
                   onClick={(e) => {
                     if (onOpenReachUs) {
                       e.preventDefault()
@@ -108,7 +109,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Ulaşın (İletişim & Kariyer)
+                  İletişim & Kariyer
                 </a>
               </li>
             </ul>

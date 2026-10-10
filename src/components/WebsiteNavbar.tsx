@@ -18,11 +18,12 @@ interface NavLinkItem {
 
 const NAV_LINKS: NavLinkItem[] = [
   { label: 'PROJELER', href: '#projeler' },
+  { label: 'ÖDEME MODELLERİ', href: '#odeme-modelleri' },
   { label: 'MİMARİ YAKLAŞIM', href: '#mimari-yaklasim' },
   { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
   { label: 'MAKALELER', href: '#makaleler' },
   { label: 'İNŞA SÜREÇLERİ', href: '#insa-surecleri' },
-  { label: 'ULAŞIN', href: '#ulasin' },
+  { label: 'İLETİŞİM', href: '#iletisim' },
 ]
 
 export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ 
@@ -54,11 +55,12 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
   // Initial estimate based on window width
   const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1200
   const [visibleCount, setVisibleCount] = useState<number>(() => {
-    if (initialWidth >= 1420) return 6
-    if (initialWidth >= 1220) return 5
-    if (initialWidth >= 1060) return 4
-    if (initialWidth >= 880) return 3
-    if (initialWidth >= 700) return 2
+    if (initialWidth >= 1600) return 7
+    if (initialWidth >= 1440) return 6
+    if (initialWidth >= 1260) return 5
+    if (initialWidth >= 1080) return 4
+    if (initialWidth >= 900) return 3
+    if (initialWidth >= 720) return 2
     if (initialWidth >= 540) return 1
     return 0
   })
@@ -119,7 +121,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     const phoneW = phoneMeasureRef.current?.offsetWidth || 155
     const hamburgerW = hamburgerMeasureRef.current?.offsetWidth || 44
 
-    const DEFAULT_LINK_WIDTHS = [85, 150, 160, 95, 140, 75]
+    const DEFAULT_LINK_WIDTHS = [85, 165, 150, 160, 95, 140, 85]
     const linkWidths = NAV_LINKS.map((_, i) => {
       const el = linkMeasureRefs.current[i]
       return el && el.offsetWidth > 0 ? el.offsetWidth : DEFAULT_LINK_WIDTHS[i]
@@ -209,9 +211,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
   const handleNavClick = (item: NavLinkItem) => {
     setIsMenuOpen(false)
-    if (item.label === 'ULAŞIN' && onOpenReachUs) {
+    if ((item.label === 'İLETİŞİM' || item.label === 'ULAŞIN') && onOpenReachUs) {
       if (onNavigate) {
-        onNavigate('#ulasin')
+        onNavigate(item.href)
       }
       onOpenReachUs()
       return
@@ -294,9 +296,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
             isScrolled || isSubPageOpen
-              ? 'opacity-100 shadow-[0_8px_32px_rgba(0,0,0,0.35)]'
+              ? 'opacity-100 shadow-[0_8px_32px_rgba(0,0,0,0.25)]'
               : 'opacity-0'
-          } bg-[#1c2126]/75 backdrop-blur-2xl backdrop-saturate-150`}
+          } bg-[#1c2126]/65 backdrop-blur-2xl backdrop-saturate-150`}
         />
 
         {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, no harsh rectangular blur cut) */}
@@ -305,7 +307,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             isScrolled || isSubPageOpen
               ? 'opacity-0'
               : 'opacity-100'
-          } bg-gradient-to-b from-[#14181c]/80 via-[#14181c]/35 to-transparent [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]`}
+          } bg-gradient-to-b from-[#14181c]/70 via-[#14181c]/25 to-transparent [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]`}
         />
 
         <div
@@ -326,7 +328,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               }}
               className="group flex-shrink-0 cursor-pointer flex items-center"
             >
-              <DemirturkLogo variant="dark-bg" emblemSize={36} />
+              <DemirturkLogo variant="dark-bg" emblemSize={36} isScrolled={isScrolled || isSubPageOpen} />
             </a>
           </div>
 
@@ -338,7 +340,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
-                    className="text-xs xl:text-[13px] tracking-[0.12em] xl:tracking-[0.16em] font-medium text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap flex-shrink-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                    className="text-xs xl:text-[13px] tracking-[0.12em] xl:tracking-[0.16em] font-medium nav-page-link text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap flex-shrink-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -366,7 +368,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                 if (onOpenTour) onOpenTour()
                 else scrollTo('#tanitim-turu')
               }}
-              className="glass-blur-box text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
+              className="glass-blur-box btn-tour text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
             >
               <span className="hidden min-[420px]:inline">Ücretsiz </span>
               <span>Tanıtım Turu</span>
@@ -434,7 +436,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         {/* Top: Header with Logo emblem, Language Selector & Close button */}
         <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-[#fffff1]/10">
           <div className="flex items-center space-x-2.5">
-            <DemirturkLogo variant="dark-bg" emblemSize={28} />
+            <DemirturkLogo variant="dark-bg" emblemSize={28} isScrolled={true} />
           </div>
 
           <div className="flex items-center space-x-2 sm:space-x-3">
