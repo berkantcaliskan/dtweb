@@ -42,6 +42,7 @@ export interface ProjectItem {
   slug: string
   title: string
   subtitle: string
+  slideDescription?: string
   category: 'all' | 'ongoing' | 'luxury-residence' | 'villa' | 'completed'
   categoryLabel: string
   location: string

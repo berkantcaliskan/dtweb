@@ -125,7 +125,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             </h1>
 
             <p className="text-lg sm:text-2xl text-[#fffff1]/95 font-normal max-w-2xl leading-relaxed mb-8 drop-shadow hero-subtitle">
-              {currentProject.subtitle}
+              {currentProject.slideDescription || currentProject.subtitle}
             </p>
 
             {/* Call to Actions (Mobile: stacked vertically, Proje Detayları -2px, Tur +4px; Desktop: untouched) */}
