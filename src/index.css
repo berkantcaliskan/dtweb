@@ -491,13 +491,9 @@ select option {
 }
 
 
-/* ========================================================================= */
-/* OPENING SPLASH SCREEN LUXURY ANIMATIONS (#fffff1 background)              */
-/* ========================================================================= */
-
 @keyframes splashRedSlideIn {
   0% {
-    transform: translateX(-180px);
+    transform: translateX(-160px);
     opacity: 0;
   }
   100% {
@@ -508,12 +504,14 @@ select option {
 
 @keyframes splashAnthraciteSlideAndAscend {
   0% {
-    transform: translate(180px, 45px);
+    transform: translate(160px, 20px);
     opacity: 0;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
   28% {
-    transform: translate(0, 45px);
+    transform: translate(24px, 20px);
     opacity: 1;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.35, 1);
   }
   100% {
     transform: translate(0, 0);
@@ -524,15 +522,12 @@ select option {
 @keyframes splashLockPulse {
   0% {
     transform: scale(1);
-    filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0));
   }
   50% {
-    transform: scale(1.035);
-    filter: drop-shadow(0 8px 24px rgba(255, 0, 0, 0.15)) drop-shadow(0 0 12px rgba(49, 57, 65, 0.15));
+    transform: scale(1.025);
   }
   100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0));
   }
 }
 

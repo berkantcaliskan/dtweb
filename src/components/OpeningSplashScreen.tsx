@@ -12,7 +12,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
   useEffect(() => {
     const lockTimer = setTimeout(() => {
       setIsLocked(true)
-    }, 2150)
+    }, 2250)
 
     // Step 2: Begin smooth luxury exit fade at 3.9s
     const exitTimer = setTimeout(() => {
