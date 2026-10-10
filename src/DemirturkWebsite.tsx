@@ -141,7 +141,7 @@ export const DemirturkWebsite: React.FC = () => {
     setTimeout(() => {
       const target = document.querySelector(href)
       if (target) {
-        const topOffset = 70
+        const topOffset = 54
         const elementPosition = target.getBoundingClientRect().top
         const offsetPosition = elementPosition + window.pageYOffset - topOffset
         window.scrollTo({
@@ -158,7 +158,7 @@ export const DemirturkWebsite: React.FC = () => {
     setTimeout(() => {
       const target = document.querySelector('#projeler')
       if (target) {
-        const topOffset = 70
+        const topOffset = 54
         const elementPosition = target.getBoundingClientRect().top
         const offsetPosition = elementPosition + window.pageYOffset - topOffset
         window.scrollTo({
@@ -175,7 +175,7 @@ export const DemirturkWebsite: React.FC = () => {
     setTimeout(() => {
       const target = document.querySelector('#makaleler')
       if (target) {
-        const topOffset = 70
+        const topOffset = 54
         const elementPosition = target.getBoundingClientRect().top
         const offsetPosition = elementPosition + window.pageYOffset - topOffset
         window.scrollTo({

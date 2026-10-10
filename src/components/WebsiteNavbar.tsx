@@ -228,7 +228,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     setIsMenuOpen(false)
     const element = document.querySelector(href)
     if (element) {
-      const topOffset = 70
+      const topOffset = 54
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - topOffset
 
@@ -250,18 +250,18 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         className="fixed -top-[9999px] -left-[9999px] opacity-0 pointer-events-none flex items-center space-x-3 xl:space-x-5 z-[-99]"
       >
         <div ref={logoMeasureRef} className="flex-shrink-0">
-          <DemirturkLogo variant="dark-bg" emblemSize={54} />
+          <DemirturkLogo variant="dark-bg" emblemSize={44} />
         </div>
         <div
           ref={phoneMeasureRef}
-          className="text-xs sm:text-sm flex items-center space-x-1.5 px-3 py-2 whitespace-nowrap"
+          className="text-xs sm:text-sm flex items-center space-x-1.5 px-3 py-1.5 whitespace-nowrap"
         >
           <Phone size={14} />
           <span>{COMPANY_INFO.phone}</span>
         </div>
         <div
           ref={ctaMeasureRef}
-          className="text-xs font-normal tracking-wider uppercase px-4 py-2.5 whitespace-nowrap"
+          className="text-xs font-normal tracking-wider uppercase px-3.5 py-1.5 whitespace-nowrap"
         >
           <span>Ücretsiz Tanıtım Turu</span>
         </div>
@@ -273,8 +273,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           <span>|</span>
           <span className="px-2 py-1">EN</span>
         </div>
-        <div ref={hamburgerMeasureRef} className="p-2">
-          <Menu size={22} />
+        <div ref={hamburgerMeasureRef} className="p-1.5">
+          <Menu size={18} />
         </div>
         {NAV_LINKS.map((item, idx) => (
           <div
@@ -289,7 +289,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[70px] sm:h-[86px] font-sans">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[46px] sm:h-[54px] font-sans">
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
@@ -301,7 +301,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
         {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, no harsh rectangular blur cut) */}
         <div
-          className={`absolute top-0 left-0 right-0 h-[80px] sm:h-[105px] pointer-events-none transition-opacity duration-500 ease-in-out ${
+          className={`absolute top-0 left-0 right-0 h-[52px] sm:h-[62px] pointer-events-none transition-opacity duration-500 ease-in-out ${
             isScrolled || isSubPageOpen
               ? 'opacity-0'
               : 'opacity-100'
@@ -326,7 +326,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               }}
               className="group flex-shrink-0 cursor-pointer flex items-center"
             >
-              <DemirturkLogo variant="dark-bg" emblemSize={54} isScrolled={isScrolled || isSubPageOpen} />
+              <DemirturkLogo variant="dark-bg" emblemSize={44} isScrolled={isScrolled || isSubPageOpen} />
             </a>
           </div>
 
@@ -348,14 +348,14 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           )}
 
           {/* Right: Phone (if fits) + Free Tour CTA + Language Selector (TR/EN) + 3-line Hamburger Menu */}
-          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 ml-auto z-10">
+          <div className="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0 ml-auto z-10">
             {/* Direct Phone (Visible if fits in available space) */}
             {showPhone && (
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="text-xs sm:text-sm text-[#fffff1]/90 hover:text-[#fffff1] flex items-center space-x-1.5 px-2.5 sm:px-3 py-2 rounded-xl border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap flex-shrink-0 cursor-pointer"
+                className="text-xs text-[#fffff1]/90 hover:text-[#fffff1] flex items-center space-x-1.5 px-2.5 py-1 rounded-lg border border-[#fffff1]/10 hover:border-[#fffff1]/20 transition-all whitespace-nowrap flex-shrink-0 cursor-pointer"
               >
-                <Phone size={14} className="text-[#fffff1] flex-shrink-0" />
+                <Phone size={13} className="text-[#fffff1] flex-shrink-0" />
                 <span>{COMPANY_INFO.phone}</span>
               </a>
             )}
@@ -366,7 +366,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                 if (onOpenTour) onOpenTour()
                 else scrollTo('#tanitim-turu')
               }}
-              className="glass-blur-box btn-tour text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-4 py-2 sm:py-2.5 text-[#fffff1] rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
+              className="glass-blur-box btn-tour text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[#fffff1] rounded-xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap hover:border-[#fffff1]/40 flex-shrink-0 cursor-pointer"
             >
               <span className="hidden min-[420px]:inline">Ücretsiz </span>
               <span>Tanıtım Turu</span>
@@ -378,7 +378,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                 <button
                   type="button"
                   onClick={() => handleLanguageChange('TR')}
-                  className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
+                  className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
                     currentLang === 'TR'
                       ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                       : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
@@ -390,7 +390,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                 <button
                   type="button"
                   onClick={() => handleLanguageChange('EN')}
-                  className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
+                  className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
                     currentLang === 'EN'
                       ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                       : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
@@ -406,10 +406,10 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             {showHamburger && (
               <button
                 onClick={() => setIsMenuOpen(true)}
-                className="p-2 sm:p-2.5 rounded-2xl text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
+                className="p-1.5 rounded-xl text-[#fffff1]/90 hover:text-[#fffff1] hover:bg-white/10 transition-colors focus:outline-none flex-shrink-0 cursor-pointer border border-[#fffff1]/10 hover:border-[#fffff1]/20"
                 aria-label="Menüyü aç"
               >
-                <Menu size={22} />
+                <Menu size={18} />
               </button>
             )}
           </div>
