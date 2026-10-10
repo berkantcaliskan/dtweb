@@ -157,7 +157,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                       <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                         <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                          {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta & Devam Ediyor'}
+                          {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor'}
                         </span>
                       </div>
                     )}
@@ -239,7 +239,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                       <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                        {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta & Devam Ediyor'}
+                        {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor'}
                       </span>
                     </div>
                   )}

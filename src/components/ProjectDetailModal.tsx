@@ -237,7 +237,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </span>
                 {activeStage.distanceToSea && (
                   <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-md">
-                    {activeStage.distanceToSea}
+                    Denize {activeStage.distanceToSea.replace(/^Denize\s*/i, '')}
                   </span>
                 )}
               </div>
@@ -265,7 +265,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <Waves size={20} className="text-sky-300 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
                   <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
-                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.distanceToSea || 'Denize ~800m'}</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
+                    {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '~800 Metre'}
+                  </span>
                 </div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
@@ -281,7 +283,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
                   <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Tipleri</span>
-                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.unitTypes.join(' & ')}</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
+                    {activeStage.totalUnits ? `${activeStage.totalUnits} • ` : ''}{activeStage.unitTypes.join(' & ')}
+                  </span>
                 </div>
               </div>
             </div>
@@ -349,7 +353,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Denize Mesafe:</span>
-                    <span className="text-[#fffff1]/95 font-medium">{activeStage.distanceToSea || '~800 Metre'}</span>
+                    <span className="text-[#fffff1]/95 font-medium">
+                      {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '~800 Metre'}
+                    </span>
+                  </div>
+                  {activeStage.totalArea && (
+                    <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                      <span className="text-[#fffff1]/50">Toplam Alan:</span>
+                      <span className="text-[#fffff1]/95 font-medium">{activeStage.totalArea}</span>
+                    </div>
+                  )}
+                  {activeStage.totalUnits && (
+                    <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                      <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
+                      <span className="text-[#fffff1] font-bold">{activeStage.totalUnits}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                    <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
+                    <span className="text-[#fffff1]/95 font-medium">{activeStage.unitTypes.join(' & ')}</span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Proje Durumu:</span>
@@ -358,14 +380,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     </span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Teslim / Yıl:</span>
+                    <span className="text-[#fffff1]/50">Teslim:</span>
                     <span className="text-[#fffff1] font-bold">
-                      {activeStage.deliveryDate ? `Teslim: ${activeStage.deliveryDate}` : activeStage.year}
+                      {(activeStage.deliveryDate || activeStage.year).replace(/^Teslim:\s*/i, '')}
                     </span>
-                  </div>
-                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
-                    <span className="text-[#fffff1]/95 font-medium">{activeStage.unitTypes.join(' & ')}</span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Isınma Sistemi:</span>
@@ -470,8 +488,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     : null
 
   const displayLocation = currentStage ? currentStage.location : project.location
-  const displayDistanceToSea = currentStage?.distanceToSea || project.distanceToSea || 'Denize ~800m'
-  const displayUnits = currentStage ? currentStage.unitTypes.join(', ') : project.totalUnits
+  const rawDistance = currentStage?.distanceToSea || project.distanceToSea || '~800m'
+  const displayDistanceToSea = rawDistance.replace(/^Denize\s*/i, '')
+  const displayUnits = currentStage ? currentStage.unitTypes.join(', ') : project.unitTypes?.join(', ') || '1+1 ve 2+1 Daireler'
+  const displayTotalUnits = currentStage?.totalUnits || project.totalUnits
   const displayStatus = currentStage ? currentStage.status : project.status
   const displayYear = currentStage ? (currentStage.deliveryDate ? `Teslim: ${currentStage.deliveryDate}` : currentStage.year) : project.year
 
@@ -566,7 +586,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               )}
               {displayDistanceToSea && (
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-md">
-                  {displayDistanceToSea}
+                  Denize {displayDistanceToSea}
                 </span>
               )}
             </div>
@@ -784,7 +804,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className={`grid grid-cols-1 ${project.stages.length === 2 ? 'md:grid-cols-2' : project.stages.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-6`}>
               {project.stages.map((stage, idx) => {
                 const isSelected = selectedStageIndex === idx
-                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta' || stage.status === 'Devam Ediyor' || stage.status === 'Satışta & Devam Ediyor'
+                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta' || stage.status === 'Devam Ediyor' || stage.status === 'Satışta & Devam Ediyor' || stage.status === 'Satışta, Devam Ediyor'
                 const isCompleted = stage.status === 'Tamamlandı'
                 return (
                   <div
@@ -848,7 +868,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     {/* Bottom Content Details */}
                     <div className="relative z-10 pt-8 pb-5 px-6">
                       <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block font-semibold mb-1 truncate">
-                        {stage.location} • {stage.distanceToSea || 'Denize ~800m'}
+                        {stage.location} • Denize {stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '~800m'}
                       </span>
                       <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-2 group-hover:translate-x-1 transition-transform">
                         {stage.title}
@@ -857,12 +877,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                         {stage.subtitle}
                       </p>
 
-                      <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-between text-xs sm:text-sm">
-                        <span className="text-[#fffff1]/75 font-medium truncate">
-                          {stage.unitTypes.join(' & ')}
-                        </span>
-                        <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform flex-shrink-0 ml-2">
-                          <span>Detayı İncele</span>
+                      <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-end text-xs sm:text-sm">
+                        <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform flex-shrink-0">
+                          <span>Detayları İncele</span>
                           <ArrowUpRight size={15} className="ml-1" />
                         </span>
                       </div>
@@ -978,6 +995,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <span className="text-[#fffff1]/50">Toplam Alan:</span>
                   <span className="text-[#fffff1]/95 font-medium">{currentStage?.totalArea || project.totalArea}</span>
                 </div>
+                {displayTotalUnits && (
+                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                    <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
+                    <span className="text-[#fffff1] font-bold">{displayTotalUnits}</span>
+                  </div>
+                )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
                   <span className="text-[#fffff1]/95 font-medium text-right max-w-[200px] truncate" title={displayUnits}>{displayUnits}</span>
@@ -994,8 +1017,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </div>
                 {displayYear && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Teslim / Yıl:</span>
-                    <span className="text-[#fffff1] font-bold">{displayYear}</span>
+                    <span className="text-[#fffff1]/50">Teslim:</span>
+                    <span className="text-[#fffff1] font-bold">{displayYear.replace(/^Teslim:\s*/i, '')}</span>
                   </div>
                 )}
                 {project.installmentMonths && (
@@ -1019,7 +1042,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-2xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                 >
-                  {COMPANY_INFO.phone} ile Bilgi Al
+                  Telefonda Bilgi Al
                 </a>
               </div>
             </div>

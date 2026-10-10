@@ -31,6 +31,7 @@ export interface ProjectStage {
   location: string
   distanceToSea?: string
   unitTypes: string[]
+  totalUnits?: string
   features: string[]
   description: string
   image: string
