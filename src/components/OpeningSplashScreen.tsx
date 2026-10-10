@@ -155,9 +155,9 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
           </h1>
 
           {/* Line 2: İ N Ş A A T - Light Plus Jakarta Sans */}
-          {/* Using flex justify-between across the exact width of DEMİRTÜRK */}
+          {/* Using flex justify-between with refined inset for subtle tighter spacing */}
           <div
-            className="anim-splash-subtitle w-full flex justify-between items-center text-[#313941]/90 uppercase text-[10px] sm:text-[12px] font-light leading-none mt-2 sm:mt-2.5 px-[3px]"
+            className="anim-splash-subtitle w-full flex justify-between items-center text-[#313941]/90 uppercase text-[10px] sm:text-[12px] font-light leading-none mt-2 sm:mt-2.5 px-2 sm:px-2.5"
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,
