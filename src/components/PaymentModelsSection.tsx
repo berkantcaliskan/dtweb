@@ -192,7 +192,7 @@ export const PaymentModelsSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Inputs (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               {/* Preset Budget Selector */}
