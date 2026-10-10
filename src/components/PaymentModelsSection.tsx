@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
-import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageSquare, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles } from 'lucide-react'
+import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageSquare, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles, Info } from 'lucide-react'
 import { submitLeadToPortfoy } from '../services/leadService'
 
 export const PaymentModelsSection: React.FC = () => {
@@ -16,12 +16,11 @@ export const PaymentModelsSection: React.FC = () => {
   const [downPaymentRatio, setDownPaymentRatio] = useState<number>(25) // %25 min, %36 maks
   const [termMonths, setTermMonths] = useState<number>(40) // 40 ay maks
 
-  // Preset Budget Options (En düşük 3.250.000 ₺)
+  // Preset Budget Options (1+1, 2+1, Bahçe Katı - En düşük 3.250.000 ₺)
   const budgetPresets = [
-    { label: '1+1 Havuzlu', value: 3250000 },
-    { label: '2+1 Standart', value: 4150000 },
-    { label: '2+1 Geniş Teraslı', value: 5200000 },
-    { label: '3+1 Dubleks / Villa', value: 6500000 },
+    { label: '1+1 Daire', value: 3250000 },
+    { label: '2+1 Daire', value: 4250000 },
+    { label: 'Bahçe Katı', value: 4950000 },
   ]
 
   // Calculated Values
@@ -201,20 +200,20 @@ export const PaymentModelsSection: React.FC = () => {
                 <label className="block text-xs uppercase tracking-wider text-[#fffff1]/80 mb-2 font-medium">
                   Konut / Bütçe Seçimi
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                <div className="grid grid-cols-3 gap-2.5 mb-3">
                   {budgetPresets.map((preset) => (
                     <button
                       key={preset.value}
                       type="button"
                       onClick={() => setSelectedBudget(preset.value)}
-                      className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      className={`p-2.5 sm:p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         selectedBudget === preset.value
                           ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
                           : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
                       }`}
                     >
-                      <div className="text-[11px] truncate opacity-90">{preset.label}</div>
-                      <div className="text-xs sm:text-[13px] font-bold mt-0.5 whitespace-nowrap">
+                      <div className="text-[11px] sm:text-xs truncate opacity-90">{preset.label}</div>
+                      <div className="text-xs sm:text-sm font-bold mt-0.5 whitespace-nowrap">
                         {(preset.value / 1000000).toFixed(2).replace('.00', '')}M ₺
                       </div>
                     </button>
@@ -237,6 +236,14 @@ export const PaymentModelsSection: React.FC = () => {
                     onChange={(e) => setSelectedBudget(Number(e.target.value))}
                     className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#fffff1]"
                   />
+                </div>
+
+                {/* Important Price Variance Notice */}
+                <div className="mt-3 flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.04] border border-[#fffff1]/15 text-[11px] sm:text-xs text-[#fffff1]/80 leading-relaxed">
+                  <Info size={15} className="text-amber-300 mt-0.5 flex-shrink-0" />
+                  <span>
+                    <strong className="text-[#fffff1] font-semibold">Önemli Bilgilendirme:</strong> Belirtilen fiyatlar baz hesaplama değerleridir. Bağımsız bölümün havuz veya peyzaj cephesine, bulunduğu kata ve şerefiye kriterlerine bağlı olarak nihai fiyatlar daha düşük veya daha yüksek olabilmektedir.
+                  </span>
                 </div>
               </div>
 
