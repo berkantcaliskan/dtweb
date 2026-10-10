@@ -250,7 +250,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         className="fixed -top-[9999px] -left-[9999px] opacity-0 pointer-events-none flex items-center space-x-3 xl:space-x-5 z-[-99]"
       >
         <div ref={logoMeasureRef} className="flex-shrink-0">
-          <DemirturkLogo variant="dark-bg" emblemSize={44} />
+          <DemirturkLogo variant="dark-bg" emblemSize={53} />
         </div>
         <div
           ref={phoneMeasureRef}
@@ -326,7 +326,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               }}
               className="group flex-shrink-0 cursor-pointer flex items-center"
             >
-              <DemirturkLogo variant="dark-bg" emblemSize={44} isScrolled={isScrolled || isSubPageOpen} />
+              <DemirturkLogo variant="dark-bg" emblemSize={53} isScrolled={isScrolled || isSubPageOpen} />
             </a>
           </div>
 
