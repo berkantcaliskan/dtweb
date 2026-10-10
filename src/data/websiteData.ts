@@ -20,7 +20,7 @@ export const COMPANY_INFO = {
   materialsPhone: '+90 545 305 53 54',
   materialsWhatsapp: '905453055354',
   whatsapp: '905313730054',
-  email: 'info@demirturkinsaat.com',
+  email: 'iletisim@demirturkinsaat.com',
   workingHoursNote: 'Her gün açığız',
   workingHoursWeekday: 'Hafta içi 09:00 - 20:00',
   workingHoursWeekend: 'Hafta sonu 09:00 - 21:00',

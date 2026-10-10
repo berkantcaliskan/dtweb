@@ -80,12 +80,70 @@ export const DemirturkWebsite: React.FC = () => {
         }
       }
 
+      // 0. İletişim / Bize Ulaşın (Google Ads ve direkt linkler için /iletisim)
+      const isContact = pathname === '/iletisim' || pathname === '/ulasin' || params.has('iletisim') || params.has('ulasin') || contactParam === 'iletisim' || contactParam === 'ulasin'
+      if (isContact) {
+        setIsReachUsModalOpen(true)
+        setSelectedProject(null)
+        setSelectedArticle(null)
+        return
+      }
+
+      if (pathname.startsWith('/makaleler/')) {
+        const slug = pathname.replace('/makaleler/', '').replace('/', '')
+        const found = ARTICLES_DATA.find((a) => a.slug === slug)
+        if (found) {
+          setSelectedArticle(found)
+          setSelectedProject(null)
+          setIsReachUsModalOpen(false)
+          return
+        }
+      }
+
+      if (pathname === '/projeler' || pathname === '/projeler/') {
+        setSelectedArticle(null)
+        setSelectedProject(null)
+        setIsReachUsModalOpen(false)
+        window.history.replaceState({}, '', '/')
+        setTimeout(() => {
+          handleNavigate('#projeler')
+        }, 100)
+        return
+      }
+
+      if (pathname === '/odeme-modelleri' || pathname === '/odeme-modelleri/' || pathname === '/finansman' || params.get('odeme-modelleri') !== null) {
+        setSelectedArticle(null)
+        setSelectedProject(null)
+        setIsReachUsModalOpen(false)
+        window.history.replaceState({}, '', '/')
+        setTimeout(() => {
+          handleNavigate('#odeme-modelleri')
+        }, 100)
+        return
+      }
+
+      if (pathname === '/yapi-malzemeleri' || pathname === '/yapi-malzemeleri/' || pathname === '/malzeme' || pathname === '/malzemeler') {
+        window.location.href = `https://wa.me/${COMPANY_INFO.materialsWhatsapp}?text=${encodeURIComponent('Merhaba, Demirtürk Yapı Malzemeleri hakkında bilgi ve fiyat teklifi almak istiyorum.')}`
+        return
+      }
+
+      if (projectParam) {
+        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === projectParam || p.id === projectParam))
+        if (found) {
+          setSelectedProject(found)
+          setSelectedArticle(null)
+          setIsReachUsModalOpen(false)
+          return
+        }
+      }
+
       if (tourParam !== null) {
         setIsTourModalOpen(true)
       }
 
-      if (contactParam !== null || pathname === '/iletisim' || pathname === '/ulasin') {
-        setIsReachUsModalOpen(true)
+      // Ana sayfaya dönüldüyse ve modal açıksa kapat
+      if (pathname === '/' && !params.has('iletisim') && !params.has('ulasin') && !projectParam) {
+        setIsReachUsModalOpen(false)
       }
     }
 
@@ -94,18 +152,28 @@ export const DemirturkWebsite: React.FC = () => {
     return () => window.removeEventListener('popstate', handleUrlState)
   }, [])
 
-  // Dynamic document.title and meta description updates for SEO
+  // Dynamic document.title and meta description updates for SEO & Google Ads
   useEffect(() => {
     const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
     const defaultDesc = "2003'ten bugüne Sakarya Karasu'da kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
     const metaDesc = document.querySelector('meta[name="description"]')
 
-    if (selectedProject) {
+    if (isReachUsModalOpen) {
+      document.title = 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+      if (metaDesc) metaDesc.setAttribute('content', 'Demirtürk İnşaat merkez ofis adresi, telefon numaraları, WhatsApp danışma hattı ve Karasu konut projeleri iletişim bilgileri.')
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+      if (currentPath !== '/iletisim') {
+        const search = window.location.search || ''
+        window.history.pushState({ modal: 'iletisim' }, '', '/iletisim' + search)
+      }
+    } else if (selectedProject) {
       document.title = `${selectedProject.title} | Demirtürk İnşaat Karasu Projeleri`
       if (metaDesc) metaDesc.setAttribute('content', selectedProject.description.slice(0, 155))
       const url = new URL(window.location.href)
       url.searchParams.set('proje', selectedProject.slug || selectedProject.id)
       url.searchParams.delete('makale')
+      url.searchParams.delete('sayfa')
+      url.searchParams.delete('iletisim')
       window.history.replaceState({}, '', url.toString())
     } else if (selectedArticle) {
       document.title = selectedArticle.seoTitle || `${selectedArticle.title} | Demirtürk İnşaat`
@@ -117,18 +185,22 @@ export const DemirturkWebsite: React.FC = () => {
     } else {
       document.title = defaultTitle
       if (metaDesc) metaDesc.setAttribute('content', defaultDesc)
-      if (window.location.pathname.startsWith('/makaleler/')) {
-        window.history.replaceState({}, '', '/')
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+      if (currentPath === '/iletisim' || currentPath === '/ulasin' || window.location.pathname.startsWith('/makaleler/')) {
+        const search = window.location.search || ''
+        window.history.replaceState({}, '', '/' + search)
       } else {
         const url = new URL(window.location.href)
-        if (url.searchParams.has('proje') || url.searchParams.has('makale')) {
+        if (url.searchParams.has('proje') || url.searchParams.has('makale') || url.searchParams.has('sayfa') || url.searchParams.has('iletisim')) {
           url.searchParams.delete('proje')
           url.searchParams.delete('makale')
+          url.searchParams.delete('sayfa')
+          url.searchParams.delete('iletisim')
           window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash)
         }
       }
     }
-  }, [selectedProject, selectedArticle])
+  }, [selectedProject, selectedArticle, isReachUsModalOpen])
 
   const isSubPageOpen = Boolean(selectedProject || selectedArticle || isReachUsModalOpen)
 

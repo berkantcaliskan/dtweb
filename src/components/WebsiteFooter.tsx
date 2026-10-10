@@ -99,7 +99,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
               <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
               <li>
                 <a
-                  href="#iletisim"
+                  href="/iletisim"
                   onClick={(e) => {
                     if (onOpenReachUs) {
                       e.preventDefault()

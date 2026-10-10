@@ -22,7 +22,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: 'MİMARİ YAKLAŞIM', href: '#mimari-yaklasim' },
   { label: 'MAKALELER', href: '#makaleler' },
   { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
-  { label: 'İLETİŞİM', href: '#iletisim' },
+  { label: 'İLETİŞİM', href: '/iletisim' },
 ]
 
 export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ 
