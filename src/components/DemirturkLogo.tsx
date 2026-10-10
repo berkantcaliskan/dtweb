@@ -11,6 +11,7 @@ interface DemirturkLogoProps {
   showSubtitle?: boolean
   onClick?: () => void
   isScrolled?: boolean
+  isHovered?: boolean
 }
 
 export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
@@ -20,6 +21,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   showSubtitle = true,
   onClick,
   isScrolled = false,
+  isHovered = false,
 }) => {
   const isDarkBg = variant === 'dark-bg'
 
@@ -48,7 +50,9 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
         }
         className={`relative ${
           emblemSize === 53 ? 'h-[38px] sm:h-[53px] w-[38px] sm:w-[53px] max-h-[38px] sm:max-h-[53px]' : ''
-        } flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
+        } flex-shrink-0 transition-transform duration-300 ease-out ${
+          isHovered ? 'scale-110' : 'group-hover:scale-110'
+        }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +95,11 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       {/* DEMİRTÜRK (Extra Bold 800, 30px)                               */}
       {/* İ N Ş A A T (Light 300, 15.5px, Wide Tracking)                 */}
       {/* ============================================================== */}
-      <div className="flex flex-col justify-center items-start leading-none text-left">
+      <div
+        className={`flex flex-col justify-center items-start leading-none text-left transition-transform duration-300 ease-out origin-left ${
+          isHovered ? 'scale-105' : 'group-hover:scale-105'
+        }`}
+      >
         {/* DEMİRTÜRK - Extra Bold Plus Jakarta Sans (Reduced by 30%) */}
         <span
           className={`tracking-[0.06em] text-[14px] sm:text-[17.5px] uppercase ${titleColor} transition-colors block text-left`}

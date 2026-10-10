@@ -33,6 +33,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLogoHovered, setIsLogoHovered] = useState(false)
 
   // Language state: default Turkish, switchable to English (content translation planned for when site is complete)
   const [currentLang, setCurrentLang] = useState<'TR' | 'EN'>(() => {
@@ -289,7 +290,11 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[46px] sm:h-[54px] font-sans">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center font-sans transition-all duration-300 ease-out ${
+          isLogoHovered ? 'h-[58px] sm:h-[72px]' : 'h-[46px] sm:h-[54px]'
+        }`}
+      >
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${
@@ -299,9 +304,11 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           } bg-[#1c2126]/65 backdrop-blur-2xl backdrop-saturate-150`}
         />
 
-        {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, no harsh rectangular blur cut) */}
+        {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, expands with header animation) */}
         <div
-          className={`absolute top-0 left-0 right-0 h-[52px] sm:h-[62px] pointer-events-none transition-opacity duration-500 ease-in-out ${
+          className={`absolute top-0 left-0 right-0 pointer-events-none transition-all duration-300 ease-out ${
+            isLogoHovered ? 'h-[68px] sm:h-[86px]' : 'h-[52px] sm:h-[62px]'
+          } ${
             isScrolled || isSubPageOpen
               ? 'opacity-0'
               : 'opacity-100'
@@ -316,6 +323,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           <div className="flex items-center flex-shrink-0 z-10">
             <a
               href="#"
+              onMouseEnter={() => setIsLogoHovered(true)}
+              onMouseLeave={() => setIsLogoHovered(false)}
               onClick={(e) => {
                 e.preventDefault()
                 if (onNavigate) {
@@ -324,9 +333,14 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }
               }}
-              className="group flex-shrink-0 cursor-pointer flex items-center"
+              className="group flex-shrink-0 cursor-pointer flex items-center py-1 -my-1"
             >
-              <DemirturkLogo variant="dark-bg" emblemSize={53} isScrolled={isScrolled || isSubPageOpen} />
+              <DemirturkLogo
+                variant="dark-bg"
+                emblemSize={53}
+                isScrolled={isScrolled || isSubPageOpen}
+                isHovered={isLogoHovered}
+              />
             </a>
           </div>
 
