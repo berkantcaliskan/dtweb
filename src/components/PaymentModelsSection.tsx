@@ -111,7 +111,7 @@ export const PaymentModelsSection: React.FC = () => {
         'Binek veya hafif ticari araçlarda değerinde takas',
         'Marmara bölgesi arsa veya gayrimenkul takas olanağı',
         'Nakit bağlamadan yeni projeye doğrudan geçiş',
-        'Şeffaf ve hızlı noter devir süreçleri',
+        'Şeffaf, güvenli ve hızlı mülkiyet devir süreçleri',
       ],
     },
   ]
@@ -438,11 +438,11 @@ export const PaymentModelsSection: React.FC = () => {
 
               <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/30 transition-all space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
-                  <CheckCircle2 size={18} />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Resmi Noter Güvencesi</span>
+                  <ShieldCheck size={18} />
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Kurumsal Sözleşme Güvencesi</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Tüm satış ve taahhüt süreçleri yasal noter sözleşmesi ve şeffaf şartnamelerle güvence altına alınır.
+                  Tüm satış, teslim ve teknik taahhüt süreçleri şeffaf kurumsal sözleşme ve şartnamelerle güvence altına alınır.
                 </p>
               </div>
             </div>
