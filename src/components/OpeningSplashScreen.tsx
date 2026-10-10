@@ -8,21 +8,21 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
   const [isLocked, setIsLocked] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
 
-  // Step 1: Lock animation triggers pulse at 2.15s when lines meet
+  // Step 1: Lock animation triggers pulse at 1.15s when lines meet
   useEffect(() => {
     const lockTimer = setTimeout(() => {
       setIsLocked(true)
-    }, 2250)
+    }, 1150)
 
-    // Step 2: Begin smooth luxury exit fade at 3.9s
+    // Step 2: Begin smooth luxury exit fade at 2.8s
     const exitTimer = setTimeout(() => {
       setIsExiting(true)
-    }, 3900)
+    }, 2800)
 
-    // Step 3: Complete and unmount at 4.6s
+    // Step 3: Complete and unmount at 3.5s
     const completeTimer = setTimeout(() => {
       onComplete()
-    }, 4600)
+    }, 3500)
 
     // Lock body scroll during splash
     const originalOverflow = document.body.style.overflow

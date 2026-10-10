@@ -504,14 +504,15 @@ select option {
 
 @keyframes splashAnthraciteSlideAndAscend {
   0% {
-    transform: translate(160px, 20px);
+    transform: translate(160px, 24px);
     opacity: 0;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  28% {
-    transform: translate(24px, 20px);
+  35% {
+    transform: translate(32px, 18px);
     opacity: 1;
-    animation-timing-function: cubic-bezier(0.25, 1, 0.35, 1);
+  }
+  70% {
+    transform: translate(6px, 6px);
   }
   100% {
     transform: translate(0, 0);
@@ -592,35 +593,35 @@ select option {
 }
 
 .anim-splash-red {
-  animation: splashRedSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: splashRedSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity;
 }
 
 .anim-splash-anthracite {
-  animation: splashAnthraciteSlideAndAscend 2.25s cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+  animation: splashAnthraciteSlideAndAscend 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity;
 }
 
 .anim-splash-lock-pulse {
-  animation: splashLockPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: splashLockPulse 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .anim-splash-line {
-  animation: splashLineExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
+  animation: splashLineExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
   transform-origin: center;
   opacity: 0;
 }
 
 .anim-splash-title {
-  animation: splashTextMaskUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
+  animation: splashTextMaskUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
   opacity: 0;
 }
 
 .anim-splash-subtitle {
-  animation: splashSubtitleSpread 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
+  animation: splashSubtitleSpread 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
   opacity: 0;
 }
 
 .anim-splash-sheen {
-  animation: splashGoldSheen 1.3s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+  animation: splashGoldSheen 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
 }
