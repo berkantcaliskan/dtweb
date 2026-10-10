@@ -8,21 +8,21 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
   const [isLocked, setIsLocked] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
 
-  // Step 1: Lock animation triggers pulse at 1.15s when lines meet
+  // Step 1: Lock animation triggers pulse at 0.95s when lines meet
   useEffect(() => {
     const lockTimer = setTimeout(() => {
       setIsLocked(true)
-    }, 1150)
+    }, 950)
 
-    // Step 2: Begin smooth luxury exit fade at 2.8s
+    // Step 2: Begin smooth luxury exit fade at 2.2s
     const exitTimer = setTimeout(() => {
       setIsExiting(true)
-    }, 2800)
+    }, 2200)
 
-    // Step 3: Complete and unmount at 3.5s
+    // Step 3: Complete and unmount at 2.9s
     const completeTimer = setTimeout(() => {
       onComplete()
-    }, 3500)
+    }, 2900)
 
     // Lock body scroll during splash
     const originalOverflow = document.body.style.overflow
@@ -109,19 +109,21 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
             {/* (Slide from Right, land slightly above red, then SLOWLY  */}
             {/*  ascend vertically into original geometric lock position)*/}
             {/* -------------------------------------------------------- */}
-            <g className="anim-splash-anthracite">
-              {/* Anthracite Chevron 1 */}
-              <path
-                d="M 146.484375 76.875 L 185.15625 76.875 L 268.359375 222.65625 L 229.6875 222.65625 Z"
-                fill="#313941"
-                fillRule="nonzero"
-              />
-              {/* Anthracite Chevron 2 */}
-              <path
-                d="M 206.25 76.875 L 244.921875 76.875 L 328.125 222.65625 L 289.453125 222.65625 Z"
-                fill="#313941"
-                fillRule="nonzero"
-              />
+            <g className="anim-splash-anthracite-x">
+              <g className="anim-splash-anthracite-y">
+                {/* Anthracite Chevron 1 */}
+                <path
+                  d="M 146.484375 76.875 L 185.15625 76.875 L 268.359375 222.65625 L 229.6875 222.65625 Z"
+                  fill="#313941"
+                  fillRule="nonzero"
+                />
+                {/* Anthracite Chevron 2 */}
+                <path
+                  d="M 206.25 76.875 L 244.921875 76.875 L 328.125 222.65625 L 289.453125 222.65625 Z"
+                  fill="#313941"
+                  fillRule="nonzero"
+                />
+              </g>
             </g>
           </svg>
         </div>
