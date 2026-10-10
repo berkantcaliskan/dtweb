@@ -490,3 +490,142 @@ select option {
   transform: scale(1.03);
 }
 
+
+/* ========================================================================= */
+/* OPENING SPLASH SCREEN LUXURY ANIMATIONS (#fffff1 background)              */
+/* ========================================================================= */
+
+@keyframes splashRedSlideIn {
+  0% {
+    transform: translateX(-180px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes splashAnthraciteSlideAndAscend {
+  0% {
+    transform: translate(180px, 45px);
+    opacity: 0;
+  }
+  28% {
+    transform: translate(0, 45px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes splashLockPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0));
+  }
+  50% {
+    transform: scale(1.035);
+    filter: drop-shadow(0 8px 24px rgba(255, 0, 0, 0.15)) drop-shadow(0 0 12px rgba(49, 57, 65, 0.15));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0));
+  }
+}
+
+@keyframes splashLineExpand {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.45;
+  }
+}
+
+@keyframes splashTextMaskUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes splashSubtitleSpread {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes splashGoldSheen {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+  }
+}
+
+@keyframes splashExitFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+}
+
+.anim-splash-red {
+  animation: splashRedSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.anim-splash-anthracite {
+  animation: splashAnthraciteSlideAndAscend 2.25s cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.anim-splash-lock-pulse {
+  animation: splashLockPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.anim-splash-line {
+  animation: splashLineExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.anim-splash-title {
+  animation: splashTextMaskUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
+  opacity: 0;
+}
+
+.anim-splash-subtitle {
+  animation: splashSubtitleSpread 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
+  opacity: 0;
+}
+
+.anim-splash-sheen {
+  animation: splashGoldSheen 1.3s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+}

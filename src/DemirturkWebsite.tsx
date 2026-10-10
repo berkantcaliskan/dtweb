@@ -13,6 +13,7 @@ import { WebsiteFooter } from './components/WebsiteFooter'
 import { ProjectDetailModal } from './components/ProjectDetailModal'
 import { TourBookingModal } from './components/TourBookingModal'
 import { ReachUsModal } from './components/ReachUsModal'
+import { OpeningSplashScreen } from './components/OpeningSplashScreen'
 import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
 import { PROJECTS_DATA } from './data/websiteData'
@@ -23,6 +24,7 @@ export const DemirturkWebsite: React.FC = () => {
   const [isTourModalOpen, setIsTourModalOpen] = useState(false)
   const [isReachUsModalOpen, setIsReachUsModalOpen] = useState(false)
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+  const [showSplash, setShowSplash] = useState(true)
 
   // SEO & Deep-linking: sync URL and meta on mount and on selection changes
   useEffect(() => {
@@ -188,6 +190,10 @@ export const DemirturkWebsite: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1]">
+      {/* 0. Fullscreen Opening Splash Intro Animation */}
+      {showSplash && (
+        <OpeningSplashScreen onComplete={() => setShowSplash(false)} />
+      )}
       {/* 
         Top Architectural Navbar:
         Pages: Projeler, Mimari Yaklaşım, Yapı Malzemeleri, Makaleler, İnşa Süreçleri, Ulaşın
