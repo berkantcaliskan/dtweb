@@ -11,17 +11,17 @@ export const PaymentModelsSection: React.FC = () => {
   const [tourTransportChoice, setTourTransportChoice] = useState('Pazar Günü (VIP Servis)')
   const [tourSubmitted, setTourSubmitted] = useState(false)
 
-  // Interactive Payment Calculator State
-  const [selectedBudget, setSelectedBudget] = useState<number>(2750000)
-  const [downPaymentRatio, setDownPaymentRatio] = useState<number>(40) // %
-  const [termMonths, setTermMonths] = useState<number>(36) // 36 months
+  // Interactive Payment Calculator State (Min 3.250.000 ₺, Peşinat %25 - %36, Maks 40 Ay Vade)
+  const [selectedBudget, setSelectedBudget] = useState<number>(3250000)
+  const [downPaymentRatio, setDownPaymentRatio] = useState<number>(25) // %25 min, %36 maks
+  const [termMonths, setTermMonths] = useState<number>(40) // 40 ay maks
 
-  // Preset Budget Options
+  // Preset Budget Options (En düşük 3.250.000 ₺)
   const budgetPresets = [
-    { label: '1+1 Havuzlu', value: 1950000 },
-    { label: '2+1 Standart', value: 2750000 },
-    { label: '2+1 Geniş Teraslı', value: 3600000 },
-    { label: '3+1 Dubleks / Villa', value: 4800000 },
+    { label: '1+1 Havuzlu', value: 3250000 },
+    { label: '2+1 Standart', value: 4150000 },
+    { label: '2+1 Geniş Teraslı', value: 5200000 },
+    { label: '3+1 Dubleks / Villa', value: 6500000 },
   ]
 
   // Calculated Values
@@ -224,14 +224,14 @@ export const PaymentModelsSection: React.FC = () => {
                 {/* Range Slider for Budget */}
                 <div className="space-y-1.5 pt-1">
                   <div className="flex justify-between text-xs text-[#fffff1]/60 font-mono">
-                    <span>1.500.000 ₺</span>
+                    <span>3.250.000 ₺ (Min)</span>
                     <span className="text-[#fffff1] font-semibold text-sm">{calculation.formattedBudget} ₺</span>
-                    <span>6.000.000 ₺</span>
+                    <span>7.500.000 ₺</span>
                   </div>
                   <input
                     type="range"
-                    min="1500000"
-                    max="6000000"
+                    min="3250000"
+                    max="7500000"
                     step="50000"
                     value={selectedBudget}
                     onChange={(e) => setSelectedBudget(Number(e.target.value))}
@@ -242,31 +242,54 @@ export const PaymentModelsSection: React.FC = () => {
 
               {/* Down Payment Selector */}
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#fffff1]/80 mb-2 font-medium">
-                  Peşinat Oranı
-                </label>
-                <div className="grid grid-cols-3 gap-2.5">
-                  {[30, 40, 50].map((ratio) => (
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs uppercase tracking-wider text-[#fffff1]/80 font-medium">
+                    Peşinat Oranı (%25 Min - %36 Maks)
+                  </label>
+                  <span className="text-xs font-semibold text-emerald-400 font-mono">
+                    %{downPaymentRatio} Peşinat ({calculation.formattedDownPayment} ₺)
+                  </span>
+                </div>
+                <div className="grid grid-cols-4 gap-2 mb-2.5">
+                  {[25, 28, 32, 36].map((ratio) => (
                     <button
                       key={ratio}
                       type="button"
                       onClick={() => setDownPaymentRatio(ratio)}
-                      className={`py-2.5 px-3 rounded-xl border text-center transition-all cursor-pointer ${
+                      className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
                         downPaymentRatio === ratio
                           ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
                           : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
                       }`}
                     >
-                      <span className="text-xs sm:text-sm font-bold">%{ratio} Peşinat</span>
+                      <span className="text-xs sm:text-sm font-bold">%{ratio}</span>
+                      <span className="block text-[10px] opacity-75">
+                        {ratio === 25 ? 'Min' : ratio === 36 ? 'Maks' : 'Öneri'}
+                      </span>
                     </button>
                   ))}
+                </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between text-[11px] text-[#fffff1]/60 font-mono">
+                    <span>%25 Min</span>
+                    <span>%36 Maks</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="25"
+                    max="36"
+                    step="1"
+                    value={downPaymentRatio}
+                    onChange={(e) => setDownPaymentRatio(Number(e.target.value))}
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#fffff1]"
+                  />
                 </div>
               </div>
 
               {/* Term (Months) Selector */}
               <div>
                 <label className="block text-xs uppercase tracking-wider text-[#fffff1]/80 mb-2 font-medium">
-                  Elden Senet Vade Süresi
+                  Elden Senet Vade Süresi (40 Aya Kadar)
                 </label>
                 <div className="grid grid-cols-4 gap-2">
                   {[12, 24, 36, 40].map((months) => (
@@ -281,6 +304,9 @@ export const PaymentModelsSection: React.FC = () => {
                       }`}
                     >
                       <span className="text-xs sm:text-sm font-bold">{months} Ay</span>
+                      {months === 40 && (
+                        <span className="block text-[10px] text-emerald-400 font-semibold">Maks Vade</span>
+                      )}
                     </button>
                   ))}
                 </div>
