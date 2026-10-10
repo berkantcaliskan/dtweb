@@ -104,9 +104,18 @@ export const ContactSection: React.FC = () => {
 
             {/* Interactive Map Preview */}
             <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[16/9] bg-[#23201e] relative">
+              {/* Company Name & Location Badge */}
+              <div className="absolute top-3 left-3 z-10 bg-[#1c2126]/90 border border-white/20 backdrop-blur-md px-3 py-2 rounded-xl flex items-center space-x-2.5 shadow-lg pointer-events-none">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
+                <div className="text-left">
+                  <span className="text-xs font-bold text-white block leading-tight">Demirtürk İnşaat</span>
+                  <span className="text-[10px] text-white/70 block leading-tight">Doğu Karadeniz Cd. No:1, Aziziye</span>
+                </div>
+              </div>
+
               <iframe
-                title="Demirtürk İnşaat - Ata Sahil Sitesi Harita"
-                src="https://maps.google.com/maps?q=Do%C4%9Fu+Karadeniz+Cd.+Ata+Sahil+Sitesi+No+1+Karasu+Sakarya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                title="Demirtürk İnşaat - Karasu Merkez Ofis Harita"
+                src="https://maps.google.com/maps?q=41.100494,30.718688+(Demirt%C3%BCrk+%C4%B0n%C5%9Faat)&t=&z=18&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(110%)' }}

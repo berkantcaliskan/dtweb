@@ -6,7 +6,7 @@ export const COMPANY_INFO = {
   sinceYear: 2003,
   tagline: 'Doğa, Deniz ve Çağdaş Mimarinin Karasu\'daki Prestijli Buluşması',
   subtagline: '20 yılı aşkın mühendislik birikimiyle temelden çatıya geleceğe değer katan yaşam alanları inşa ediyoruz.',
-  address: 'Doğu Karadeniz Cd., Ata Sahil Sitesi No: 1, Karasu / Sakarya',
+  address: 'Doğu Karadeniz Cd. No: 1, Aziziye, Karasu / Sakarya',
   phoneNumbers: [
     '+90 531 373 00 54',
     '0264 718 00 54',
@@ -23,9 +23,9 @@ export const COMPANY_INFO = {
   workingHoursWeekend: 'Hafta sonu 09:00 - 21:00',
   workingHours: 'Hafta içi 09:00 - 20:00 | Hafta sonu 09:00 - 21:00 (Her gün açığız)',
   mapCoordinates: {
-    lat: 41.1032,
-    lng: 30.6865,
-    query: 'Ata+Sahil+Sitesi+Doğu+Karadeniz+Caddesi+Karasu+Sakarya'
+    lat: 41.100494,
+    lng: 30.718688,
+    query: '41.100494,30.718688'
   },
   social: {
     instagram: 'https://www.instagram.com/demirturkinsaat',
