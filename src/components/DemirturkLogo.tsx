@@ -34,7 +34,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       }`}
     >
       {/* ============================================================== */}
-      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Smooth Anthracite to White Swap    */}
+      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Desktop SVG (Anthracite to White)  */}
       {/* ============================================================== */}
       <div
         style={
@@ -42,35 +42,48 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
             ? undefined
             : {
                 height: `${emblemSize}px`,
-                width: 'auto',
+                width: `${emblemSize}px`,
                 maxHeight: `${emblemSize}px`,
               }
         }
         className={`relative ${
-          emblemSize === 36 ? 'h-[28px] sm:h-[36px] max-h-[28px] sm:max-h-[36px]' : ''
-        } w-auto flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
+          emblemSize === 36 ? 'h-[28px] sm:h-[36px] w-[28px] sm:w-[36px] max-h-[28px] sm:max-h-[36px]' : ''
+        } flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
       >
-        {/* 1. Emblem with Signature Anthracite lines (Active on hero slide) */}
-        <img
-          src="/demirturk-emblem-dark.png"
-          alt="Demirtürk İnşaat Logo"
-          className={`h-full w-auto object-contain transition-opacity duration-300 ${
-            isScrolled ? 'opacity-0 pointer-events-none absolute inset-0' : 'opacity-100'
-          }`}
-          loading="eager"
-          decoding="async"
-        />
-
-        {/* 2. Emblem with White lines (Active when scrolled down on dark backgrounds) */}
-        <img
-          src="/demirturk-emblem-white.png"
-          alt="Demirtürk İnşaat Logo (Beyaz)"
-          className={`h-full w-auto object-contain transition-opacity duration-300 ${
-            isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none absolute inset-0'
-          }`}
-          loading="eager"
-          decoding="async"
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 375 375"
+          className="h-full w-full object-contain"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          {/* Red Chevron 1 */}
+          <path
+            d="M 45.703125 296.484375 L 84.375 296.484375 L 165.234375 151.171875 L 145.898438 118.359375 Z"
+            fill="#ff0000"
+            fillRule="nonzero"
+          />
+          {/* Red Chevron 2 */}
+          <path
+            d="M 104.765625 296.484375 L 143.4375 296.484375 L 194.765625 202.734375 L 175.429688 169.921875 Z"
+            fill="#ff0000"
+            fillRule="nonzero"
+          />
+          {/* Anthracite Chevron 1 (Turns white on scroll) */}
+          <path
+            d="M 146.484375 76.875 L 185.15625 76.875 L 268.359375 222.65625 L 229.6875 222.65625 Z"
+            fill={isScrolled ? '#fffff1' : '#313941'}
+            fillRule="nonzero"
+            className="transition-colors duration-300"
+          />
+          {/* Anthracite Chevron 2 (Turns white on scroll) */}
+          <path
+            d="M 206.25 76.875 L 244.921875 76.875 L 328.125 222.65625 L 289.453125 222.65625 Z"
+            fill={isScrolled ? '#fffff1' : '#313941'}
+            fillRule="nonzero"
+            className="transition-colors duration-300"
+          />
+        </svg>
       </div>
 
       {/* ============================================================== */}

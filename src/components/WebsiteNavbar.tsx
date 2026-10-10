@@ -22,7 +22,6 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: 'MİMARİ YAKLAŞIM', href: '#mimari-yaklasim' },
   { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
   { label: 'MAKALELER', href: '#makaleler' },
-  { label: 'İNŞA SÜREÇLERİ', href: '#insa-surecleri' },
   { label: 'İLETİŞİM', href: '#iletisim' },
 ]
 
@@ -241,7 +240,6 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
   }
 
   const visibleLinks = NAV_LINKS.slice(0, visibleCount)
-  const overflowLinks = NAV_LINKS.slice(visibleCount)
 
   return (
     <>
@@ -340,7 +338,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
-                    className="text-xs xl:text-[13px] tracking-[0.12em] xl:tracking-[0.16em] font-medium nav-page-link text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap flex-shrink-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                    className="text-xs xl:text-[13px] tracking-[0.12em] xl:tracking-[0.16em] font-normal nav-page-link text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap flex-shrink-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -476,55 +474,27 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           </div>
         </div>
 
-        {/* Middle: Links & Direct Actions */}
-        <div className="flex-1 overflow-y-auto py-5 space-y-6">
-          {/* Section: Sığmayan Sayfalar (Menüye Taşınan Bölümler) */}
-          <div>
-            <div className="text-[11px] tracking-[0.2em] uppercase text-[#fffff1]/60 font-semibold mb-3 flex items-center justify-between">
-              <span>{overflowLinks.length === NAV_LINKS.length ? 'BÖLÜMLER' : 'MENÜDEKİ BÖLÜMLER'}</span>
-              <span className="text-[10px] text-[#fffff1]/40 font-mono">
-                {overflowLinks.length > 0 ? overflowLinks.length : NAV_LINKS.length} Sayfa
-              </span>
-            </div>
-            <div className="flex flex-col space-y-1">
-              {(overflowLinks.length > 0 ? overflowLinks : NAV_LINKS).map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => handleNavClick(item)}
-                  className="w-full text-left text-lg sm:text-xl font-theSeasons font-semibold tracking-wider text-[#fffff1]/90 hover:text-white hover:pl-2 transition-all py-2.5 flex items-center justify-between border-b border-[#fffff1]/5 group cursor-pointer"
-                >
-                  <span>{item.label}</span>
-                  <ArrowUpRight
-                    size={16}
-                    className="text-[#fffff1]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
-                  />
-                </button>
-              ))}
-            </div>
+        {/* Middle: Links & Direct Actions (Flex-1 column with mt-auto for bottom content) */}
+        <div className="flex-1 overflow-y-auto py-5 flex flex-col justify-between space-y-6">
+          {/* Section: Tüm Sayfa Linkleri (Temiz ve İnceltilmiş) */}
+          <div className="flex flex-col space-y-1">
+            {NAV_LINKS.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleNavClick(item)}
+                className="w-full text-left text-base sm:text-lg font-theSeasons font-normal tracking-wider text-[#fffff1]/90 hover:text-white hover:pl-2 transition-all py-2.5 flex items-center justify-between border-b border-[#fffff1]/5 group cursor-pointer"
+              >
+                <span>{item.label}</span>
+                <ArrowUpRight
+                  size={15}
+                  className="text-[#fffff1]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                />
+              </button>
+            ))}
           </div>
 
-          {/* Quick Access to Links that are already on the top bar */}
-          {visibleLinks.length > 0 && overflowLinks.length > 0 && (
-            <div className="pt-2">
-              <div className="text-[10px] tracking-[0.2em] uppercase text-[#fffff1]/45 font-semibold mb-2.5">
-                ÜST BARDTAKİ BÖLÜMLER
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {visibleLinks.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => handleNavClick(item)}
-                    className="text-[11px] tracking-wider uppercase px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[#fffff1]/75 hover:text-white transition-all border border-white/5 cursor-pointer"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Direct Phone & WhatsApp inside Drawer (Always accessible, highlighted when phone moved to menu) */}
-          <div className="space-y-2.5 pt-2">
+          {/* Bottom Area of Drawer: Direct Contact (Pushed down) */}
+          <div className="space-y-2.5 pt-6 mt-auto">
             <div className="text-[10px] tracking-[0.2em] uppercase text-[#fffff1]/45 font-semibold mb-1">
               DOĞRUDAN İLETİŞİM
             </div>

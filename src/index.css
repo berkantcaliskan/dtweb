@@ -142,7 +142,7 @@ body, .font-sans {
 
 /* Sayfa adları (navbar links) and Ücretsiz Tanıtım Turu */
 .nav-page-link {
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 
 .btn-tour {

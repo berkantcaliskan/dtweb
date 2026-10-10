@@ -7,7 +7,6 @@ import { ArchitecturePhilosophy } from './components/ArchitecturePhilosophy'
 import { MaterialAndEngineering } from './components/MaterialAndEngineering'
 import { ArticlesSection, ARTICLES_DATA, ArticleItem } from './components/ArticlesSection'
 import { ArticleDetailView } from './components/ArticleDetailView'
-import { ConstructionProcessSection } from './components/ConstructionProcessSection'
 import { ReachUsSection } from './components/ReachUsSection'
 import { PaymentModelsSection } from './components/PaymentModelsSection'
 import { WebsiteFooter } from './components/WebsiteFooter'
@@ -232,10 +231,7 @@ export const DemirturkWebsite: React.FC = () => {
           {/* 4. MAKALELER (#makaleler) */}
           <ArticlesSection onSelectArticle={(a) => setSelectedArticle(a)} />
 
-          {/* 5. İNŞA SÜREÇLERİ (#insa-surecleri) */}
-          <ConstructionProcessSection />
-
-          {/* 6. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
+          {/* 5. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
           <PaymentModelsSection />
 
           {/* 7. İLETİŞİM (#iletisim & #ulasin) */}

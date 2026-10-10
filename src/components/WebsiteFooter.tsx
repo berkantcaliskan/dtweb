@@ -97,7 +97,6 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
               <li><a href="#mimari-yaklasim" className="hover:text-white transition-colors">Mimari Yaklaşım</a></li>
               <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
               <li><a href="#makaleler" className="hover:text-white transition-colors">Makaleler</a></li>
-              <li><a href="#insa-surecleri" className="hover:text-white transition-colors">İnşa Süreçleri</a></li>
               <li>
                 <a
                   href="#iletisim"
