@@ -172,9 +172,9 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
           </div>
         </div>
 
-        {/* 4. Luxury Founding Badge (Est. 2003 • Karasu) */}
+        {/* 4. Luxury Founding Badge */}
         <div className="anim-splash-subtitle mt-4 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#313941]/50 font-medium">
-          2003'TEN BERİ • GÜVENLE
+          2003'TEN BERİ GÜVENLE
         </div>
       </div>
     </div>
