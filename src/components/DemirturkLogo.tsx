@@ -17,7 +17,7 @@ interface DemirturkLogoProps {
 export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   variant = 'dark-bg',
   className = '',
-  emblemSize = 53,
+  emblemSize = 51,
   showSubtitle = true,
   onClick,
   isScrolled = false,
@@ -36,11 +36,11 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       }`}
     >
       {/* ============================================================== */}
-      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Desktop SVG (+20% size)            */}
+      {/* AUTHENTIC DEMİRTÜRK EMBLEM: Desktop SVG                        */}
       {/* ============================================================== */}
       <div
         style={
-          emblemSize === 53
+          emblemSize === 51
             ? undefined
             : {
                 height: `${emblemSize}px`,
@@ -49,7 +49,7 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
               }
         }
         className={`relative ${
-          emblemSize === 53 ? 'h-[38px] sm:h-[53px] w-[38px] sm:w-[53px] max-h-[38px] sm:max-h-[53px]' : ''
+          emblemSize === 51 ? 'h-[36px] sm:h-[51px] w-[36px] sm:w-[51px] max-h-[36px] sm:max-h-[51px]' : ''
         } flex-shrink-0 transition-transform duration-300 ease-out ${
           isHovered ? 'scale-110' : 'group-hover:scale-110'
         }`}
@@ -100,9 +100,9 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
           isHovered ? 'scale-105' : 'group-hover:scale-105'
         }`}
       >
-        {/* DEMİRTÜRK - Extra Bold Plus Jakarta Sans (Reduced by 30%) */}
+        {/* DEMİRTÜRK - Extra Bold Plus Jakarta Sans */}
         <span
-          className={`tracking-[0.06em] text-[14px] sm:text-[17.5px] uppercase ${titleColor} transition-colors block text-left`}
+          className={`tracking-[0.06em] text-[13.5px] sm:text-[16.8px] uppercase ${titleColor} transition-colors block text-left`}
           style={{
             fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
             fontWeight: 800,
@@ -112,10 +112,10 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
           DEMİRTÜRK
         </span>
 
-        {/* İ N Ş A A T - Light Plus Jakarta Sans - Flush left with DEMİRTÜRK (Reduced by 30%) */}
+        {/* İ N Ş A A T - Light Plus Jakarta Sans - Flush left with DEMİRTÜRK */}
         {showSubtitle && (
           <span
-            className={`text-[7px] sm:text-[8.75px] uppercase ${subtitleColor} transition-colors mt-0.5 block text-left`}
+            className={`text-[6.7px] sm:text-[8.4px] uppercase ${subtitleColor} transition-colors mt-0.5 block text-left`}
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,

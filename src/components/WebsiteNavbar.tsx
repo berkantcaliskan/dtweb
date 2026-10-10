@@ -229,7 +229,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     setIsMenuOpen(false)
     const element = document.querySelector(href)
     if (element) {
-      const topOffset = 54
+      const topOffset = 52
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - topOffset
 
@@ -251,7 +251,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         className="fixed -top-[9999px] -left-[9999px] opacity-0 pointer-events-none flex items-center space-x-3 xl:space-x-5 z-[-99]"
       >
         <div ref={logoMeasureRef} className="flex-shrink-0">
-          <DemirturkLogo variant="dark-bg" emblemSize={53} />
+          <DemirturkLogo variant="dark-bg" emblemSize={51} />
         </div>
         <div
           ref={phoneMeasureRef}
@@ -292,7 +292,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
       <header
         className={`fixed top-0 left-0 right-0 z-50 flex items-center font-sans transition-all duration-300 ease-out ${
-          isLogoHovered ? 'h-[58px] sm:h-[72px]' : 'h-[46px] sm:h-[54px]'
+          isLogoHovered ? 'h-[56px] sm:h-[69px]' : 'h-[44px] sm:h-[52px]'
         }`}
       >
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
@@ -307,7 +307,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         {/* 2. Top Unscrolled Soft Gradient (Feathers smoothly into hero, expands with header animation) */}
         <div
           className={`absolute top-0 left-0 right-0 pointer-events-none transition-all duration-300 ease-out ${
-            isLogoHovered ? 'h-[68px] sm:h-[86px]' : 'h-[52px] sm:h-[62px]'
+            isLogoHovered ? 'h-[65px] sm:h-[82px]' : 'h-[50px] sm:h-[59px]'
           } ${
             isScrolled || isSubPageOpen
               ? 'opacity-0'
@@ -337,7 +337,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             >
               <DemirturkLogo
                 variant="dark-bg"
-                emblemSize={53}
+                emblemSize={51}
                 isScrolled={isScrolled || isSubPageOpen}
                 isHovered={isLogoHovered}
               />

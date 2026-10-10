@@ -140,7 +140,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     return (
       <div 
         ref={stageContainerRef}
-        className="fixed top-[46px] sm:top-[54px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
+        className="fixed top-[44px] sm:top-[52px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Stage Sticky Top Bar */}
@@ -456,7 +456,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   return (
     <div 
       ref={containerRef}
-      className="fixed top-[46px] sm:top-[54px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
+      className="fixed top-[44px] sm:top-[52px] inset-x-0 bottom-0 z-40 overflow-y-auto bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1] w-full animate-modal-backdrop flex flex-col"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       {/* Top Sticky Architectural Navigation Bar */}

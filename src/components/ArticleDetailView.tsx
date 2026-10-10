@@ -69,7 +69,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
         setTimeout(() => {
           const target = document.querySelector('#projeler')
           if (target) {
-            const topOffset = 54
+            const topOffset = 52
             const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - topOffset
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
           }
