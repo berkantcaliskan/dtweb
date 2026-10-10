@@ -25,7 +25,7 @@ export interface ProjectStage {
   stageNumber: number
   title: string
   subtitle: string
-  status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı' | 'Devam Ediyor' | 'Yakında'
+  status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı' | 'Devam Ediyor' | 'Yakında' | 'Satışta & Devam Ediyor' | 'Satışta, Devam Ediyor'
   year: string
   deliveryDate?: string
   location: string
@@ -48,7 +48,7 @@ export interface ProjectItem {
   location: string
   distanceToSea?: string
   year: string
-  status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı' | 'Ön Talep' | 'Devam Ediyor' | 'Yakında'
+  status: 'Satışta' | 'Yapım Aşamasında' | 'Tamamlandı' | 'Ön Talep' | 'Devam Ediyor' | 'Yakında' | 'Satışta & Devam Ediyor' | 'Satışta, Devam Ediyor'
   totalArea: string
   totalUnits: string
   unitTypes: string[]

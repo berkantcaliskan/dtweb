@@ -28,7 +28,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
     const visible = PROJECTS_DATA.filter((p) => !p.hidden)
     if (selectedFilter === 'all') return visible
     if (selectedFilter === 'ongoing') {
-      return visible.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında')
+      return visible.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında' || p.status === 'Satışta & Devam Ediyor' || p.status === 'Satışta, Devam Ediyor' || p.status === 'Devam Ediyor')
     }
     if (selectedFilter === 'completed') {
       return visible.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed')
@@ -152,12 +152,12 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                       </p>
                     )}
 
-                    {/* Şimdi satışta ibaresi */}
-                    {project.status === 'Satışta' && (
+                    {/* Satış durumu ibaresi */}
+                    {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor') && (
                       <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                         <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                          Şimdi satışta
+                          {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta & Devam Ediyor'}
                         </span>
                       </div>
                     )}
@@ -234,12 +234,12 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     </p>
                   )}
 
-                  {/* Şimdi satışta ibaresi */}
-                  {project.status === 'Satışta' && (
+                  {/* Satış durumu ibaresi */}
+                  {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor') && (
                     <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                       <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                        Şimdi satışta
+                        {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta & Devam Ediyor'}
                       </span>
                     </div>
                   )}

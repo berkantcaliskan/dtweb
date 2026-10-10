@@ -49,7 +49,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     if (project?.stages && project.stages.length > 0) {
       // Find the ongoing stage or default to 0
       const ongoingIdx = project.stages.findIndex(
-        s => s.status === 'Devam Ediyor' || s.status === 'Yapım Aşamasında' || s.status === 'Satışta'
+        s => s.status === 'Devam Ediyor' || s.status === 'Yapım Aşamasında' || s.status === 'Satışta' || s.status === 'Satışta & Devam Ediyor' || s.status === 'Satışta, Devam Ediyor'
       )
       setSelectedStageIndex(ongoingIdx !== -1 ? ongoingIdx : 0)
     } else {
@@ -145,7 +145,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
   // VIEW 1: ACTIVE STAGE DETAIL VIEW (ETAP AÇILIR PENCERESİ)
   // =========================================================================
   if (activeStage) {
-    const isStageOngoing = activeStage.status === 'Yapım Aşamasında' || activeStage.status === 'Satışta'
+    const isStageOngoing = activeStage.status === 'Yapım Aşamasında' || activeStage.status === 'Satışta' || activeStage.status === 'Satışta & Devam Ediyor' || activeStage.status === 'Satışta, Devam Ediyor' || activeStage.status === 'Devam Ediyor'
 
     return (
       <div 
@@ -224,8 +224,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
               <div className="flex items-center gap-2">
                 <span className={`px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-md border ${
-                  isStageOngoing
-                    ? 'bg-amber-950/80 text-amber-200 border-amber-500/40'
+                  activeStage.status === 'Tamamlandı'
+                    ? 'bg-white/10 text-white/90 border-white/20'
+                    : activeStage.status === 'Yakında'
+                    ? 'bg-sky-950/80 text-sky-200 border-sky-500/40'
                     : 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
                 }`}>
                   {activeStage.status}
@@ -301,7 +303,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>ETAP KONSEPTİ & AYRINTILARI</span>
+                  <span>PROJE KONSEPTİ & AYRINTILARI</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
                   {activeStage.title} Yaşam Standartları
@@ -333,7 +335,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="sticky top-24 bg-[#2c343d] border border-[#fffff1]/15 p-6 sm:p-7 rounded-2xl space-y-6 shadow-xl">
                 <div>
                   <span className="text-xs tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
-                    ETAP DETAY FORMU
+                    PROJE KÜNYESİ
                   </span>
                   <h4 className="font-theSeasons text-xl font-bold text-[#fffff1] mt-0.5">
                     {activeStage.title} Künyesi
@@ -350,8 +352,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     <span className="text-[#fffff1]/95 font-medium">{activeStage.distanceToSea || '~800 Metre'}</span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Etap Durumu:</span>
-                    <span className={`font-bold ${isStageOngoing ? 'text-amber-300' : 'text-emerald-300'}`}>
+                    <span className="text-[#fffff1]/50">Proje Durumu:</span>
+                    <span className={`font-bold ${activeStage.status === 'Tamamlandı' ? 'text-white/90' : activeStage.status === 'Yakında' ? 'text-sky-300' : 'text-emerald-300'}`}>
                       {activeStage.status}
                     </span>
                   </div>
@@ -373,7 +375,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
                 <div className="pt-4 border-t border-[#fffff1]/10 space-y-3">
                   <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                    Bu etap için güncel fiyat listesi, kat planları ve ödeme koşullarını hemen öğrenebilirsiniz.
+                    Bu proje için güncel fiyat listesi, kat planları ve ödeme koşullarını hemen öğrenebilirsiniz.
                   </p>
                   <a
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title} - ${activeStage.title} hakkında detaylı bilgi almak istiyorum.`)}`}
@@ -550,12 +552,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="flex items-center gap-2">
               <span className={`px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-md border ${
                 displayStatus === 'Tamamlandı'
-                  ? 'bg-white/10 text-white/80 border-white/20'
-                  : displayStatus === 'Devam Ediyor' || displayStatus === 'Yapım Aşamasında' || displayStatus === 'Satışta'
-                  ? 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30'
-                  : 'bg-sky-950/70 text-sky-200 border-sky-500/30'
+                  ? 'bg-white/10 text-white/90 border-white/20'
+                  : displayStatus === 'Yakında'
+                  ? 'bg-sky-950/70 text-sky-200 border-sky-500/30'
+                  : 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30'
               }`}>
-                {displayStatus === 'Tamamlandı' ? 'Bitti' : displayStatus}
+                {displayStatus}
               </span>
               {project.installmentMonths && (
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-md">
@@ -593,12 +595,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           {/* Sub-Project / Stage Selector Tabs (Directly under project description) */}
           {project.stages && project.stages.length > 0 && (
             <div className="pt-3 pb-1 space-y-2.5">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#fffff1]/70 flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#fffff1]/80 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>PROJE / ETAP SEÇİNİZ ({project.stages.length} PROJE)</span>
+                  <span>PROJE KAPSAMI ({project.stages.length} PROJE)</span>
                 </span>
-                <span className="text-[11px] text-[#fffff1]/50 italic hidden sm:inline">
+                <span className="text-[11px] text-[#fffff1]/60 italic sm:text-right">
                   Adres, teslim tarihi ve özellikler seçtiğiniz projeye göre güncellenir
                 </span>
               </div>
@@ -607,7 +609,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 {project.stages.map((stage, idx) => {
                   const isSelected = selectedStageIndex === idx
                   const isCompleted = stage.status === 'Tamamlandı'
-                  const isOngoing = stage.status === 'Devam Ediyor' || stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta'
+                  const isNear = stage.status === 'Yakında'
+                  const isOngoingOrSale = !isCompleted && !isNear
 
                   return (
                     <button
@@ -628,20 +631,20 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                           isCompleted
                             ? isSelected
                               ? 'bg-black/10 text-[#252c33] border border-black/10'
-                              : 'bg-white/10 text-[#fffff1]/70 border border-[#fffff1]/15'
-                            : isOngoing
+                              : 'bg-white/10 text-[#fffff1]/80 border border-[#fffff1]/15'
+                            : isNear
                             ? isSelected
-                              ? 'bg-emerald-700 text-[#fffff1]'
-                              : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                              ? 'bg-sky-700 text-[#fffff1]'
+                              : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
                             : isSelected
-                            ? 'bg-sky-700 text-[#fffff1]'
-                            : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                            ? 'bg-emerald-700 text-[#fffff1]'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                         }`}
                       >
-                        {isOngoing && (
+                        {isOngoingOrSale && (
                           <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-emerald-400'} animate-pulse`} />
                         )}
-                        {isCompleted ? 'Bitti' : isOngoing ? 'Devam Ediyor' : 'Yakında'}
+                        {stage.status}
                       </span>
                     </button>
                   )
@@ -685,8 +688,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Durum & Vade</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                   {currentStage
-                    ? `${currentStage.status === 'Tamamlandı' ? 'Bitti' : currentStage.status} • ${project.installmentMonths ? `${project.installmentMonths} Ay` : 'Elden Senet'}`
-                    : (project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli')}
+                    ? `${currentStage.status} • ${project.installmentMonths ? `${project.installmentMonths} Ay` : 'Elden Senet'}`
+                    : `${displayStatus} • ${project.paymentHighlight ? 'Elden Senet & Takas' : 'Elden Senet Modeli'}`}
                 </span>
               </div>
             </div>
@@ -711,7 +714,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   onClick={() => setActiveStage(currentStage)}
                   className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-[#fffff1]/20 text-[#fffff1] text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
                 >
-                  <span>Etap Detay Sayfası</span>
+                  <span>Proje Detay Sayfası</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>
@@ -758,7 +761,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         </section>
 
         {/* ================================================================= */}
-        {/* PROJE ETAPLARI BÖLÜMÜ (1. Etap, 2. Etap ve En Güncel 3. Etap) */}
+        {/* PROJE KAPSAMI BÖLÜMÜ */}
         {/* ================================================================= */}
         {project.stages && project.stages.length > 0 && (
           <section className="space-y-6 pt-4 border-t border-[#fffff1]/10">
@@ -766,13 +769,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div>
                 <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>PROJE ETAPLARI</span>
+                  <span>PROJE KAPSAMI</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold text-[#fffff1]">
-                  {project.title} Etapları
+                  {project.title} Kapsamı
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/70 font-light mt-1 max-w-2xl leading-relaxed">
-                  {project.title} kapsamındaki tüm etaplarımızı ve devam projelerimizi inceleyin. Tamamlanan ve yapımı devam eden etaplarımızın detaylarına kartlara tıklayarak ulaşabilirsiniz.
+                  {project.title} kapsamındaki projelerimizi ve devam eden çalışmalarımızı inceleyin. Tamamlanan ve satışta olan projelerimizin detaylarına kartlara tıklayarak ulaşabilirsiniz.
                 </p>
               </div>
             </div>
@@ -781,7 +784,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className={`grid grid-cols-1 ${project.stages.length === 2 ? 'md:grid-cols-2' : project.stages.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-6`}>
               {project.stages.map((stage, idx) => {
                 const isSelected = selectedStageIndex === idx
-                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta' || stage.status === 'Devam Ediyor'
+                const isOngoing = stage.status === 'Yapım Aşamasında' || stage.status === 'Satışta' || stage.status === 'Devam Ediyor' || stage.status === 'Satışta & Devam Ediyor'
                 const isCompleted = stage.status === 'Tamamlandı'
                 return (
                   <div
@@ -812,11 +815,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                         <span className={`px-3 py-1.5 text-xs tracking-wider uppercase backdrop-blur-md font-semibold rounded-md shadow-sm border ${
                           isCompleted
                             ? 'bg-black/60 text-[#fffff1]/90 border-white/20'
-                            : isOngoing
-                            ? 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
-                            : 'bg-sky-950/80 text-sky-200 border-sky-500/40'
+                            : stage.status === 'Yakında'
+                            ? 'bg-sky-950/80 text-sky-200 border-sky-500/40'
+                            : 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
                         }`}>
-                          {isCompleted ? 'Bitti' : isOngoing ? 'Devam Ediyor' : 'Yakında'}
+                          {stage.status}
                         </span>
                         <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-md shadow-sm">
                           {stage.deliveryDate ? `Teslim: ${stage.deliveryDate}` : stage.year}
@@ -859,7 +862,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                           {stage.unitTypes.join(' & ')}
                         </span>
                         <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform flex-shrink-0 ml-2">
-                          <span>Etabı İncele</span>
+                          <span>Detayı İncele</span>
                           <ArrowUpRight size={15} className="ml-1" />
                         </span>
                       </div>
@@ -987,7 +990,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Proje Durumu:</span>
-                  <span className="text-[#fffff1] font-bold">{displayStatus === 'Tamamlandı' ? 'Bitti' : displayStatus}</span>
+                  <span className="text-[#fffff1] font-bold">{displayStatus}</span>
                 </div>
                 {displayYear && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
