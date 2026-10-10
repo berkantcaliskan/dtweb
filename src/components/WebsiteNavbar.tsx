@@ -289,7 +289,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[62px] sm:h-[78px]">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center h-[62px] sm:h-[78px] font-sans">
         {/* 1. Scrolled Frosted Glass Layer (Smoothly fades in when scrolled or subpage is open) */}
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${

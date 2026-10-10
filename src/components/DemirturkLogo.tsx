@@ -87,30 +87,29 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
       </div>
 
       {/* ============================================================== */}
-      {/* TYPOGRAPHY: CODEC PRO                                          */}
-      {/* DEMİRTÜRK (Extra Bold / 900)                                   */}
+      {/* TYPOGRAPHY: PLUS JAKARTA SANS                                  */}
+      {/* DEMİRTÜRK (Extra Bold 800)                                     */}
       {/* İ N Ş A A T (Light 300, Wide Tracking)                         */}
       {/* ============================================================== */}
       <div className="flex flex-col justify-center items-start leading-none text-left">
-        {/* DEMİRTÜRK - Extra Bold Codec Pro */}
+        {/* DEMİRTÜRK - Extra Bold Plus Jakarta Sans */}
         <span
-          className={`font-codec font-black tracking-[0.06em] text-base sm:text-xl uppercase ${titleColor} transition-colors block text-left`}
+          className={`tracking-[0.06em] text-base sm:text-xl uppercase ${titleColor} transition-colors block text-left`}
           style={{
-            fontFamily: "'Codec Pro', 'Plus Jakarta Sans', system-ui, sans-serif",
-            fontWeight: 900,
-            WebkitTextStroke: '0.42px currentColor',
+            fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+            fontWeight: 800,
             lineHeight: 1.05,
           }}
         >
           DEMİRTÜRK
         </span>
 
-        {/* İ N Ş A A T - Light Codec Pro - Flush left with DEMİRTÜRK */}
+        {/* İ N Ş A A T - Light Plus Jakarta Sans - Flush left with DEMİRTÜRK */}
         {showSubtitle && (
           <span
-            className={`font-codec font-light text-[8.5px] sm:text-[10.5px] uppercase ${subtitleColor} transition-colors mt-0.5 sm:mt-1 block text-left`}
+            className={`text-[8.5px] sm:text-[10.5px] uppercase ${subtitleColor} transition-colors mt-0.5 sm:mt-1 block text-left`}
             style={{
-              fontFamily: "'Codec Pro', 'Plus Jakarta Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,
               letterSpacing: '0.42em',
               paddingLeft: 0,
