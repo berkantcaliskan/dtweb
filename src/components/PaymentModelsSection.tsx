@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
-import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageSquare, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles, Info } from 'lucide-react'
+import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageCircle, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles, Info } from 'lucide-react'
 import { submitLeadToPortfoy } from '../services/leadService'
 
 export const PaymentModelsSection: React.FC = () => {
@@ -378,10 +378,10 @@ export const PaymentModelsSection: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg hover:shadow-emerald-900/30"
+                className="w-full py-3.5 px-3 sm:px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[11px] sm:text-xs xl:text-[13px] uppercase tracking-wide flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg hover:shadow-emerald-900/30 whitespace-nowrap"
               >
-                <MessageSquare size={16} />
-                <span>Bu Plan İçin WhatsApp'tan Teklif Al</span>
+                <MessageCircle size={18} className="flex-shrink-0" />
+                <span className="whitespace-nowrap">Bu Plan İçin WhatsApp'tan Teklif Al</span>
               </a>
             </div>
           </div>
@@ -543,7 +543,7 @@ export const PaymentModelsSection: React.FC = () => {
                   rel="noreferrer"
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/40 border border-emerald-500/40 hover:border-emerald-500/60 text-emerald-200 font-medium text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-md"
                 >
-                  <MessageSquare size={16} className="text-emerald-400" />
+                  <MessageCircle size={16} className="text-emerald-400 flex-shrink-0" />
                   <span>WhatsApp’ta Paylaş / Onayla</span>
                 </a>
               </div>
