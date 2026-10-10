@@ -580,9 +580,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 {project.seriesInfo}
               </p>
             )}
-            <p className="text-lg sm:text-2xl text-[#fffff1]/90 font-light max-w-3xl leading-relaxed mt-3">
-              {project.subtitle}
+            <p className="text-lg sm:text-2xl lg:text-3xl text-[#fffff1] font-normal max-w-3xl leading-snug mt-3 font-theSeasons tracking-wide">
+              {project.slideDescription || project.subtitle}
             </p>
+            {project.slideDescription && project.subtitle && project.slideDescription !== project.subtitle && (
+              <p className="text-sm sm:text-base text-[#fffff1]/75 font-light max-w-3xl leading-relaxed mt-2">
+                {project.subtitle}
+              </p>
+            )}
           </div>
 
           {/* Sub-Project / Stage Selector Tabs (Directly under project description) */}

@@ -9,6 +9,7 @@ export const COMPANY_INFO = {
   address: 'Doğu Karadeniz Cd. No: 1, Aziziye, Karasu / Sakarya',
   phoneNumbers: [
     '+90 531 373 00 54',
+    '+90 545 305 53 54',
     '0264 718 00 54',
     '+90 530 102 40 01'
   ],
@@ -16,6 +17,8 @@ export const COMPANY_INFO = {
   landlinePhone: '0264 718 00 54',
   mobilePhone: '+90 531 373 00 54',
   secondaryPhone: '+90 530 102 40 01',
+  materialsPhone: '+90 545 305 53 54',
+  materialsWhatsapp: '905453055354',
   whatsapp: '905313730054',
   email: 'info@demirturkinsaat.com',
   workingHoursNote: 'Her gün açığız',

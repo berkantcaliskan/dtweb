@@ -16,7 +16,7 @@ import { ReachUsModal } from './components/ReachUsModal'
 import { OpeningSplashScreen } from './components/OpeningSplashScreen'
 import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
-import { PROJECTS_DATA } from './data/websiteData'
+import { PROJECTS_DATA, COMPANY_INFO } from './data/websiteData'
 
 export const DemirturkWebsite: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
@@ -63,6 +63,11 @@ export const DemirturkWebsite: React.FC = () => {
         setTimeout(() => {
           handleNavigate('#odeme-modelleri')
         }, 100)
+        return
+      }
+
+      if (pathname === '/yapi-malzemeleri' || pathname === '/yapi-malzemeleri/' || pathname === '/malzeme' || pathname === '/malzemeler') {
+        window.location.href = `https://wa.me/${COMPANY_INFO.materialsWhatsapp}?text=${encodeURIComponent('Merhaba, Demirtürk Yapı Malzemeleri hakkında bilgi ve fiyat teklifi almak istiyorum.')}`
         return
       }
 

@@ -163,7 +163,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     )}
 
                     <p className="text-xs sm:text-base text-[#fffff1]/90 font-light line-clamp-2 leading-relaxed mb-0 sm:mb-4 drop-shadow">
-                      {project.subtitle}
+                      {project.slideDescription || project.subtitle}
                     </p>
 
                     {/* Specs & Projeyi İncele (Desktop only, completely removed on mobile as requested) */}

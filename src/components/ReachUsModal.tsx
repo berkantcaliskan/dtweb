@@ -67,7 +67,8 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
     const text = encodeURIComponent(
       `Merhaba Demirtürk İnşaat,\nKonu: ${formSubject}\nİsim: ${formName || 'Belirtilmedi'}\nTelefon: ${formPhone}\nMesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`
     )
-    window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=${text}`, '_blank')
+    const targetWhatsapp = formSubject.includes('Malzeme') ? COMPANY_INFO.materialsWhatsapp : COMPANY_INFO.whatsapp
+    window.open(`https://wa.me/${targetWhatsapp}?text=${text}`, '_blank')
     setContactSubmitted(true)
   }
 
