@@ -61,9 +61,9 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '246 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize 800 metre mesafede çağdaş sahil mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
+      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize 800 metre mesafede çağdaş konut mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
     architecturalPhilosophy:
-      'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik sahil mimarisi.',
+      'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik konut mimarisi.',
     heroMedia: {
       type: 'image',
       desktopSrc: '/images/yenisehirforweb.jpeg',
@@ -103,7 +103,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       {
         icon: 'Trees',
         title: 'Müstakil Bahçe Alanı',
-        description: 'Zemin kat dairelerde aileye özel müstakil bahçe kullanım alanları ile doğayla iç içe, huzurlu ve ayrıcalıklı bir sahil yaşamı.'
+        description: 'Zemin kat dairelerde aileye özel müstakil bahçe kullanım alanları ile doğayla iç içe, huzurlu ve ayrıcalıklı bir yaşam.'
       },
       {
         icon: 'Waves',
@@ -182,7 +182,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '800 Metre',
         totalUnits: '48 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, müstakil bahçeli zemin kat seçenekleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla satışta olan seçkin bir sahil sitesidir.',
+        description: 'Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, müstakil bahçeli zemin kat seçenekleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla satışta olan seçkin bir konut projesidir.',
         features: [
           'Satışta Olan Etap',
           'Yalı Mahallesi, Karasu',
