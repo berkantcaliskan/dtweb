@@ -63,7 +63,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 1. AUTHENTIC 4-CHEVRON EMBLEM ANIMATION                         */}
         {/* ============================================================== */}
-        <div className={`relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center mb-3 sm:mb-4 ${isLocked ? 'anim-splash-lock-pulse' : ''}`}>
+        <div className={`relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center -mb-1.5 sm:-mb-2 ${isLocked ? 'anim-splash-lock-pulse' : ''}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 375 375"
@@ -115,7 +115,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 2. REFINED ARCHITECTURAL DIVIDER HAIRLINE                       */}
         {/* ============================================================== */}
-        <div className="w-[170px] sm:w-[210px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/25 to-transparent anim-splash-line mb-2.5 sm:mb-3" />
+        <div className="w-[170px] sm:w-[210px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/25 to-transparent anim-splash-line mb-4 sm:mb-5" />
 
         {/* ============================================================== */}
         {/* 3. BRAND TYPOGRAPHY: DEMİRTÜRK İNŞAAT                           */}
