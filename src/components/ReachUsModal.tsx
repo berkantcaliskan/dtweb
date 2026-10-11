@@ -399,7 +399,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                     >
                       <option value="Genel Bilgi & Satış" className="bg-[#1e242b] text-[#fffff1] py-2">Genel Bilgi & Satış</option>
                       <option value="Asel Doğa Evleri Bilgi Talebi" className="bg-[#1e242b] text-[#fffff1] py-2">Asel Doğa Evleri Bilgi Talebi</option>
-                      <option value="Yeni Şehir Rezidans Bilgi Talebi" className="bg-[#1e242b] text-[#fffff1] py-2">Yeni Şehir Rezidans Bilgi Talebi</option>
+                      <option value="Yeni Şehir Etapları Bilgi Talebi" className="bg-[#1e242b] text-[#fffff1] py-2">Yeni Şehir Etapları Bilgi Talebi</option>
                       <option value="Elden Senet Modeli Danışmanlığı" className="bg-[#1e242b] text-[#fffff1] py-2">Elden Senet Modeli Danışmanlığı</option>
                       <option value="Ücretsiz Tanıtım Turu Randevusu" className="bg-[#1e242b] text-[#fffff1] py-2">Ücretsiz Tanıtım Turu Randevusu</option>
                       <option value="Yapı Malzemeleri & Toptan Tedarik" className="bg-[#1e242b] text-[#fffff1] py-2">Yapı Malzemeleri & Toptan Tedarik</option>

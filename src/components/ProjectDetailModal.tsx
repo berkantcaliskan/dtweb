@@ -269,7 +269,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <div className="min-w-0 flex-1">
                   <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
                   <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                    {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '~800 Metre'}
+                    {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '800 Metre'}
                   </span>
                 </div>
               </div>
@@ -357,7 +357,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">Denize Mesafe:</span>
                     <span className="text-[#fffff1]/95 font-medium">
-                      {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '~800 Metre'}
+                      {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '800 Metre'}
                     </span>
                   </div>
                   {activeStage.totalArea && (
@@ -491,7 +491,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
     : null
 
   const displayLocation = currentStage ? currentStage.location : project.location
-  const rawDistance = currentStage?.distanceToSea || project.distanceToSea || '~800m'
+  const rawDistance = currentStage?.distanceToSea || project.distanceToSea || '800m'
   const displayDistanceToSea = rawDistance.replace(/^Denize\s*/i, '')
   const displayUnits = currentStage ? currentStage.unitTypes.join(', ') : project.unitTypes?.join(', ') || '1+1 ve 2+1 Daireler'
   const displayTotalUnits = currentStage?.totalUnits || project.totalUnits
@@ -605,14 +605,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 {project.seriesInfo}
               </p>
             )}
-            <p className="text-lg sm:text-2xl lg:text-3xl text-[#fffff1] font-normal max-w-3xl leading-snug mt-3 font-theSeasons tracking-wide">
+            <p className="text-base sm:text-xl lg:text-2xl text-[#fffff1]/90 font-light max-w-3xl leading-relaxed mt-3">
               {project.slideDescription || project.subtitle}
             </p>
-            {project.slideDescription && project.subtitle && project.slideDescription !== project.subtitle && (
-              <p className="text-sm sm:text-base text-[#fffff1]/75 font-light max-w-3xl leading-relaxed mt-2">
-                {project.subtitle}
-              </p>
-            )}
           </div>
 
           {/* Sub-Project / Stage Selector Tabs (Directly under project description) */}
@@ -869,7 +864,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     {/* Bottom Content Details */}
                     <div className="relative z-10 pt-8 pb-5 px-6">
                       <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block font-semibold mb-1 truncate">
-                        {stage.location} • Denize {stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '~800m'}
+                        {stage.location} • Denize {stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '800m'}
                       </span>
                       <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-2 group-hover:translate-x-1 transition-transform">
                         {stage.title}

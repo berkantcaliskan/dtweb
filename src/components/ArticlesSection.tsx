@@ -78,7 +78,7 @@ export const ARTICLES_DATA: ArticleItem[] = [
         paragraphs: [
           'Bir konut projesinin sunduğu ortak alanlar, evde geçirdiğiniz zamanın niteliğini etkileyebilir. Havuz, spor salonu, çocuk oyun alanı ve kafeterya gibi imkânları değerlendirirken bunlardan hangilerini gerçekten kullanacağınızı düşünün.',
           'Bahçeli bir giriş katı arıyorsanız bahçenin büyüklüğü kadar mahremiyetini, bakım ihtiyacını ve kullanım koşullarını da sorun. Ortak alanların çalışma dönemlerini, bakım düzenini ve aidata etkisini öğrenin.',
-          'Demirtürk İnşaat’ın Yenişehir 3. Etap projesinde modern ve zamansız mimariye; iki havuz, spor salonu, kapalı çocuk oyun alanı ve kafeterya eşlik ediyor. Giriş katlarındaki müstakil bahçe seçeneklerinin yanında hidrofor sistemi, güneş enerjisi ve araç şarj istasyonu da projenin özellikleri arasında yer alıyor.',
+          'Demirtürk İnşaat’ın Yeni Şehir 3. Etap projesinde modern ve zamansız mimariye; iki havuz, spor salonu, kapalı çocuk oyun alanı ve kafeterya eşlik ediyor. Giriş katlarındaki müstakil bahçe seçeneklerinin yanında hidrofor sistemi, güneş enerjisi ve araç şarj istasyonu da projenin özellikleri arasında yer alıyor.',
           'İlgilendiğiniz daireye ait özellikleri, projenin mevcut durumunu ve teslim kapsamını ekibimizden öğrenebilirsiniz.'
         ]
       },

@@ -44,203 +44,24 @@ export const COMPANY_STATS: CompanyStat[] = [
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    id: 'asel-doga-evleri',
-    slug: 'asel-doga-evleri',
-    title: 'Asel Doğa Evleri',
-    seriesInfo: '2 proje • 3. ve 4. projeler yakında',
-    cardSize: 'standard',
-    subtitle: 'Doğanın kalbinde, zengin peyzajlı ve havuzlu lüks yaşam',
-    slideDescription: 'Şehir ve doğayı en sade çizgiyle ayıran yaşam alanı',
-    category: 'ongoing',
-    categoryLabel: 'Havuzlu yaşam kompleksi',
-    location: 'Aziziye Mah., Karasu',
-    distanceToSea: '~850 Metre',
-    year: '2026 - 2027',
-    status: 'Satışta, Devam Ediyor',
-    totalArea: '1.200 m²',
-    totalUnits: '57 Daire',
-    unitTypes: ['1+1 ve 2+1 Daireler'],
-    description:
-      'Asel Doğa Evleri; şehir konforu ile sakin bir çevre dokusunu buluşturan çağdaş bir sahil projesidir. Açık yüzme havuzu, yerden ısıtmalı daireleri ve zengin site peyzajıyla dört mevsim keyifli bir yaşam vadediyor.',
-    architecturalPhilosophy:
-      'Doğal peyzajla uyumlu modern mimari hatlar, ferah balkonlar ve geniş bahçe alanlarıyla Karasu’nun sahil dokusuna değer katan, dört mevsim konfor sunan fonksiyonel bir yaşam kurgusu.',
-    heroMedia: {
-      type: 'image',
-      desktopSrc: '/images/aselforweb.jpeg',
-      mobileSrc: '/images/aselforweb.jpeg',
-      poster: '/images/aselforweb.jpeg',
-      alt: 'Asel Doğa Evleri - Demirtürk İnşaat Karasu'
-    },
-    gallery: [
-      {
-        url: '/images/aselforweb.jpeg',
-        title: 'Ön Cephe Mimarisi & Özel Balkonlar',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-        title: 'Özel Yüzme Havuzu ve Güneşlenme Terasları',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-        title: 'Cephe Mimarisi ve Doğal Çam Peyzajı',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-        title: 'Geniş Balkonlar ve Bahçe Katı Ayrıcalığı',
-        aspect: '9:16'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
-        title: 'İç Mekan: Yüksek Tavan ve Doğal Gün Işığı',
-        aspect: '16:9'
-      }
-    ],
-    features: [
-      'Geniş Açık Yüzme Havuzu & Çocuk Havuzu',
-      '24/7 Güvenlik & Kapalı Devre Kamera Sistemi',
-      'Yerden Isıtma & Birinci Sınıf Isı Yalıtımı',
-      'Denize ve Sahil Kordonuna Yakın Konum',
-      'Özel Açık Otopark & Elektrikli Şarj İstasyonu',
-      'Peyzaj Alanları & Kamelyalar, Çocuk Parkı'
-    ],
-    floorPlans: [
-      {
-        name: '2+1 Geniş Teraslı Daire',
-        area: '88 m² Brüt / 74 m² Net',
-        rooms: '2 Yatak Odası, Salon, Açık Mutfak, Teras Balkon, Banyo',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
-        description: 'Geniş cepheli salon ve ferah teras balkonuyla Karadeniz meltemini içeri davet eden fonksiyonel plan şeması.'
-      },
-      {
-        name: '1+1 Bahçe Teraslı Daire',
-        area: '56 m² Brüt / 48 m² Net',
-        rooms: '1 Yatak Odası, Salon & Mutfak, Bahçe Verandası',
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
-        description: 'Yazlık kullanım ve yüksek kira getirisi için optimize edilmiş kompakt, şık ve lüks detaylar.'
-      }
-    ],
-    installmentMonths: 40,
-    isFeatured: true,
-    stages: [
-      {
-        id: 'asel-doga-1',
-        stageNumber: 1,
-        title: 'Asel Doğa Evleri 1',
-        subtitle: 'Tamamlanan ve yaşamın başladığı ilk projemiz',
-        status: 'Tamamlandı',
-        year: '2026',
-        deliveryDate: '2026',
-        location: 'Aziziye Mah., Karasu',
-        distanceToSea: '~750 Metre',
-        totalUnits: '18 Daire',
-        unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Asel Doğa Evleri serisinin ilk projesi; Aziziye Mahallesi’nde tamamlanmış, geniş bahçe ve havuz konseptiyle anahtar teslimi yapılmıştır.',
-        features: [
-          'Tamamlandı & Yaşam Başladı (2026)',
-          'Aziziye Mahallesi, Karasu',
-          'Denize ~750 Metre Mesafe',
-          '18 Daire (1+1 ve 2+1 Daireler)',
-          'Yüzme Havuzu & Bahçe Alanları',
-          'Yerden Isıtmalı Modern Konutlar'
-        ],
-        image: '/images/aselforweb.jpeg',
-        totalArea: '1.200 m²'
-      },
-      {
-        id: 'asel-doga-2',
-        stageNumber: 2,
-        title: 'Asel Doğa Evleri 2',
-        subtitle: 'Aziziye Mahallesi’nde inşası ve satışları hızla devam eden güncel projemiz',
-        status: 'Satışta, Devam Ediyor',
-        year: '2027',
-        deliveryDate: '2027',
-        location: 'Aziziye Mah., Karasu',
-        distanceToSea: '~850 Metre',
-        totalUnits: '12 Daire',
-        unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Asel Doğa Evleri serisinin devam projesi olan Asel Doğa Evleri 2; geniş açık yüzme havuzu, yerden ısıtmalı modern daireleri, zengin peyzajı ve ferah balkon alanları ile 2027 teslimi için satış ve yapım süreci devam etmektedir.',
-        features: [
-          'Satışta, Devam Ediyor (Teslim: 2027)',
-          'Aziziye Mahallesi – Doğayla İç İçe',
-          '12 Daire (1+1 ve 2+1 Daireler)',
-          'Geniş Açık Yüzme Havuzu & Çocuk Havuzu',
-          'Yerden Isıtmalı Lüks Yaşam Standardı',
-          'Elden Senetle Esnek Ödeme Modeli'
-        ],
-        image: '/images/aselforweb.jpeg',
-        totalArea: '1.200 m²'
-      },
-      {
-        id: 'asel-doga-3',
-        stageNumber: 3,
-        title: 'Asel Doğa Evleri 3',
-        subtitle: 'Aziziye Mahallesi’nde doğayla iç içe planlanan yeni proje',
-        status: 'Yakında',
-        year: 'Yakında',
-        deliveryDate: 'Yakında',
-        location: 'Aziziye Mah., Karasu',
-        distanceToSea: '~600 Metre',
-        totalUnits: '12 Daire',
-        unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Aziziye Mahallesi’nde planlanan Asel Doğa Evleri 3; doğa ile iç içe huzurlu mimarisi, zengin sosyal donatıları ve modern mimari detaylarıyla çok yakında başlayacaktır.',
-        features: [
-          'Yakında Başlıyor (Ön Talep Aşaması)',
-          'Aziziye Mahallesi Sakin ve Ferah Lokasyon',
-          '12 Daire (1+1 ve 2+1 Daireler)',
-          'Modern Mimari & Doğa Manzarası',
-          'Yüzme Havuzu & Peyzaj Alanları',
-          'Lansmana Özel Avantajlı Fiyatlar'
-        ],
-        image: '/images/aselforweb.jpeg',
-        totalArea: '1.200 m²'
-      },
-      {
-        id: 'asel-doga-4',
-        stageNumber: 4,
-        title: 'Asel Doğa Evleri 4',
-        subtitle: 'Asel Doğa Evleri yaşam konseptinin dördüncü halkası',
-        status: 'Yakında',
-        year: 'Yakında',
-        deliveryDate: 'Yakında',
-        location: 'Aziziye Mah., Karasu',
-        distanceToSea: '~600 Metre',
-        totalUnits: '15 Daire',
-        unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Asel Doğa Evleri konseptinin dördüncü halkası; sakin ve prestijli sahil lokasyonunda, yüksek inşaat kalitesi ve esnek ödeme koşullarıyla çok yakında projelendirilecektir.',
-        features: [
-          'Yakında Projelendirilecek',
-          'Aziziye Mahallesi Lokasyonu',
-          '15 Daire (1+1 ve 2+1 Daireler)',
-          'Yüksek Malzeme Standardı & Yalıtım',
-          'Özel Otopark & Sosyal Donatılar'
-        ],
-        image: '/images/aselforweb.jpeg',
-        totalArea: '1.200 m²'
-      }
-    ]
-  },
-  {
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
     seriesInfo: 'Tamamlanan 1. ve 2. etap • 3. etap devam ediyor',
     cardSize: 'standard',
-    subtitle: 'Karasu Yalı Mahallesi’nde 1.000.000₺ peşinat ve 40 ay vadeyle 3 etaplı yaşam alanı',
+    subtitle: 'Doğal taşın ilhamıyla prestijli bir yaşam',
     slideDescription: 'Doğal taşın ilhamıyla prestijli bir yaşam',
     category: 'luxury-residence',
-    categoryLabel: 'Lüks rezidans kompleksi',
+    categoryLabel: 'Lüks konut kompleksi',
     location: 'Yalı Mah., Karasu',
-    distanceToSea: '~800 Metre',
+    distanceToSea: '800 Metre',
     year: '2025 - 2028',
     status: 'Satışta, Devam Ediyor',
     totalArea: '17.400 m²',
     totalUnits: '246 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize yaklaşık 800 metre mesafede çağdaş sahil mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
+      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize 800 metre mesafede çağdaş sahil mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
     architecturalPhilosophy:
       'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik sahil mimarisi.',
     heroMedia: {
@@ -312,7 +133,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     features: [
       '1.000.000₺ Peşinat – 40 Ay Vade – Araç Takas',
-      'Yalı Mahallesi – Denize ~800 Metre',
+      'Yalı Mahallesi – Denize 800 Metre',
       '1+1 & 2+1 Daire Seçenekleri',
       'Müstakil Bahçeli Zemin Kat Seçenekleri',
       'Yerden Isıtmalı Lüks Konsept',
@@ -331,14 +152,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
         year: '2025',
         deliveryDate: '2025',
         location: 'Yalı Mah., Karasu',
-        distanceToSea: '~800 Metre',
+        distanceToSea: '800 Metre',
         totalUnits: '48 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
         description: 'Yeni Şehir vizyonunun ilk adımı olan 1. Etap; başarıyla tamamlanarak kat maliklerine eksiksiz teslim edilmiştir. Yüzme havuzu, müstakil bahçe kullanım alanları, yerden ısıtma ve kaliteli yapı malzemeleriyle güvenli bir site yaşamı sunar.',
         features: [
           'Tamamlandı & Teslim Edildi',
           'Yalı Mahallesi, Karasu',
-          'Denize ~800 Metre',
+          'Denize 800 Metre',
           '48 Daire (1+1 ve 2+1 Daire Seçenekleri)',
           'Müstakil Bahçe & Teras Alanları',
           'Yerden Isıtmalı Isınma Altyapısı',
@@ -358,14 +179,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
         year: '2025',
         deliveryDate: '2025',
         location: 'Yalı Mah., Karasu',
-        distanceToSea: '~800 Metre',
+        distanceToSea: '800 Metre',
         totalUnits: '48 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
         description: 'Yeni Şehir 2. Etap; yerden ısıtmalı konforlu daireleri, müstakil bahçeli zemin kat seçenekleri, açık yüzme havuzu, çocuk oyun alanları ve huzurlu site peyzajıyla satışta olan seçkin bir sahil sitesidir.',
         features: [
           'Satışta Olan Etap',
           'Yalı Mahallesi, Karasu',
-          'Denize ~800 Metre',
+          'Denize 800 Metre',
           '48 Daire (1+1 ve 2+1 Daire Seçenekleri)',
           'Müstakil Bahçe Kullanımlı Daireler',
           'Yerden Isıtmalı Isınma Konforu',
@@ -385,13 +206,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         year: '2028',
         deliveryDate: '2028',
         location: 'Yalı Mah., Karasu',
-        distanceToSea: '~800 Metre',
+        distanceToSea: '800 Metre',
         totalUnits: '150 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
         description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, müstakil bahçe ayrıcalığı, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
         features: [
           'Teslim Tarihi: 2028 (Satışta, Devam Ediyor)',
-          'Yalı Mahallesi – Denize ~800 Metre',
+          'Yalı Mahallesi – Denize 800 Metre',
           '150 Daire (1+1 ve 2+1 Daire Seçenekleri)',
           'Yerden Isıtmalı Lüks Yazlık Evler',
           'Aqua Havuz & Yarı Olimpik Yüzme Alanları',
@@ -424,17 +245,196 @@ export const PROJECTS_DATA: ProjectItem[] = [
     isFeatured: true
   },
   {
+    id: 'asel-doga-evleri',
+    slug: 'asel-doga-evleri',
+    title: 'Asel Doğa Evleri',
+    seriesInfo: '2 proje • 3. ve 4. projeler yakında',
+    cardSize: 'standard',
+    subtitle: 'Şehir ve doğayı en sade çizgiyle ayıran yaşam alanı',
+    slideDescription: 'Şehir ve doğayı en sade çizgiyle ayıran yaşam alanı',
+    category: 'ongoing',
+    categoryLabel: 'Havuzlu yaşam kompleksi',
+    location: 'Aziziye Mah., Karasu',
+    distanceToSea: '850 Metre',
+    year: '2026 - 2027',
+    status: 'Satışta, Devam Ediyor',
+    totalArea: '1.200 m²',
+    totalUnits: '57 Daire',
+    unitTypes: ['1+1 ve 2+1 Daireler'],
+    description:
+      'Asel Doğa Evleri; şehir konforu ile sakin bir çevre dokusunu buluşturan çağdaş bir sahil projesidir. Açık yüzme havuzu, yerden ısıtmalı daireleri ve zengin site peyzajıyla dört mevsim keyifli bir yaşam vadediyor.',
+    architecturalPhilosophy:
+      'Doğal peyzajla uyumlu modern mimari hatlar, ferah balkonlar ve geniş bahçe alanlarıyla Karasu’nun sahil dokusuna değer katan, dört mevsim konfor sunan fonksiyonel bir yaşam kurgusu.',
+    heroMedia: {
+      type: 'image',
+      desktopSrc: '/images/aselforweb.jpeg',
+      mobileSrc: '/images/aselforweb.jpeg',
+      poster: '/images/aselforweb.jpeg',
+      alt: 'Asel Doğa Evleri - Demirtürk İnşaat Karasu'
+    },
+    gallery: [
+      {
+        url: '/images/aselforweb.jpeg',
+        title: 'Ön Cephe Mimarisi & Özel Balkonlar',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        title: 'Özel Yüzme Havuzu ve Güneşlenme Terasları',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+        title: 'Cephe Mimarisi ve Doğayla İç İçe Yeşil Peyzaj',
+        aspect: '16:9'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+        title: 'Geniş Balkonlar ve Bahçe Katı Ayrıcalığı',
+        aspect: '9:16'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
+        title: 'İç Mekan: Yüksek Tavan ve Doğal Gün Işığı',
+        aspect: '16:9'
+      }
+    ],
+    features: [
+      'Geniş Açık Yüzme Havuzu & Çocuk Havuzu',
+      '24/7 Güvenlik & Kapalı Devre Kamera Sistemi',
+      'Yerden Isıtma & Birinci Sınıf Isı Yalıtımı',
+      'Denize ve Sahil Kordonuna Yakın Konum',
+      'Özel Açık Otopark & Elektrikli Şarj İstasyonu',
+      'Peyzaj Alanları & Kamelyalar, Çocuk Parkı'
+    ],
+    floorPlans: [
+      {
+        name: '2+1 Geniş Teraslı Daire',
+        area: '88 m² Brüt / 74 m² Net',
+        rooms: '2 Yatak Odası, Salon, Açık Mutfak, Teras Balkon, Banyo',
+        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
+        description: 'Geniş cepheli salon ve ferah teras balkonuyla Karadeniz meltemini içeri davet eden fonksiyonel plan şeması.'
+      },
+      {
+        name: '1+1 Bahçe Teraslı Daire',
+        area: '56 m² Brüt / 48 m² Net',
+        rooms: '1 Yatak Odası, Salon & Mutfak, Bahçe Verandası',
+        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
+        description: 'Yazlık kullanım ve yüksek kira getirisi için optimize edilmiş kompakt, şık ve lüks detaylar.'
+      }
+    ],
+    installmentMonths: 40,
+    isFeatured: true,
+    stages: [
+      {
+        id: 'asel-doga-1',
+        stageNumber: 1,
+        title: 'Asel Doğa Evleri 1',
+        subtitle: 'Tamamlanan ve yaşamın başladığı ilk projemiz',
+        status: 'Tamamlandı',
+        year: '2026',
+        deliveryDate: '2026',
+        location: 'Aziziye Mah., Karasu',
+        distanceToSea: '750 Metre',
+        totalUnits: '18 Daire',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Asel Doğa Evleri serisinin ilk projesi; Aziziye Mahallesi’nde tamamlanmış, geniş bahçe ve havuz konseptiyle anahtar teslimi yapılmıştır.',
+        features: [
+          'Tamamlandı & Yaşam Başladı (2026)',
+          'Aziziye Mahallesi, Karasu',
+          'Denize 750 Metre Mesafe',
+          '18 Daire (1+1 ve 2+1 Daireler)',
+          'Yüzme Havuzu & Bahçe Alanları',
+          'Yerden Isıtmalı Modern Konutlar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '1.200 m²'
+      },
+      {
+        id: 'asel-doga-2',
+        stageNumber: 2,
+        title: 'Asel Doğa Evleri 2',
+        subtitle: 'Aziziye Mahallesi’nde inşası ve satışları hızla devam eden güncel projemiz',
+        status: 'Satışta, Devam Ediyor',
+        year: '2027',
+        deliveryDate: '2027',
+        location: 'Aziziye Mah., Karasu',
+        distanceToSea: '850 Metre',
+        totalUnits: '12 Daire',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Asel Doğa Evleri serisinin devam projesi olan Asel Doğa Evleri 2; geniş açık yüzme havuzu, yerden ısıtmalı modern daireleri, zengin peyzajı ve ferah balkon alanları ile 2027 teslimi için satış ve yapım süreci devam etmektedir.',
+        features: [
+          'Satışta, Devam Ediyor (Teslim: 2027)',
+          'Aziziye Mahallesi – Doğayla İç İçe',
+          '12 Daire (1+1 ve 2+1 Daireler)',
+          'Geniş Açık Yüzme Havuzu & Çocuk Havuzu',
+          'Yerden Isıtmalı Lüks Yaşam Standardı',
+          'Elden Senetle Esnek Ödeme Modeli'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '1.200 m²'
+      },
+      {
+        id: 'asel-doga-3',
+        stageNumber: 3,
+        title: 'Asel Doğa Evleri 3',
+        subtitle: 'Aziziye Mahallesi’nde doğayla iç içe planlanan yeni proje',
+        status: 'Yakında',
+        year: 'Yakında',
+        deliveryDate: 'Yakında',
+        location: 'Aziziye Mah., Karasu',
+        distanceToSea: '600 Metre',
+        totalUnits: '12 Daire',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Aziziye Mahallesi’nde planlanan Asel Doğa Evleri 3; doğa ile iç içe huzurlu mimarisi, zengin sosyal donatıları ve modern mimari detaylarıyla çok yakında başlayacaktır.',
+        features: [
+          'Yakında Başlıyor (Ön Talep Aşaması)',
+          'Aziziye Mahallesi Sakin ve Ferah Lokasyon',
+          '12 Daire (1+1 ve 2+1 Daireler)',
+          'Modern Mimari & Doğa Manzarası',
+          'Yüzme Havuzu & Peyzaj Alanları',
+          'Lansmana Özel Avantajlı Fiyatlar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '1.200 m²'
+      },
+      {
+        id: 'asel-doga-4',
+        stageNumber: 4,
+        title: 'Asel Doğa Evleri 4',
+        subtitle: 'Asel Doğa Evleri yaşam konseptinin dördüncü halkası',
+        status: 'Yakında',
+        year: 'Yakında',
+        deliveryDate: 'Yakında',
+        location: 'Aziziye Mah., Karasu',
+        distanceToSea: '600 Metre',
+        totalUnits: '15 Daire',
+        unitTypes: ['1+1 ve 2+1 Daireler'],
+        description: 'Asel Doğa Evleri konseptinin dördüncü halkası; sakin ve prestijli sahil lokasyonunda, yüksek inşaat kalitesi ve esnek ödeme koşullarıyla çok yakında projelendirilecektir.',
+        features: [
+          'Yakında Projelendirilecek',
+          'Aziziye Mahallesi Lokasyonu',
+          '15 Daire (1+1 ve 2+1 Daireler)',
+          'Yüksek Malzeme Standardı & Yalıtım',
+          'Özel Otopark & Sosyal Donatılar'
+        ],
+        image: '/images/aselforweb.jpeg',
+        totalArea: '1.200 m²'
+      }
+    ]
+  },
+  {
     id: 'almina-evleri',
     slug: 'almina-evleri',
     title: 'Almina Evleri',
     seriesInfo: 'Tamamlanan 1 proje • 2. proje devam ediyor',
     cardSize: 'standard',
-    subtitle: 'Karasu sahil şeridinde denize sıfır modern rezidans',
+    subtitle: 'Şehir hayatının hiçbir zaman aksamadığı bir yaşam alanı',
     slideDescription: 'Şehir hayatının hiçbir zaman aksamadığı bir yaşam alanı',
     category: 'luxury-residence',
-    categoryLabel: 'Denize sıfır rezidans',
+    categoryLabel: 'Sahil rezidansı',
     location: 'Yalı Mah., Plaj Cd., Karasu',
-    distanceToSea: '~800 Metre',
+    distanceToSea: '800 Metre',
     year: '2023 - 2025',
     status: 'Satışta, Devam Ediyor',
     totalArea: '11.200 m²',
@@ -476,10 +476,10 @@ export const PROJECTS_DATA: ProjectItem[] = [
     features: [
       'Denize Yürüme Mesafesinde',
       'Açık Havuz & Güneşlenme Terası',
-      'Fitness Salonu & Sosyal Tesis',
-      'Yatırımcıya Yüksek Kira Garantisi',
-      'Elden Senetle Esnek Vade Kolaylığı',
-      'Merkezi Konum, Kafe ve Çarşılara Yakın'
+      'Şehrin En İşlek Caddesi, Marketler ve Ulaşıma Çok Yakın',
+      'Anaokuluna Komşu, Merkezi Lokasyon',
+      'Yatırımcıya Yüksek Kira Potansiyeli',
+      'Elden Senetle Esnek Vade Kolaylığı'
     ],
     stages: [
       {
@@ -491,14 +491,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
         year: '2023',
         deliveryDate: '2023',
         location: 'Yalı Mah., Karasu',
-        distanceToSea: '~750 Metre',
+        distanceToSea: '750 Metre',
         totalUnits: '24 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
         description: 'Almina Evleri projesinin ilk etabı; Karasu sahil bölgesinde tamamlanmış, tüm daireleri kat maliklerine eksiksiz teslim edilmiştir.',
         features: [
           'Tamamlandı & Yaşam Başladı (2023)',
           'Yalı Mahallesi, Karasu',
-          'Denize ~750 Metre Mesafe',
+          'Denize 750 Metre Mesafe',
           '24 Daire (1+1 ve 2+1 Daire Seçenekleri)',
           'Yüzme Havuzu & Güneşlenme Terası',
           'Balkonlu ve Ferah Sahil Evleri'
@@ -515,17 +515,19 @@ export const PROJECTS_DATA: ProjectItem[] = [
         year: '2024 - 2025',
         deliveryDate: '2025',
         location: 'Yalı Mah., Plaj Cd., Karasu',
-        distanceToSea: '~850 Metre',
+        distanceToSea: '850 Metre',
         totalUnits: '9 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Almina serisinin devam projesi olan Almina 2; açık yüzme havuzu, yerden ısıtma konforu ve lüks sahil mimarisiyle satış ve yapım süreci devam etmektedir.',
+        description: 'Almina serisinin devam projesi olan Almina 2; açık yüzme havuzu, yerden ısıtma konforu ve lüks sahil mimarisinin yanı sıra şehrin en işlek caddesine, marketlere, anaokuluna ve toplu ulaşıma yürüme mesafesindeki merkezi konumuyla satış ve yapım süreci devam etmektedir.',
         features: [
           'Satışta, Devam Ediyor',
           'Yalı Mahallesi, Plaj Caddesi',
-          'Denize ~850 Metre Mesafe',
-          '9 Daire (1+1 ve 2+1 Daire Seçenekleri)',
+          'Denize 850 Metre Mesafe',
+          'Şehrin En İşlek Caddesi, Marketler ve Ulaşıma Çok Yakın',
+          'Anaokuluna Komşu, Merkezi Lokasyon',
           'Açık Havuz & Güneşlenme Terası',
-          'Elden Senet Modeliyle Kolay Ödeme'
+          'Elden Senet Modeliyle Kolay Ödeme',
+          '9 Daire (1+1 ve 2+1 Daire Seçenekleri)'
         ],
         image: '/images/alminaforweb.jpeg',
         totalArea: '6.000 m²'
@@ -549,12 +551,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Seaside House',
     seriesInfo: 'Tamamlandı',
     cardSize: 'standard',
-    subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
+    subtitle: 'Nehir ve Karadeniz, muhteşem bir konumda bir araya geliyor',
     slideDescription: 'Nehir ve Karadeniz, muhteşem bir konumda bir araya geliyor',
     category: 'completed',
     categoryLabel: 'Tamamlanan proje',
     location: 'Yeni Mahalle, Karasu',
-    distanceToSea: '~100 Metre',
+    distanceToSea: '100 Metre',
     year: '2022 - 2023',
     status: 'Tamamlandı',
     totalArea: '9.500 m²',
@@ -643,7 +645,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'completed',
     categoryLabel: 'Tamamlanan proje',
     location: 'Yalı Mah., Karasu / Sakarya',
-    distanceToSea: 'Denize ~300 Metre',
+    distanceToSea: 'Denize 300 Metre',
     year: '2024',
     status: 'Tamamlandı',
     totalArea: '5.500 m²',

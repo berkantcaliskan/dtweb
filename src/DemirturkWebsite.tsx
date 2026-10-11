@@ -155,7 +155,7 @@ export const DemirturkWebsite: React.FC = () => {
   // Dynamic document.title and meta description updates for SEO & Google Ads
   useEffect(() => {
     const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
-    const defaultDesc = "2003'ten bugüne Sakarya Karasu'da kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
+    const defaultDesc = "2003'ten bugüne Sakarya Karasu ve Kocaali'de kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
     const metaDesc = document.querySelector('meta[name="description"]')
 
     if (isReachUsModalOpen) {

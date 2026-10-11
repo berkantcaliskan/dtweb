@@ -50,7 +50,7 @@ export const ArchitecturePhilosophy: React.FC = () => {
                   Doğal Uyum & Sahil Manzarası
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-                  Her projemiz Karasu’nun sahil şeridi, orman dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
+                  Her projemiz Karasu’nun sahil şeridi, doğayla iç içe yeşil dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
                 </p>
               </div>
             </div>
