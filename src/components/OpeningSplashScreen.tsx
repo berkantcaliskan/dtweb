@@ -58,12 +58,12 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         />
       </div>
 
-      {/* Main Center Content Box */}
+      {/* Main Center Content Box - Unified 3-Part Crest (Logo - Header - Açıklama) */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 max-w-sm sm:max-w-md w-full">
         {/* ============================================================== */}
         {/* 1. AUTHENTIC 4-CHEVRON EMBLEM ANIMATION                         */}
         {/* ============================================================== */}
-        <div className={`relative w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] flex items-center justify-center mb-6 sm:mb-8 ${isLocked ? 'anim-splash-lock-pulse' : ''}`}>
+        <div className={`relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center mb-3 sm:mb-4 ${isLocked ? 'anim-splash-lock-pulse' : ''}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 375 375"
@@ -115,21 +115,18 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 2. REFINED ARCHITECTURAL DIVIDER HAIRLINE                       */}
         {/* ============================================================== */}
-        <div className="w-[180px] sm:w-[220px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/30 to-transparent anim-splash-line mb-3 sm:mb-4" />
+        <div className="w-[170px] sm:w-[210px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/25 to-transparent anim-splash-line mb-2.5 sm:mb-3" />
 
         {/* ============================================================== */}
         {/* 3. BRAND TYPOGRAPHY: DEMİRTÜRK İNŞAAT                           */}
         {/* - "Demirtürk" is ExtraBold (800)                               */}
         {/* - "İnşaat" is Light (300)                                      */}
-        {/* - EXACT start and end alignment (equal flush edges)            */}
+        {/* - Clean container without overflow clipping                     */}
         {/* ============================================================== */}
-        <div className="relative w-[210px] sm:w-[250px] flex flex-col items-center overflow-hidden py-1">
-          {/* Subtle luxury light sheen reflection over typography */}
-          <div className="absolute inset-0 pointer-events-none z-10 anim-splash-sheen bg-gradient-to-r from-transparent via-white/80 to-transparent w-[80px]" />
-
+        <div className="relative w-[210px] sm:w-[250px] flex flex-col items-center py-0.5">
           {/* Line 1: DEMİRTÜRK - ExtraBold Plus Jakarta Sans */}
           <h1
-            className="anim-splash-title w-full text-center text-[#252c33] font-extrabold uppercase tracking-[0.05em] text-[24px] sm:text-[29px] leading-none"
+            className="anim-splash-title opacity-0 w-full text-center text-[#252c33] font-extrabold uppercase tracking-[0.05em] text-[24px] sm:text-[29px] leading-none select-none"
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 800,
@@ -139,9 +136,8 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
           </h1>
 
           {/* Line 2: İ N Ş A A T - Light Plus Jakarta Sans */}
-          {/* Using flex justify-between with refined inset for subtle tighter spacing */}
           <div
-            className="anim-splash-subtitle w-full flex justify-between items-center text-[#313941]/90 uppercase text-[10px] sm:text-[12px] font-light leading-none mt-2 sm:mt-2.5 px-2 sm:px-2.5"
+            className="anim-splash-subtitle opacity-0 w-full flex justify-between items-center text-[#313941]/90 uppercase text-[10px] sm:text-[12px] font-light leading-none mt-2 sm:mt-2.5 px-2 sm:px-2.5 select-none"
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,
@@ -156,9 +152,9 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
           </div>
         </div>
 
-        {/* 4. Luxury Founding Badge */}
+        {/* 4. Luxury Founding Badge (Açıklama) */}
         <div
-          className="anim-splash-subtitle mt-4 text-[10px] sm:text-[12px] uppercase tracking-[0.2em] text-[#313941]/90 font-light leading-none whitespace-nowrap"
+          className="anim-splash-subtitle opacity-0 mt-3 sm:mt-3.5 text-[10px] sm:text-[12px] uppercase tracking-[0.2em] text-[#313941]/90 font-light leading-none whitespace-nowrap select-none"
           style={{
             fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
             fontWeight: 300,
