@@ -149,7 +149,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                     if (el) el.scrollIntoView({ behavior: 'smooth' })
                   }
                 }}
-                className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl transition-all hover:scale-105 active:scale-95 hover:border-[#fffff1]/40 cursor-pointer text-center justify-center flex items-center flex-shrink-0"
+                className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 text-[#fffff1] font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center flex-shrink-0 overflow-hidden outline-none select-none"
               >
                 Ücretsiz Tanıtım Turu
               </button>
@@ -161,7 +161,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         <div className="flex items-center mb-3 sm:mb-5">
           <button
             type="button"
-            className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl transition-all hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl border border-[#fffff1]/20"
+            className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl overflow-hidden outline-none"
           >
             <span className="font-extrabold tracking-wider">SANAL TUR</span>
             <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">YAKINDA</span>
