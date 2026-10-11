@@ -51,7 +51,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 1. AUTHENTIC 4-CHEVRON EMBLEM ANIMATION                         */}
         {/* ============================================================== */}
-        <div className="relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center -mb-1.5 sm:-mb-2">
+        <div className="relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center mb-1 sm:mb-1.5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 375 375"
@@ -103,7 +103,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 2. REFINED ARCHITECTURAL DIVIDER HAIRLINE                       */}
         {/* ============================================================== */}
-        <div className="w-[170px] sm:w-[210px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/25 to-transparent anim-splash-line mb-4 sm:mb-5" />
+        <div className="w-[170px] sm:w-[210px] h-[1px] bg-gradient-to-r from-transparent via-[#313941]/25 to-transparent anim-splash-line mb-2 sm:mb-2.5" />
 
         {/* ============================================================== */}
         {/* 3. BRAND TYPOGRAPHY: DEMİRTÜRK İNŞAAT                           */}
@@ -111,7 +111,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* - "İnşaat" is Light (300)                                      */}
         {/* - Subtle light sheen sweep from left to right                  */}
         {/* ============================================================== */}
-        <div className="relative w-[230px] sm:w-[270px] flex flex-col items-center overflow-hidden py-1 mt-2.5 sm:mt-3.5">
+        <div className="relative w-[230px] sm:w-[270px] flex flex-col items-center overflow-hidden py-0.5 mt-1 sm:mt-1.5">
           {/* Subtle luxury light sheen reflection over typography */}
           <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
             <div className="w-[85px] h-full anim-splash-sheen bg-gradient-to-r from-transparent via-white/85 to-transparent" />
