@@ -9,8 +9,6 @@ export const COMPANY_INFO = {
   address: 'Doğu Karadeniz Cd. No: 1, Aziziye, Karasu / Sakarya',
   phoneNumbers: [
     '+90 531 373 00 54',
-    '+90 545 305 53 54',
-    '0264 718 00 54',
     '+90 530 102 40 01'
   ],
   phone: '+90 531 373 00 54',
