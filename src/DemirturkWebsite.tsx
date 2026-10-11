@@ -26,214 +26,29 @@ export const DemirturkWebsite: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [showSplash, setShowSplash] = useState(true)
 
-  // SEO & Deep-linking: sync URL and meta on mount and on selection changes
-  useEffect(() => {
-    const handleUrlState = () => {
-      const pathname = window.location.pathname.toLowerCase()
-      const params = new URLSearchParams(window.location.search)
-      const projectParam = params.get('proje')
-      const articleParam = params.get('makale')
-      const tourParam = params.get('tur')
-      const contactParam = params.get('iletisim')
+  const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
+  const defaultDesc = "2003'ten bugüne Sakarya Karasu ve Kocaali'de kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
 
-      const articleFromPathOrParam = ARTICLES_DATA.find((a) =>
-        (a.slug && (pathname.includes(a.slug.toLowerCase()) || articleParam === a.slug)) ||
-        (a.id && (pathname.includes(a.id.toLowerCase()) || articleParam === a.id))
-      )
-      if (articleFromPathOrParam) {
-        setSelectedArticle(articleFromPathOrParam)
-        setSelectedProject(null)
-        return
-      }
-
-      if (pathname === '/projeler' || pathname === '/projeler/') {
-        setSelectedArticle(null)
-        setSelectedProject(null)
-        window.history.replaceState({}, '', '/')
-        setTimeout(() => {
-          handleNavigate('#projeler')
-        }, 100)
-        return
-      }
-
-      if (pathname === '/odeme-modelleri' || pathname === '/odeme-modelleri/' || pathname === '/finansman' || params.get('odeme-modelleri') !== null) {
-        setSelectedArticle(null)
-        setSelectedProject(null)
-        window.history.replaceState({}, '', '/')
-        setTimeout(() => {
-          handleNavigate('#odeme-modelleri')
-        }, 100)
-        return
-      }
-
-      if (pathname === '/yapi-malzemeleri' || pathname === '/yapi-malzemeleri/' || pathname === '/malzeme' || pathname === '/malzemeler') {
-        window.location.href = `https://wa.me/${COMPANY_INFO.materialsWhatsapp}?text=${encodeURIComponent('Merhaba, Demirtürk Yapı Malzemeleri hakkında bilgi ve fiyat teklifi almak istiyorum.')}`
-        return
-      }
-
-      if (projectParam) {
-        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === projectParam || p.id === projectParam))
-        if (found) {
-          setSelectedProject(found)
-          setSelectedArticle(null)
-          return
-        }
-      }
-
-      // 0. İletişim / Bize Ulaşın (Google Ads ve direkt linkler için /iletisim)
-      const isContact = pathname === '/iletisim' || pathname === '/ulasin' || params.has('iletisim') || params.has('ulasin') || contactParam === 'iletisim' || contactParam === 'ulasin'
-      if (isContact) {
-        setIsReachUsModalOpen(true)
-        setSelectedProject(null)
-        setSelectedArticle(null)
-        return
-      }
-
-      if (pathname.startsWith('/makaleler/')) {
-        const slug = pathname.replace('/makaleler/', '').replace('/', '')
-        const found = ARTICLES_DATA.find((a) => a.slug === slug)
-        if (found) {
-          setSelectedArticle(found)
-          setSelectedProject(null)
-          setIsReachUsModalOpen(false)
-          return
-        }
-      }
-
-      if (pathname === '/projeler' || pathname === '/projeler/') {
-        setSelectedArticle(null)
-        setSelectedProject(null)
-        setIsReachUsModalOpen(false)
-        window.history.replaceState({}, '', '/')
-        setTimeout(() => {
-          handleNavigate('#projeler')
-        }, 100)
-        return
-      }
-
-      if (pathname === '/odeme-modelleri' || pathname === '/odeme-modelleri/' || pathname === '/finansman' || params.get('odeme-modelleri') !== null) {
-        setSelectedArticle(null)
-        setSelectedProject(null)
-        setIsReachUsModalOpen(false)
-        window.history.replaceState({}, '', '/')
-        setTimeout(() => {
-          handleNavigate('#odeme-modelleri')
-        }, 100)
-        return
-      }
-
-      if (pathname === '/yapi-malzemeleri' || pathname === '/yapi-malzemeleri/' || pathname === '/malzeme' || pathname === '/malzemeler') {
-        window.location.href = `https://wa.me/${COMPANY_INFO.materialsWhatsapp}?text=${encodeURIComponent('Merhaba, Demirtürk Yapı Malzemeleri hakkında bilgi ve fiyat teklifi almak istiyorum.')}`
-        return
-      }
-
-      if (projectParam) {
-        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === projectParam || p.id === projectParam))
-        if (found) {
-          setSelectedProject(found)
-          setSelectedArticle(null)
-          setIsReachUsModalOpen(false)
-          return
-        }
-      }
-
-      if (tourParam !== null) {
-        setIsTourModalOpen(true)
-      }
-
-      // Ana sayfaya dönüldüyse ve modal açıksa kapat
-      if (pathname === '/' && !params.has('iletisim') && !params.has('ulasin') && !projectParam) {
-        setIsReachUsModalOpen(false)
-      }
-    }
-
-    handleUrlState()
-    window.addEventListener('popstate', handleUrlState)
-    return () => window.removeEventListener('popstate', handleUrlState)
-  }, [])
-
-  // Dynamic document.title and meta description updates for SEO & Google Ads
-  useEffect(() => {
-    const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
-    const defaultDesc = "2003'ten bugüne Sakarya Karasu ve Kocaali'de kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
-    const metaDesc = document.querySelector('meta[name="description"]')
-
-    if (isReachUsModalOpen) {
-      document.title = 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
-      if (metaDesc) metaDesc.setAttribute('content', 'Demirtürk İnşaat merkez ofis adresi, telefon numaraları, WhatsApp danışma hattı ve Karasu konut projeleri iletişim bilgileri.')
-      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-      if (currentPath !== '/iletisim') {
-        const search = window.location.search || ''
-        window.history.pushState({ modal: 'iletisim' }, '', '/iletisim' + search)
-      }
-    } else if (selectedProject) {
-      document.title = `${selectedProject.title} | Demirtürk İnşaat Karasu Projeleri`
-      if (metaDesc) metaDesc.setAttribute('content', selectedProject.description.slice(0, 155))
-      const url = new URL(window.location.href)
-      url.searchParams.set('proje', selectedProject.slug || selectedProject.id)
-      url.searchParams.delete('makale')
-      url.searchParams.delete('sayfa')
-      url.searchParams.delete('iletisim')
-      window.history.replaceState({}, '', url.toString())
-    } else if (selectedArticle) {
-      document.title = selectedArticle.seoTitle || `${selectedArticle.title} | Demirtürk İnşaat`
-      if (metaDesc) metaDesc.setAttribute('content', selectedArticle.summary.slice(0, 155))
-      const targetUrl = selectedArticle.url || `/makaleler/${selectedArticle.slug}/`
-      if (window.location.pathname !== targetUrl) {
-        window.history.replaceState({}, '', targetUrl)
-      }
-    } else {
-      document.title = defaultTitle
-      if (metaDesc) metaDesc.setAttribute('content', defaultDesc)
-      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-      if (currentPath === '/iletisim' || currentPath === '/ulasin' || window.location.pathname.startsWith('/makaleler/')) {
-        const search = window.location.search || ''
-        window.history.replaceState({}, '', '/' + search)
-      } else {
-        const url = new URL(window.location.href)
-        if (url.searchParams.has('proje') || url.searchParams.has('makale') || url.searchParams.has('sayfa') || url.searchParams.has('iletisim')) {
-          url.searchParams.delete('proje')
-          url.searchParams.delete('makale')
-          url.searchParams.delete('sayfa')
-          url.searchParams.delete('iletisim')
-          window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash)
-        }
-      }
-    }
-  }, [selectedProject, selectedArticle, isReachUsModalOpen])
-
-  const isSubPageOpen = Boolean(selectedProject || selectedArticle || isReachUsModalOpen)
-
-  const handleNavigate = (href: string) => {
-    setSelectedProject(null)
+  const handleSelectProject = (project: ProjectItem, pushHistory = true) => {
+    setSelectedProject(project)
     setSelectedArticle(null)
     setIsReachUsModalOpen(false)
-
-    // Unlock body scroll immediately
-    document.body.style.overflow = ''
-
-    if (href === '#' || href === '' || href === '#hero') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
+    setIsTourModalOpen(false)
+    const projectSlug = project.slug || project.id
+    const targetPath = `/projeler/${projectSlug}`
+    if (pushHistory && window.location.pathname !== targetPath) {
+      window.history.pushState({ project: projectSlug }, '', targetPath)
     }
-
-    setTimeout(() => {
-      const target = document.querySelector(href)
-      if (target) {
-        const topOffset = 52
-        const elementPosition = target.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.pageYOffset - topOffset
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }
-    }, 60)
+    document.title = `${project.title} | Demirtürk İnşaat Karasu Projeleri`
   }
 
   const handleCloseProject = () => {
     setSelectedProject(null)
     document.body.style.overflow = ''
+    if (window.location.pathname !== '/projeler') {
+      window.history.pushState({ path: '/projeler' }, '', '/projeler')
+    }
+    document.title = 'Projeler | Demirtürk İnşaat Karasu'
     setTimeout(() => {
       const target = document.querySelector('#projeler')
       if (target) {
@@ -248,9 +63,25 @@ export const DemirturkWebsite: React.FC = () => {
     }, 60)
   }
 
+  const handleSelectArticle = (article: ArticleItem, pushHistory = true) => {
+    setSelectedArticle(article)
+    setSelectedProject(null)
+    setIsReachUsModalOpen(false)
+    setIsTourModalOpen(false)
+    const targetPath = `/makaleler/${article.slug}`
+    if (pushHistory && window.location.pathname !== targetPath) {
+      window.history.pushState({ article: article.slug }, '', targetPath)
+    }
+    document.title = article.seoTitle || `${article.title} | Demirtürk İnşaat`
+  }
+
   const handleCloseArticle = () => {
     setSelectedArticle(null)
     document.body.style.overflow = ''
+    if (window.location.pathname !== '/makaleler') {
+      window.history.pushState({ path: '/makaleler' }, '', '/makaleler')
+    }
+    document.title = 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
     setTimeout(() => {
       const target = document.querySelector('#makaleler')
       if (target) {
@@ -264,6 +95,245 @@ export const DemirturkWebsite: React.FC = () => {
       }
     }, 60)
   }
+
+  const handleOpenReachUs = () => {
+    setSelectedProject(null)
+    setSelectedArticle(null)
+    setIsTourModalOpen(false)
+    setIsReachUsModalOpen(true)
+    if (window.location.pathname !== '/iletisim') {
+      window.history.pushState({ modal: 'iletisim' }, '', '/iletisim')
+    }
+    document.title = 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+  }
+
+  const handleCloseReachUs = () => {
+    setIsReachUsModalOpen(false)
+    document.body.style.overflow = ''
+    if (window.location.pathname === '/iletisim' || window.location.pathname === '/ulasin') {
+      window.history.pushState({ path: '/' }, '', '/')
+    }
+    document.title = defaultTitle
+  }
+
+  const handleOpenTour = () => {
+    setSelectedProject(null)
+    setSelectedArticle(null)
+    setIsReachUsModalOpen(false)
+    setIsTourModalOpen(true)
+    if (window.location.pathname !== '/tanitim-turu') {
+      window.history.pushState({ modal: 'tanitim-turu' }, '', '/tanitim-turu')
+    }
+    document.title = 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
+  }
+
+  const handleCloseTour = () => {
+    setIsTourModalOpen(false)
+    document.body.style.overflow = ''
+    if (window.location.pathname === '/tanitim-turu' || window.location.pathname === '/tur') {
+      window.history.pushState({ path: '/' }, '', '/')
+    }
+    document.title = defaultTitle
+  }
+
+  const handleNavigate = (target: string, pushHistory = true) => {
+    setSelectedProject(null)
+    setSelectedArticle(null)
+
+    // Unlock body scroll immediately
+    document.body.style.overflow = ''
+
+    if (target === '/iletisim' || target === '#iletisim' || target === '/ulasin' || target === '#ulasin') {
+      handleOpenReachUs()
+      return
+    }
+
+    if (target === '/tanitim-turu' || target === '#tanitim-turu' || target === '/tur' || target === '#tur') {
+      handleOpenTour()
+      return
+    }
+
+    setIsReachUsModalOpen(false)
+    setIsTourModalOpen(false)
+
+    let path = '/'
+    let selector = '#hero'
+    let title = defaultTitle
+
+    if (target === '/projeler' || target === '#projeler') {
+      path = '/projeler'
+      selector = '#projeler'
+      title = 'Projeler | Demirtürk İnşaat Karasu'
+    } else if (target === '/odeme-modelleri' || target === '#odeme-modelleri' || target === '/finansman' || target === '#finansman') {
+      path = '/odeme-modelleri'
+      selector = '#odeme-modelleri'
+      title = 'Ödeme Modelleri & Elden Senet | Demirtürk İnşaat'
+    } else if (target === '/mimari-yaklasim' || target === '#mimari-yaklasim' || target === '/insa-surecleri' || target === '#insa-surecleri') {
+      path = '/mimari-yaklasim'
+      selector = '#mimari-yaklasim'
+      title = 'Mimari Yaklaşım & Mühendislik | Demirtürk İnşaat'
+    } else if (target === '/makaleler' || target === '#makaleler') {
+      path = '/makaleler'
+      selector = '#makaleler'
+      title = 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
+    } else if (target === '/yapi-malzemeleri' || target === '#yapi-malzemeleri' || target === '/malzeme' || target === '#malzeme') {
+      path = '/yapi-malzemeleri'
+      selector = '#yapi-malzemeleri'
+      title = 'Yapı Malzemeleri & Toptan Tedarik | Demirtürk İnşaat'
+    } else if (target === '/' || target === '#' || target === '#hero' || target === '') {
+      path = '/'
+      selector = '#hero'
+      title = defaultTitle
+    } else if (target.startsWith('/projeler/')) {
+      const slug = target.replace('/projeler/', '').replace(/\/+$/, '')
+      const project = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === slug || p.id === slug))
+      if (project) {
+        handleSelectProject(project, pushHistory)
+        return
+      }
+    } else if (target.startsWith('/makaleler/')) {
+      const slug = target.replace('/makaleler/', '').replace(/\/+$/, '')
+      const article = ARTICLES_DATA.find((a) => a.slug === slug || a.id === slug)
+      if (article) {
+        handleSelectArticle(article, pushHistory)
+        return
+      }
+    }
+
+    if (pushHistory && window.location.pathname !== path) {
+      window.history.pushState({ path }, '', path)
+    }
+
+    document.title = title
+
+    if (path === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    setTimeout(() => {
+      const el = document.querySelector(selector)
+      if (el) {
+        const topOffset = 52
+        const elementPosition = el.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - topOffset
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }, 60)
+  }
+
+  // SEO & Deep-linking: sync URL and meta on mount and on selection changes
+  useEffect(() => {
+    const handleUrlState = () => {
+      const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/'
+      const params = new URLSearchParams(window.location.search)
+      const projectParam = params.get('proje')
+      const articleParam = params.get('makale')
+
+      // 1. Check for specific project in path or query
+      const projectSlugMatch = pathname.match(/^\/(?:projeler|proje)\/([a-z0-9-]+)$/)
+      const targetProjectSlug = projectSlugMatch ? projectSlugMatch[1] : projectParam
+      if (targetProjectSlug) {
+        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === targetProjectSlug || p.id === targetProjectSlug))
+        if (found) {
+          handleSelectProject(found, false)
+          return
+        }
+      }
+
+      // 2. Check for specific article in path or query
+      const articleSlugMatch = pathname.match(/^\/(?:makaleler|makale)\/([a-z0-9-]+)$/)
+      const targetArticleSlug = articleSlugMatch ? articleSlugMatch[1] : articleParam
+      if (targetArticleSlug) {
+        const found = ARTICLES_DATA.find((a) => a.slug === targetArticleSlug || a.id === targetArticleSlug)
+        if (found) {
+          handleSelectArticle(found, false)
+          return
+        }
+      }
+
+      // 3. Check for modals
+      if (pathname === '/iletisim' || pathname === '/ulasin' || params.has('iletisim') || params.has('ulasin')) {
+        setSelectedProject(null)
+        setSelectedArticle(null)
+        setIsTourModalOpen(false)
+        setIsReachUsModalOpen(true)
+        document.title = 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+        return
+      }
+
+      if (pathname === '/tanitim-turu' || pathname === '/tur' || params.has('tur')) {
+        setSelectedProject(null)
+        setSelectedArticle(null)
+        setIsReachUsModalOpen(false)
+        setIsTourModalOpen(true)
+        document.title = 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
+        return
+      }
+
+      // Normal section page or home
+      setSelectedProject(null)
+      setSelectedArticle(null)
+      setIsReachUsModalOpen(false)
+      setIsTourModalOpen(false)
+
+      if (pathname === '/projeler') {
+        handleNavigate('/projeler', false)
+        return
+      }
+
+      if (pathname === '/odeme-modelleri' || pathname === '/finansman') {
+        handleNavigate('/odeme-modelleri', false)
+        return
+      }
+
+      if (pathname === '/mimari-yaklasim' || pathname === '/insa-surecleri') {
+        handleNavigate('/mimari-yaklasim', false)
+        return
+      }
+
+      if (pathname === '/makaleler') {
+        handleNavigate('/makaleler', false)
+        return
+      }
+
+      if (pathname === '/yapi-malzemeleri' || pathname === '/malzeme' || pathname === '/malzemeler') {
+        handleNavigate('/yapi-malzemeleri', false)
+        return
+      }
+
+      if (pathname === '/') {
+        document.title = defaultTitle
+      }
+    }
+
+    handleUrlState()
+    window.addEventListener('popstate', handleUrlState)
+    return () => window.removeEventListener('popstate', handleUrlState)
+  }, [])
+
+  // Meta description updates for SEO
+  useEffect(() => {
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (!metaDesc) return
+
+    if (isReachUsModalOpen) {
+      metaDesc.setAttribute('content', 'Demirtürk İnşaat merkez ofis adresi, telefon numaraları, WhatsApp danışma hattı ve Karasu konut projeleri iletişim bilgileri.')
+    } else if (isTourModalOpen) {
+      metaDesc.setAttribute('content', 'Demirtürk İnşaat ile Karasu projelerini yerinde görün. İstanbul ve çevre illerden ücretsiz VIP transfer ve tanıtım turu randevusu.')
+    } else if (selectedProject) {
+      metaDesc.setAttribute('content', selectedProject.description.slice(0, 155))
+    } else if (selectedArticle) {
+      metaDesc.setAttribute('content', selectedArticle.summary.slice(0, 155))
+    } else {
+      metaDesc.setAttribute('content', defaultDesc)
+    }
+  }, [selectedProject, selectedArticle, isReachUsModalOpen, isTourModalOpen])
+
+  const isSubPageOpen = Boolean(selectedProject || selectedArticle || isReachUsModalOpen)
 
   return (
     <div className="min-h-screen bg-[#252c33] text-[#fffff1] selection:bg-[#313941] selection:text-[#fffff1]">
@@ -279,20 +349,16 @@ export const DemirturkWebsite: React.FC = () => {
       <WebsiteNavbar 
         isSubPageOpen={isSubPageOpen}
         onNavigate={handleNavigate}
-        onOpenTour={() => setIsTourModalOpen(true)} 
-        onOpenReachUs={() => {
-          setSelectedProject(null)
-          setSelectedArticle(null)
-          setIsReachUsModalOpen(true)
-        }}
+        onOpenTour={handleOpenTour} 
+        onOpenReachUs={handleOpenReachUs}
       />
 
       {/* Main Fullscreen Responsive Hero Slider (16:9 Desktop, 9:16 Mobile) */}
       <HeroSlider 
         currentIndex={currentSlideIndex}
         onSlideChange={setCurrentSlideIndex}
-        onSelectProject={(p) => setSelectedProject(p)} 
-        onOpenTour={() => setIsTourModalOpen(true)}
+        onSelectProject={handleSelectProject} 
+        onOpenTour={handleOpenTour}
       />
 
       {/* Slaytın Altı: Sürekli ve Pürüzsüz Blurlu Arka Plan & İçerik Katmanı */}
@@ -303,7 +369,7 @@ export const DemirturkWebsite: React.FC = () => {
         {/* İçerik Katmanı */}
         <div className="relative z-10">
           {/* 1. PROJELER (#projeler) */}
-          <ProjectsGrid onSelectProject={(p) => setSelectedProject(p)} />
+          <ProjectsGrid onSelectProject={handleSelectProject} />
 
           {/* 2. ÖDEME MODELLERİ (#odeme-modelleri & #finansman) */}
           <PaymentModelsSection />
@@ -312,7 +378,7 @@ export const DemirturkWebsite: React.FC = () => {
           <ArchitecturePhilosophy />
 
           {/* 4. MAKALELER (#makaleler) */}
-          <ArticlesSection onSelectArticle={(a) => setSelectedArticle(a)} />
+          <ArticlesSection onSelectArticle={handleSelectArticle} />
 
           {/* 5. YAPI MALZEMELERİ (#yapi-malzemeleri) */}
           <MaterialAndEngineering />
@@ -321,11 +387,11 @@ export const DemirturkWebsite: React.FC = () => {
           <ReachUsSection />
 
           {/* Footer */}
-          <WebsiteFooter onOpenReachUs={() => {
-            setSelectedProject(null)
-            setSelectedArticle(null)
-            setIsReachUsModalOpen(true)
-          }} />
+          <WebsiteFooter 
+            onOpenReachUs={handleOpenReachUs} 
+            onNavigate={handleNavigate}
+            onSelectProject={handleSelectProject}
+          />
         </div>
       </div>
 
@@ -341,7 +407,7 @@ export const DemirturkWebsite: React.FC = () => {
           article={selectedArticle}
           allArticles={ARTICLES_DATA}
           onClose={handleCloseArticle}
-          onSelectArticle={(art) => setSelectedArticle(art)}
+          onSelectArticle={handleSelectArticle}
           onNavigate={handleNavigate}
         />
       )}
@@ -349,13 +415,13 @@ export const DemirturkWebsite: React.FC = () => {
       {/* Tam Ekran Ulaşın & Kariyer Sayfası Modalı */}
       <ReachUsModal
         isOpen={isReachUsModalOpen}
-        onClose={() => setIsReachUsModalOpen(false)}
+        onClose={handleCloseReachUs}
       />
 
       {/* Ücretsiz Tanıtım Turu Hızlı Rezervasyon Modalı */}
       <TourBookingModal
         isOpen={isTourModalOpen}
-        onClose={() => setIsTourModalOpen(false)}
+        onClose={handleCloseTour}
       />
 
       {/* Floating Scroll To Top Button */}

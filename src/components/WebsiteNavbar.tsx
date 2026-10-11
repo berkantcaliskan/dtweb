@@ -17,11 +17,11 @@ interface NavLinkItem {
 }
 
 const NAV_LINKS: NavLinkItem[] = [
-  { label: 'PROJELER', href: '#projeler' },
-  { label: 'ÖDEME MODELLERİ', href: '#odeme-modelleri' },
-  { label: 'MİMARİ YAKLAŞIM', href: '#mimari-yaklasim' },
-  { label: 'MAKALELER', href: '#makaleler' },
-  { label: 'YAPI MALZEMELERİ', href: '#yapi-malzemeleri' },
+  { label: 'PROJELER', href: '/projeler' },
+  { label: 'ÖDEME MODELLERİ', href: '/odeme-modelleri' },
+  { label: 'MİMARİ YAKLAŞIM', href: '/mimari-yaklasim' },
+  { label: 'MAKALELER', href: '/makaleler' },
+  { label: 'YAPI MALZEMELERİ', href: '/yapi-malzemeleri' },
   { label: 'İLETİŞİM', href: '/iletisim' },
 ]
 
@@ -211,15 +211,10 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
   const handleNavClick = (item: NavLinkItem) => {
     setIsMenuOpen(false)
-    if ((item.label === 'İLETİŞİM' || item.label === 'ULAŞIN') && onOpenReachUs) {
-      if (onNavigate) {
-        onNavigate(item.href)
-      }
-      onOpenReachUs()
-      return
-    }
     if (onNavigate) {
       onNavigate(item.href)
+    } else if ((item.label === 'İLETİŞİM' || item.label === 'ULAŞIN') && onOpenReachUs) {
+      onOpenReachUs()
     } else {
       scrollTo(item.href)
     }
@@ -227,7 +222,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
 
   const scrollTo = (href: string) => {
     setIsMenuOpen(false)
-    const element = document.querySelector(href)
+    const selector = href.startsWith('#') ? href : `#${href.replace(/^\//, '')}`
+    const element = document.querySelector(selector)
     if (element) {
       const topOffset = 52
       const elementPosition = element.getBoundingClientRect().top
@@ -345,13 +341,17 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             <nav className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 pointer-events-auto z-10">
               <div className="flex items-center space-x-2 sm:space-x-3 xl:space-x-5 overflow-hidden whitespace-nowrap">
                 {visibleLinks.map((item) => (
-                  <button
+                  <a
                     key={item.label}
-                    onClick={() => handleNavClick(item)}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleNavClick(item)
+                    }}
                     className="text-xs xl:text-[13px] tracking-[0.12em] xl:tracking-[0.16em] font-normal nav-page-link text-[#fffff1]/85 hover:text-[#fffff1] transition-colors relative py-1 whitespace-nowrap flex-shrink-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#fffff1] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                   >
                     {item.label}
-                  </button>
+                  </a>
                 ))}
               </div>
             </nav>
@@ -489,9 +489,13 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           {/* Section: Tüm Sayfa Linkleri (Temiz ve İnceltilmiş) */}
           <div className="flex flex-col space-y-1">
             {NAV_LINKS.map((item) => (
-              <button
+              <a
                 key={item.label}
-                onClick={() => handleNavClick(item)}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleNavClick(item)
+                }}
                 className="w-full text-left text-base sm:text-lg font-theSeasons font-normal tracking-wider text-[#fffff1]/90 hover:text-white hover:pl-2 transition-all py-2.5 flex items-center justify-between border-b border-[#fffff1]/5 group cursor-pointer"
               >
                 <span>{item.label}</span>
@@ -499,7 +503,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   size={15}
                   className="text-[#fffff1]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                 />
-              </button>
+              </a>
             ))}
           </div>
 

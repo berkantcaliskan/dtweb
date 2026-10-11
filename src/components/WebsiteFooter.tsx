@@ -3,13 +3,25 @@ import { COMPANY_INFO, PROJECTS_DATA } from '../data/websiteData'
 import { ChevronUp, Phone, Mail, MapPin } from 'lucide-react'
 import { DemirturkLogo } from './DemirturkLogo'
 
+import { ProjectItem } from '../types'
+
 interface WebsiteFooterProps {
   onOpenReachUs?: () => void
+  onNavigate?: (path: string) => void
+  onSelectProject?: (project: ProjectItem) => void
 }
 
-export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) => {
+export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ 
+  onOpenReachUs, 
+  onNavigate,
+  onSelectProject 
+}) => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (onNavigate) {
+      onNavigate('/')
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   return (
@@ -78,7 +90,15 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
               {PROJECTS_DATA.filter((p) => !p.hidden).slice(0, 5).map((p) => (
                 <li key={p.id}>
-                  <a href="#projeler" className="hover:text-white transition-colors">
+                  <a 
+                    href={`/projeler/${p.slug || p.id}`} 
+                    onClick={(e) => {
+                      e.preventDefault()
+                      if (onSelectProject) onSelectProject(p)
+                      else if (onNavigate) onNavigate(`/projeler/${p.slug || p.id}`)
+                    }}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
                     {p.title}
                   </a>
                 </li>
@@ -92,19 +112,73 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({ onOpenReachUs }) =
               SAYFALAR
             </h4>
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
-              <li><a href="#projeler" className="hover:text-white transition-colors">Projeler</a></li>
-              <li><a href="#odeme-modelleri" className="hover:text-white transition-colors">Ödeme Modelleri</a></li>
-              <li><a href="#mimari-yaklasim" className="hover:text-white transition-colors">Mimari Yaklaşım</a></li>
-              <li><a href="#makaleler" className="hover:text-white transition-colors">Makaleler</a></li>
-              <li><a href="#yapi-malzemeleri" className="hover:text-white transition-colors">Yapı Malzemeleri</a></li>
+              <li>
+                <a 
+                  href="/projeler" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/projeler')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Projeler
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/odeme-modelleri" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/odeme-modelleri')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Ödeme Modelleri
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/mimari-yaklasim" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/mimari-yaklasim')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Mimari Yaklaşım
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/makaleler" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/makaleler')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Makaleler
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/yapi-malzemeleri" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/yapi-malzemeleri')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Yapı Malzemeleri
+                </a>
+              </li>
               <li>
                 <a
                   href="/iletisim"
                   onClick={(e) => {
-                    if (onOpenReachUs) {
-                      e.preventDefault()
-                      onOpenReachUs()
-                    }
+                    e.preventDefault()
+                    if (onOpenReachUs) onOpenReachUs()
+                    else if (onNavigate) onNavigate('/iletisim')
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
