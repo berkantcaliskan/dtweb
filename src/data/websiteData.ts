@@ -552,7 +552,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     seriesInfo: 'Tamamlandı',
     cardSize: 'standard',
     subtitle: 'Karadeniz kıyısında dinamik ve dinlendirici sahil yaşamı',
-    slideDescription: 'Nehir ve Karadeniz, muhteşem bir konumda bir araya geliyor.',
+    slideDescription: 'Nehir ve Karadeniz, muhteşem bir konumda bir araya geliyor',
     category: 'completed',
     categoryLabel: 'Tamamlanan proje',
     location: 'Yeni Mahalle, Karasu',
