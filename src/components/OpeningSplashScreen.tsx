@@ -114,7 +114,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         <div className="relative w-[210px] sm:w-[250px] flex flex-col items-center py-0.5">
           {/* Line 1: DEMİRTÜRK - ExtraBold Plus Jakarta Sans */}
           <h1
-            className="anim-splash-title opacity-0 w-full text-center text-[#252c33] font-extrabold uppercase tracking-[0.05em] text-[24px] sm:text-[29px] leading-none select-none"
+            className="anim-splash-title opacity-0 w-full text-center text-[#252c33] font-extrabold uppercase tracking-[0.14em] pl-[0.14em] text-[24px] sm:text-[29px] leading-none select-none"
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 800,
