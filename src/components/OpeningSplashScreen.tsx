@@ -114,7 +114,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         <div className="relative w-[230px] sm:w-[270px] flex flex-col items-center overflow-hidden py-0.5 mt-1 sm:mt-1.5">
           {/* Subtle luxury light sheen reflection over typography */}
           <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-            <div className="w-[85px] h-full anim-splash-sheen bg-gradient-to-r from-transparent via-white/85 to-transparent" />
+            <div className="w-[85px] h-full anim-splash-sheen bg-gradient-to-r from-transparent via-white/85 to-transparent opacity-0 pointer-events-none" />
           </div>
 
           {/* Line 1: DEMİRTÜRK - ExtraBold Plus Jakarta Sans */}
