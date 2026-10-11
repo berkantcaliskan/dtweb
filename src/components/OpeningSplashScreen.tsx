@@ -109,9 +109,14 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* 3. BRAND TYPOGRAPHY: DEMİRTÜRK İNŞAAT                           */}
         {/* - "Demirtürk" is ExtraBold (800)                               */}
         {/* - "İnşaat" is Light (300)                                      */}
-        {/* - Clean container without overflow clipping                     */}
+        {/* - Subtle light sheen sweep from left to right                  */}
         {/* ============================================================== */}
-        <div className="relative w-[210px] sm:w-[250px] flex flex-col items-center py-0.5">
+        <div className="relative w-[230px] sm:w-[270px] flex flex-col items-center overflow-hidden py-1 mt-2.5 sm:mt-3.5">
+          {/* Subtle luxury light sheen reflection over typography */}
+          <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+            <div className="w-[85px] h-full anim-splash-sheen bg-gradient-to-r from-transparent via-white/85 to-transparent" />
+          </div>
+
           {/* Line 1: DEMİRTÜRK - ExtraBold Plus Jakarta Sans */}
           <h1
             className="anim-splash-title opacity-0 w-full text-center text-[#252c33] font-extrabold uppercase tracking-[0.14em] pl-[0.14em] text-[24px] sm:text-[29px] leading-none select-none"
@@ -142,7 +147,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
 
         {/* 4. Luxury Founding Badge (Açıklama) */}
         <div
-          className="anim-splash-subtitle opacity-0 mt-[8vh] sm:mt-[10vh] text-[10px] sm:text-[12px] uppercase tracking-[0.2em] text-[#313941]/90 font-light leading-none whitespace-nowrap select-none"
+          className="anim-splash-subtitle opacity-0 mt-[7vh] sm:mt-[8.5vh] text-[10px] sm:text-[12px] uppercase tracking-[0.2em] text-[#313941]/90 font-light leading-none whitespace-nowrap select-none"
           style={{
             fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
             fontWeight: 300,
