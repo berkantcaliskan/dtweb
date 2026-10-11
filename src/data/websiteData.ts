@@ -63,7 +63,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '57 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Asel Doğa Evleri; Karadeniz sahil çam ormanlarının ferahlatıcı oksijeni ile çağdaş mimarinin dingin çizgilerini bir araya getiriyor. Geniş yüzme havuzu, çocuk oyun alanları, peyzaj yürüyüş parkurları ve ferah yeşil alanları ile dört mevsim tatil konforunda bir yaşam sunar.',
+      'Asel Doğa Evleri; şehir konforu ile sakin bir çevre dokusunu buluşturan çağdaş bir sahil projesidir. Açık yüzme havuzu, yerden ısıtmalı daireleri ve zengin site peyzajıyla dört mevsim keyifli bir yaşam vadediyor.',
     architecturalPhilosophy:
       'Doğal peyzajla uyumlu modern mimari hatlar, ferah balkonlar ve geniş bahçe alanlarıyla Karasu’nun sahil dokusuna değer katan, dört mevsim konfor sunan fonksiyonel bir yaşam kurgusu.',
     heroMedia: {
