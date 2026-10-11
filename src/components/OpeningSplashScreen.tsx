@@ -5,21 +5,15 @@ interface OpeningSplashScreenProps {
 }
 
 export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComplete }) => {
-  const [isLocked, setIsLocked] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
 
-  // Step 1: Lock animation triggers pulse at 1.1s when lines meet
   useEffect(() => {
-    const lockTimer = setTimeout(() => {
-      setIsLocked(true)
-    }, 1100)
-
-    // Step 2: Begin smooth luxury exit fade at 3.2s (+1.6s longer brand display)
+    // Step 1: Begin smooth exit fade at 3.2s
     const exitTimer = setTimeout(() => {
       setIsExiting(true)
     }, 3200)
 
-    // Step 3: Complete and unmount at 3.7s (after 500ms fade)
+    // Step 2: Complete and unmount at 3.7s (after 500ms fade)
     const completeTimer = setTimeout(() => {
       onComplete()
     }, 3700)
@@ -29,7 +23,6 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
     document.body.style.overflow = 'hidden'
 
     return () => {
-      clearTimeout(lockTimer)
       clearTimeout(exitTimer)
       clearTimeout(completeTimer)
       document.body.style.overflow = originalOverflow
@@ -41,11 +34,6 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffff1] select-none transition-opacity duration-500 ease-out ${
         isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
-      style={{
-        transitionProperty: 'opacity, transform',
-        transitionDuration: '500ms',
-        transform: isExiting ? 'scale(1.02)' : 'scale(1)',
-      }}
     >
       {/* Background Architectural Watermark Grid & Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -63,7 +51,7 @@ export const OpeningSplashScreen: React.FC<OpeningSplashScreenProps> = ({ onComp
         {/* ============================================================== */}
         {/* 1. AUTHENTIC 4-CHEVRON EMBLEM ANIMATION                         */}
         {/* ============================================================== */}
-        <div className={`relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center -mb-1.5 sm:-mb-2 ${isLocked ? 'anim-splash-lock-pulse' : ''}`}>
+        <div className="relative w-[130px] h-[130px] sm:w-[155px] sm:h-[155px] flex items-center justify-center -mb-1.5 sm:-mb-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 375 375"
