@@ -66,7 +66,7 @@ export const PaymentModelsSection: React.FC = () => {
       icon: Layers,
       summary: 'Banka kredisi, faiz veya dosya masrafı olmadan, doğrudan Demirtürk İnşaat bünyesinde 40 aya varan elden senet modeli.',
       features: [
-        'Peşinat sonrası 40 aya varan eşit senet taksitleri',
+        'Peşinat sonrası 40 aya kadar vadeyle',
         'Banka faizi ve dosya masrafı yok',
         'Kredi notu sorgusu veya kefil zorunluluğu yok',
         'Senetler bankalara devredilmez, şirket bünyesinde kalır',
@@ -95,7 +95,7 @@ export const PaymentModelsSection: React.FC = () => {
       summary: 'Aylık taksitleri düşük tutup hasat, prim veya ikramiye dönemlerinize uygun ara ödemeler ile esnek plan.',
       features: [
         'Düşük tutarlı aylık taksit konforu',
-        'Yılda 1 veya 2 kez bütçenize göre planlanan ara ödemeler',
+        'Dileğinize göre, yılda 1 veya 2 kez bütçenize uygun ara ödemeler (ara ödeme zorunluluğu yoktur)',
         'Tarım, fındık hasadı veya dönemsel gelire uyarlanabilirlik',
         'Kendi nakit akışınıza göre şekillenen ödeme takvimi',
       ],
@@ -185,7 +185,7 @@ export const PaymentModelsSection: React.FC = () => {
               <span>İNTERAKTİF SENET & TAKSİT HESAPLAYICI</span>
             </div>
             <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold text-[#fffff1]">
-              Kendi Ödeme Planınızı Simüle Edin
+              Kendi Ödeme Planınızı Oluşturun
             </h3>
             <p className="text-xs sm:text-sm text-[#fffff1]/75 font-light mt-2">
               Konut bütçenizi, peşinat oranınızı ve vade sürenizi belirleyin; 0 faizli şirket bünyesi senet planınızı anında görün.
@@ -349,7 +349,7 @@ export const PaymentModelsSection: React.FC = () => {
 
                 <div className="flex justify-between items-center text-xs sm:text-sm">
                   <span className="text-[#fffff1]/70 font-light">Vade Sayısı:</span>
-                  <span className="text-[#fffff1] font-semibold">{termMonths} Ay Eşit Senet</span>
+                  <span className="text-[#fffff1] font-semibold">{termMonths} Ay Vade</span>
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm text-emerald-400">
