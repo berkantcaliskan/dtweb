@@ -397,7 +397,7 @@ export const DemirturkWebsite: React.FC = () => {
 
       {/* Interactive Project Detail Modal */}
       <ProjectDetailModal
-        project={selectedProject}
+        project={selectedProject ? (PROJECTS_DATA.find((p) => p.id === selectedProject.id || p.slug === selectedProject.slug) || selectedProject) : null}
         onClose={handleCloseProject}
       />
 
