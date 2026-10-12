@@ -440,7 +440,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   />
                   <input
                     type="tel"
-                    placeholder="Telefon Numaranız (05xx...)"
+                    placeholder="Telefon Numaranız (05...)"
                     value={leadPhone}
                     onChange={(e) => setLeadPhone(e.target.value)}
                     required
@@ -1187,7 +1187,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 />
                 <input
                   type="tel"
-                  placeholder="Telefon Numaranız (05xx...)"
+                  placeholder="Telefon Numaranız (05...)"
                   value={leadPhone}
                   onChange={(e) => setLeadPhone(e.target.value)}
                   required
