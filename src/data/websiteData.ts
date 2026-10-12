@@ -47,7 +47,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'yenisehir-rezidans',
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Etapları',
-    seriesInfo: 'Tamamlanan 1. ve 2. etap • 3. etap devam ediyor',
+    seriesInfo: '3 Etap',
     cardSize: 'standard',
     subtitle: 'Doğal taşın ilhamıyla prestijli bir yaşam',
     slideDescription: 'Doğal taşın ilhamıyla prestijli bir yaşam',
