@@ -616,7 +616,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#fffff1]/80 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>PROJE KAPSAMI ({project.stages.length} PROJE)</span>
+                  <span>PROJE ETAPLARI ({project.stages.length} ETAP)</span>
                 </span>
                 <span className="text-[11px] text-[#fffff1]/60 italic sm:text-right">
                   Adres, teslim tarihi ve özellikler seçtiğiniz projeye göre güncellenir
@@ -785,13 +785,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div>
                 <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>PROJE KAPSAMI</span>
+                  <span>PROJE ETAPLARI</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold text-[#fffff1]">
-                  {project.title} Kapsamı
+                  {project.title}
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/70 font-light mt-1 max-w-2xl leading-relaxed">
-                  {project.title} kapsamındaki projelerimizi ve devam eden çalışmalarımızı inceleyin. Tamamlanan ve satışta olan projelerimizin detaylarına kartlara tıklayarak ulaşabilirsiniz.
+                  {project.title} bünyesindeki tüm etapları ve devam eden çalışmaları inceleyin. Tamamlanan ve satışta olan projelerimizin detaylarına kartlara tıklayarak ulaşabilirsiniz.
                 </p>
               </div>
             </div>
@@ -1003,7 +1003,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </div>
                 {project.seriesInfo && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Proje Kapsamı:</span>
+                    <span className="text-[#fffff1]/50">Proje Etapları:</span>
                     <span className="text-[#fffff1] font-bold">{project.seriesInfo}</span>
                   </div>
                 )}
