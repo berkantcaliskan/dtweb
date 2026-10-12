@@ -61,7 +61,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     totalUnits: '246 Daire',
     unitTypes: ['1+1 ve 2+1 Daireler'],
     description:
-      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize 800 metre mesafede çağdaş konut mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. 1.000.000₺ peşinat, 40 ay vade ve araç takas imkânıyla 3 etap halinde hayata geçirilen güvenli ve prestijli bir yaşam projesi.',
+      'Yeni Şehir Etapları; Karasu Yalı Mahallesi\'nin hızla gelişen ve değer kazanan bölgesinde, denize 800 metre mesafede çağdaş konut mimarisini müstakil bahçe ayrıcalığı, geniş peyzaj alanları, yarı olimpik aqua havuzu ve yerden ısıtmalı konforlu evlerle buluşturuyor. Tamamlanan ve yapımı devam eden etaplarıyla toplam 3 etaptan oluşan proje; aileler için dört mevsim huzurlu, güvenli ve prestijli bir site yaşamı sunuyor.',
     architecturalPhilosophy:
       'Güneş ışığını maksimum alan ferah teras kademelendirmeleri, modern cephe hatları ve enerji tasarruflu güneş paneli altyapısıyla çevre dostu, güvenli ve estetik konut mimarisi.',
     heroMedia: {
@@ -121,7 +121,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       }
     ],
     features: [
-      '1.000.000₺ Peşinat – 40 Ay Vade – Araç Takas',
+      '3 Etaplı Prestijli Site Konsepti',
       'Yalı Mahallesi – Denize 800 Metre',
       '1+1 & 2+1 Daire Seçenekleri',
       'Müstakil Bahçeli Zemin Kat Seçenekleri',
