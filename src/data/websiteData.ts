@@ -88,12 +88,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
         aspect: '16:9'
       }
     ],
-    paymentHighlight: {
-      downPayment: '1.000.000₺',
-      installment: '40 Ay Vade',
-      tradeIn: 'Araç Takası Kabul Edilir',
-      badgeText: '1.000.000₺ Peşinat — 40 Ay Vade — Araç Takası'
-    },
     featureDetails: [
       {
         icon: 'Sun',
@@ -124,11 +118,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
         icon: 'Home',
         title: '1+1 & 2+1 Daire Seçenekleri',
         description: 'Yatırım ve oturum için ideal, modern mimariye sahip 1+1 ve 2+1 daire seçenekleriyle konforlu yaşam alanları sunulmaktadır.'
-      },
-      {
-        icon: 'BadgePercent',
-        title: 'Avantajlı Ödeme Fırsatları',
-        description: '1.000.000₺ peşinat, 40 ay vade seçeneği ile kolay ödeme imkanı. Ayrıca peşinat yerine araç takası kabul edilerek yatırımınızı daha esnek hale getiriyoruz.'
       }
     ],
     features: [
