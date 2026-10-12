@@ -74,17 +74,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     gallery: [
       {
         url: '/images/yenisehirforweb.jpeg',
-        title: 'Yeni Şehir Etapları - Modern Dış Cephe',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/yenisehirforweb.jpeg',
-        title: 'Özel Havuz Alanı ve Balkonlar',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/yenisehirforweb.jpeg',
-        title: 'Bahçe ve Yeşil Peyzaj',
+        title: 'Yeni Şehir Etapları - Mimari Perspektif',
         aspect: '16:9'
       }
     ],
@@ -262,17 +252,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     gallery: [
       {
         url: '/images/aselforweb.jpeg',
-        title: 'Ön Cephe Mimarisi & Özel Balkonlar',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/aselforweb.jpeg',
-        title: 'Özel Yüzme Havuzu ve Güneşlenme Terasları',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/aselforweb.jpeg',
-        title: 'Cephe Mimarisi ve Doğayla İç İçe Yeşil Peyzaj',
+        title: 'Asel Doğa Evleri - Mimari Perspektif',
         aspect: '16:9'
       }
     ],
@@ -429,17 +409,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     gallery: [
       {
         url: '/images/alminaforweb.jpeg',
-        title: 'Gece Mimarisi ve Dış Cephe Aydınlatması',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/alminaforweb.jpeg',
-        title: 'Açık Havuz & Güneşlenme Terası',
-        aspect: '16:9'
-      },
-      {
-        url: '/images/alminaforweb.jpeg',
-        title: 'Modern Sahil Mimarisi Cephesi',
+        title: 'Almina Evleri - Mimari Perspektif',
         aspect: '16:9'
       }
     ],

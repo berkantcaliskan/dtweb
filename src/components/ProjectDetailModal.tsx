@@ -1125,23 +1125,31 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className={
+              project.gallery.length === 1
+                ? 'w-full'
+                : project.gallery.length === 2
+                ? 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'
+                : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+            }>
               {project.gallery.map((item, idx) => {
                 const aspectClass = item.aspect === '1:1'
                   ? 'aspect-square'
                   : item.aspect === '9:16'
                     ? 'aspect-[9/16]'
+                    : project.gallery.length === 1
+                    ? 'aspect-[16/9] sm:aspect-[21/9] max-h-[540px]'
                     : 'aspect-[16/9] sm:aspect-[16/10]'
                 return (
-                  <div key={idx} className={`group relative rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-[#313941] ${aspectClass} shadow-md`}>
+                  <div key={idx} className={`group relative rounded-2xl overflow-hidden border border-[#fffff1]/15 bg-[#313941] ${aspectClass} shadow-xl`}>
                     <img
                       src={item.url}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <span className="text-xs font-medium text-[#fffff1]">{item.title}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 via-30% to-transparent opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-end p-4 sm:p-6">
+                      <span className="text-xs sm:text-sm font-medium text-[#fffff1] tracking-wide">{item.title}</span>
                     </div>
                   </div>
                 )
