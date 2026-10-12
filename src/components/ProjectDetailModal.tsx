@@ -637,7 +637,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                       onClick={() => setSelectedStageIndex(idx)}
                       className={`group relative flex items-center justify-between sm:justify-start gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-xl border text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
                         isSelected
-                          ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] shadow-lg shadow-black/25 font-bold ring-2 ring-[#fffff1]/20 scale-[1.02]'
+                          ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] shadow-md font-bold'
                           : 'bg-[#313941]/70 hover:bg-[#313941] text-[#fffff1]/80 hover:text-[#fffff1] border-[#fffff1]/15 hover:border-[#fffff1]/35 font-medium'
                       }`}
                     >
