@@ -1077,37 +1077,36 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             </div>
 
             {project.floorPlans[selectedPlanIndex] && (
-              <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-2xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center shadow-xl">
-                <div className="rounded-xl overflow-hidden border border-[#fffff1]/10 aspect-[16/9] sm:aspect-[4/3] bg-black/40">
-                  <img
-                    src={project.floorPlans[selectedPlanIndex].image}
-                    alt={project.floorPlans[selectedPlanIndex].name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="space-y-5">
+              <div className="bg-[#2c343d] border border-[#fffff1]/15 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#fffff1]/10">
                   <div>
-                    <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold">
+                    <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
                       SEÇİLEN PLAN DETAYI
                     </span>
-                    <h4 className="font-theSeasons text-3xl font-bold text-[#fffff1] mt-1">
+                    <h4 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] mt-1">
                       {project.floorPlans[selectedPlanIndex].name}
                     </h4>
                   </div>
-                  <div className="space-y-3.5 text-sm">
-                    <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
-                      <span className="text-[#fffff1]/50">Net / Brüt Alan:</span>
-                      <span className="text-[#fffff1] font-bold text-base">{project.floorPlans[selectedPlanIndex].area}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-[#fffff1]/10">
-                      <span className="text-[#fffff1]/50">Oda Dağılımı:</span>
-                      <span className="text-[#fffff1]/95 font-medium text-right">{project.floorPlans[selectedPlanIndex].rooms}</span>
-                    </div>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black/30 border border-[#fffff1]/15 self-start sm:self-auto">
+                    <span className="text-xs text-[#fffff1]/60">Metrekare Alanı:</span>
+                    <span className="text-sm sm:text-base font-bold text-[#fffff1]">{project.floorPlans[selectedPlanIndex].area}</span>
                   </div>
-                  <p className="text-sm sm:text-base text-[#fffff1]/85 leading-relaxed font-light">
-                    {project.floorPlans[selectedPlanIndex].description}
-                  </p>
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-xl bg-black/20 border border-[#fffff1]/10 space-y-1">
+                    <span className="text-xs text-[#fffff1]/50 block">Oda Dağılımı</span>
+                    <span className="text-sm sm:text-base font-medium text-[#fffff1]">{project.floorPlans[selectedPlanIndex].rooms}</span>
+                  </div>
+                  <div className="p-4 rounded-xl bg-black/20 border border-[#fffff1]/10 space-y-1">
+                    <span className="text-xs text-[#fffff1]/50 block">İklimlendirme & Standart</span>
+                    <span className="text-sm sm:text-base font-medium text-[#fffff1]">Yerden Isıtmalı • 1. Sınıf Mimari Standart</span>
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base text-[#fffff1]/85 leading-relaxed font-light">
+                  {project.floorPlans[selectedPlanIndex].description}
+                </p>
               </div>
             )}
           </section>

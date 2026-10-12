@@ -10,7 +10,7 @@ export interface FloorPlan {
   name: string
   area: string
   rooms: string
-  image: string
+  image?: string
   description: string
 }
 

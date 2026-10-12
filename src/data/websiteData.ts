@@ -219,14 +219,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
         name: '2+1 Geniş Teraslı Daire',
         area: '88 m² Brüt / 74 m² Net',
         rooms: '2 Yatak Odası, Salon, Ada Mutfak, Teras Balkon, Banyo',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
         description: 'Yerden ısıtmalı, ferah iç mekan planı ve gün boyu doğal ışık alan geniş teras balkonu.'
       },
       {
         name: '1+1 Bahçe & Balkonlu Daire',
         area: '58 m² Brüt / 49 m² Net',
         rooms: '1 Yatak Odası, Salon & Mutfak, Geniş Balkon, Banyo',
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
         description: 'Yazlık kullanım ve yüksek kira getirisi için ideal kompakt, yerden ısıtmalı ve konforlu plan.'
       }
     ],
@@ -268,23 +266,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/aselforweb.jpeg',
         title: 'Özel Yüzme Havuzu ve Güneşlenme Terasları',
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/aselforweb.jpeg',
         title: 'Cephe Mimarisi ve Doğayla İç İçe Yeşil Peyzaj',
-        aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-        title: 'Geniş Balkonlar ve Bahçe Katı Ayrıcalığı',
-        aspect: '9:16'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
-        title: 'İç Mekan: Yüksek Tavan ve Doğal Gün Işığı',
         aspect: '16:9'
       }
     ],
@@ -301,14 +289,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
         name: '2+1 Geniş Teraslı Daire',
         area: '88 m² Brüt / 74 m² Net',
         rooms: '2 Yatak Odası, Salon, Açık Mutfak, Teras Balkon, Banyo',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
         description: 'Geniş cepheli salon ve ferah teras balkonuyla Karadeniz meltemini içeri davet eden fonksiyonel plan şeması.'
       },
       {
         name: '1+1 Bahçe Teraslı Daire',
         area: '56 m² Brüt / 48 m² Net',
         rooms: '1 Yatak Odası, Salon & Mutfak, Bahçe Verandası',
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
         description: 'Yazlık kullanım ve yüksek kira getirisi için optimize edilmiş kompakt, şık ve lüks detaylar.'
       }
     ],
@@ -447,19 +433,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
-        title: 'Geniş Açık Havuz ve Dinlenme Alanı',
+        url: '/images/alminaforweb.jpeg',
+        title: 'Açık Havuz & Güneşlenme Terası',
         aspect: '16:9'
       },
       {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/alminaforweb.jpeg',
         title: 'Modern Sahil Mimarisi Cephesi',
         aspect: '16:9'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80',
-        title: 'Ferah İç Mekan Tasarımı',
-        aspect: '9:16'
       }
     ],
     features: [
@@ -527,7 +508,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
         name: '2+1 Sahil Dairesi',
         area: '82 m² Brüt / 68 m² Net',
         rooms: '2 Oda, Salon, Amerikan Mutfak, Banyo, Balkon',
-        image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80',
         description: 'Deniz rüzgarını içeri alan geniş balkon ve aydınlık yaşam alanı.'
       }
     ],
@@ -600,14 +580,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Geniş peyzaj alanları ve sağlam radye temel mühendisliğiyle huzurlu ve güvenli aile yaşamı.',
     heroMedia: {
       type: 'image',
-      desktopSrc: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=80',
-      mobileSrc: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1080&q=80',
-      poster: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=80',
+      desktopSrc: '/images/aselforweb.jpeg',
+      mobileSrc: '/images/aselforweb.jpeg',
+      poster: '/images/aselforweb.jpeg',
       alt: 'Aziziye Sitesi Karasu'
     },
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/aselforweb.jpeg',
         title: 'Site Peyzajı ve Konut Blokları',
         aspect: '16:9'
       }
