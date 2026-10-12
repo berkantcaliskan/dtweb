@@ -1034,9 +1034,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 </p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
+                  className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
                 >
-                  Telefonda Bilgi Al
+                  <Phone size={16} className="text-[#252c33] flex-shrink-0" />
+                  <span>Telefonda Bilgi Al</span>
                 </a>
               </div>
             </div>
