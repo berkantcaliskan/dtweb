@@ -584,7 +584,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </span>
               {project.installmentMonths && (
                 <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-xl">
-                  Elden Senet Modeli
+                  Kişiye Özel Ödeme Modeli
                 </span>
               )}
               {displayDistanceToSea && (
@@ -749,7 +749,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   1.000.000₺ Peşinat – 40 Ay Vade – Araç Takası
                 </h3>
                 <p className="text-xs sm:text-sm text-[#fffff1]/80 font-light max-w-2xl">
-                  Banka faizi ve dosya masrafı olmadan, doğrudan Demirtürk İnşaat güvencesiyle 40 ay elden senetli ödeme kolaylığı ve peşinat yerine değerinde araç takası.
+                  Banka faizi ve dosya masrafı olmadan, doğrudan Demirtürk İnşaat güvencesiyle kişiye özel ödeme kolaylığı ve peşinat yerine değerinde araç takası.
                 </p>
               </div>
 
@@ -1017,12 +1017,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     <span className="text-[#fffff1] font-bold">{displayYear.replace(/^Teslim:\s*/i, '')}</span>
                   </div>
                 )}
-                {project.installmentMonths && (
-                  <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
-                    <span className="text-[#fffff1] font-bold">Elden Senet ({project.installmentMonths} Ay)</span>
-                  </div>
-                )}
+                <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
+                  <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
+                  <span className="text-[#fffff1] font-bold">Kişiye Özel</span>
+                </div>
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">Isınma:</span>
                   <span className="text-[#fffff1] font-bold">Yerden Isıtmalı</span>

@@ -198,7 +198,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
         distanceToSea: '800 Metre',
         totalUnits: '150 Daire',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, müstakil bahçe ayrıcalığı, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. 1.000.000₺ peşinat ve 40 ay elden senet imkânıyla satışları devam etmektedir.',
+        description: 'Yeni Şehir serisinin en güncel etabı olan 3. Etap; yerden ısıtmalı lüks yazlık evleri, müstakil bahçe ayrıcalığı, yarı olimpik aqua havuzu, güneş paneli sistemi ve elektrikli araç şarj istasyonu ile 2028 teslimi için hızla yükselmektedir. Kişiye özel ödeme seçenekleri ve esnek vade imkânıyla satışları devam etmektedir.',
         features: [
           'Teslim Tarihi: 2028 (Satışta, Devam Ediyor)',
           'Yalı Mahallesi – Denize 800 Metre',
@@ -358,7 +358,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
           '12 Daire (1+1 ve 2+1 Daireler)',
           'Geniş Açık Yüzme Havuzu & Çocuk Havuzu',
           'Yerden Isıtmalı Lüks Yaşam Standardı',
-          'Elden Senetle Esnek Ödeme Modeli'
+          'Kişiye Özel Esnek Ödeme Modeli'
         ],
         image: '/images/aselforweb.jpeg',
         totalArea: '1.200 m²'
@@ -468,7 +468,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Şehrin En İşlek Caddesi, Marketler ve Ulaşıma Çok Yakın',
       'Anaokuluna Komşu, Merkezi Lokasyon',
       'Yatırımcıya Yüksek Kira Potansiyeli',
-      'Elden Senetle Esnek Vade Kolaylığı'
+      'Kişiye Özel Esnek Vade Kolaylığı'
     ],
     stages: [
       {
@@ -515,7 +515,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
           'Şehrin En İşlek Caddesi, Marketler ve Ulaşıma Çok Yakın',
           'Anaokuluna Komşu, Merkezi Lokasyon',
           'Açık Havuz & Güneşlenme Terası',
-          'Elden Senet Modeliyle Kolay Ödeme',
+          'Kişiye Özel Ödeme Modeli',
           '9 Daire (1+1 ve 2+1 Daire Seçenekleri)'
         ],
         image: '/images/alminaforweb.jpeg',
