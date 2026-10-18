@@ -1,4 +1,5 @@
 import { ProjectItem, MaterialCategory, CompanyStat } from '../types'
+import { PROJECTS_DATA_EN, MATERIAL_CATEGORIES_EN, COMPANY_STATS_EN } from './websiteDataEn'
 
 export const COMPANY_INFO = {
   name: 'Demirtürk İnşaat',
@@ -734,3 +735,43 @@ export const FINANCING_ADVANTAGES = [
     highlight: 'Değerinde Takas İmkanı'
   }
 ]
+
+export const FINANCING_ADVANTAGES_EN = [
+  {
+    title: 'Interest-Free, In-House Installments',
+    description: 'Bypass bank interest rates and bureaucratic file fees. Enjoy flexible payment plans backed directly by Demirtürk İnşaat.',
+    highlight: 'Flexible Terms'
+  },
+  {
+    title: 'Free Karasu VIP Tour',
+    description: 'Join our private VIP transfer from Istanbul and neighboring cities to inspect our ongoing projects and show apartments on-site.',
+    highlight: 'VIP Transfer & Hospitality'
+  },
+  {
+    title: 'Custom Down Payment & Balloon Options',
+    description: 'Customizable down payment ratios and interim payment schedules aligned with your personal cash flow or harvest seasons.',
+    highlight: 'Flexible Down Payment'
+  },
+  {
+    title: 'Vehicle & Property Trade-In',
+    description: 'Evaluate your current vehicle or real estate asset at fair market value as part of your down payment or unit purchase.',
+    highlight: 'Fair Trade-In Value'
+  }
+]
+
+export const getLocalizedProjects = (lang: 'TR' | 'EN'): ProjectItem[] => {
+  return lang === 'EN' ? PROJECTS_DATA_EN : PROJECTS_DATA
+}
+
+export const getLocalizedMaterials = (lang: 'TR' | 'EN'): MaterialCategory[] => {
+  return lang === 'EN' ? MATERIAL_CATEGORIES_EN : MATERIAL_CATEGORIES
+}
+
+export const getLocalizedStats = (lang: 'TR' | 'EN'): CompanyStat[] => {
+  return lang === 'EN' ? COMPANY_STATS_EN : COMPANY_STATS
+}
+
+export const getLocalizedFinancing = (lang: 'TR' | 'EN') => {
+  return lang === 'EN' ? FINANCING_ADVANTAGES_EN : FINANCING_ADVANTAGES
+}
+

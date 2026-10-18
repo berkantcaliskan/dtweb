@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react'
 import { ArrowUpRight, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
-import { PROJECTS_DATA } from '../data/websiteData'
+import { getLocalizedProjects } from '../data/websiteData'
 import { ProjectItem } from '../types'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 interface ProjectsGridProps {
   onSelectProject: (project: ProjectItem) => void
@@ -13,11 +15,15 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   const [selectedFilter, setSelectedFilter] = useState<FilterCategory>('all')
   const [showAll, setShowAll] = useState(false)
 
-  const filterTabs: { id: FilterCategory; label: string }[] = [
-    { id: 'all', label: 'TÜM PROJELER' },
-    { id: 'ongoing', label: 'SATIŞTA & DEVAM EDENLER' },
-    { id: 'completed', label: 'TAMAMLANANLAR' },
-  ]
+  const { language, isEN } = useLanguage()
+  const t = TRANSLATIONS[language].works
+  const projects = getLocalizedProjects(language)
+
+  const filterTabs: { id: FilterCategory; label: string }[] = useMemo(() => [
+    { id: 'all', label: t.all },
+    { id: 'ongoing', label: t.ongoing },
+    { id: 'completed', label: t.completed },
+  ], [t])
 
   const handleFilterChange = (tabId: FilterCategory) => {
     setSelectedFilter(tabId)
@@ -25,16 +31,26 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   }
 
   const filteredProjects = useMemo(() => {
-    const visible = PROJECTS_DATA.filter((p) => !p.hidden)
+    const visible = projects.filter((p) => !p.hidden)
     if (selectedFilter === 'all') return visible
     if (selectedFilter === 'ongoing') {
-      return visible.filter((p) => p.status === 'Satışta' || p.status === 'Yapım Aşamasında' || p.status === 'Satışta & Devam Ediyor' || p.status === 'Satışta, Devam Ediyor' || p.status === 'Devam Ediyor')
+      return visible.filter(
+        (p) =>
+          p.category === 'ongoing' ||
+          p.status === 'Satışta' ||
+          p.status === 'Yapım Aşamasında' ||
+          p.status === 'Satışta & Devam Ediyor' ||
+          p.status === 'Satışta, Devam Ediyor' ||
+          p.status === 'Devam Ediyor' ||
+          p.status.includes('Sale') ||
+          p.status.includes('Progress')
+      )
     }
     if (selectedFilter === 'completed') {
-      return visible.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed')
+      return visible.filter((p) => p.status === 'Tamamlandı' || p.category === 'completed' || p.status.includes('Completed'))
     }
     return visible
-  }, [selectedFilter])
+  }, [projects, selectedFilter])
 
   const standardProjects = useMemo(() => {
     return filteredProjects.filter((p) => p.cardSize !== 'compact')
@@ -66,13 +82,13 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
         <div className="mb-6 sm:mb-10">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-            <span>MİMARİ PORTFÖY / WORKS</span>
+            <span>{t.sectionTag}</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fffff1] md:whitespace-nowrap">
-            Karasu'da Hayat Bulan Projelerimiz
+            {t.title}
           </h2>
           <p className="mt-3.5 text-sm sm:text-base text-[#fffff1]/80 max-w-2xl font-light leading-relaxed">
-            Her biri kendine özgü mimari kimliğe sahip, doğayla uyumlu, havuzlu ve kredisiz elden senetli konut projelerimizi keşfedin.
+            {t.desc}
           </p>
         </div>
 
@@ -153,11 +169,13 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     )}
 
                     {/* Satış durumu ibaresi */}
-                    {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor') && (
+                    {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor' || project.category === 'ongoing') && (
                       <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                         <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                          {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor'}
+                          {isEN
+                            ? (project.status === 'Satışta' ? 'On Sale Now' : 'On Sale & Under Construction')
+                            : (project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor')}
                         </span>
                       </div>
                     )}
@@ -172,8 +190,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                         <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                       </span>
                       <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
-                        <span>Projeyi</span>
-                        <span>İncele</span>
+                        <span>{t.viewDetails}</span>
                         <ArrowUpRight size={13} className="flex-shrink-0" />
                       </span>
                     </div>
@@ -235,11 +252,13 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                   )}
 
                   {/* Satış durumu ibaresi */}
-                  {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor') && (
+                  {(project.status === 'Satışta' || project.status === 'Satışta & Devam Ediyor' || project.status === 'Satışta, Devam Ediyor' || project.category === 'ongoing') && (
                     <div className="flex items-center space-x-1.5 mb-1 sm:mb-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                       <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-emerald-400">
-                        {project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor'}
+                        {isEN
+                          ? (project.status === 'Satışta' ? 'On Sale Now' : 'On Sale & Under Construction')
+                          : (project.status === 'Satışta' ? 'Şimdi Satışta' : 'Satışta, Devam Ediyor')}
                       </span>
                     </div>
                   )}
@@ -254,8 +273,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                       <MapPin size={12} className="mr-1 text-[#fffff1] flex-shrink-0" /> {project.location.split(',')[0]}
                     </span>
                     <span className="text-[#fffff1] font-semibold flex items-center gap-1.5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform">
-                      <span>Projeyi</span>
-                      <span>İncele</span>
+                      <span>{t.viewDetails}</span>
                       <ArrowUpRight size={13} className="flex-shrink-0" />
                     </span>
                   </div>
@@ -273,7 +291,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 onClick={() => setShowAll(true)}
                 className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/80 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
-                <span>Hepsini Göster</span>
+                <span>{t.showMore}</span>
                 <ChevronDown size={16} className="text-[#fffff1]/70 group-hover:text-[#fffff1] group-hover:translate-y-0.5 transition-all" />
               </button>
             ) : (
@@ -281,7 +299,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 onClick={() => setShowAll(false)}
                 className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/60 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
-                <span>Daha Az Göster</span>
+                <span>{t.showLess}</span>
                 <ChevronUp size={16} className="text-[#fffff1]/50 group-hover:text-[#fffff1] group-hover:-translate-y-0.5 transition-all" />
               </button>
             )}

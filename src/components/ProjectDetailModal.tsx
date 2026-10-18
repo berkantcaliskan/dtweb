@@ -23,15 +23,24 @@ import {
 } from 'lucide-react'
 import { ProjectItem, ProjectStage } from '../types'
 import { ResponsiveMedia } from './ResponsiveMedia'
-import { COMPANY_INFO } from '../data/websiteData'
+import { COMPANY_INFO, getLocalizedProjects } from '../data/websiteData'
 import { submitLeadToPortfoy } from '../services/leadService'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 interface ProjectDetailModalProps {
   project: ProjectItem | null
   onClose: () => void
 }
 
-export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project, onClose }) => {
+export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project: rawProject, onClose }) => {
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
+  const t = TRANSLATIONS[language].modal
+
+  const localizedProjects = getLocalizedProjects(language)
+  const project = (rawProject ? localizedProjects.find(p => p.id === rawProject.id) : null) || rawProject
+
   const [activeStage, setActiveStage] = useState<ProjectStage | null>(null)
   const [selectedStageIndex, setSelectedStageIndex] = useState(0)
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0)
@@ -115,7 +124,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
     // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
-      `Merhaba, ${subject} projeniz hakkında detaylı bilgi, güncel fiyatlar ve tanıtım turu talebinde bulunmak istiyorum.\nİsim: ${leadName || 'Belirtilmedi'}\nTelefon: ${leadPhone}`
+      isEn
+        ? `Hello, I would like to receive detailed information, current price list, and discovery tour booking for ${subject}.\nName: ${leadName || 'Not specified'}\nPhone: ${leadPhone}`
+        : `Merhaba, ${subject} projeniz hakkında detaylı bilgi, güncel fiyatlar ve tanıtım turu talebinde bulunmak istiyorum.\nİsim: ${leadName || 'Belirtilmedi'}\nTelefon: ${leadPhone}`
     )
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=${text}`, '_blank')
     setLeadFormSubmitted(true)
@@ -166,17 +177,19 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
-              aria-label={`${project.title}'na geri dön`}
+              aria-label={isEn ? `Back to ${project.title}` : `${project.title}'na geri dön`}
             >
               <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">{project.title}'na Dön</span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                {isEn ? `Back to ${project.title}` : `${project.title}'na Dön`}
+              </span>
             </button>
 
             <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
 
             <div className="hidden sm:block">
               <span className="text-[10px] tracking-widest text-[#fffff1]/60 uppercase block font-medium">
-                {project.title} • {activeStage.deliveryDate ? `Teslim: ${activeStage.deliveryDate}` : activeStage.year}
+                {project.title} • {activeStage.deliveryDate ? (isEn ? `Delivery: ${activeStage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${activeStage.deliveryDate}`) : activeStage.year}
               </span>
               <h2 className="font-theSeasons text-lg font-bold text-[#fffff1] leading-tight">
                 {activeStage.title}
@@ -187,13 +200,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           {/* Sağ: İletişim Butonları & Kapat */}
           <div className="flex items-center space-x-3">
             <a
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title} - ${activeStage.title} hakkında bilgi ve tanıtım turu talebinde bulunmak istiyorum.`)}`}
+              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                isEn
+                  ? `Hello, I would like to get information and request a VIP preview tour for ${project.title} - ${activeStage.title}.`
+                  : `Merhaba, ${project.title} - ${activeStage.title} hakkında bilgi ve tanıtım turu talebinde bulunmak istiyorum.`
+              )}`}
               target="_blank"
               rel="noreferrer"
               className="hidden md:flex items-center space-x-2 px-4 py-2 bg-emerald-900/40 hover:bg-emerald-800/60 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
             >
               <MessageSquare size={14} />
-              <span>WhatsApp Bilgi</span>
+              <span>{isEn ? 'WhatsApp Info' : 'WhatsApp Bilgi'}</span>
             </a>
 
             <a
@@ -236,11 +253,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   {activeStage.status}
                 </span>
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
-                  {activeStage.deliveryDate ? `Teslim: ${activeStage.deliveryDate}` : `Yıl: ${activeStage.year}`}
+                  {activeStage.deliveryDate ? (isEn ? `Delivery: ${activeStage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${activeStage.deliveryDate}`) : `Yıl: ${activeStage.year}`}
                 </span>
                 {activeStage.distanceToSea && (
                   <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-md">
-                    Denize {activeStage.distanceToSea.replace(/^Denize\s*/i, '')}
+                    {isEn ? `${activeStage.distanceToSea.replace(/^Denize\s*/i, '')} to Beach` : `Denize ${activeStage.distanceToSea.replace(/^Denize\s*/i, '')}`}
                   </span>
                 )}
               </div>
@@ -260,32 +277,32 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Konum</span>
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Location' : 'Konum'}</span>
                   <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">{activeStage.location}</span>
                 </div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Waves size={20} className="text-sky-300 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Distance to Beach' : 'Denize Mesafe'}</span>
                   <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                    {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '800 Metre'}
+                    {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : (isEn ? '800 Meters' : '800 Metre')}
                   </span>
                 </div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Calendar size={20} className="text-[#fffff1]/70 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Teslim / Durum</span>
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Delivery / Status' : 'Teslim / Durum'}</span>
                   <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                    {activeStage.deliveryDate ? `Teslim: ${activeStage.deliveryDate}` : activeStage.year}
+                    {activeStage.deliveryDate ? (isEn ? `Delivery: ${activeStage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${activeStage.deliveryDate}`) : activeStage.year}
                   </span>
                 </div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5">
                 <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
-                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Tipleri</span>
+                  <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Unit Types' : 'Daire Tipleri'}</span>
                   <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                     {activeStage.totalUnits ? `${activeStage.totalUnits} • ` : ''}{activeStage.unitTypes.join(' & ')}
                   </span>
@@ -310,10 +327,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>PROJE KONSEPTİ & AYRINTILARI</span>
+                  <span>{isEn ? 'PROJECT CONCEPT & DETAILS' : 'PROJE KONSEPTİ & AYRINTILARI'}</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                  {activeStage.title} Yaşam Standartları
+                  {activeStage.title} {isEn ? 'Living Standards' : 'Yaşam Standartları'}
                 </h3>
                 <p className="text-base sm:text-lg text-[#fffff1]/95 leading-relaxed font-light">
                   {activeStage.description}
@@ -324,7 +341,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-4 pt-4 border-t border-[#fffff1]/10">
                 <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>ÖNE ÇIKAN DONATILAR</span>
+                  <span>{isEn ? 'KEY AMENITIES & FEATURES' : 'ÖNE ÇIKAN DONATILAR'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {activeStage.features.map((feat, i) => (
@@ -342,69 +359,75 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="sticky top-24 bg-[#2c343d] border border-[#fffff1]/15 p-6 sm:p-7 rounded-2xl space-y-6 shadow-xl">
                 <div>
                   <span className="text-xs tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
-                    PROJE KÜNYESİ
+                    {t.specsTag}
                   </span>
                   <h4 className="font-theSeasons text-xl font-bold text-[#fffff1] mt-0.5">
-                    {activeStage.title} Künyesi
+                    {activeStage.title} {t.specsTitle}
                   </h4>
                 </div>
 
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Konum:</span>
+                    <span className="text-[#fffff1]/50">{t.location}</span>
                     <span className="text-[#fffff1]/95 font-medium text-right">{activeStage.location}</span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Denize Mesafe:</span>
+                    <span className="text-[#fffff1]/50">{t.distance}</span>
                     <span className="text-[#fffff1]/95 font-medium">
-                      {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : '800 Metre'}
+                      {activeStage.distanceToSea ? activeStage.distanceToSea.replace(/^Denize\s*/i, '') : (isEn ? '800 Meters' : '800 Metre')}
                     </span>
                   </div>
                   {activeStage.totalArea && (
                     <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                      <span className="text-[#fffff1]/50">Toplam Alan:</span>
+                      <span className="text-[#fffff1]/50">{t.totalArea}</span>
                       <span className="text-[#fffff1]/95 font-medium">{activeStage.totalArea}</span>
                     </div>
                   )}
                   {activeStage.totalUnits && (
                     <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                      <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
+                      <span className="text-[#fffff1]/50">{t.units}</span>
                       <span className="text-[#fffff1] font-bold">{activeStage.totalUnits}</span>
                     </div>
                   )}
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
+                    <span className="text-[#fffff1]/50">{t.unitTypes}</span>
                     <span className="text-[#fffff1]/95 font-medium">{activeStage.unitTypes.join(' & ')}</span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Proje Durumu:</span>
+                    <span className="text-[#fffff1]/50">{t.status}</span>
                     <span className={`font-bold ${activeStage.status === 'Tamamlandı' ? 'text-white/90' : activeStage.status === 'Yakında' ? 'text-sky-300' : 'text-emerald-300'}`}>
                       {activeStage.status}
                     </span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Teslim:</span>
+                    <span className="text-[#fffff1]/50">{t.delivery}</span>
                     <span className="text-[#fffff1] font-bold">
                       {(activeStage.deliveryDate || activeStage.year).replace(/^Teslim:\s*/i, '')}
                     </span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Isınma Sistemi:</span>
-                    <span className="text-[#fffff1] font-bold">Yerden Isıtmalı</span>
+                    <span className="text-[#fffff1]/50">{t.heating}</span>
+                    <span className="text-[#fffff1] font-bold">{t.heatingValue}</span>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-[#fffff1]/10 space-y-3">
                   <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                    Bu proje için güncel fiyat listesi, kat planları ve ödeme koşullarını hemen öğrenebilirsiniz.
+                    {isEn
+                      ? 'Inquire now for the latest price lists, floor plans, and flexible payment terms for this project.'
+                      : 'Bu proje için güncel fiyat listesi, kat planları ve ödeme koşullarını hemen öğrenebilirsiniz.'}
                   </p>
                   <a
-                    href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title} - ${activeStage.title} hakkında detaylı bilgi almak istiyorum.`)}`}
+                    href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                      isEn
+                        ? `Hello, I would like to get detailed pricing and floor plan information for ${project.title} - ${activeStage.title}.`
+                        : `Merhaba, ${project.title} - ${activeStage.title} hakkında detaylı bilgi almak istiyorum.`
+                    )}`}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center block transition-all shadow-md active:scale-95 cursor-pointer"
                   >
-                    WhatsApp ile Fiyat & Bilgi Al
+                    {isEn ? 'Get Prices & Info via WhatsApp' : 'WhatsApp ile Fiyat & Bilgi Al'}
                   </a>
                 </div>
               </div>
@@ -415,32 +438,38 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           <section className="bg-gradient-to-br from-[#313941]/90 to-[#252c33]/90 border border-[#fffff1]/20 rounded-2xl p-6 sm:p-10 shadow-2xl">
             <div className="max-w-3xl">
               <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
-                BİLGİ & REZERVASYON TALEBİ
+                {t.leadFormTag}
               </span>
               <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] mt-1 mb-2">
-                {activeStage.title} Hakkında Detaylı Bilgi Alın
+                {isEn ? `Request Detailed Information About ${activeStage.title}` : `${activeStage.title} Hakkında Detaylı Bilgi Alın`}
               </h3>
               <p className="text-xs sm:text-sm text-[#fffff1]/70 font-light mb-6">
-                İletişim bilgilerinizi iletin; satış temsilcimiz {activeStage.title} broşürünü, güncel kat planlarını ve ödeme tablosunu paylaşsın.
+                {isEn
+                  ? `Submit your contact details; our client advisor will share the brochure, updated floor plans, and payment terms for ${activeStage.title}.`
+                  : `İletişim bilgilerinizi iletin; satış temsilcimiz ${activeStage.title} broşürünü, güncel kat planlarını ve ödeme tablosunu paylaşsın.`}
               </p>
 
               {leadFormSubmitted ? (
                 <div className="p-4 bg-emerald-900/40 border border-emerald-500/50 rounded-xl text-sm text-emerald-300 flex items-center space-x-3">
                   <Check size={20} />
-                  <span>Talebiniz WhatsApp üzerinden iletildi. Satış temsilcimiz kısa sürede sizinle bağlantı kuracaktır.</span>
+                  <span>
+                    {isEn
+                      ? 'Your inquiry has been sent via WhatsApp. Our client representative will contact you shortly.'
+                      : 'Talebiniz WhatsApp üzerinden iletildi. Satış temsilcimiz kısa sürede sizinle bağlantı kuracaktır.'}
+                  </span>
                 </div>
               ) : (
                 <form onSubmit={(e) => handleLeadSubmit(e, activeStage.title)} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Adınız Soyadınız"
+                    placeholder={isEn ? 'Full Name' : 'Adınız Soyadınız'}
                     value={leadName}
                     onChange={(e) => setLeadName(e.target.value)}
                     className="px-4 py-3.5 bg-black/40 border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/60"
                   />
                   <input
                     type="tel"
-                    placeholder="Telefon Numaranız (05...)"
+                    placeholder={isEn ? 'Phone Number (05...)' : 'Telefon Numaranız (05...)'}
                     value={leadPhone}
                     onChange={(e) => setLeadPhone(e.target.value)}
                     required
@@ -451,7 +480,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                   >
                     <Send size={15} />
-                    <span>WhatsApp ile Gönder</span>
+                    <span>{t.sendLeadBtn}</span>
                   </button>
                 </form>
               )}
@@ -468,7 +497,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
             >
               <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-              <span className="text-xs font-bold uppercase tracking-wider">{project.title}'na Geri Dön</span>
+              <span className="text-xs font-bold uppercase tracking-wider">
+                {isEn ? `Back to ${project.title}` : `${project.title}'na Geri Dön`}
+              </span>
             </button>
 
             <div className="flex items-center space-x-6 text-xs text-[#fffff1]/60 font-light">
@@ -511,10 +542,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           <button
             onClick={onClose}
             className="flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer"
-            aria-label="Projeler listesine dön"
+            aria-label={isEn ? 'Back to works list' : 'Projeler listesine dön'}
           >
             <ArrowLeft size={16} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Projeler</span>
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">{isEn ? 'Works' : 'Projeler'}</span>
           </button>
 
           <div className="hidden sm:block h-6 w-[1px] bg-[#fffff1]/20" />
@@ -533,13 +564,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         {/* Sağ: İletişim Butonları & Kapat */}
         <div className="flex items-center space-x-3">
           <a
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba, ${project.title}${currentStage ? ` - ${currentStage.title}` : ''} projeniz hakkında bilgi almak ve yerinde görmek istiyorum.`)}`}
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+              isEn
+                ? `Hello, I would like to get information and schedule a visit for your ${project.title}${currentStage ? ` - ${currentStage.title}` : ''} development.`
+                : `Merhaba, ${project.title}${currentStage ? ` - ${currentStage.title}` : ''} projeniz hakkında bilgi almak ve yerinde görmek istiyorum.`
+            )}`}
             target="_blank"
             rel="noreferrer"
             className="hidden md:flex items-center space-x-2 px-4 py-2 bg-emerald-900/40 hover:bg-emerald-800/60 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
           >
             <MessageSquare size={14} />
-            <span>WhatsApp Bilgi</span>
+            <span>{isEn ? 'WhatsApp Info' : 'WhatsApp Bilgi'}</span>
           </a>
 
           <a
@@ -560,7 +595,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center space-x-2 text-[11px] tracking-widest uppercase text-[#fffff1]/60">
               <button onClick={onClose} className="hover:text-[#fffff1] transition-colors underline-offset-4 hover:underline cursor-pointer">
-                PROJELERİMİZ
+                {isEn ? 'OUR WORKS' : 'PROJELERİMİZ'}
               </button>
               <span>/</span>
               <span className="text-[#fffff1] font-semibold">{project.title}</span>
@@ -584,12 +619,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </span>
               {project.installmentMonths && (
                 <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-xl">
-                  Kişiye Özel Ödeme Modeli
+                  {isEn ? 'Tailored In-House Financing' : 'Kişiye Özel Ödeme Modeli'}
                 </span>
               )}
               {displayDistanceToSea && (
                 <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-blue-950/70 text-blue-200 border border-blue-500/30 rounded-xl">
-                  Denize {displayDistanceToSea}
+                  {isEn ? `${displayDistanceToSea} to Beach` : `Denize ${displayDistanceToSea}`}
                 </span>
               )}
             </div>
@@ -616,10 +651,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#fffff1]/80 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>PROJE ETAPLARI ({project.stages.length} ETAP)</span>
+                  <span>{isEn ? `PROJECT PHASES (${project.stages.length} PHASES)` : `PROJE ETAPLARI (${project.stages.length} ETAP)`}</span>
                 </span>
                 <span className="text-[11px] text-[#fffff1]/60 italic sm:text-right">
-                  Adres, teslim tarihi ve özellikler seçtiğiniz projeye göre güncellenir
+                  {t.stagesSub}
                 </span>
               </div>
 
@@ -676,7 +711,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <MapPin size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Konum</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Location' : 'Konum'}</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block truncate" title={displayLocation}>
                   {displayLocation}
                 </span>
@@ -685,7 +720,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Waves size={20} className="text-sky-300 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Denize Mesafe</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Distance to Beach' : 'Denize Mesafe'}</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                   {displayDistanceToSea}
                 </span>
@@ -694,7 +729,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Building2 size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Daire Seçenekleri</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Unit Types' : 'Daire Seçenekleri'}</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block truncate" title={displayUnits}>
                   {displayUnits}
                 </span>
@@ -703,7 +738,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#313941]/50 border border-[#fffff1]/10 flex items-center space-x-3 sm:space-x-3.5 transition-all">
               <Home size={20} className="text-[#fffff1]/70 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">Durum</span>
+                <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Status' : 'Durum'}</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
                   {currentStage ? currentStage.status : displayStatus}
                 </span>
@@ -730,7 +765,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   onClick={() => setActiveStage(currentStage)}
                   className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-[#fffff1]/20 text-[#fffff1] text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
                 >
-                  <span>Proje Detay Sayfası</span>
+                  <span>{isEn ? 'Phase Details Page' : 'Proje Detay Sayfası'}</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>
@@ -743,28 +778,30 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-1.5">
                 <div className="flex items-center space-x-2 text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>AVANTAJLI ÖDEME FIRSATI</span>
+                  <span>{isEn ? 'EXCLUSIVE FINANCING ADVANTAGE' : 'AVANTAJLI ÖDEME FIRSATI'}</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                  1.000.000₺ Peşinat – 40 Ay Vade – Araç Takası
+                  {isEn ? '₺1,000,000 Down Payment – 40-Month Terms – Vehicle Trade-In' : '1.000.000₺ Peşinat – 40 Ay Vade – Araç Takası'}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#fffff1]/80 font-light max-w-2xl">
-                  Banka faizi ve dosya masrafı olmadan, doğrudan Demirtürk İnşaat güvencesiyle kişiye özel ödeme kolaylığı ve peşinat yerine değerinde araç takası.
+                  {isEn
+                    ? 'Direct through Demirtürk İnşaat with zero bank interest and zero bank fees, plus fair-market vehicle trade-in accepted towards down payment.'
+                    : 'Banka faizi ve dosya masrafı olmadan, doğrudan Demirtürk İnşaat güvencesiyle kişiye özel ödeme kolaylığı ve peşinat yerine değerinde araç takası.'}
                 </p>
               </div>
 
               <div className="flex flex-wrap sm:flex-nowrap gap-3 flex-shrink-0">
                 <div className="px-4 py-2.5 rounded-xl bg-black/40 border border-emerald-500/30 text-center min-w-[110px]">
-                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">Peşinat</span>
+                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">{isEn ? 'Down Payment' : 'Peşinat'}</span>
                   <span className="text-sm sm:text-base font-bold text-white">{project.paymentHighlight.downPayment}</span>
                 </div>
                 <div className="px-4 py-2.5 rounded-xl bg-black/40 border border-emerald-500/30 text-center min-w-[110px]">
-                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">Vade</span>
+                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">{isEn ? 'Term' : 'Vade'}</span>
                   <span className="text-sm sm:text-base font-bold text-white">{project.paymentHighlight.installment}</span>
                 </div>
                 <div className="px-4 py-2.5 rounded-xl bg-black/40 border border-emerald-500/30 text-center min-w-[110px]">
-                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">Takas</span>
-                  <span className="text-sm sm:text-base font-bold text-emerald-300">Araç Takası</span>
+                  <span className="text-[10px] uppercase text-emerald-300/70 block font-semibold">{isEn ? 'Trade-In' : 'Takas'}</span>
+                  <span className="text-sm sm:text-base font-bold text-emerald-300">{isEn ? 'Vehicle Trade-In' : 'Araç Takası'}</span>
                 </div>
               </div>
             </div>
@@ -785,13 +822,15 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div>
                 <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>PROJE ETAPLARI</span>
+                  <span>{t.stagesTag}</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold text-[#fffff1]">
                   {project.title}
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/70 font-light mt-1 max-w-2xl leading-relaxed">
-                  {project.title} bünyesindeki tüm etapları ve devam eden çalışmaları inceleyin. Tamamlanan ve satışta olan projelerimizin detaylarına kartlara tıklayarak ulaşabilirsiniz.
+                  {isEn
+                    ? `Explore all phases and ongoing developments within ${project.title}. Click any card to inspect complete architectural details.`
+                    : `${project.title} bünyesindeki tüm etapları ve devam eden çalışmaları inceleyin. Tamamlanan ve satışta olan projelerimizin detaylarına kartlara tıklayarak ulaşabilirsiniz.`}
                 </p>
               </div>
             </div>
@@ -838,7 +877,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                           {stage.status}
                         </span>
                         <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-xl shadow-sm">
-                          {stage.deliveryDate ? `Teslim: ${stage.deliveryDate}` : stage.year}
+                          {stage.deliveryDate ? (isEn ? `Delivery: ${stage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${stage.deliveryDate}`) : stage.year}
                         </span>
                       </div>
 
@@ -864,7 +903,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                     {/* Bottom Content Details */}
                     <div className="relative z-10 pt-8 pb-5 px-6">
                       <span className="text-[11px] tracking-widest text-[#fffff1]/70 uppercase block font-semibold mb-1 truncate">
-                        {stage.location} • Denize {stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '800m'}
+                        {stage.location} • {isEn ? `${stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '800m'} to Beach` : `Denize ${stage.distanceToSea ? stage.distanceToSea.replace(/^Denize\s*/i, '') : '800m'}`}
                       </span>
                       <h4 className="font-theSeasons text-2xl font-bold text-[#fffff1] leading-tight mb-2 group-hover:translate-x-1 transition-transform">
                         {stage.title}
@@ -875,7 +914,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
 
                       <div className="pt-3 border-t border-[#fffff1]/15 flex items-center justify-end text-xs sm:text-sm">
                         <span className="text-[#fffff1] font-bold flex items-center group-hover:translate-x-1 transition-transform flex-shrink-0">
-                          <span>Detayları İncele</span>
+                          <span>{isEn ? 'View Details' : 'Detayları İncele'}</span>
                           <ArrowUpRight size={15} className="ml-1" />
                         </span>
                       </div>
@@ -895,10 +934,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                <span>KONSEPT & YAŞAM ALANI</span>
+                <span>{t.conceptTag || (isEn ? 'CONCEPT & LIVING SPACES' : 'KONSEPT & YAŞAM ALANI')}</span>
               </div>
               <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                Doğanın Kalbinde Çağdaş Bir Yaşam
+                {isEn ? 'Contemporary Living at the Heart of Nature' : 'Doğanın Kalbinde Çağdaş Bir Yaşam'}
               </h3>
               <p className="text-base sm:text-lg text-[#fffff1]/95 leading-relaxed font-light">
                 {project.description}
@@ -909,7 +948,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             {project.architecturalPhilosophy && (
               <div className="p-6 bg-[#313941]/40 border-l-4 border-[#fffff1]/60 rounded-r-2xl space-y-2">
                 <span className="text-xs tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
-                  MİMARİ DİL & TASARIM FELSEFESİ
+                  {isEn ? 'ARCHITECTURAL LANGUAGE & DESIGN PHILOSOPHY' : 'MİMARİ DİL & TASARIM FELSEFESİ'}
                 </span>
                 <p className="text-base sm:text-lg text-[#fffff1]/95 leading-relaxed italic font-light">
                   "{project.architecturalPhilosophy}"
@@ -922,7 +961,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-4 pt-4 border-t border-[#fffff1]/10">
                 <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>DONATILAR & AYRICALIKLAR</span>
+                  <span>{t.amenitiesTag || (isEn ? 'AMENITIES & PRIVILEGES' : 'DONATILAR & AYRICALIKLAR')}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.featureDetails.map((feat, i) => (
@@ -950,7 +989,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div className="space-y-4 pt-4 border-t border-[#fffff1]/10">
                 <div className="flex items-center space-x-2 text-xs tracking-[0.2em] text-[#fffff1]/70 uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>DONATILAR & AYRICALIKLAR</span>
+                  <span>{t.amenitiesTag || (isEn ? 'AMENITIES & PRIVILEGES' : 'DONATILAR & AYRICALIKLAR')}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {project.features.map((feat, i) => (
@@ -969,75 +1008,75 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div className="sticky top-24 bg-[#2c343d] border border-[#fffff1]/15 p-6 sm:p-7 rounded-2xl space-y-6 shadow-xl">
               <div>
                 <span className="text-xs tracking-widest text-[#fffff1]/60 uppercase block font-semibold">
-                  PROJE BİLGİ FORMU
+                  {t.specsTag || (isEn ? 'PROJECT DATA SHEET' : 'PROJE BİLGİ FORMU')}
                 </span>
                 <h4 className="font-theSeasons text-xl font-bold text-[#fffff1] mt-0.5">
-                  Teknik Künye
+                  {t.specsTitle || (isEn ? 'Technical Specifications' : 'Teknik Künye')}
                 </h4>
               </div>
 
               <div className="space-y-4 text-sm">
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Konum:</span>
+                  <span className="text-[#fffff1]/50">{t.location || (isEn ? 'Location:' : 'Konum:')}</span>
                   <span className="text-[#fffff1]/95 font-medium text-right max-w-[200px] truncate" title={displayLocation}>{displayLocation}</span>
                 </div>
                 {displayDistanceToSea && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Denize Mesafe:</span>
+                    <span className="text-[#fffff1]/50">{t.distance || (isEn ? 'Distance to Sea:' : 'Denize Mesafe:')}</span>
                     <span className="text-[#fffff1]/95 font-medium">{displayDistanceToSea}</span>
                   </div>
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Toplam Alan:</span>
+                  <span className="text-[#fffff1]/50">{t.totalArea || (isEn ? 'Total Land Area:' : 'Toplam Alan:')}</span>
                   <span className="text-[#fffff1]/95 font-medium">{currentStage?.totalArea || project.totalArea}</span>
                 </div>
                 {displayTotalUnits && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Bağımsız Bölüm:</span>
+                    <span className="text-[#fffff1]/50">{t.units || (isEn ? 'Independent Units:' : 'Bağımsız Bölüm:')}</span>
                     <span className="text-[#fffff1] font-bold">{displayTotalUnits}</span>
                   </div>
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Daire Seçenekleri:</span>
+                  <span className="text-[#fffff1]/50">{t.unitTypes || (isEn ? 'Unit Types:' : 'Daire Seçenekleri:')}</span>
                   <span className="text-[#fffff1]/95 font-medium text-right max-w-[200px] truncate" title={displayUnits}>{displayUnits}</span>
                 </div>
                 {project.seriesInfo && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Proje Etapları:</span>
+                    <span className="text-[#fffff1]/50">{t.stages || (isEn ? 'Project Stages:' : 'Proje Etapları:')}</span>
                     <span className="text-[#fffff1] font-bold">{project.seriesInfo}</span>
                   </div>
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Proje Durumu:</span>
+                  <span className="text-[#fffff1]/50">{t.status || (isEn ? 'Status:' : 'Proje Durumu:')}</span>
                   <span className="text-[#fffff1] font-bold">{displayStatus}</span>
                 </div>
                 {displayYear && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                    <span className="text-[#fffff1]/50">Teslim:</span>
+                    <span className="text-[#fffff1]/50">{t.delivery || (isEn ? 'Delivery:' : 'Teslim:')}</span>
                     <span className="text-[#fffff1] font-bold">{displayYear.replace(/^Teslim:\s*/i, '')}</span>
                   </div>
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Ödeme Modeli:</span>
-                  <span className="text-[#fffff1] font-bold">Kişiye Özel</span>
+                  <span className="text-[#fffff1]/50">{t.paymentModel || (isEn ? 'Payment Model:' : 'Ödeme Modeli:')}</span>
+                  <span className="text-[#fffff1] font-bold">{t.paymentModelValue || (isEn ? 'Tailored / In-House' : 'Kişiye Özel')}</span>
                 </div>
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
-                  <span className="text-[#fffff1]/50">Isınma:</span>
-                  <span className="text-[#fffff1] font-bold">Yerden Isıtmalı</span>
+                  <span className="text-[#fffff1]/50">{t.heating || (isEn ? 'Heating:' : 'Isınma:')}</span>
+                  <span className="text-[#fffff1] font-bold">{t.heatingValue || (isEn ? 'Underfloor Heating' : 'Yerden Isıtmalı')}</span>
                 </div>
               </div>
 
               {/* Free Tour Callout Inside Card */}
               <div className="pt-4 border-t border-[#fffff1]/10 space-y-3">
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Bu projeyi ve örnek daireyi yerinde görmek için ücretsiz Karasu tanıtım turumuza katılabilirsiniz.
+                  {t.tourNote || (isEn ? 'Join our free VIP Karasu discovery tour to explore this development and view our show units on-site.' : 'Bu projeyi ve örnek daireyi yerinde görmek için ücretsiz Karasu tanıtım turumuza katılabilirsiniz.')}
                 </p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="w-full py-3.5 px-4 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   <Phone size={16} className="text-[#252c33] flex-shrink-0" />
-                  <span>Telefonda Bilgi Al</span>
+                  <span>{t.phoneInquire || (isEn ? 'Inquire by Phone' : 'Telefonda Bilgi Al')}</span>
                 </a>
               </div>
             </div>
@@ -1051,10 +1090,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               <div>
                 <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                  <span>MİMARİ YERLEŞİM</span>
+                  <span>{t.floorPlansTag || (isEn ? 'ARCHITECTURAL LAYOUT' : 'MİMARİ YERLEŞİM')}</span>
                 </div>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                  Kat Planları & Yaşam Seçenekleri
+                  {t.floorPlansTitle || (isEn ? 'Floor Plans & Living Configurations' : 'Kat Planları & Yaşam Seçenekleri')}
                 </h3>
               </div>
 
@@ -1081,26 +1120,26 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#fffff1]/10">
                   <div>
                     <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
-                      SEÇİLEN PLAN DETAYI
+                      {t.selectedPlanTag || (isEn ? 'SELECTED PLAN DETAILS' : 'SEÇİLEN PLAN DETAYI')}
                     </span>
                     <h4 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] mt-1">
                       {project.floorPlans[selectedPlanIndex].name}
                     </h4>
                   </div>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black/30 border border-[#fffff1]/15 self-start sm:self-auto">
-                    <span className="text-xs text-[#fffff1]/60">Metrekare Alanı:</span>
+                    <span className="text-xs text-[#fffff1]/60">{t.sqmArea || (isEn ? 'Total Area:' : 'Metrekare Alanı:')}</span>
                     <span className="text-sm sm:text-base font-bold text-[#fffff1]">{project.floorPlans[selectedPlanIndex].area}</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl bg-black/20 border border-[#fffff1]/10 space-y-1">
-                    <span className="text-xs text-[#fffff1]/50 block">Oda Dağılımı</span>
+                    <span className="text-xs text-[#fffff1]/50 block">{t.roomDist || (isEn ? 'Room Distribution' : 'Oda Dağılımı')}</span>
                     <span className="text-sm sm:text-base font-medium text-[#fffff1]">{project.floorPlans[selectedPlanIndex].rooms}</span>
                   </div>
                   <div className="p-4 rounded-xl bg-black/20 border border-[#fffff1]/10 space-y-1">
-                    <span className="text-xs text-[#fffff1]/50 block">İklimlendirme & Standart</span>
-                    <span className="text-sm sm:text-base font-medium text-[#fffff1]">Yerden Isıtmalı • 1. Sınıf Mimari Standart</span>
+                    <span className="text-xs text-[#fffff1]/50 block">{t.climateStand || (isEn ? 'Climate & Standard' : 'İklimlendirme & Standart')}</span>
+                    <span className="text-sm sm:text-base font-medium text-[#fffff1]">{t.climateStandValue || (isEn ? 'Underfloor Heating • Grade-A Architectural Spec' : 'Yerden Isıtmalı • 1. Sınıf Mimari Standart')}</span>
                   </div>
                 </div>
 
@@ -1118,10 +1157,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             <div>
               <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] text-[#fffff1]/70 uppercase mb-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1]" />
-                <span>GÖRSEL ARŞİV</span>
+                <span>{t.galleryTag || (isEn ? 'VISUAL ARCHIVE' : 'GÖRSEL ARŞİV')}</span>
               </div>
               <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                Mimari Perspektif & Galeri
+                {t.galleryTitle || (isEn ? 'Architectural Perspective & Gallery' : 'Mimari Perspektif & Galeri')}
               </h3>
             </div>
 
@@ -1147,32 +1186,32 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         <section className="bg-gradient-to-br from-[#313941]/90 to-[#252c33]/90 border border-[#fffff1]/20 rounded-2xl p-6 sm:p-10 shadow-2xl">
           <div className="max-w-3xl">
             <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block">
-              BİLGİ & REZERVASYON TALEBİ
+              {t.leadFormTag || (isEn ? 'INQUIRY & RESERVATION' : 'BİLGİ & REZERVASYON TALEBİ')}
             </span>
             <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1] mt-1 mb-2">
-              {project.title} Hakkında Detaylı Bilgi Alın
+              {isEn ? `Get Detailed Information on ${project.title}` : `${project.title} Hakkında Detaylı Bilgi Alın`}
             </h3>
             <p className="text-xs sm:text-sm text-[#fffff1]/70 font-light mb-6">
-              İletişim bilgilerinizi iletin; satış temsilcimiz proje broşürü, güncel kat planları ve senetli ödeme tablosunu WhatsApp üzerinden paylaşsın.
+              {t.leadFormDesc || (isEn ? 'Submit your contact details to receive our digital brochure, current floor plans, and in-house installment options via WhatsApp.' : 'İletişim bilgilerinizi iletin; satış temsilcimiz proje broşürü, güncel kat planları ve senetli ödeme tablosunu WhatsApp üzerinden paylaşsın.')}
             </p>
 
             {leadFormSubmitted ? (
               <div className="p-4 bg-emerald-900/40 border border-emerald-500/50 rounded-xl text-sm text-emerald-300 flex items-center space-x-3">
                 <Check size={20} />
-                <span>Talebiniz WhatsApp üzerinden iletildi. Müşteri temsilcimiz kısa sürede sizinle bağlantı kuracaktır.</span>
+                <span>{isEn ? 'Your inquiry has been sent via WhatsApp. Our sales specialist will reach out shortly.' : 'Talebiniz WhatsApp üzerinden iletildi. Müşteri temsilcimiz kısa sürede sizinle bağlantı kuracaktır.'}</span>
               </div>
             ) : (
               <form onSubmit={handleLeadSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <input
                   type="text"
-                  placeholder="Adınız Soyadınız"
+                  placeholder={t.namePlaceholder || (isEn ? 'Full Name' : 'Adınız Soyadınız')}
                   value={leadName}
                   onChange={(e) => setLeadName(e.target.value)}
                   className="px-4 py-3.5 bg-black/40 border border-[#fffff1]/20 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:outline-none focus:border-[#fffff1]/60"
                 />
                 <input
                   type="tel"
-                  placeholder="Telefon Numaranız (05...)"
+                  placeholder={t.phonePlaceholder || (isEn ? 'Phone Number (05...)' : 'Telefon Numaranız (05...)')}
                   value={leadPhone}
                   onChange={(e) => setLeadPhone(e.target.value)}
                   required
@@ -1183,7 +1222,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   className="px-6 py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
                 >
                   <Send size={15} />
-                  <span>WhatsApp ile Gönder</span>
+                  <span>{t.sendLeadBtn || (isEn ? 'Send via WhatsApp' : 'WhatsApp ile Gönder')}</span>
                 </button>
               </form>
             )}
@@ -1197,7 +1236,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             className="flex items-center space-x-2.5 px-6 py-3 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-            <span className="text-xs font-bold uppercase tracking-wider">Tüm Projelere Geri Dön</span>
+            <span className="text-xs font-bold uppercase tracking-wider">{isEn ? 'Back to All Works' : 'Tüm Projelere Geri Dön'}</span>
           </button>
 
           <div className="flex items-center space-x-6 text-xs text-[#fffff1]/60 font-light">

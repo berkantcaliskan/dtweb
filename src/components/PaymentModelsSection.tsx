@@ -2,13 +2,18 @@ import React, { useState, useMemo } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
 import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageCircle, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles, Info } from 'lucide-react'
 import { submitLeadToPortfoy } from '../services/leadService'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 export const PaymentModelsSection: React.FC = () => {
+  const { language, isEN } = useLanguage()
+  const t = TRANSLATIONS[language].payment
+
   // Tour Booking State
   const [tourName, setTourName] = useState('')
   const [tourPhone, setTourPhone] = useState('')
-  const [tourCity, setTourCity] = useState('İstanbul')
-  const [tourTransportChoice, setTourTransportChoice] = useState('Pazar Günü (VIP Servis)')
+  const [tourCity, setTourCity] = useState(isEN ? 'Istanbul' : 'İstanbul')
+  const [tourTransportChoice, setTourTransportChoice] = useState(isEN ? 'Sunday (VIP Shuttle)' : 'Pazar Günü (VIP Servis)')
   const [tourSubmitted, setTourSubmitted] = useState(false)
 
   // Interactive Payment Calculator State (Min 3.250.000 ₺, Peşinat %25 - %36, Maks 40 Ay Vade)
@@ -17,11 +22,11 @@ export const PaymentModelsSection: React.FC = () => {
   const [termMonths, setTermMonths] = useState<number>(40) // 40 ay maks
 
   // Preset Budget Options (1+1, 2+1, Bahçe Katı - En düşük 3.250.000 ₺)
-  const budgetPresets = [
-    { label: '1+1 Daire', value: 3250000 },
-    { label: '2+1 Daire', value: 4250000 },
-    { label: 'Bahçe Katı', value: 4950000 },
-  ]
+  const budgetPresets = useMemo(() => [
+    { label: isEN ? '1+1 Residence' : '1+1 Daire', value: 3250000 },
+    { label: isEN ? '2+1 Residence' : '2+1 Daire', value: 4250000 },
+    { label: isEN ? 'Garden Flat' : 'Bahçe Katı', value: 4950000 },
+  ], [isEN])
 
   // Calculated Values
   const calculation = useMemo(() => {
@@ -29,16 +34,17 @@ export const PaymentModelsSection: React.FC = () => {
     const remainingAmount = selectedBudget - downPaymentAmount
     const monthlyInstallment = Math.round(remainingAmount / termMonths)
 
+    const locale = isEN ? 'en-US' : 'tr-TR'
     return {
       downPaymentAmount,
       remainingAmount,
       monthlyInstallment,
-      formattedBudget: selectedBudget.toLocaleString('tr-TR'),
-      formattedDownPayment: downPaymentAmount.toLocaleString('tr-TR'),
-      formattedRemaining: remainingAmount.toLocaleString('tr-TR'),
-      formattedMonthly: monthlyInstallment.toLocaleString('tr-TR'),
+      formattedBudget: selectedBudget.toLocaleString(locale),
+      formattedDownPayment: downPaymentAmount.toLocaleString(locale),
+      formattedRemaining: remainingAmount.toLocaleString(locale),
+      formattedMonthly: monthlyInstallment.toLocaleString(locale),
     }
-  }, [selectedBudget, downPaymentRatio, termMonths])
+  }, [selectedBudget, downPaymentRatio, termMonths, isEN])
 
   const handleTourSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -47,74 +53,55 @@ export const PaymentModelsSection: React.FC = () => {
     submitLeadToPortfoy({
       fullName: tourName,
       phone: tourPhone,
-      formName: 'Ücretsiz Tanıtım Turu',
-      channel: 'Web Sitesi / Ödeme Modelleri & Tanıtım Turu Bölümü',
-      notes: `Kalkış Şehri: ${tourCity} | Katılım Şekli: ${tourTransportChoice}`,
-      tags: ['Web Sitesi', 'Ödeme Modelleri', 'Tanıtım Turu', tourCity, tourTransportChoice === 'Kendi Aracımla Geleceğim' ? 'Kendi Aracı' : 'Pazar VIP Servis'],
+      formName: isEN ? 'Free VIP Tour (EN)' : 'Ücretsiz Tanıtım Turu',
+      channel: isEN ? 'Website / Payment Models & VIP Tour Section' : 'Web Sitesi / Ödeme Modelleri & Tanıtım Turu Bölümü',
+      notes: `Departure: ${tourCity} | Transport: ${tourTransportChoice}`,
+      tags: ['Web Sitesi', 'Ödeme Modelleri', 'Tanıtım Turu', tourCity, tourTransportChoice.includes('Aracı') || tourTransportChoice.includes('Own') ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })
 
     setTourSubmitted(true)
   }
 
   // Payment Models Data
-  const paymentModels = [
+  const paymentModels = useMemo(() => [
     {
       id: 'senet',
-      title: 'Kredisiz & Kefilsiz Elden Senet',
-      badge: 'EN ÇOK TERCİH EDİLEN',
+      title: t.card1Title,
+      badge: t.mostPreferred,
       highlightColor: 'border-emerald-500/40 text-emerald-400 bg-emerald-500/10',
       icon: Layers,
-      summary: 'Banka kredisi, faiz veya dosya masrafı olmadan, doğrudan Demirtürk İnşaat bünyesinde 40 aya varan elden senet modeli.',
-      features: [
-        'Peşinat sonrası 40 aya kadar vadeyle',
-        'Banka faizi ve dosya masrafı yok',
-        'Kredi notu sorgusu veya kefil zorunluluğu yok',
-        'Senetler bankalara devredilmez, şirket bünyesinde kalır',
-      ],
+      summary: t.card1Summary,
+      features: t.card1Features,
     },
     {
       id: 'pesin',
-      title: 'Peşin & Lansman İndirimi',
-      badge: 'MAKSİMUM FİYAT AVANTAJI',
+      title: t.card2Title,
+      badge: t.cashDiscount,
       highlightColor: 'border-amber-500/40 text-amber-400 bg-amber-500/10',
       icon: Banknote,
-      summary: 'Tamamı peşin alımlarda projelere özel doğrudan nakit iskontosu ve hemen tapu devir imkânı.',
-      features: [
-        'Nakit alımlarda %10 - %15 lansman fiyat indirimi',
-        'Hemen tapu devri ve anahtar teslimi',
-        'Gününde ve güvenilir yatırım getirisi',
-        'Proje başlangıç aşamalarında en yüksek prim marjı',
-      ],
+      summary: t.card2Summary,
+      features: t.card2Features,
     },
     {
       id: 'ara-odeme',
-      title: 'Kişiye Özel Esnek Ara Ödemeli Plan',
-      badge: 'KİŞİYE ÖZEL PLANLAMA',
+      title: t.card4Title,
+      badge: t.flexibleModel,
       highlightColor: 'border-blue-500/40 text-blue-400 bg-blue-500/10',
       icon: Calendar,
-      summary: 'Aylık taksitleri düşük tutup hasat, prim veya ikramiye dönemlerinize uygun ara ödemeler ile esnek plan.',
-      features: [
-        'Düşük tutarlı aylık taksit konforu',
-        'Dileğinize göre, yılda 1 veya 2 kez bütçenize uygun ara ödemeler (ara ödeme zorunluluğu yoktur)',
-        'Tarım, fındık hasadı veya dönemsel gelire uyarlanabilirlik',
-        'Kendi nakit akışınıza göre şekillenen ödeme takvimi',
-      ],
+      summary: t.card4Summary,
+      features: t.card4Features,
     },
     {
       id: 'takas',
-      title: 'Değerinde Araç & Gayrimenkul Takası',
-      badge: 'DEĞERİNDE TAKAS',
+      title: t.card3Title,
+      badge: t.tradeIn,
       highlightColor: 'border-purple-500/40 text-purple-400 bg-purple-500/10',
       icon: Car,
-      summary: 'Mevcut aracınızı veya mülkünüzü güncel piyasa ekspertiz değeriyle peşinata ya da konut bedeline sayma ayrıcalığı.',
-      features: [
-        'Binek veya hafif ticari araçlarda değerinde takas',
-        'Marmara bölgesi arsa veya gayrimenkul takas olanağı',
-        'Nakit bağlamadan yeni projeye doğrudan geçiş',
-        'Şeffaf, güvenli ve hızlı mülkiyet devir süreçleri',
-      ],
+      summary: t.card3Summary,
+      features: t.card3Features,
     },
-  ]
+  ], [t])
+
 
   return (
     <section id="odeme-modelleri" className="py-12 sm:py-20 md:py-28 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08] relative">
@@ -126,13 +113,13 @@ export const PaymentModelsSection: React.FC = () => {
         <div className="max-w-3xl mb-10 sm:mb-16">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-            <span>ÖDEME MODELLERİ & FİNANSMAN / PAYMENT MODELS</span>
+            <span>{t.sectionTag}</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1] leading-tight">
-            Banka Kredisiz, Kefilsiz — Esnek Ödeme Modellerimiz
+            {t.title}
           </h2>
           <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
-            20 yılı aşkın süredir Karasu’da güven inşa eden Demirtürk İnşaat ile ev sahibi olmak faizsiz, bankasız ve bürokrasiden uzak. Bütçenize göre şekillenen 4 farklı modelle hayalinizdeki sahil evine hemen sahip olun.
+            {t.desc}
           </p>
         </div>
 
@@ -182,13 +169,13 @@ export const PaymentModelsSection: React.FC = () => {
           <div className="max-w-2xl mb-8">
             <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-[#fffff1]/70 font-semibold mb-2">
               <Calculator size={15} className="text-[#fffff1]" />
-              <span>İNTERAKTİF SENET & TAKSİT HESAPLAYICI</span>
+              <span>{isEN ? 'INTERACTIVE INSTALLMENT & PAYMENT CALCULATOR' : 'İNTERAKTİF SENET & TAKSİT HESAPLAYICI'}</span>
             </div>
             <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold text-[#fffff1]">
-              Kendi Ödeme Planınızı Oluşturun
+              {t.calcTitle}
             </h3>
             <p className="text-xs sm:text-sm text-[#fffff1]/75 font-light mt-2">
-              Konut bütçenizi, peşinat oranınızı ve vade sürenizi belirleyin; 0 faizli şirket bünyesi senet planınızı anında görün.
+              {t.calcSub}
             </p>
           </div>
 
@@ -198,7 +185,7 @@ export const PaymentModelsSection: React.FC = () => {
               {/* Preset Budget Selector */}
               <div>
                 <label className="block text-xs uppercase tracking-wider text-[#fffff1]/80 mb-2 font-medium">
-                  Konut / Bütçe Seçimi
+                  {t.budgetSelect}
                 </label>
                 <div className="grid grid-cols-3 gap-2.5 mb-3">
                   {budgetPresets.map((preset) => (
@@ -223,7 +210,7 @@ export const PaymentModelsSection: React.FC = () => {
                 {/* Range Slider for Budget */}
                 <div className="space-y-1.5 pt-1">
                   <div className="flex justify-between text-xs text-[#fffff1]/60 font-mono">
-                    <span>3.250.000 ₺ (Min)</span>
+                    <span>3.250.000 ₺ ({isEN ? 'Min' : 'Min'})</span>
                     <span className="text-[#fffff1] font-semibold text-sm">{calculation.formattedBudget} ₺</span>
                     <span>7.500.000 ₺</span>
                   </div>
@@ -242,7 +229,12 @@ export const PaymentModelsSection: React.FC = () => {
                 <div className="mt-3 flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.04] border border-[#fffff1]/15 text-[11px] sm:text-xs text-[#fffff1]/80 leading-relaxed">
                   <Info size={15} className="text-amber-300 mt-0.5 flex-shrink-0" />
                   <span>
-                    <strong className="text-[#fffff1] font-semibold">Önemli Bilgilendirme:</strong> Belirtilen fiyatlar baz hesaplama değerleridir. Bağımsız bölümün havuz veya peyzaj cephesine, bulunduğu kata ve şerefiye kriterlerine bağlı olarak nihai fiyatlar daha düşük veya daha yüksek olabilmektedir.
+                    <strong className="text-[#fffff1] font-semibold">
+                      {isEN ? 'Important Notice: ' : 'Önemli Bilgilendirme: '}
+                    </strong>
+                    {isEN
+                      ? 'Stated figures represent baseline estimates. Final prices may adjust lower or higher according to floor level, facade orientation (pool or landscaped gardens), and architectural goodwill criteria.'
+                      : 'Belirtilen fiyatlar baz hesaplama değerleridir. Bağımsız bölümün havuz veya peyzaj cephesine, bulunduğu kata ve şerefiye kriterlerine bağlı olarak nihai fiyatlar daha düşük veya daha yüksek olabilmektedir.'}
                   </span>
                 </div>
               </div>
@@ -251,10 +243,12 @@ export const PaymentModelsSection: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs uppercase tracking-wider text-[#fffff1]/80 font-medium">
-                    Peşinat Oranı (%25 Min - %36 Maks)
+                    {t.downPaymentRatio}
                   </label>
                   <span className="text-xs font-semibold text-emerald-400 font-mono">
-                    %{downPaymentRatio} Peşinat ({calculation.formattedDownPayment} ₺)
+                    {isEN
+                      ? `${downPaymentRatio}% Down Payment (${calculation.formattedDownPayment} ₺)`
+                      : `%{downPaymentRatio} Peşinat (${calculation.formattedDownPayment} ₺)`}
                   </span>
                 </div>
                 <div className="grid grid-cols-4 gap-2 mb-2.5">
@@ -271,7 +265,7 @@ export const PaymentModelsSection: React.FC = () => {
                     >
                       <span className="text-xs sm:text-sm font-bold">%{ratio}</span>
                       <span className="block text-[10px] opacity-75">
-                        {ratio === 25 ? 'Min' : ratio === 36 ? 'Maks' : 'Öneri'}
+                        {ratio === 25 ? (isEN ? 'Min' : 'Min') : ratio === 36 ? (isEN ? 'Max' : 'Maks') : (isEN ? 'Rec' : 'Öneri')}
                       </span>
                     </button>
                   ))}
@@ -296,7 +290,7 @@ export const PaymentModelsSection: React.FC = () => {
               {/* Term (Months) Selector */}
               <div>
                 <label className="block text-xs uppercase tracking-wider text-[#fffff1]/80 mb-2 font-medium">
-                  Elden Senet Vade Süresi (40 Aya Kadar)
+                  {t.termMonths}
                 </label>
                 <div className="grid grid-cols-4 gap-2">
                   {[12, 24, 36, 40].map((months) => (
@@ -310,9 +304,9 @@ export const PaymentModelsSection: React.FC = () => {
                           : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
                       }`}
                     >
-                      <span className="text-xs sm:text-sm font-bold">{months} Ay</span>
+                      <span className="text-xs sm:text-sm font-bold">{months} {t.months}</span>
                       {months === 40 && (
-                        <span className="block text-[10px] text-emerald-400 font-semibold">Maks Vade</span>
+                        <span className="block text-[10px] text-emerald-400 font-semibold">{isEN ? 'Max Term' : 'Maks Vade'}</span>
                       )}
                     </button>
                   ))}
@@ -324,64 +318,66 @@ export const PaymentModelsSection: React.FC = () => {
             <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-black/40 border border-[#fffff1]/20 backdrop-blur-md space-y-5">
               <div className="flex items-center justify-between pb-3 border-b border-[#fffff1]/10">
                 <span className="text-xs tracking-wider uppercase text-[#fffff1]/70 font-medium">
-                  Ödeme Planı Özeti
+                  {isEN ? 'Payment Plan Summary' : 'Ödeme Planı Özeti'}
                 </span>
                 <span className="px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  0 Faiz — Kredisiz
+                  {isEN ? '0% Interest — In-House' : '0 Faiz — Kredisiz'}
                 </span>
               </div>
 
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs sm:text-sm">
-                  <span className="text-[#fffff1]/70 font-light">Toplam Konut Değeri:</span>
+                  <span className="text-[#fffff1]/70 font-light">{isEN ? 'Total Residence Value:' : 'Toplam Konut Değeri:'}</span>
                   <span className="text-[#fffff1] font-semibold">{calculation.formattedBudget} ₺</span>
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm">
-                  <span className="text-[#fffff1]/70 font-light">Peşinat Tutarı (%{downPaymentRatio}):</span>
+                  <span className="text-[#fffff1]/70 font-light">{t.downPaymentAmount} (%{downPaymentRatio}):</span>
                   <span className="text-[#fffff1] font-semibold">{calculation.formattedDownPayment} ₺</span>
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm">
-                  <span className="text-[#fffff1]/70 font-light">Kalan Senet Bakiyesi:</span>
+                  <span className="text-[#fffff1]/70 font-light">{t.remainingAmount}:</span>
                   <span className="text-[#fffff1] font-semibold">{calculation.formattedRemaining} ₺</span>
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm">
-                  <span className="text-[#fffff1]/70 font-light">Vade Sayısı:</span>
-                  <span className="text-[#fffff1] font-semibold">{termMonths} Ay Vade</span>
+                  <span className="text-[#fffff1]/70 font-light">{isEN ? 'Installment Term:' : 'Vade Sayısı:'}</span>
+                  <span className="text-[#fffff1] font-semibold">{termMonths} {t.months}</span>
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm text-emerald-400">
-                  <span className="font-light">Banka Faiz & Dosya Masrafı:</span>
-                  <span className="font-bold">0 ₺ (Muaf)</span>
+                  <span className="font-light">{isEN ? 'Bank Interest & Fees:' : 'Banka Faiz & Dosya Masrafı:'}</span>
+                  <span className="font-bold">{isEN ? '0 ₺ (Exempt)' : '0 ₺ (Muaf)'}</span>
                 </div>
               </div>
 
               {/* Big Monthly Installment Highlight */}
               <div className="p-4 rounded-xl bg-white/[0.08] border border-[#fffff1]/20 text-center">
                 <span className="text-[11px] uppercase tracking-wider text-[#fffff1]/75 block font-medium">
-                  Aylık Senet Taksiti
+                  {t.monthlyInstallment}
                 </span>
                 <div className="font-theSeasons text-3xl sm:text-4xl font-bold text-[#fffff1] mt-1">
                   {calculation.formattedMonthly} <span className="text-xl font-normal">₺</span>
                 </div>
                 <span className="text-[11px] text-[#fffff1]/60 block mt-1">
-                  *Doğrudan Demirtürk İnşaat garantili elden senet modeli
+                  {t.tailoredNote}
                 </span>
               </div>
 
               {/* WhatsApp Call to Action */}
               <a
                 href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
-                  `Merhaba Demirtürk İnşaat, web sitenizdeki Ödeme Modelleri hesaplayıcısı üzerinden şu planı inceledim:\n\n• Konut Tutarı: ${calculation.formattedBudget} ₺\n• Peşinat (%${downPaymentRatio}): ${calculation.formattedDownPayment} ₺\n• Kalan Vade: ${termMonths} Ay\n• Aylık Senet: ${calculation.formattedMonthly} ₺\n\nBu ödeme planına uygun güncel projeleriniz ve rezervasyon hakkında detaylı bilgi almak istiyorum.`
+                  isEN
+                    ? `Hello Demirtürk İnşaat, I reviewed this plan on your Payment Models calculator:\n\n• Unit Price: ${calculation.formattedBudget} ₺\n• Down Payment (${downPaymentRatio}%): ${calculation.formattedDownPayment} ₺\n• Term: ${termMonths} Months\n• Monthly: ${calculation.formattedMonthly} ₺\n\nI would like to receive detailed information on suitable projects and reservations.`
+                    : `Merhaba Demirtürk İnşaat, web sitenizdeki Ödeme Modelleri hesaplayıcısı üzerinden şu planı inceledim:\n\n• Konut Tutarı: ${calculation.formattedBudget} ₺\n• Peşinat (%${downPaymentRatio}): ${calculation.formattedDownPayment} ₺\n• Kalan Vade: ${termMonths} Ay\n• Aylık Senet: ${calculation.formattedMonthly} ₺\n\nBu ödeme planına uygun güncel projeleriniz ve rezervasyon hakkında detaylı bilgi almak istiyorum.`
                 )}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 px-3 sm:px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[11px] sm:text-xs xl:text-[13px] uppercase tracking-wide flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg hover:shadow-emerald-900/30 whitespace-nowrap"
               >
                 <MessageCircle size={18} className="flex-shrink-0" />
-                <span className="whitespace-nowrap">Bu Plan İçin WhatsApp'tan Teklif Al</span>
+                <span className="whitespace-nowrap">{isEN ? 'Get Offer on WhatsApp for This Plan' : "Bu Plan İçin WhatsApp'tan Teklif Al"}</span>
               </a>
             </div>
           </div>
@@ -397,10 +393,10 @@ export const PaymentModelsSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-theSeasons text-2xl font-semibold text-[#fffff1]">
-                  Elden Senetli Satış Modeli İlkelerimiz
+                  {t.principlesTitle}
                 </h3>
                 <p className="text-sm text-[#fffff1]/70 font-light">
-                  Şeffaf, güvenilir ve doğrudan üretici garantili gayrimenkul edinimi.
+                  {t.principlesSub}
                 </p>
               </div>
             </div>
@@ -409,40 +405,56 @@ export const PaymentModelsSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/30 transition-all space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <FileCheck size={18} />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Banka ve Kredi Yok</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">
+                    {isEN ? 'No Bank or Credit' : 'Banka ve Kredi Yok'}
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Kredi notu sorgulaması, dosya masrafı, banka komisyonu veya kefil zorunluluğu bulunmaz.
+                  {isEN
+                    ? 'No credit score checks, processing fees, bank commissions, or guarantor obligations.'
+                    : 'Kredi notu sorgulaması, dosya masrafı, banka komisyonu veya kefil zorunluluğu bulunmaz.'}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/30 transition-all space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <Layers size={18} />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Esnek Vade</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">
+                    {isEN ? 'Flexible Terms' : 'Esnek Vade'}
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Gelir durumunuza ve bütçenize göre esnek, proje bazlı kişiselleştirilmiş vade planı sunulur.
+                  {isEN
+                    ? 'Personalized installment schedules structured to harmonize with your family budget.'
+                    : 'Gelir durumunuza ve bütçenize göre esnek, proje bazlı kişiselleştirilmiş vade planı sunulur.'}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/30 transition-all space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <Award size={18} />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Doğrudan Üreticiden</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">
+                    {isEN ? 'Direct from Developer' : 'Doğrudan Üreticiden'}
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Senetleriniz 3. parti finans kurumlarına devredilmez, doğrudan Demirtürk İnşaat bünyesinde tutulur.
+                  {isEN
+                    ? 'Promissory notes are kept in-house and never transferred to third-party lenders.'
+                    : 'Senetleriniz 3. parti finans kurumlarına devredilmez, doğrudan Demirtürk İnşaat bünyesinde tutulur.'}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 hover:border-[#fffff1]/30 transition-all space-y-2">
                 <div className="flex items-center space-x-2 text-[#fffff1]">
                   <ShieldCheck size={18} />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">Kurumsal Sözleşme Güvencesi</span>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#fffff1]">
+                    {isEN ? 'Corporate Contract Security' : 'Kurumsal Sözleşme Güvencesi'}
+                  </span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#fffff1]/75 leading-relaxed font-light">
-                  Tüm satış, teslim ve teknik taahhüt süreçleri şeffaf kurumsal sözleşme ve şartnamelerle güvence altına alınır.
+                  {isEN
+                    ? 'All sales, delivery timelines, and technical commitments are secured under corporate contracts.'
+                    : 'Tüm satış, teslim ve teknik taahhüt süreçleri şeffaf kurumsal sözleşme ve şartnamelerle güvence altına alınır.'}
                 </p>
               </div>
             </div>
@@ -451,23 +463,29 @@ export const PaymentModelsSection: React.FC = () => {
             <div className="p-5 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-[#fffff1]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs tracking-widest uppercase text-[#fffff1]/70 block font-medium">
-                  KİŞİYE ÖZEL ÖDEME PLANI
+                  {isEN ? 'TAILORED PAYMENT PLAN' : 'KİŞİYE ÖZEL ÖDEME PLANI'}
                 </span>
                 <span className="font-theSeasons text-xl sm:text-2xl font-bold text-[#fffff1] mt-1 block">
-                  Size Özel Vade Planını Konuşalım
+                  {isEN ? 'Let Us Discuss Your Tailored Plan' : 'Size Özel Vade Planını Konuşalım'}
                 </span>
                 <span className="text-xs text-[#fffff1]/65 block mt-1 font-light">
-                  Satış danışmanlarımız projelere özel alternatif ödeme planlarını sizin için hazırlasın.
+                  {isEN
+                    ? 'Our sales consultants will prepare custom alternative payment schedules suited to your budget.'
+                    : 'Satış danışmanlarımız projelere özel alternatif ödeme planlarını sizin için hazırlasın.'}
                 </span>
               </div>
 
               <a
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba,%20elden%20senetli%20%C3%B6deme%20planlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
+                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                  isEN
+                    ? 'Hello, I would like to get information regarding your in-house installment plans.'
+                    : 'Merhaba, elden senetli ödeme planları hakkında bilgi almak istiyorum.'
+                )}`}
                 target="_blank"
                 rel="noreferrer"
                 className="glass-blur-box px-5 py-2.5 sm:px-6 sm:py-3 text-[#fffff1] font-normal text-xs sm:text-sm uppercase tracking-wider rounded-xl text-center whitespace-nowrap transition-all shadow-md hover:border-[#fffff1]/40 cursor-pointer flex-shrink-0"
               >
-                Bilgi Alın
+                {isEN ? 'Get Information' : 'Bilgi Alın'}
               </a>
             </div>
           </div>
@@ -480,34 +498,34 @@ export const PaymentModelsSection: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs tracking-widest uppercase text-[#fffff1]/70 block font-medium">
-                  ÜCRETSİZ MİSAFİRİMİZ OLUN
+                  {isEN ? 'BE OUR COMPLIMENTARY GUEST' : 'ÜCRETSİZ MİSAFİRİMİZ OLUN'}
                 </span>
                 <h3 className="font-theSeasons text-2xl font-bold text-[#fffff1]">
-                  Karasu Tanıtım Turu
+                  {t.tourTitle}
                 </h3>
               </div>
             </div>
 
             <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-              Her Pazar günü İstanbul, Kocaeli ve Sakarya’dan kalkan özel VIP transfer aracımızla ya da kendi aracınızla gelin; havuzlu sitelerimizi, sahil şeridini ve örnek dairelerimizi yerinde canlı olarak görün.
+              {t.tourDesc}
             </p>
 
             <div className="space-y-2.5 text-xs sm:text-sm text-[#fffff1]/90">
               <div className="flex items-center space-x-2.5">
                 <CheckCircle2 size={16} className="text-[#fffff1]/80 flex-shrink-0" />
-                <span>İstanbul, Kocaeli ve Sakarya’dan Pazar günleri VIP transfer</span>
+                <span>{isEN ? 'Sunday VIP shuttle from Istanbul, Kocaeli & Sakarya' : 'İstanbul, Kocaeli ve Sakarya’dan Pazar günleri VIP transfer'}</span>
               </div>
               <div className="flex items-center space-x-2.5">
                 <CheckCircle2 size={16} className="text-[#fffff1]/80 flex-shrink-0" />
-                <span>Örnek daire, peyzaj ve havuz alanlarının gezilmesi</span>
+                <span>{isEN ? 'Guided tour of model flats and landscaped complexes' : 'Örnek daire, peyzaj ve havuz alanlarının gezilmesi'}</span>
               </div>
               <div className="flex items-center space-x-2.5">
                 <CheckCircle2 size={16} className="text-[#fffff1]/80 flex-shrink-0" />
-                <span>Karasu sahil bandı ve bölge gelişimi hakkında brifing</span>
+                <span>{isEN ? 'Regional overview of Karasu coastline development' : 'Karasu sahil bandı ve bölge gelişimi hakkında brifing'}</span>
               </div>
               <div className="flex items-center space-x-2.5">
                 <CheckCircle2 size={16} className="text-[#fffff1]/80 flex-shrink-0" />
-                <span>Öğle yemeği ve ikramlar dahil — tamamen ücretsiz</span>
+                <span>{isEN ? 'Complimentary lunch hospitality — zero obligation' : 'Öğle yemeği ve ikramlar dahil — tamamen ücretsiz'}</span>
               </div>
             </div>
 
@@ -519,59 +537,67 @@ export const PaymentModelsSection: React.FC = () => {
                     <CheckCircle2 size={22} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-base text-emerald-100">Rezervasyon Talebiniz Alındı!</h4>
-                    <p className="text-xs text-emerald-300/80">Kayıt başarıyla Portföy CRM sistemimize iletildi.</p>
+                    <h4 className="font-semibold text-base text-emerald-100">
+                      {isEN ? 'Reservation Request Received!' : 'Rezervasyon Talebiniz Alındı!'}
+                    </h4>
+                    <p className="text-xs text-emerald-300/80">
+                      {isEN ? 'Successfully registered in our Portföy CRM system.' : 'Kayıt başarıyla Portföy CRM sistemimize iletildi.'}
+                    </p>
                   </div>
                 </div>
 
                 <p className="text-xs sm:text-sm text-[#fffff1]/80 leading-relaxed font-light">
-                  Müşteri temsilcimiz transfer detayları ve hareket noktası teyidi için sizi en kısa sürede arayacaktır. Dilerseniz başvurunuzu WhatsApp üzerinden de paylaşabilirsiniz:
+                  {isEN
+                    ? 'Our representative will contact you shortly to confirm VIP shuttle timings and pickup points. You may also confirm via WhatsApp:'
+                    : 'Müşteri temsilcimiz transfer detayları ve hareket noktası teyidi için sizi en kısa sürede arayacaktır. Dilerseniz başvurunuzu WhatsApp üzerinden de paylaşabilirsiniz:'}
                 </p>
 
                 <div className="bg-black/25 rounded-xl p-3 text-xs text-[#fffff1]/80 border border-[#fffff1]/10 space-y-1">
-                  <div><span className="text-[#fffff1]/50">Ad Soyad:</span> {tourName || 'Belirtilmedi'}</div>
-                  <div><span className="text-[#fffff1]/50">Telefon:</span> {tourPhone}</div>
-                  <div><span className="text-[#fffff1]/50">Kalkış Şehri:</span> {tourCity}</div>
-                  <div><span className="text-[#fffff1]/50">Katılım & Ulaşım:</span> {tourTransportChoice}</div>
+                  <div><span className="text-[#fffff1]/50">{isEN ? 'Name:' : 'Ad Soyad:'}</span> {tourName || (isEN ? 'Not specified' : 'Belirtilmedi')}</div>
+                  <div><span className="text-[#fffff1]/50">{isEN ? 'Phone:' : 'Telefon:'}</span> {tourPhone}</div>
+                  <div><span className="text-[#fffff1]/50">{t.departureCity}:</span> {tourCity}</div>
+                  <div><span className="text-[#fffff1]/50">{t.transportChoice}:</span> {tourTransportChoice}</div>
                 </div>
 
                 <a
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
-                    `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için web sitenizden rezervasyon başvurumu ilettim:\n\n• İsim: ${tourName || 'Belirtilmedi'}\n• Telefon: ${tourPhone}\n• Kalkış Şehri: ${tourCity}\n• Katılım & Ulaşım: ${tourTransportChoice}\n\nTur ve rezervasyon detaylarını teyit etmek istiyorum.`
+                    isEN
+                      ? `Hello Demirtürk İnşaat, I submitted my reservation request for the Free Karasu VIP Tour:\n\n• Name: ${tourName || 'Not specified'}\n• Phone: ${tourPhone}\n• Departure: ${tourCity}\n• Transport: ${tourTransportChoice}\n\nI would like to confirm my reservation details.`
+                      : `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için web sitenizden rezervasyon başvurumu ilettim:\n\n• İsim: ${tourName || 'Belirtilmedi'}\n• Telefon: ${tourPhone}\n• Kalkış Şehri: ${tourCity}\n• Katılım & Ulaşım: ${tourTransportChoice}\n\nTur ve rezervasyon detaylarını teyit etmek istiyorum.`
                   )}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/40 border border-emerald-500/40 hover:border-emerald-500/60 text-emerald-200 font-medium text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-md"
                 >
                   <MessageCircle size={16} className="text-emerald-400 flex-shrink-0" />
-                  <span>WhatsApp’ta Paylaş / Onayla</span>
+                  <span>{isEN ? 'Confirm via WhatsApp' : 'WhatsApp’ta Paylaş / Onayla'}</span>
                 </a>
               </div>
             ) : (
               <form onSubmit={handleTourSubmit} className="space-y-3.5 pt-2">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
-                    Adınız Soyadınız
+                    {t.namePlaceholder}
                   </label>
                   <input
                     type="text"
                     value={tourName}
                     onChange={(e) => setTourName(e.target.value)}
-                    placeholder="Adınız Soyadınız"
+                    placeholder={t.namePlaceholder}
                     className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:border-[#fffff1]/40 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
-                    Telefon <span className="text-[#fffff1]/70">*</span>
+                    {isEN ? 'Phone' : 'Telefon'} <span className="text-[#fffff1]/70">*</span>
                   </label>
                   <input
                     type="tel"
                     required
                     value={tourPhone}
                     onChange={(e) => setTourPhone(e.target.value)}
-                    placeholder="05XX XXX XX XX"
+                    placeholder={t.phonePlaceholder}
                     className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] placeholder-[#fffff1]/40 focus:border-[#fffff1]/40 focus:outline-none transition-colors"
                   />
                 </div>
@@ -579,31 +605,31 @@ export const PaymentModelsSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
-                      Kalkış Şehri
+                      {t.departureCity}
                     </label>
                     <select
                       value={tourCity}
                       onChange={(e) => setTourCity(e.target.value)}
                       className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] focus:border-[#fffff1]/40 focus:outline-none transition-colors"
                     >
-                      <option value="İstanbul">İstanbul</option>
-                      <option value="Kocaeli">Kocaeli / Gebze</option>
-                      <option value="Sakarya">Sakarya / Adapazarı</option>
-                      <option value="Diğer Şehir">Diğer Şehir</option>
+                      <option value={isEN ? 'Istanbul' : 'İstanbul'}>{isEN ? 'Istanbul' : 'İstanbul'}</option>
+                      <option value={isEN ? 'Kocaeli' : 'Kocaeli'}>{isEN ? 'Kocaeli / Gebze' : 'Kocaeli / Gebze'}</option>
+                      <option value={isEN ? 'Sakarya' : 'Sakarya'}>{isEN ? 'Sakarya / Adapazarı' : 'Sakarya / Adapazarı'}</option>
+                      <option value={isEN ? 'Other City' : 'Diğer Şehir'}>{isEN ? 'Other City' : 'Diğer Şehir'}</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-[#fffff1]/70 mb-1">
-                      Ulaşım Şekli
+                      {t.transportChoice}
                     </label>
                     <select
                       value={tourTransportChoice}
                       onChange={(e) => setTourTransportChoice(e.target.value)}
                       className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] focus:border-[#fffff1]/40 focus:outline-none transition-colors"
                     >
-                      <option value="Pazar Günü (VIP Servis)">Pazar VIP Transfer</option>
-                      <option value="Kendi Aracımla Geleceğim">Kendi Aracımla</option>
+                      <option value={t.vipSunday}>{t.vipSunday}</option>
+                      <option value={t.ownCar}>{t.ownCar}</option>
                     </select>
                   </div>
                 </div>
@@ -612,7 +638,7 @@ export const PaymentModelsSection: React.FC = () => {
                   type="submit"
                   className="w-full py-3.5 px-6 rounded-xl bg-[#fffff1] text-[#252c33] font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all hover:bg-white active:scale-[0.99] cursor-pointer shadow-lg mt-2 flex items-center justify-center space-x-2"
                 >
-                  <span>Ücretsiz Tura Kayıt Ol</span>
+                  <span>{t.joinTourBtn}</span>
                   <ArrowRight size={16} />
                 </button>
               </form>
@@ -623,3 +649,4 @@ export const PaymentModelsSection: React.FC = () => {
     </section>
   )
 }
+

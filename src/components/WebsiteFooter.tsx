@@ -1,8 +1,9 @@
 import React from 'react'
-import { COMPANY_INFO, PROJECTS_DATA } from '../data/websiteData'
-import { ChevronUp, Phone, Mail, MapPin } from 'lucide-react'
+import { COMPANY_INFO, getLocalizedProjects } from '../data/websiteData'
+import { ChevronUp } from 'lucide-react'
 import { DemirturkLogo } from './DemirturkLogo'
-
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 import { ProjectItem } from '../types'
 
 interface WebsiteFooterProps {
@@ -16,6 +17,11 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
   onNavigate,
   onSelectProject 
 }) => {
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
+  const nav = TRANSLATIONS[language].nav
+  const projects = getLocalizedProjects(language)
+
   const scrollToTop = () => {
     if (onNavigate) {
       onNavigate('/')
@@ -33,10 +39,12 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
           <div className="lg:col-span-2 space-y-4">
             <DemirturkLogo variant="dark-bg" emblemSize={60} isScrolled={true} />
             <p className="text-sm text-[#fffff1]/70 font-light leading-relaxed max-w-sm">
-              2003 yılından bu yana Sakarya Karasu’da doğa ve mimariyi buluşturan güvenilir yaşam alanları inşa ediyor; temelden çatıya yapı malzemeleri tedariki sağlıyoruz.
+              {isEn
+                ? 'Since 2003, we have been crafting reliable living spaces uniting nature and architecture in Sakarya Karasu, providing certified building materials supply from foundation to roof.'
+                : '2003 yılından bu yana Sakarya Karasu’da doğa ve mimariyi buluşturan güvenilir yaşam alanları inşa ediyor; temelden çatıya yapı malzemeleri tedariki sağlıyoruz.'}
             </p>
             <div className="text-xs sm:text-sm text-[#fffff1]/85 pt-2 font-medium">
-              Banka Kredisiz — Elden Senet İmkânı
+              {isEn ? 'Direct In-House Installments — Zero Bank Loan Required' : 'Banka Kredisiz — Elden Senet İmkânı'}
             </div>
             {/* Social & Portal Links */}
             <div className="flex items-center space-x-3 pt-2">
@@ -85,10 +93,10 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
           {/* Nav: Projeler */}
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
-              PROJELER
+              {isEn ? 'PROJECTS' : 'PROJELER'}
             </h4>
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
-              {PROJECTS_DATA.filter((p) => !p.hidden).slice(0, 5).map((p) => (
+              {projects.filter((p) => !p.hidden).slice(0, 5).map((p) => (
                 <li key={p.id}>
                   <a 
                     href={`/projeler/${p.slug || p.id}`} 
@@ -109,7 +117,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
           {/* Nav: Kurumsal & Sayfalar */}
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
-              SAYFALAR
+              {isEn ? 'PAGES' : 'SAYFALAR'}
             </h4>
             <ul className="space-y-2.5 text-sm text-[#fffff1]/75 font-light">
               <li>
@@ -121,7 +129,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Projeler
+                  {nav.works}
                 </a>
               </li>
               <li>
@@ -133,7 +141,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Ödeme Modelleri
+                  {nav.payment}
                 </a>
               </li>
               <li>
@@ -145,7 +153,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Mimari Yaklaşım
+                  {nav.architecture}
                 </a>
               </li>
               <li>
@@ -157,7 +165,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Makaleler
+                  {nav.articles}
                 </a>
               </li>
               <li>
@@ -169,7 +177,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Yapı Malzemeleri
+                  {nav.materials}
                 </a>
               </li>
               <li>
@@ -182,7 +190,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  İletişim & Kariyer
+                  {isEn ? 'Contact & Careers' : 'İletişim & Kariyer'}
                 </a>
               </li>
             </ul>
@@ -191,7 +199,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
           {/* Nav: İletişim */}
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] text-[#fffff1] mb-4 font-semibold">
-              MERKEZ OFİS
+              {isEn ? 'HEAD OFFICE' : 'MERKEZ OFİS'}
             </h4>
             <div className="space-y-2 text-sm text-[#fffff1]/75 font-light">
               <p className="leading-relaxed">{COMPANY_INFO.address}</p>
@@ -214,18 +222,24 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#fffff1]/60 gap-4">
           <div>
-            © 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.
+            {isEn
+              ? '© 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. All rights reserved.'
+              : '© 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.'}
           </div>
 
           <div className="flex items-center space-x-6">
-            <span className="hover:text-[#fffff1] cursor-pointer transition-colors">KVKK Aydınlatma Metni</span>
-            <span className="hover:text-[#fffff1] cursor-pointer transition-colors">Çerez Politikası</span>
+            <span className="hover:text-[#fffff1] cursor-pointer transition-colors">
+              {isEn ? 'Privacy Notice (GDPR/KVKK)' : 'KVKK Aydınlatma Metni'}
+            </span>
+            <span className="hover:text-[#fffff1] cursor-pointer transition-colors">
+              {isEn ? 'Cookie Policy' : 'Çerez Politikası'}
+            </span>
             <button
               onClick={scrollToTop}
-              className="flex items-center space-x-1.5 text-[#fffff1]/70 hover:text-[#fffff1] transition-colors ml-4"
-              aria-label="Yukarı çık"
+              className="flex items-center space-x-1.5 text-[#fffff1]/70 hover:text-[#fffff1] transition-colors ml-4 cursor-pointer"
+              aria-label={isEn ? 'Back to top' : 'Yukarı çık'}
             >
-              <span>YUKARI</span>
+              <span>{isEn ? 'TOP' : 'YUKARI'}</span>
               <ChevronUp size={14} className="text-[#fffff1]" />
             </button>
           </div>

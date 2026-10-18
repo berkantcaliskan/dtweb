@@ -1,8 +1,15 @@
 import React from 'react'
-import { COMPANY_INFO, COMPANY_STATS } from '../data/websiteData'
-import { ShieldCheck, Compass, Sparkles, Building2 } from 'lucide-react'
+import { getLocalizedStats } from '../data/websiteData'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
+import { ShieldCheck, Compass, Sparkles } from 'lucide-react'
 
 export const ArchitecturePhilosophy: React.FC = () => {
+  const { language } = useLanguage()
+  const t = TRANSLATIONS[language].architecture
+  const isEn = language === 'EN'
+  const stats = getLocalizedStats(language)
+
   return (
     <section id="mimari-yaklasim" className="py-10 sm:py-16 md:py-24 bg-transparent text-[#fffff1] border-t border-[#fffff1]/[0.08] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[104px]">
@@ -10,19 +17,19 @@ export const ArchitecturePhilosophy: React.FC = () => {
         <div className="max-w-3xl mb-8 sm:mb-16">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-            <span>MİMARİ YAKLAŞIM & KURUMSAL FELSEFE</span>
+            <span>{t.sectionTag}</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fffff1] leading-tight">
-            Doğa, Konfor ve 20+ Yıllık Sarsılmaz Mühendislik Birikimi
+            {t.title}
           </h2>
           <p className="mt-6 text-base sm:text-lg text-[#fffff1]/80 font-light leading-relaxed">
-            Demirtürk İnşaat olarak 2003 yılından bu yana Sakarya Karasu’nun eşsiz sahil bandında sadece yapılar değil; nesilden nesile aktarılacak güvenli ve konforlu yaşam alanları inşa ediyoruz. Karadeniz’in doğasına, temiz havasına ve sahil dokusuna saygı duyan, modern ve sağlam projeler üretiyoruz.
+            {t.desc}
           </p>
         </div>
 
         {/* Company Stats Grid (Transparent contour-only container) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 sm:mb-20 p-6 sm:p-8 rounded-2xl bg-transparent backdrop-blur-sm border border-[#fffff1]/15">
-          {COMPANY_STATS.map((stat, i) => (
+          {stats.map((stat, i) => (
             <div key={i} className="text-center md:text-left border-r last:border-r-0 border-[#fffff1]/10 pr-4">
               <span className="font-theSeasons text-4xl sm:text-5xl font-bold text-[#fffff1] block">
                 {stat.value}
@@ -47,10 +54,10 @@ export const ArchitecturePhilosophy: React.FC = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
-                  Doğal Uyum & Sahil Manzarası
+                  {t.pillar1Title}
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-                  Her projemiz Karasu’nun sahil şeridi, doğayla iç içe yeşil dokusu ve gün ışığı açılarına göre özel olarak konumlandırılır. Teraslar ve geniş cam cepheler iç mekanı dış çevreyle bütünleştirir.
+                  {t.pillar1Desc}
                 </p>
               </div>
             </div>
@@ -64,10 +71,10 @@ export const ArchitecturePhilosophy: React.FC = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
-                  Temelden Çatıya Malzeme Gücü
+                  {t.pillar2Title}
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-                  Demirtürk, aynı zamanda bölgenin önde gelen yapı malzemeleri tedarikçisidir. Kendi sertifikalı nervürlü demirimiz ve C35 betonumuzla ödün vermeyen deprem güvenliği sağlarız.
+                  {t.pillar2Desc}
                 </p>
               </div>
             </div>
@@ -81,10 +88,10 @@ export const ArchitecturePhilosophy: React.FC = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-theSeasons text-xl sm:text-2xl font-semibold text-[#fffff1] group-hover:text-white leading-snug mb-3 transition-colors">
-                  Kredisiz & Güvene Dayalı Finansman
+                  {t.pillar3Title}
                 </h3>
                 <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-                  Banka faizlerine veya kefil şartlarına takılmadan, doğrudan Demirtürk bünyesinde elden senet ve esnek vade modeliyle ev sahibi olma sürecini şeffaf ve kolay kılıyoruz.
+                  {t.pillar3Desc}
                 </p>
               </div>
             </div>
@@ -92,23 +99,25 @@ export const ArchitecturePhilosophy: React.FC = () => {
         </div>
 
         {/* ============================================================== */}
-        {/* MERGED: STREAMLINED INŞA SÜREÇLERİ (MÜHENDİSLİK DİSİPLİNİ)     */}
+        {/* STREAMLINED INŞA SÜREÇLERİ (MÜHENDİSLİK DİSİPLİNİ)             */}
         {/* ============================================================== */}
         <div id="insa-surecleri" className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#fffff1]/10">
           <div className="max-w-3xl mb-8 sm:mb-12">
             <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#fffff1] flex-shrink-0" />
-              <span>MÜHENDİSLİK DİSİPLİNİ & ŞANTİYE PROTOKOLÜ</span>
+              <span>{isEn ? 'ENGINEERING DISCIPLINE & SITE PROTOCOLS' : 'MÜHENDİSLİK DİSİPLİNİ & ŞANTİYE PROTOKOLÜ'}</span>
             </div>
             <h3 className="font-theSeasons text-2xl sm:text-4xl font-bold tracking-tight text-[#fffff1]">
-              Temelden Anahtar Teslimine İnşa Süreçleri
+              {isEn ? 'Construction Milestones: From Groundwork to Handover' : 'Temelden Anahtar Teslimine İnşa Süreçleri'}
             </h3>
             <p className="mt-3 text-sm sm:text-base text-[#fffff1]/80 font-light leading-relaxed">
-              20+ yıllık saha birikimimizle hayata geçirdiğimiz 5 aşamalı tavizsiz kalite kontrol ve şantiye denetim standardı.
+              {isEn
+                ? 'A 5-phase uncompromising quality control and rigorous engineering protocol cultivated over 20+ years of active field experience.'
+                : '20+ yıllık saha birikimimizle hayata geçirdiğimiz 5 aşamalı tavizsiz kalite kontrol ve şantiye denetim standardı.'}
             </p>
           </div>
 
-          <ConstructionMilestonesViewer />
+          <ConstructionMilestonesViewer isEn={isEn} />
         </div>
       </div>
     </section>
@@ -124,7 +133,7 @@ interface ProcessMilestone {
   image: string
 }
 
-const CONSTRUCTION_MILESTONES: ProcessMilestone[] = [
+const CONSTRUCTION_MILESTONES_TR: ProcessMilestone[] = [
   {
     step: '01',
     title: 'Zemin Etüdü & Sismik Modelleme',
@@ -167,15 +176,63 @@ const CONSTRUCTION_MILESTONES: ProcessMilestone[] = [
   }
 ]
 
-const ConstructionMilestonesViewer: React.FC = () => {
+const CONSTRUCTION_MILESTONES_EN: ProcessMilestone[] = [
+  {
+    step: '01',
+    title: 'Geological Survey & Seismic Modeling',
+    highlight: 'Rigorous geological mapping of coastal subsoil dynamics.',
+    summary: 'Multi-point geological drilling, resistivity, and liquefaction risk evaluations tailored to coastal subsoil characteristics provide scientific data for foundation engineering.',
+    standards: ['Ministry-Certified Geological Survey Report', 'Liquefaction Risk & Seismic Refraction Analysis'],
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    step: '02',
+    title: 'Monolithic Raft Foundation & Tanking',
+    highlight: 'Monobloc foundation dispersing seismic loads and subterranean water seal.',
+    summary: 'Instead of isolated footings, deep monolithic raft foundations turn the structure into a rigid single body, wrapped with double-layer marine bituminous membranes for moisture defense.',
+    standards: ['C35 Waterproofing-Admixed Concrete', 'Double Layer Ø14-Ø25 mm Steel Rebar Grid', 'SBS-Modified Marine Tanking Membrane'],
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    step: '03',
+    title: 'Load-Bearing Skeleton & Lab Testing',
+    highlight: 'TSE-certified BÇ III ribbed rebar and independent compression tests.',
+    summary: 'Columns and shear walls built from our certified steel inventories and C35 concrete undergo rigorous 7-day and 28-day cylinder crush testing by accredited inspection laboratories.',
+    standards: ['Accredited Laboratory Cylinder Test Reports', 'Seismic Shear-Wall to Column Reinforcement Ratios'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    step: '04',
+    title: 'Exterior Cladding & Marine Roof Insulation',
+    highlight: 'Year-round Class-A thermal comfort and storm resilience.',
+    summary: 'Acoustic-barrier bims pumice blocks between apartments, rock wool exterior thermal wrapping, and UV-resistant elastomeric marine roof seals engineered for coastal storms.',
+    standards: ['150 kg/m³ Density Rock Wool Thermal Insulation', 'Acoustic Inter-Unit Partition Walls', 'Concealed Drainage Marine Roofing'],
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    step: '05',
+    title: 'Finishing Works, Landscaping & Habitation Certificate',
+    highlight: 'Turnkey handover with fully secured individual title deeds.',
+    summary: 'Underfloor heating, premium porcelain granite, and pool landscaping are finalized; official occupancy and habitation permits (İskan) are completed before handing over unit title deeds.',
+    standards: ['Full Freehold Habitation Certificate (Kat Mülkiyeti)', 'Underfloor Heating & Premium Grade Finishes', '2-Year Direct Workmanship Warranty'],
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+  }
+]
+
+interface ConstructionMilestonesViewerProps {
+  isEn?: boolean
+}
+
+const ConstructionMilestonesViewer: React.FC<ConstructionMilestonesViewerProps> = ({ isEn = false }) => {
   const [activeIdx, setActiveIdx] = React.useState(0)
-  const current = CONSTRUCTION_MILESTONES[activeIdx]
+  const milestones = isEn ? CONSTRUCTION_MILESTONES_EN : CONSTRUCTION_MILESTONES_TR
+  const current = milestones[activeIdx] || milestones[0]
 
   return (
     <div>
       {/* Step Selector Tabs */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-6 sm:mb-8">
-        {CONSTRUCTION_MILESTONES.map((m, idx) => (
+        {milestones.map((m, idx) => (
           <button
             key={m.step}
             type="button"
@@ -186,7 +243,9 @@ const ConstructionMilestonesViewer: React.FC = () => {
                 : 'bg-transparent text-[#fffff1]/65 border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:text-[#fffff1]'
             }`}
           >
-            <span className="text-[9px] sm:text-[10px] block opacity-75 mb-0.5 font-medium">AŞAMA {m.step}</span>
+            <span className="text-[9px] sm:text-[10px] block opacity-75 mb-0.5 font-medium">
+              {isEn ? `PHASE ${m.step}` : `AŞAMA ${m.step}`}
+            </span>
             <span className="text-xs sm:text-sm font-medium line-clamp-1 block leading-tight">{m.title.split('&')[0]}</span>
           </button>
         ))}
@@ -203,14 +262,14 @@ const ConstructionMilestonesViewer: React.FC = () => {
             loading="lazy"
           />
           <div className="absolute top-3 left-3 px-2.5 py-1 text-[11px] tracking-widest uppercase bg-black/80 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 rounded-md font-medium">
-            AŞAMA {current.step} / 05
+            {isEn ? `PHASE ${current.step} / 05` : `AŞAMA ${current.step} / 05`}
           </div>
         </div>
 
         <div className="lg:col-span-7 space-y-4">
           <div>
             <span className="text-[11px] tracking-widest text-[#fffff1]/60 uppercase block mb-1 font-medium">
-              ŞANTİYE & MÜHENDİSLİK STANDARDI
+              {isEn ? 'SITE & ENGINEERING PROTOCOL' : 'ŞANTİYE & MÜHENDİSLİK STANDARDI'}
             </span>
             <h4 className="font-theSeasons text-xl sm:text-2xl font-bold text-[#fffff1] leading-tight">
               {current.title}
@@ -226,7 +285,7 @@ const ConstructionMilestonesViewer: React.FC = () => {
 
           <div className="pt-3 border-t border-[#fffff1]/10 space-y-1.5">
             <span className="text-[10px] uppercase tracking-wider text-[#fffff1]/50 block font-medium">
-              UYGULANAN KRİTİK STANDARTLAR
+              {isEn ? 'CRITICAL APPLIED STANDARDS' : 'UYGULANAN KRİTİK STANDARTLAR'}
             </span>
             <div className="space-y-1.5">
               {current.standards.map((std, i) => (
@@ -246,18 +305,18 @@ const ConstructionMilestonesViewer: React.FC = () => {
               onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
               className="px-3 py-1.5 text-xs uppercase tracking-wider rounded-lg border border-[#fffff1]/15 hover:border-[#fffff1]/35 hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition-all text-[#fffff1] cursor-pointer"
             >
-              ← Önceki
+              {isEn ? '← Previous' : '← Önceki'}
             </button>
             <span className="text-xs text-[#fffff1]/50 font-mono">
-              {activeIdx + 1} / {CONSTRUCTION_MILESTONES.length}
+              {activeIdx + 1} / {milestones.length}
             </span>
             <button
               type="button"
-              disabled={activeIdx === CONSTRUCTION_MILESTONES.length - 1}
-              onClick={() => setActiveIdx((prev) => Math.min(CONSTRUCTION_MILESTONES.length - 1, prev + 1))}
+              disabled={activeIdx === milestones.length - 1}
+              onClick={() => setActiveIdx((prev) => Math.min(milestones.length - 1, prev + 1))}
               className="px-3.5 py-1.5 text-xs uppercase tracking-wider rounded-lg bg-white/10 hover:bg-white/15 border border-[#fffff1]/20 text-[#fffff1] disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
             >
-              Sonraki →
+              {isEn ? 'Next →' : 'Sonraki →'}
             </button>
           </div>
         </div>
@@ -265,3 +324,4 @@ const ConstructionMilestonesViewer: React.FC = () => {
     </div>
   )
 }
+

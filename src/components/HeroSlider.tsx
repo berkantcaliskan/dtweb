@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { PROJECTS_DATA, COMPANY_INFO } from '../data/websiteData'
+import { getLocalizedProjects, COMPANY_INFO } from '../data/websiteData'
 import { ResponsiveMedia } from './ResponsiveMedia'
 import { ProjectItem } from '../types'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 interface HeroSliderProps {
   onSelectProject: (project: ProjectItem) => void
@@ -17,7 +19,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   currentIndex: controlledIndex,
   onSlideChange,
 }) => {
-  const featuredProjects = PROJECTS_DATA.filter((p) => p.isFeatured && !p.hidden)
+  const { language, isEN } = useLanguage()
+  const t = TRANSLATIONS[language].hero
+
+  const projects = getLocalizedProjects(language)
+  const featuredProjects = projects.filter((p) => p.isFeatured && !p.hidden)
   const [internalIndex, setInternalIndex] = useState(0)
   const [previousIndex, setPreviousIndex] = useState<number | null>(null)
   const [timerKey, setTimerKey] = useState(0)
@@ -135,7 +141,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 onClick={() => onSelectProject(currentProject)}
                 className="px-3 py-1.5 sm:px-6 sm:py-3.5 bg-[#fffff1] hover:bg-white text-[#252c33] font-extrabold text-[9.5px] sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center gap-1.5 sm:gap-2 group flex-shrink-0"
               >
-                <span>Proje Detayları</span>
+                <span>{isEN ? 'Project Details' : 'Proje Detayları'}</span>
                 <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
               </button>
 
@@ -151,7 +157,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 }}
                 className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 text-[#fffff1] font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center flex-shrink-0 overflow-hidden outline-none select-none"
               >
-                Ücretsiz Tanıtım Turu
+                {t.tourBtn}
               </button>
             </div>
           </div>
@@ -163,8 +169,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             type="button"
             className="glass-blur-chromatic px-4 py-2 sm:px-6 sm:py-3.5 text-[#fffff1] text-[11px] sm:text-sm tracking-wider uppercase rounded-xl hover:scale-105 active:scale-95 cursor-default text-center justify-center flex items-center select-none shadow-xl overflow-hidden outline-none"
           >
-            <span className="font-extrabold tracking-wider">SANAL TUR</span>
-            <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">YAKINDA</span>
+            <span className="font-extrabold tracking-wider">{isEN ? 'VIRTUAL TOUR' : 'SANAL TUR'}</span>
+            <span className="font-normal text-[10px] sm:text-xs text-[#fffff1]/85 tracking-widest ml-1.5 sm:ml-2">
+              {isEN ? 'COMING SOON' : 'YAKINDA'}
+            </span>
           </button>
         </div>
 
@@ -175,13 +183,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           <button
             onClick={scrollToNext}
             className="flex items-center space-x-1.5 text-[#fffff1]/80 hover:text-[#fffff1] transition-all group cursor-pointer pb-0.5 max-w-[calc(50%-42px)] overflow-hidden"
-            aria-label="Projeleri Keşfedin"
+            aria-label={isEN ? 'Explore Works' : 'Projeleri Keşfedin'}
           >
             <div className="w-4 h-7 rounded-full border border-[#fffff1]/30 flex justify-center pt-1 transition-colors flex-shrink-0">
               <div className="w-1 h-1.5 rounded-full bg-[#fffff1] animate-scroll-dot" />
             </div>
             <span className="text-[9.5px] tracking-wider font-medium uppercase text-[#fffff1]/85 truncate whitespace-nowrap">
-              Projeleri Keşfedin
+              {isEN ? 'Explore Works' : 'Projeleri Keşfedin'}
             </span>
           </button>
 
@@ -189,14 +197,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center space-x-1.5 z-10">
             <button
               onClick={prevSlide}
-              aria-label="Önceki Proje"
+              aria-label={isEN ? 'Previous Project' : 'Önceki Proje'}
               className="w-8 h-8 rounded-xl border border-[#fffff1]/20 bg-black/40 text-[#fffff1] flex items-center justify-center active:scale-95 cursor-pointer"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={nextSlide}
-              aria-label="Sonraki Proje"
+              aria-label={isEN ? 'Next Project' : 'Sonraki Proje'}
               className="w-8 h-8 rounded-xl border border-[#fffff1]/20 bg-black/40 text-[#fffff1] flex items-center justify-center active:scale-95 cursor-pointer"
             >
               <ChevronRight size={16} />
@@ -272,13 +280,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           <button
             onClick={scrollToNext}
             className="flex items-center space-x-3 text-[#fffff1]/70 hover:text-[#fffff1] transition-all group cursor-pointer"
-            aria-label="Projeleri Keşfedin"
+            aria-label={isEN ? 'Explore Works' : 'Projeleri Keşfedin'}
           >
             <div className="w-5 h-8 rounded-full border border-[#fffff1]/30 group-hover:border-[#fffff1] flex justify-center pt-1.5 transition-colors">
               <div className="w-1 h-2 rounded-full bg-[#fffff1] animate-scroll-dot" />
             </div>
             <span className="text-xs tracking-[0.2em] font-medium uppercase text-[#fffff1]/90 group-hover:text-[#fffff1] transition-colors">
-              Projeleri Keşfedin
+              {isEN ? 'Explore Works' : 'Projeleri Keşfedin'}
             </span>
           </button>
 

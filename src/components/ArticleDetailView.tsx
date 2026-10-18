@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { ArrowLeft, Clock, Calendar, Share2, MessageSquare, Phone, ArrowUpRight, BookOpen, Check } from 'lucide-react'
-import { ArticleItem } from './ArticlesSection'
+import { ArrowLeft, Clock, Calendar, Share2, MessageSquare, Phone, ArrowUpRight } from 'lucide-react'
+import { ArticleItem, getLocalizedArticles } from './ArticlesSection'
 import { COMPANY_INFO } from '../data/websiteData'
+import { useLanguage } from '../context/LanguageContext'
 
 interface ArticleDetailViewProps {
   article: ArticleItem
@@ -12,12 +13,20 @@ interface ArticleDetailViewProps {
 }
 
 export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
-  article,
-  allArticles,
+  article: initialArticle,
+  allArticles: initialAllArticles,
   onClose,
   onSelectArticle,
   onNavigate,
 }) => {
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
+
+  // Resolve localized versions of the current article and list
+  const localizedArticles = getLocalizedArticles(language)
+  const article = localizedArticles.find((a) => a.id === initialArticle.id) || initialArticle
+  const allArticles = localizedArticles.length > 0 ? localizedArticles : initialAllArticles
+
   // Lock body scroll and handle Escape key
   useEffect(() => {
     const originalOverflow = document.body.style.overflow
@@ -55,7 +64,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
       }).catch(() => {})
     } else {
       navigator.clipboard?.writeText(window.location.href)
-      alert('Makale bağlantısı panoya kopyalandı!')
+      alert(isEn ? 'Article link copied to clipboard!' : 'Makale bağlantısı panoya kopyalandı!')
     }
   }
 
@@ -131,17 +140,17 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
           <button
             onClick={onClose}
             className="flex items-center space-x-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 shadow-sm cursor-pointer flex-shrink-0"
-            aria-label="Makalelere geri dön"
+            aria-label={isEn ? 'Back to articles' : 'Makalelere geri dön'}
           >
             <ArrowLeft size={18} className="transition-transform duration-200 group-hover:-translate-x-1 text-[#fffff1]" />
-            <span className="text-xs font-bold uppercase tracking-wider">Geri Dön</span>
+            <span className="text-xs font-bold uppercase tracking-wider">{isEn ? 'Back' : 'Geri Dön'}</span>
           </button>
 
           <div className="h-6 w-[1px] bg-[#fffff1]/20 hidden sm:block flex-shrink-0" />
 
           <div className="min-w-0 truncate">
             <div className="flex items-center space-x-2 text-[10px] sm:text-[11px] tracking-widest text-[#fffff1]/60 uppercase font-medium">
-              <span>MAKALELER</span>
+              <span>{isEn ? 'ARTICLES' : 'MAKALELER'}</span>
               <span>/</span>
               <span className="text-[#fffff1]/80 truncate">{article.category}</span>
             </div>
@@ -156,21 +165,25 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
           <button
             onClick={handleShare}
             className="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-white/[0.08] hover:bg-white/[0.18] border border-[#fffff1]/20 text-[#fffff1] transition-all flex items-center space-x-1.5 cursor-pointer text-xs font-semibold uppercase tracking-wider"
-            title="Makaleyi Paylaş"
-            aria-label="Makaleyi Paylaş"
+            title={isEn ? 'Share Article' : 'Makaleyi Paylaş'}
+            aria-label={isEn ? 'Share Article' : 'Makaleyi Paylaş'}
           >
             <Share2 size={16} />
-            <span className="hidden sm:inline">Paylaş</span>
+            <span className="hidden sm:inline">{isEn ? 'Share' : 'Paylaş'}</span>
           </button>
 
           <a
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba Demirtürk İnşaat, "${article.title}" başlıklı makaleniz hakkında bilgi almak istiyorum.`)}`}
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+              isEn
+                ? `Hello Demirtürk İnşaat, I would like to get information regarding your article "${article.title}".`
+                : `Merhaba Demirtürk İnşaat, "${article.title}" başlıklı makaleniz hakkında bilgi almak istiyorum.`
+            )}`}
             target="_blank"
             rel="noreferrer"
             className="hidden lg:flex items-center space-x-2 px-4 py-2 bg-emerald-900/40 hover:bg-emerald-800/60 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
           >
             <MessageSquare size={14} />
-            <span>WhatsApp Danışma</span>
+            <span>{isEn ? 'WhatsApp Inquiry' : 'WhatsApp Danışma'}</span>
           </a>
         </div>
       </header>
@@ -209,8 +222,12 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
               D
             </div>
             <div>
-              <span className="text-[#fffff1] font-medium block">Demirtürk Mimarlık & Mühendislik Kurulu</span>
-              <span className="text-[#fffff1]/50 text-xs">Karasu / Sakarya Şantiye Araştırma ve Tasarım Grubu</span>
+              <span className="text-[#fffff1] font-medium block">
+                {isEn ? 'Demirtürk Architectural & Engineering Board' : 'Demirtürk Mimarlık & Mühendislik Kurulu'}
+              </span>
+              <span className="text-[#fffff1]/50 text-xs">
+                {isEn ? 'Karasu / Sakarya Field Research & Design Group' : 'Karasu / Sakarya Şantiye Araştırma ve Tasarım Grubu'}
+              </span>
             </div>
           </div>
         </div>
@@ -265,29 +282,35 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
         <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-[#fffff1]/20 space-y-5 shadow-xl">
           <div className="flex items-center space-x-2.5 text-xs font-semibold tracking-widest text-[#fffff1] uppercase">
             <span className="w-2 h-2 rounded-full bg-[#fffff1]" />
-            <span>DEMİRTÜRK İNŞAAT MÜHENDİSLİK İLKELERİ</span>
+            <span>{isEn ? 'DEMİRTÜRK İNŞAAT ENGINEERING PRINCIPLES' : 'DEMİRTÜRK İNŞAAT MÜHENDİSLİK İLKELERİ'}</span>
           </div>
           <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-            Karasu’da Bilimsel Zemin ve Tavizsiz Kalite
+            {isEn ? 'Scientific Ground Engineering & Uncompromising Quality in Karasu' : 'Karasu’da Bilimsel Zemin ve Tavizsiz Kalite'}
           </h3>
           <p className="text-sm sm:text-base text-[#fffff1]/80 leading-relaxed font-light">
-            Projelerimizin tamamında zemin etüdü, radye jeneral temel, C35 beton ve çift kat su-ısı yalıtımı standart olarak uygulanmaktadır. Sahada uyguladığımız tüm mühendislik detaylarını yerinde incelemek için ücretsiz tanıtım turumuza katılabilirsiniz.
+            {isEn
+              ? 'In all our developments, multi-point geological ground surveys, raft foundations, C35 concrete, and double-layer water and thermal insulation are implemented as uncompromising standards. You are welcome to join our complimentary Karasu VIP Tour to review our structural engineering details directly on-site.'
+              : 'Projelerimizin tamamında zemin etüdü, radye jeneral temel, C35 beton ve çift kat su-ısı yalıtımı standart olarak uygulanmaktadır. Sahada uyguladığımız tüm mühendislik detaylarını yerinde incelemek için ücretsiz tanıtım turumuza katılabilirsiniz.'}
           </p>
           <div className="pt-2 flex flex-wrap gap-3">
             <a
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(`Merhaba Demirtürk İnşaat, "${article.title}" makalenizi okudum. Projeleriniz hakkında bilgi almak istiyorum.`)}`}
+              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                isEn
+                  ? `Hello Demirtürk İnşaat, I read your article "${article.title}". I would like to get information regarding your developments.`
+                  : `Merhaba Demirtürk İnşaat, "${article.title}" makalenizi okudum. Projeleriniz hakkında bilgi almak istiyorum.`
+              )}`}
               target="_blank"
               rel="noreferrer"
               className="px-5 py-3 rounded-xl bg-[#fffff1] hover:bg-white text-[#252c33] text-xs font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer flex items-center space-x-2"
             >
               <MessageSquare size={14} />
-              <span>Satış Temsilcisine Sorun</span>
+              <span>{isEn ? 'Inquire via WhatsApp' : 'Satış Temsilcisine Sorun'}</span>
             </a>
             <button
               onClick={onClose}
               className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-[#fffff1] border border-[#fffff1]/20 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
             >
-              Makalelere Dön
+              {isEn ? 'Back to Articles' : 'Makalelere Dön'}
             </button>
           </div>
         </div>
@@ -298,10 +321,10 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] tracking-widest text-[#fffff1]/70 uppercase font-semibold block mb-1">
-                  MİMARİ PERSPEKTİF
+                  {isEn ? 'ARCHITECTURAL PERSPECTIVE' : 'MİMARİ PERSPEKTİF'}
                 </span>
                 <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
-                  Diğer Mimari Makalelerimiz
+                  {isEn ? 'Related Insights & Guides' : 'Diğer Mimari Makalelerimiz'}
                 </h3>
               </div>
             </div>
@@ -351,7 +374,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
 
                   <div className="p-6 pt-0">
                     <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-xs font-semibold text-[#fffff1] uppercase tracking-wider">
-                      <span>Makaleyi İncele</span>
+                      <span>{isEn ? 'Read Article' : 'Makaleyi İncele'}</span>
                       <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
                   </div>
@@ -368,7 +391,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
             className="flex items-center space-x-2.5 px-6 py-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-[#fffff1] border border-[#fffff1]/20 hover:border-[#fffff1]/50 transition-all group active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-            <span className="text-xs font-bold uppercase tracking-wider">Tüm Makalelere Geri Dön</span>
+            <span className="text-xs font-bold uppercase tracking-wider">{isEn ? 'Back to All Articles' : 'Tüm Makalelere Geri Dön'}</span>
           </button>
 
           <div className="flex items-center space-x-6 text-xs text-[#fffff1]/60 font-light">

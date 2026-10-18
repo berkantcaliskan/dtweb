@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Menu, X, Phone, MessageSquare, ArrowUpRight } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
 import { DemirturkLogo } from './DemirturkLogo'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 interface WebsiteNavbarProps {
   activeSection?: string
@@ -16,15 +18,6 @@ interface NavLinkItem {
   href: string
 }
 
-const NAV_LINKS: NavLinkItem[] = [
-  { label: 'PROJELER', href: '/projeler' },
-  { label: 'ÖDEME MODELLERİ', href: '/odeme-modelleri' },
-  { label: 'MİMARİ YAKLAŞIM', href: '/mimari-yaklasim' },
-  { label: 'MAKALELER', href: '/makaleler' },
-  { label: 'YAPI MALZEMELERİ', href: '/yapi-malzemeleri' },
-  { label: 'İLETİŞİM', href: '/iletisim' },
-]
-
 export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({ 
   isSubPageOpen = false,
   onNavigate,
@@ -35,21 +28,18 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLogoHovered, setIsLogoHovered] = useState(false)
 
-  // Language state: default Turkish, switchable to English (content translation planned for when site is complete)
-  const [currentLang, setCurrentLang] = useState<'TR' | 'EN'>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('demirturk_lang')
-      if (saved === 'EN' || saved === 'TR') return saved
-    }
-    return 'TR'
-  })
+  const { language, setLanguage, isEN } = useLanguage()
+  const t = TRANSLATIONS[language].nav
 
-  const handleLanguageChange = (lang: 'TR' | 'EN') => {
-    setCurrentLang(lang)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('demirturk_lang', lang)
-    }
-  }
+  const navLinks: NavLinkItem[] = useMemo(() => [
+    { label: t.works, href: '/projeler' },
+    { label: t.payment, href: '/odeme-modelleri' },
+    { label: t.architecture, href: '/mimari-yaklasim' },
+    { label: t.articles, href: '/makaleler' },
+    { label: t.materials, href: '/yapi-malzemeleri' },
+    { label: t.contact, href: '/iletisim' },
+  ], [t])
+
 
   // Responsive adaptive navigation state
   // Initial estimate based on window width
@@ -122,9 +112,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     const hamburgerW = hamburgerMeasureRef.current?.offsetWidth || 44
 
     const DEFAULT_LINK_WIDTHS = [85, 165, 155, 95, 160, 85]
-    const linkWidths = NAV_LINKS.map((_, i) => {
+    const linkWidths = navLinks.map((_, i) => {
       const el = linkMeasureRefs.current[i]
-      return el && el.offsetWidth > 0 ? el.offsetWidth : DEFAULT_LINK_WIDTHS[i]
+      return el && el.offsetWidth > 0 ? el.offsetWidth : DEFAULT_LINK_WIDTHS[i] || 120
     })
 
     const GAP_NAV = innerWidth > 1300 ? 20 : 12
@@ -140,7 +130,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
       return sum + (cnt - 1) * GAP_NAV
     }
 
-    const totalLinksWidthAll = getLinksCost(NAV_LINKS.length)
+    const totalLinksWidthAll = getLinksCost(navLinks.length)
     const rightActionsWidthWithPhone = phoneW + GAP_ACTIONS + ctaW + GAP_ACTIONS + langW
 
     // For a centered menu (at 50%), available half-width on the right is:
@@ -155,7 +145,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     // Case 1: All links fit symmetrically centered with Phone & all controls
     if (availableHalfWithPhone > 0 && totalLinksWidthAll / 2 <= availableHalfWithPhone) {
       setShowPhone(true)
-      setVisibleCount(NAV_LINKS.length)
+      setVisibleCount(navLinks.length)
       setShowHamburger(false)
       return
     }
@@ -171,7 +161,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     )
     const availableCenteredWidth = Math.max(0, availableHalfWithMenu * 2)
 
-    let count = NAV_LINKS.length
+    let count = navLinks.length
     while (count > 0) {
       if (getLinksCost(count) <= availableCenteredWidth) {
         break
@@ -180,7 +170,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     }
 
     setVisibleCount(count)
-  }, [])
+  }, [navLinks])
 
   // ResizeObserver + window resize event listener
   useEffect(() => {
@@ -213,7 +203,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     setIsMenuOpen(false)
     if (onNavigate) {
       onNavigate(item.href)
-    } else if ((item.label === 'İLETİŞİM' || item.label === 'ULAŞIN') && onOpenReachUs) {
+    } else if ((item.href === '/iletisim' || item.href === '#iletisim' || item.label === 'İLETİŞİM' || item.label === 'CONTACT') && onOpenReachUs) {
       onOpenReachUs()
     } else {
       scrollTo(item.href)
@@ -236,7 +226,8 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     }
   }
 
-  const visibleLinks = NAV_LINKS.slice(0, visibleCount)
+  const visibleLinks = navLinks.slice(0, visibleCount)
+
 
   return (
     <>
@@ -273,7 +264,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         <div ref={hamburgerMeasureRef} className="p-1.5">
           <Menu size={18} />
         </div>
-        {NAV_LINKS.map((item, idx) => (
+        {navLinks.map((item, idx) => (
           <div
             key={item.label}
             ref={(el) => {
@@ -378,8 +369,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               }}
               className="glass-blur-box btn-tour text-[11px] sm:text-xs font-normal tracking-wider uppercase px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[#fffff1] rounded-xl shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center space-x-1.5 whitespace-nowrap flex-shrink-0 cursor-pointer overflow-hidden outline-none"
             >
-              <span className="hidden min-[420px]:inline">Ücretsiz </span>
-              <span>Tanıtım Turu</span>
+              <span>{t.tourBtn}</span>
             </button>
 
             {/* Language Selector (TR / EN) - Visible on large desktop, moved into menu when screen shrinks */}
@@ -387,9 +377,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               <div className="flex items-center gap-1 text-[11px] sm:text-xs font-medium tracking-wider flex-shrink-0">
                 <button
                   type="button"
-                  onClick={() => handleLanguageChange('TR')}
+                  onClick={() => setLanguage('TR')}
                   className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
-                    currentLang === 'TR'
+                    language === 'TR'
                       ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                       : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                   }`}
@@ -399,9 +389,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleLanguageChange('EN')}
+                  onClick={() => setLanguage('EN')}
                   className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
-                    currentLang === 'EN'
+                    language === 'EN'
                       ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                       : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                   }`}
@@ -452,9 +442,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             <div className="flex items-center gap-1 text-[11px] font-medium tracking-wider">
               <button
                 type="button"
-                onClick={() => handleLanguageChange('TR')}
+                onClick={() => setLanguage('TR')}
                 className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
-                  currentLang === 'TR'
+                  language === 'TR'
                     ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                     : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
@@ -463,9 +453,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => handleLanguageChange('EN')}
+                onClick={() => setLanguage('EN')}
                 className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
-                  currentLang === 'EN'
+                  language === 'EN'
                     ? 'glass-blur-box text-[#fffff1] font-medium shadow-sm'
                     : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
@@ -488,7 +478,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
         <div className="flex-1 overflow-y-auto py-5 flex flex-col justify-between space-y-6">
           {/* Section: Tüm Sayfa Linkleri (Temiz ve İnceltilmiş) */}
           <div className="flex flex-col space-y-1">
-            {NAV_LINKS.map((item) => (
+            {navLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -510,7 +500,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
           {/* Bottom Area of Drawer: Direct Contact (Pushed down) */}
           <div className="space-y-2.5 pt-6 mt-auto">
             <div className="text-[10px] tracking-[0.2em] uppercase text-[#fffff1]/45 font-semibold mb-1">
-              DOĞRUDAN İLETİŞİM
+              {isEN ? 'DIRECT CONTACT' : 'DOĞRUDAN İLETİŞİM'}
             </div>
 
             {/* Direct Phone Card */}
@@ -523,19 +513,25 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   <Phone size={16} />
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#fffff1]/60 uppercase tracking-widest font-medium">Bizi Arayın</div>
+                  <div className="text-[10px] text-[#fffff1]/60 uppercase tracking-widest font-medium">
+                    {isEN ? 'Call Us' : 'Bizi Arayın'}
+                  </div>
                   <div className="text-sm font-semibold tracking-wider font-mono">{COMPANY_INFO.phone}</div>
                 </div>
               </div>
               <span className="text-xs text-[#fffff1]/60 group-hover:text-white transition-colors flex items-center space-x-1">
-                <span>Hemen Ara</span>
+                <span>{isEN ? 'Call' : 'Hemen Ara'}</span>
                 <ArrowUpRight size={14} />
               </span>
             </a>
 
             {/* WhatsApp Card */}
             <a
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Merhaba%20Demirt%C3%BCrk%20%C4%B0n%C5%9Faat%20projeleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
+              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
+                isEN
+                  ? 'Hello Demirtürk İnşaat, I would like to receive detailed information regarding your projects.'
+                  : 'Merhaba Demirtürk İnşaat projeleri hakkında bilgi almak istiyorum.'
+              )}`}
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-between p-3.5 rounded-xl bg-emerald-700/20 hover:bg-emerald-700/30 border border-emerald-500/20 hover:border-emerald-500/30 transition-all text-emerald-400 group cursor-pointer"
@@ -545,8 +541,12 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
                   <MessageSquare size={16} />
                 </div>
                 <div>
-                  <div className="text-[10px] text-emerald-400/70 uppercase tracking-widest font-medium">WhatsApp Danışmanı</div>
-                  <div className="text-sm font-semibold tracking-wider">Hızlı Mesaj Gönderin</div>
+                  <div className="text-[10px] text-emerald-400/70 uppercase tracking-widest font-medium">
+                    {isEN ? 'WhatsApp Consultation' : 'WhatsApp Danışmanı'}
+                  </div>
+                  <div className="text-sm font-semibold tracking-wider">
+                    {isEN ? 'Send Direct Message' : 'Hızlı Mesaj Gönderin'}
+                  </div>
                 </div>
               </div>
               <ArrowUpRight
@@ -567,7 +567,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             }}
             className="glass-blur-box w-full py-3.5 text-white font-normal text-center uppercase tracking-wider text-xs rounded-xl shadow-lg border border-white/20 hover:border-white/40 transition-all cursor-pointer"
           >
-            Ücretsiz Tanıtım Turu İçin Rezervasyon Yap
+            {isEN ? 'Book a Free VIP Tour' : 'Ücretsiz Tanıtım Turu İçin Rezervasyon Yap'}
           </button>
 
           {/* Dil Seçenekleri (En alta) */}
@@ -578,9 +578,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             <div className="flex items-center gap-1.5 text-xs font-medium tracking-wider">
               <button
                 type="button"
-                onClick={() => handleLanguageChange('TR')}
+                onClick={() => setLanguage('TR')}
                 className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  currentLang === 'TR'
+                  language === 'TR'
                     ? 'glass-blur-box text-[#fffff1] font-semibold border border-[#fffff1]/30 shadow-sm'
                     : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}
@@ -590,9 +590,9 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => handleLanguageChange('EN')}
+                onClick={() => setLanguage('EN')}
                 className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  currentLang === 'EN'
+                  language === 'EN'
                     ? 'glass-blur-box text-[#fffff1] font-semibold border border-[#fffff1]/30 shadow-sm'
                     : 'text-[#fffff1]/60 hover:text-[#fffff1] hover:bg-white/5'
                 }`}

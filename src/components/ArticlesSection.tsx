@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { ArrowUpRight, Clock, Calendar, ChevronDown, ChevronUp } from 'lucide-react'
+import { ARTICLES_DATA_EN } from '../data/articlesDataEn'
+import { useLanguage } from '../context/LanguageContext'
+import { TRANSLATIONS } from '../data/translations'
 
 export interface ArticleSection {
   heading?: string // rendered as <h2> in article body
@@ -403,15 +406,23 @@ export const ARTICLES_DATA: ArticleItem[] = [
   }
 ]
 
+export const getLocalizedArticles = (lang: 'TR' | 'EN'): ArticleItem[] => {
+  return lang === 'EN' ? ARTICLES_DATA_EN : ARTICLES_DATA
+}
+
 export interface ArticlesSectionProps {
   onSelectArticle?: (article: ArticleItem) => void
 }
 
 export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticle }) => {
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
+  const t = TRANSLATIONS[language].articles
   const [showAll, setShowAll] = useState(false)
 
-  const topArticle = ARTICLES_DATA[0]
-  const remainingArticles = ARTICLES_DATA.slice(1)
+  const articles = getLocalizedArticles(language)
+  const topArticle = articles[0]
+  const remainingArticles = articles.slice(1)
   const displayedRemainingArticles = showAll ? remainingArticles : remainingArticles.slice(0, 2)
 
   return (
@@ -421,13 +432,13 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
         <div className="mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-[#fffff1]/10 max-w-3xl">
           <div className="flex items-center space-x-2.5 text-xs sm:text-sm font-normal tracking-[0.2em] text-[#fffff1] uppercase mb-2.5 sm:mb-3">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#fffff1] flex-shrink-0" />
-            <span>YAYINLAR & DÜŞÜNCELER / ARTICLES</span>
+            <span>{t.sectionTag}</span>
           </div>
           <h2 className="font-theSeasons text-3xl sm:text-5xl font-bold tracking-tight text-[#fffff1]">
-            Mimari ve Mühendislik Makaleleri
+            {t.title}
           </h2>
           <p className="mt-4 text-base text-[#fffff1]/80 font-light leading-relaxed">
-            Karasu’da daire sahibi olma ve gayrimenkul yatırımı rehberi, bölge analizi ve sayfiye yaşamına dair uzman yazılarımız.
+            {t.desc}
           </p>
         </div>
 
@@ -473,7 +484,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
                 </div>
 
                 <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
-                  <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
+                  <span className="uppercase tracking-wider text-xs">{t.readMore}</span>
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
@@ -527,7 +538,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
 
                 <div className="p-6 sm:p-8 pt-0">
                   <div className="pt-4 border-t border-[#fffff1]/10 flex items-center justify-between text-sm text-[#fffff1] font-medium">
-                    <span className="uppercase tracking-wider text-xs">Rehberi Oku</span>
+                    <span className="uppercase tracking-wider text-xs">{t.readMore}</span>
                     <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
@@ -544,7 +555,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
                 onClick={() => setShowAll(true)}
                 className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/80 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
-                <span>Hepsini Göster</span>
+                <span>{isEn ? 'View All Articles' : 'Hepsini Göster'}</span>
                 <ChevronDown size={16} className="text-[#fffff1]/70 group-hover:text-[#fffff1] group-hover:translate-y-0.5 transition-all" />
               </button>
             ) : (
@@ -552,7 +563,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ onSelectArticl
                 onClick={() => setShowAll(false)}
                 className="group inline-flex items-center space-x-2 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-[#fffff1]/60 hover:text-[#fffff1] transition-all cursor-pointer py-2"
               >
-                <span>Daha Az Göster</span>
+                <span>{isEn ? 'Show Less' : 'Daha Az Göster'}</span>
                 <ChevronUp size={16} className="text-[#fffff1]/50 group-hover:text-[#fffff1] group-hover:-translate-y-0.5 transition-all" />
               </button>
             )}

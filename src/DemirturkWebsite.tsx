@@ -5,7 +5,7 @@ import { AmbientSlidesBackground } from './components/AmbientSlidesBackground'
 import { ProjectsGrid } from './components/ProjectsGrid'
 import { ArchitecturePhilosophy } from './components/ArchitecturePhilosophy'
 import { MaterialAndEngineering } from './components/MaterialAndEngineering'
-import { ArticlesSection, ARTICLES_DATA, ArticleItem } from './components/ArticlesSection'
+import { ArticlesSection, ArticleItem, getLocalizedArticles } from './components/ArticlesSection'
 import { ArticleDetailView } from './components/ArticleDetailView'
 import { ReachUsSection } from './components/ReachUsSection'
 import { PaymentModelsSection } from './components/PaymentModelsSection'
@@ -16,7 +16,8 @@ import { ReachUsModal } from './components/ReachUsModal'
 import { OpeningSplashScreen } from './components/OpeningSplashScreen'
 import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
-import { PROJECTS_DATA, COMPANY_INFO } from './data/websiteData'
+import { PROJECTS_DATA, getLocalizedProjects } from './data/websiteData'
+import { useLanguage } from './context/LanguageContext'
 
 export const DemirturkWebsite: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
@@ -26,8 +27,15 @@ export const DemirturkWebsite: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [showSplash, setShowSplash] = useState(true)
 
-  const defaultTitle = 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
-  const defaultDesc = "2003'ten bugüne Sakarya Karasu ve Kocaali'de kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
+
+  const defaultTitle = isEn
+    ? 'Demirtürk İnşaat | Karasu Coastal Residences, Poolside Sites & In-House Installments'
+    : 'Demirtürk İnşaat | Karasu Satılık Daire, Havuzlu Siteler & Elden Senet'
+  const defaultDesc = isEn
+    ? 'Crafting pool-equipped seaside residences, villas, and certified building materials in Sakarya Karasu since 2003 with interest-free in-house installment plans.'
+    : "2003'ten bugüne Sakarya Karasu ve Kocaali'de kredisiz, kefilsiz elden senet modeliyle havuzlu siteler, müstakil villalar ve kaliteli yapı malzemeleri tedariki."
 
   const handleSelectProject = (project: ProjectItem, pushHistory = true) => {
     setSelectedProject(project)
@@ -39,7 +47,9 @@ export const DemirturkWebsite: React.FC = () => {
     if (pushHistory && window.location.pathname !== targetPath) {
       window.history.pushState({ project: projectSlug }, '', targetPath)
     }
-    document.title = `${project.title} | Demirtürk İnşaat Karasu Projeleri`
+    document.title = isEn
+      ? `${project.title} | Demirtürk İnşaat Karasu Developments`
+      : `${project.title} | Demirtürk İnşaat Karasu Projeleri`
   }
 
   const handleCloseProject = () => {
@@ -48,7 +58,7 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/projeler') {
       window.history.pushState({ path: '/projeler' }, '', '/projeler')
     }
-    document.title = 'Projeler | Demirtürk İnşaat Karasu'
+    document.title = isEn ? 'Works & Projects | Demirtürk İnşaat Karasu' : 'Projeler | Demirtürk İnşaat Karasu'
     setTimeout(() => {
       const target = document.querySelector('#projeler')
       if (target) {
@@ -81,7 +91,7 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/makaleler') {
       window.history.pushState({ path: '/makaleler' }, '', '/makaleler')
     }
-    document.title = 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
+    document.title = isEn ? 'Karasu Real Estate Insights & Articles | Demirtürk İnşaat' : 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
     setTimeout(() => {
       const target = document.querySelector('#makaleler')
       if (target) {
@@ -104,7 +114,7 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/iletisim') {
       window.history.pushState({ modal: 'iletisim' }, '', '/iletisim')
     }
-    document.title = 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+    document.title = isEn ? 'Contact & Head Office | Demirtürk İnşaat Karasu' : 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
   }
 
   const handleCloseReachUs = () => {
@@ -124,7 +134,7 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/tanitim-turu') {
       window.history.pushState({ modal: 'tanitim-turu' }, '', '/tanitim-turu')
     }
-    document.title = 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
+    document.title = isEn ? 'Complimentary Karasu Discovery Tour | Demirtürk İnşaat' : 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
   }
 
   const handleCloseTour = () => {
@@ -163,37 +173,39 @@ export const DemirturkWebsite: React.FC = () => {
     if (target === '/projeler' || target === '#projeler') {
       path = '/projeler'
       selector = '#projeler'
-      title = 'Projeler | Demirtürk İnşaat Karasu'
+      title = isEn ? 'Works & Projects | Demirtürk İnşaat Karasu' : 'Projeler | Demirtürk İnşaat Karasu'
     } else if (target === '/odeme-modelleri' || target === '#odeme-modelleri' || target === '/finansman' || target === '#finansman') {
       path = '/odeme-modelleri'
       selector = '#odeme-modelleri'
-      title = 'Ödeme Modelleri & Elden Senet | Demirtürk İnşaat'
+      title = isEn ? 'Payment Models & In-House Installments | Demirtürk İnşaat' : 'Ödeme Modelleri & Elden Senet | Demirtürk İnşaat'
     } else if (target === '/mimari-yaklasim' || target === '#mimari-yaklasim' || target === '/insa-surecleri' || target === '#insa-surecleri') {
       path = '/mimari-yaklasim'
       selector = '#mimari-yaklasim'
-      title = 'Mimari Yaklaşım & Mühendislik | Demirtürk İnşaat'
+      title = isEn ? 'Architectural Approach & Engineering | Demirtürk İnşaat' : 'Mimari Yaklaşım & Mühendislik | Demirtürk İnşaat'
     } else if (target === '/makaleler' || target === '#makaleler') {
       path = '/makaleler'
       selector = '#makaleler'
-      title = 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
+      title = isEn ? 'Karasu Real Estate Insights & Articles | Demirtürk İnşaat' : 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
     } else if (target === '/yapi-malzemeleri' || target === '#yapi-malzemeleri' || target === '/malzeme' || target === '#malzeme') {
       path = '/yapi-malzemeleri'
       selector = '#yapi-malzemeleri'
-      title = 'Yapı Malzemeleri & Toptan Tedarik | Demirtürk İnşaat'
+      title = isEn ? 'Building Materials & Wholesale Supply | Demirtürk İnşaat' : 'Yapı Malzemeleri & Toptan Tedarik | Demirtürk İnşaat'
     } else if (target === '/' || target === '#' || target === '#hero' || target === '') {
       path = '/'
       selector = '#hero'
       title = defaultTitle
     } else if (target.startsWith('/projeler/')) {
       const slug = target.replace('/projeler/', '').replace(/\/+$/, '')
-      const project = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === slug || p.id === slug))
+      const currentProjects = getLocalizedProjects(language)
+      const project = currentProjects.find((p) => !p.hidden && (p.slug === slug || p.id === slug))
       if (project) {
         handleSelectProject(project, pushHistory)
         return
       }
     } else if (target.startsWith('/makaleler/')) {
       const slug = target.replace('/makaleler/', '').replace(/\/+$/, '')
-      const article = ARTICLES_DATA.find((a) => a.slug === slug || a.id === slug)
+      const currentArticles = getLocalizedArticles(language)
+      const article = currentArticles.find((a) => a.slug === slug || a.id === slug)
       if (article) {
         handleSelectArticle(article, pushHistory)
         return
@@ -237,7 +249,7 @@ export const DemirturkWebsite: React.FC = () => {
       const projectSlugMatch = pathname.match(/^\/(?:projeler|proje)\/([a-z0-9-]+)$/)
       const targetProjectSlug = projectSlugMatch ? projectSlugMatch[1] : projectParam
       if (targetProjectSlug) {
-        const found = PROJECTS_DATA.find((p) => !p.hidden && (p.slug === targetProjectSlug || p.id === targetProjectSlug))
+        const found = getLocalizedProjects(language).find((p) => !p.hidden && (p.slug === targetProjectSlug || p.id === targetProjectSlug))
         if (found) {
           handleSelectProject(found, false)
           return
@@ -248,7 +260,7 @@ export const DemirturkWebsite: React.FC = () => {
       const articleSlugMatch = pathname.match(/^\/(?:makaleler|makale)\/([a-z0-9-]+)$/)
       const targetArticleSlug = articleSlugMatch ? articleSlugMatch[1] : articleParam
       if (targetArticleSlug) {
-        const found = ARTICLES_DATA.find((a) => a.slug === targetArticleSlug || a.id === targetArticleSlug)
+        const found = getLocalizedArticles(language).find((a) => a.slug === targetArticleSlug || a.id === targetArticleSlug)
         if (found) {
           handleSelectArticle(found, false)
           return
@@ -315,23 +327,44 @@ export const DemirturkWebsite: React.FC = () => {
     return () => window.removeEventListener('popstate', handleUrlState)
   }, [])
 
-  // Meta description updates for SEO
+  // Meta description and dynamic title updates for SEO and language changes
   useEffect(() => {
     const metaDesc = document.querySelector('meta[name="description"]')
     if (!metaDesc) return
 
     if (isReachUsModalOpen) {
-      metaDesc.setAttribute('content', 'Demirtürk İnşaat merkez ofis adresi, telefon numaraları, WhatsApp danışma hattı ve Karasu konut projeleri iletişim bilgileri.')
+      metaDesc.setAttribute(
+        'content',
+        isEn
+          ? 'Demirtürk İnşaat headquarters address, phone numbers, WhatsApp line, and Karasu residential project inquiry details.'
+          : 'Demirtürk İnşaat merkez ofis adresi, telefon numaraları, WhatsApp danışma hattı ve Karasu konut projeleri iletişim bilgileri.'
+      )
+      document.title = isEn ? 'Contact & Head Office | Demirtürk İnşaat Karasu' : 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
     } else if (isTourModalOpen) {
-      metaDesc.setAttribute('content', 'Demirtürk İnşaat ile Karasu projelerini yerinde görün. İstanbul ve çevre illerden ücretsiz VIP transfer ve tanıtım turu randevusu.')
+      metaDesc.setAttribute(
+        'content',
+        isEn
+          ? 'Experience Karasu developments on-site with Demirtürk İnşaat. Book complimentary VIP shuttle tours departing from Istanbul and neighboring cities.'
+          : 'Demirtürk İnşaat ile Karasu projelerini yerinde görün. İstanbul ve çevre illerden ücretsiz VIP transfer ve tanıtım turu randevusu.'
+      )
+      document.title = isEn ? 'Complimentary Karasu Discovery Tour | Demirtürk İnşaat' : 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
     } else if (selectedProject) {
-      metaDesc.setAttribute('content', selectedProject.description.slice(0, 155))
+      const currentProjects = getLocalizedProjects(language)
+      const currentProj = currentProjects.find((p) => p.id === selectedProject.id || p.slug === selectedProject.slug) || selectedProject
+      metaDesc.setAttribute('content', currentProj.description.slice(0, 155))
+      document.title = isEn
+        ? `${currentProj.title} | Demirtürk İnşaat Karasu Developments`
+        : `${currentProj.title} | Demirtürk İnşaat Karasu Projeleri`
     } else if (selectedArticle) {
-      metaDesc.setAttribute('content', selectedArticle.summary.slice(0, 155))
+      const currentArticles = getLocalizedArticles(language)
+      const currentArt = currentArticles.find((a) => a.id === selectedArticle.id || a.slug === selectedArticle.slug) || selectedArticle
+      metaDesc.setAttribute('content', currentArt.summary.slice(0, 155))
+      document.title = currentArt.seoTitle || `${currentArt.title} | Demirtürk İnşaat`
     } else {
       metaDesc.setAttribute('content', defaultDesc)
+      document.title = defaultTitle
     }
-  }, [selectedProject, selectedArticle, isReachUsModalOpen, isTourModalOpen])
+  }, [language, isEn, selectedProject, selectedArticle, isReachUsModalOpen, isTourModalOpen, defaultTitle, defaultDesc])
 
   const isSubPageOpen = Boolean(selectedProject || selectedArticle || isReachUsModalOpen)
 
@@ -397,15 +430,15 @@ export const DemirturkWebsite: React.FC = () => {
 
       {/* Interactive Project Detail Modal */}
       <ProjectDetailModal
-        project={selectedProject ? (PROJECTS_DATA.find((p) => p.id === selectedProject.id || p.slug === selectedProject.slug) || selectedProject) : null}
+        project={selectedProject ? (getLocalizedProjects(language).find((p) => p.id === selectedProject.id || p.slug === selectedProject.slug) || selectedProject) : null}
         onClose={handleCloseProject}
       />
 
       {/* Full-Page Single Article Editorial View */}
       {selectedArticle && (
         <ArticleDetailView
-          article={selectedArticle}
-          allArticles={ARTICLES_DATA}
+          article={getLocalizedArticles(language).find((a) => a.id === selectedArticle.id || a.slug === selectedArticle.slug) || selectedArticle}
+          allArticles={getLocalizedArticles(language)}
           onClose={handleCloseArticle}
           onSelectArticle={handleSelectArticle}
           onNavigate={handleNavigate}
