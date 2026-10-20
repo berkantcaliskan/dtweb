@@ -248,7 +248,7 @@ export const PaymentModelsSection: React.FC = () => {
                   <span className="text-xs font-semibold text-emerald-400 font-mono">
                     {isEN
                       ? `${downPaymentRatio}% Down Payment (${calculation.formattedDownPayment} ₺)`
-                      : `%{downPaymentRatio} Peşinat (${calculation.formattedDownPayment} ₺)`}
+                      : `%${downPaymentRatio} Peşinat (${calculation.formattedDownPayment} ₺)`}
                   </span>
                 </div>
                 <div className="grid grid-cols-4 gap-2 mb-2.5">
@@ -263,7 +263,7 @@ export const PaymentModelsSection: React.FC = () => {
                           : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
                       }`}
                     >
-                      <span className="text-xs sm:text-sm font-bold">%{ratio}</span>
+                      <span className="text-xs sm:text-sm font-bold">{isEN ? `${ratio}%` : `%${ratio}`}</span>
                       <span className="block text-[10px] opacity-75">
                         {ratio === 25 ? (isEN ? 'Min' : 'Min') : ratio === 36 ? (isEN ? 'Max' : 'Maks') : (isEN ? 'Rec' : 'Öneri')}
                       </span>
@@ -272,8 +272,8 @@ export const PaymentModelsSection: React.FC = () => {
                 </div>
                 <div className="space-y-1">
                   <div className="flex justify-between text-[11px] text-[#fffff1]/60 font-mono">
-                    <span>%25 Min</span>
-                    <span>%36 Maks</span>
+                    <span>{isEN ? '25% Min' : '%25 Min'}</span>
+                    <span>{isEN ? '36% Max' : '%36 Maks'}</span>
                   </div>
                   <input
                     type="range"
@@ -332,7 +332,7 @@ export const PaymentModelsSection: React.FC = () => {
                 </div>
 
                 <div className="flex justify-between items-center text-xs sm:text-sm">
-                  <span className="text-[#fffff1]/70 font-light">{t.downPaymentAmount} (%{downPaymentRatio}):</span>
+                  <span className="text-[#fffff1]/70 font-light">{t.downPaymentAmount} ({isEN ? `${downPaymentRatio}%` : `%${downPaymentRatio}`}):</span>
                   <span className="text-[#fffff1] font-semibold">{calculation.formattedDownPayment} ₺</span>
                 </div>
 
