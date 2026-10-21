@@ -48,6 +48,18 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
   const [leadPhone, setLeadPhone] = useState('')
   const [leadFormSubmitted, setLeadFormSubmitted] = useState(false)
 
+  const formatStatus = (st?: string) => {
+    if (!st) return ''
+    if (!isEn) return st
+    if (st === 'Tamamlandı') return 'Completed'
+    if (st === 'Yakında') return 'Upcoming'
+    if (st === 'Satışta, Devam Ediyor' || st === 'Satışta & Devam Ediyor') return 'On Sale & Ongoing'
+    if (st === 'Satışta') return 'On Sale'
+    if (st === 'Yapım Aşamasında') return 'Under Construction'
+    if (st === 'Devam Ediyor') return 'Ongoing'
+    return st
+  }
+
   const containerRef = React.useRef<HTMLDivElement>(null)
   const stageContainerRef = React.useRef<HTMLDivElement>(null)
 
@@ -250,7 +262,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                     ? 'bg-sky-950/80 text-sky-200 border-sky-500/40'
                     : 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
                 }`}>
-                  {activeStage.status}
+                  {formatStatus(activeStage.status)}
                 </span>
                 <span className="px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-[#313941] text-[#fffff1] border border-[#fffff1]/20 rounded-md">
                   {activeStage.deliveryDate ? (isEn ? `Delivery: ${activeStage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${activeStage.deliveryDate}`) : `Yıl: ${activeStage.year}`}
@@ -396,7 +408,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                     <span className="text-[#fffff1]/50">{t.status}</span>
                     <span className={`font-bold ${activeStage.status === 'Tamamlandı' ? 'text-white/90' : activeStage.status === 'Yakında' ? 'text-sky-300' : 'text-emerald-300'}`}>
-                      {activeStage.status}
+                      {formatStatus(activeStage.status)}
                     </span>
                   </div>
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
@@ -615,7 +627,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                   ? 'bg-sky-950/70 text-sky-200 border-sky-500/30'
                   : 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30'
               }`}>
-                {displayStatus}
+                {formatStatus(displayStatus)}
               </span>
               {project.installmentMonths && (
                 <span className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 rounded-xl">
@@ -697,7 +709,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                         {isOngoingOrSale && (
                           <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-emerald-400'} animate-pulse`} />
                         )}
-                        {stage.status}
+                        {formatStatus(stage.status)}
                       </span>
                     </button>
                   )
@@ -740,7 +752,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
               <div className="min-w-0 flex-1">
                 <span className="text-[11px] sm:text-xs uppercase text-[#fffff1]/50 block">{isEn ? 'Status' : 'Durum'}</span>
                 <span className="text-xs sm:text-sm font-bold text-[#fffff1] leading-snug block">
-                  {currentStage ? currentStage.status : displayStatus}
+                  {formatStatus(currentStage ? currentStage.status : displayStatus)}
                 </span>
               </div>
             </div>
@@ -874,7 +886,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                             ? 'bg-sky-950/80 text-sky-200 border-sky-500/40'
                             : 'bg-emerald-950/80 text-emerald-200 border-emerald-500/40'
                         }`}>
-                          {stage.status}
+                          {formatStatus(stage.status)}
                         </span>
                         <span className="px-3 py-1.5 text-xs tracking-wider uppercase bg-black/60 backdrop-blur-md text-[#fffff1] border border-[#fffff1]/20 font-medium rounded-xl shadow-sm">
                           {stage.deliveryDate ? (isEn ? `Delivery: ${stage.deliveryDate.replace(/^Teslim:\s*/i, '')}` : `Teslim: ${stage.deliveryDate}`) : stage.year}
@@ -1048,7 +1060,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project:
                 )}
                 <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">
                   <span className="text-[#fffff1]/50">{t.status || (isEn ? 'Status:' : 'Proje Durumu:')}</span>
-                  <span className="text-[#fffff1] font-bold">{displayStatus}</span>
+                  <span className="text-[#fffff1] font-bold">{formatStatus(displayStatus)}</span>
                 </div>
                 {displayYear && (
                   <div className="flex justify-between pb-2 border-b border-[#fffff1]/10">

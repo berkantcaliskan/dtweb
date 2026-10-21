@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 import { ChevronUp } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
 
 export const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const { language } = useLanguage()
+  const isEn = language === 'EN'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +55,7 @@ export const ScrollToTop: React.FC = () => {
 
       {/* 2. WhatsApp Direct Chat Button (Directs to +90 531 373 00 54) */}
       <a
-        href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent('Merhaba, Demirtürk İnşaat projeleriniz hakkında bilgi almak istiyorum.')}`}
+        href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(isEn ? 'Hello Demirtürk Construction, I would like to get information regarding your projects.' : 'Merhaba, Demirtürk İnşaat projeleriniz hakkında bilgi almak istiyorum.')}`}
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp İletişim Hattı"

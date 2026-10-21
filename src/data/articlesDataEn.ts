@@ -5,7 +5,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
     id: 'karasuda-daire-sahibi-olmak',
     slug: 'karasuda-daire-sahibi-olmak',
     url: '/makaleler/karasuda-daire-sahibi-olmak/',
-    seoTitle: 'Owning an Apartment in Karasu: Summer & Year-Round Guide | Demirtürk İnşaat',
+    seoTitle: 'Owning an Apartment in Karasu: Summer & Year-Round Guide | Demirtürk Construction',
     title: 'Owning an Apartment in Karasu: Guide to Summer and Year-Round Living',
     subtitle: 'Essential advice on location, floor plans, shared amenities, and payment options when choosing a coastal home in Karasu.',
     category: 'Guide & Living',
@@ -55,7 +55,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
         paragraphs: [
           'Shared amenities significantly enrich your quality of life. When reviewing swimming pools, fitness centers, children’s playparks, and on-site cafes, consider which ones your family will actively utilize.',
           'If you favor a ground-floor apartment with a private garden, clarify the boundary rights, maintenance responsibilities, and privacy levels. Inquire into seasonal pool opening schedules and monthly maintenance fees.',
-          'In Demirtürk İnşaat’s Yeni Şehir Phase 3 development, timeless architecture is paired with dual pools, fitness facilities, an indoor playground, and a private cafe. In addition to ground-floor garden residences, solar power systems and EV charging stations are included as standard.',
+          'In Demirtürk Construction’s Yeni Şehir Phase 3 development, timeless architecture is paired with dual pools, fitness facilities, an indoor playground, and a private cafe. In addition to ground-floor garden residences, solar power systems and EV charging stations are included as standard.',
           'You can discover current availability and delivery schedules directly from our team.'
         ]
       },
@@ -89,7 +89,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
         heading: 'Inspect Our Karasu Developments On-Site',
         paragraphs: [
           'Photographs and renderings provide a helpful first impression, but an on-site visit is irreplaceable for understanding spatial ergonomics, surroundings, and neighborhood ambiance.',
-          'Demirtürk İnşaat cordially invites you to our sales office to explore our developments, compare floor plans, and craft a tailored in-house payment structure.',
+          'Demirtürk Construction cordially invites you to our sales office to explore our developments, compare floor plans, and craft a tailored in-house payment structure.',
           'Contact our team today to learn about current property availability and customized terms.'
         ]
       }
@@ -99,7 +99,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
     id: 'karasuda-gayrimenkul-yatirimi',
     slug: 'karasuda-gayrimenkul-yatirimi',
     url: '/makaleler/karasuda-gayrimenkul-yatirimi/',
-    seoTitle: 'Real Estate Investment in Karasu: Neighborhood Guide | Demirtürk İnşaat',
+    seoTitle: 'Real Estate Investment in Karasu: Neighborhood Guide | Demirtürk Construction',
     title: 'Real Estate Investment in Karasu: Neighborhood & Apartment Guide',
     subtitle: 'Learn how to evaluate neighborhoods, construction quality, financing models, and rental yield potential when investing in Karasu.',
     category: 'Investment & Guide',
@@ -182,7 +182,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
     id: 'karasuda-yazlik-almak',
     slug: 'karasuda-yazlik-almak',
     url: '/makaleler/karasuda-yazlik-almak/',
-    seoTitle: 'Buying a Summer Home in Karasu: Selection Guide | Demirtürk İnşaat',
+    seoTitle: 'Buying a Summer Home in Karasu: Selection Guide | Demirtürk Construction',
     title: 'Buying a Summer Home in Karasu: Choosing a Home Aligned with Your Lifestyle',
     subtitle: 'Weigh location, terrace balconies, pools, maintenance fees, and seasonal usage when purchasing a coastal home in Karasu.',
     category: 'Summer Living',
@@ -260,7 +260,7 @@ export const ARTICLES_DATA_EN: ArticleItem[] = [
     id: 'karasu-satilik-daire-secim-rehberi',
     slug: 'karasu-satilik-daire-secim-rehberi',
     url: '/makaleler/karasu-satilik-daire-secim-rehberi/',
-    seoTitle: 'Karasu Apartment Buyer’s Guide: 7 Questions to Ask | Demirtürk İnşaat',
+    seoTitle: 'Karasu Apartment Buyer’s Guide: 7 Questions to Ask | Demirtürk Construction',
     title: '7 Crucial Questions to Ask When Buying an Apartment in Karasu',
     subtitle: 'Learn how to compare net areas, locations, building permits, turnkey specifications, and payment terms when searching for apartments in Karasu.',
     category: 'Buyer Guide',

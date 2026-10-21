@@ -529,7 +529,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
             <a
               href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
                 isEN
-                  ? 'Hello Demirtürk İnşaat, I would like to receive detailed information regarding your projects.'
+                  ? 'Hello Demirtürk Construction, I would like to receive detailed information regarding your projects.'
                   : 'Merhaba Demirtürk İnşaat projeleri hakkında bilgi almak istiyorum.'
               )}`}
               target="_blank"

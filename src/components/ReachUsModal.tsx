@@ -72,7 +72,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
     // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
       isEn
-        ? `Hello Demirtürk İnşaat,\nSubject: ${formSubject}\nName: ${formName || 'Not specified'}\nPhone: ${formPhone}\nMessage: ${formMessage || 'Inquiry / appointment request via website'}`
+        ? `Hello Demirtürk Construction,\nSubject: ${formSubject}\nName: ${formName || 'Not specified'}\nPhone: ${formPhone}\nMessage: ${formMessage || 'Inquiry / appointment request via website'}`
         : `Merhaba Demirtürk İnşaat,\nKonu: ${formSubject}\nİsim: ${formName || 'Belirtilmedi'}\nTelefon: ${formPhone}\nMesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`
     )
     const targetWhatsapp = formSubject.toLowerCase().includes('material') || formSubject.toLowerCase().includes('malzeme')
@@ -100,7 +100,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
     // 2. WhatsApp ile doğrudan mesaj aç
     const text = encodeURIComponent(
       isEn
-        ? `Hello Demirtürk İnşaat Human Resources,\nCareer Application:\nPosition: ${careerPosition}\nName: ${careerName}\nPhone: ${careerPhone}\nEmail: ${careerEmail}\nCover Note / Experience: ${careerNote || 'CV attached'}`
+        ? `Hello Demirtürk Construction Human Resources,\nCareer Application:\nPosition: ${careerPosition}\nName: ${careerName}\nPhone: ${careerPhone}\nEmail: ${careerEmail}\nCover Note / Experience: ${careerNote || 'CV attached'}`
         : `Merhaba Demirtürk İnşaat İnsan Kaynakları,\nKariyer Başvurusu:\nPozisyon: ${careerPosition}\nİsim: ${careerName}\nTelefon: ${careerPhone}\nE-posta: ${careerEmail}\nÖn Yazı / Deneyim: ${careerNote || 'CV ektedir'}`
     )
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=${text}`, '_blank')
@@ -214,7 +214,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
           <a
             href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
               isEn
-                ? 'Hello Demirtürk İnşaat, I would like to get information regarding your developments.'
+                ? 'Hello Demirtürk Construction, I would like to get information regarding your developments.'
                 : 'Merhaba Demirtürk İnşaat hakkında bilgi almak istiyorum.'
             )}`}
             target="_blank"
@@ -342,8 +342,8 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                         </span>
                       </div>
                       <div className="space-y-1 text-sm text-[#fffff1]/90 font-light">
-                        <p>{isEn ? 'Monday – Saturday: 09:00 – 19:00' : COMPANY_INFO.workingHoursWeekday}</p>
-                        <p>{isEn ? 'Sunday: 10:00 – 18:00' : COMPANY_INFO.workingHoursWeekend}</p>
+                        <p>{isEn ? 'Weekdays: 9:00 AM – 8:00 PM' : COMPANY_INFO.workingHoursWeekday}</p>
+                        <p>{isEn ? 'Weekends: 9:00 AM – 9:00 PM' : COMPANY_INFO.workingHoursWeekend}</p>
                       </div>
                     </div>
                   </div>
@@ -354,7 +354,7 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                   <a
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
                       isEn
-                        ? 'Hello Demirtürk İnşaat, I would like to get information regarding your developments.'
+                        ? 'Hello Demirtürk Construction, I would like to get information regarding your developments.'
                         : 'Merhaba Demirtürk İnşaat hakkında bilgi almak istiyorum.'
                     )}`}
                     target="_blank"
@@ -373,13 +373,13 @@ export const ReachUsModal: React.FC<ReachUsModalProps> = ({ isOpen, onClose }) =
                 <div className="absolute top-3 left-3 z-10 bg-[#1c2126]/90 border border-[#fffff1]/20 backdrop-blur-md px-3 py-2 rounded-xl flex items-center space-x-2.5 shadow-lg pointer-events-none">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
                   <div className="text-left">
-                    <span className="text-xs font-bold text-[#fffff1] block leading-tight">Demirtürk İnşaat</span>
+                    <span className="text-xs font-bold text-[#fffff1] block leading-tight">{isEn ? 'Demirtürk Construction' : 'Demirtürk İnşaat'}</span>
                     <span className="text-[10px] text-[#fffff1]/70 block leading-tight">Doğu Karadeniz Cd. No:1, Aziziye</span>
                   </div>
                 </div>
 
                 <iframe
-                  title="Demirtürk İnşaat - Karasu Merkez Ofis Harita"
+                  title={isEn ? "Demirtürk Construction - Karasu Head Office Map" : "Demirtürk İnşaat - Karasu Merkez Ofis Harita"}
                   src="https://maps.google.com/maps?q=41.100494,30.718688+(Demirt%C3%BCrk+%C4%B0n%C5%9Faat)&t=&z=18&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"

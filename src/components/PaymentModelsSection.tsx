@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { FINANCING_ADVANTAGES, COMPANY_INFO } from '../data/websiteData'
 import { Bus, CheckCircle2, ShieldCheck, FileCheck, Layers, Award, MessageCircle, Calculator, Percent, Calendar, ArrowRight, RefreshCw, Car, Banknote, Sparkles, Info } from 'lucide-react'
 import { submitLeadToPortfoy } from '../services/leadService'
@@ -16,10 +16,67 @@ export const PaymentModelsSection: React.FC = () => {
   const [tourTransportChoice, setTourTransportChoice] = useState(isEN ? 'Sunday (VIP Shuttle)' : 'Pazar Günü (VIP Servis)')
   const [tourSubmitted, setTourSubmitted] = useState(false)
 
-  // Interactive Payment Calculator State (Min 3.250.000 ₺, Peşinat %25 - %36, Maks 40 Ay Vade)
+  // Interactive Payment Calculator State
   const [selectedBudget, setSelectedBudget] = useState<number>(3250000)
-  const [downPaymentRatio, setDownPaymentRatio] = useState<number>(25) // %25 min, %36 maks
-  const [termMonths, setTermMonths] = useState<number>(40) // 40 ay maks
+  const [downPaymentRatio, setDownPaymentRatio] = useState<number>(25)
+  const [customAmount, setCustomAmount] = useState<number | null>(null)
+  const [customInputDisplay, setCustomInputDisplay] = useState<string>(() => {
+    return Math.round((3250000 * 25) / 100).toLocaleString(isEN ? 'en-US' : 'tr-TR')
+  })
+  const [termMonths, setTermMonths] = useState<number>(40)
+
+  const formatNumber = (num: number) => {
+    return num.toLocaleString(isEN ? 'en-US' : 'tr-TR')
+  }
+
+  // Sync formatted display on language toggle
+  useEffect(() => {
+    const amt = customAmount !== null ? customAmount : Math.round((selectedBudget * downPaymentRatio) / 100)
+    setCustomInputDisplay(amt > 0 ? formatNumber(amt) : '')
+  }, [isEN])
+
+  const handleBudgetChange = (newBudget: number) => {
+    setSelectedBudget(newBudget)
+    if (customAmount !== null && customAmount > 0) {
+      const capped = Math.min(customAmount, newBudget)
+      setCustomAmount(capped)
+      setCustomInputDisplay(formatNumber(capped))
+      setDownPaymentRatio(Math.max(1, Math.min(99, Math.round((capped / newBudget) * 100))))
+    } else {
+      const amt = Math.round((newBudget * downPaymentRatio) / 100)
+      setCustomInputDisplay(formatNumber(amt))
+    }
+  }
+
+  const handleSelectPresetRatio = (ratio: number) => {
+    setCustomAmount(null)
+    setDownPaymentRatio(ratio)
+    const amt = Math.round((selectedBudget * ratio) / 100)
+    setCustomInputDisplay(formatNumber(amt))
+  }
+
+  const handleSliderChange = (newRatio: number) => {
+    setCustomAmount(null)
+    setDownPaymentRatio(newRatio)
+    const amt = Math.round((selectedBudget * newRatio) / 100)
+    setCustomInputDisplay(formatNumber(amt))
+  }
+
+  const handleCustomInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '')
+    if (!raw) {
+      setCustomAmount(0)
+      setCustomInputDisplay('')
+      setDownPaymentRatio(0)
+      return
+    }
+    const num = parseInt(raw, 10)
+    const capped = Math.min(num, selectedBudget)
+    setCustomAmount(capped)
+    setCustomInputDisplay(formatNumber(capped))
+    const ratio = Math.max(1, Math.min(99, Math.round((capped / selectedBudget) * 100)))
+    setDownPaymentRatio(ratio)
+  }
 
   // Preset Budget Options (1+1, 2+1, Bahçe Katı - En düşük 3.250.000 ₺)
   const budgetPresets = useMemo(() => [
@@ -30,8 +87,13 @@ export const PaymentModelsSection: React.FC = () => {
 
   // Calculated Values
   const calculation = useMemo(() => {
-    const downPaymentAmount = Math.round((selectedBudget * downPaymentRatio) / 100)
-    const remainingAmount = selectedBudget - downPaymentAmount
+    let downPaymentAmount: number
+    if (customAmount !== null && customAmount > 0) {
+      downPaymentAmount = customAmount
+    } else {
+      downPaymentAmount = Math.round((selectedBudget * downPaymentRatio) / 100)
+    }
+    const remainingAmount = Math.max(0, selectedBudget - downPaymentAmount)
     const monthlyInstallment = Math.round(remainingAmount / termMonths)
 
     const locale = isEN ? 'en-US' : 'tr-TR'
@@ -44,7 +106,7 @@ export const PaymentModelsSection: React.FC = () => {
       formattedRemaining: remainingAmount.toLocaleString(locale),
       formattedMonthly: monthlyInstallment.toLocaleString(locale),
     }
-  }, [selectedBudget, downPaymentRatio, termMonths, isEN])
+  }, [selectedBudget, downPaymentRatio, customAmount, termMonths, isEN])
 
   const handleTourSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -192,7 +254,7 @@ export const PaymentModelsSection: React.FC = () => {
                     <button
                       key={preset.value}
                       type="button"
-                      onClick={() => setSelectedBudget(preset.value)}
+                      onClick={() => handleBudgetChange(preset.value)}
                       className={`p-2.5 sm:p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         selectedBudget === preset.value
                           ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
@@ -220,7 +282,7 @@ export const PaymentModelsSection: React.FC = () => {
                     max="7500000"
                     step="50000"
                     value={selectedBudget}
-                    onChange={(e) => setSelectedBudget(Number(e.target.value))}
+                    onChange={(e) => handleBudgetChange(Number(e.target.value))}
                     className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#fffff1]"
                   />
                 </div>
@@ -251,39 +313,94 @@ export const PaymentModelsSection: React.FC = () => {
                       : `%${downPaymentRatio} Peşinat (${calculation.formattedDownPayment} ₺)`}
                   </span>
                 </div>
-                <div className="grid grid-cols-4 gap-2 mb-2.5">
-                  {[25, 28, 32, 36].map((ratio) => (
-                    <button
-                      key={ratio}
-                      type="button"
-                      onClick={() => setDownPaymentRatio(ratio)}
-                      className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer ${
-                        downPaymentRatio === ratio
-                          ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
-                          : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
-                      }`}
-                    >
-                      <span className="text-xs sm:text-sm font-bold">{isEN ? `${ratio}%` : `%${ratio}`}</span>
-                      <span className="block text-[10px] opacity-75">
-                        {ratio === 25 ? (isEN ? 'Min' : 'Min') : ratio === 36 ? (isEN ? 'Max' : 'Maks') : (isEN ? 'Rec' : 'Öneri')}
+
+                {/* %25, %36 & Kendiniz belirleyin */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2.5">
+                  {/* %25 Button */}
+                  <button
+                    type="button"
+                    onClick={() => handleSelectPresetRatio(25)}
+                    className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer flex flex-col justify-center items-center ${
+                      customAmount === null && downPaymentRatio === 25
+                        ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
+                        : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
+                    }`}
+                  >
+                    <span className="text-xs sm:text-sm font-bold">{isEN ? '25%' : '%25'}</span>
+                    <span className="block text-[10px] opacity-75">{isEN ? 'Min' : 'Min'}</span>
+                  </button>
+
+                  {/* %36 Button - 'Maks' ibaresi tamamen kaldırıldı */}
+                  <button
+                    type="button"
+                    onClick={() => handleSelectPresetRatio(36)}
+                    className={`py-2 px-2 rounded-xl border text-center transition-all cursor-pointer flex flex-col justify-center items-center ${
+                      customAmount === null && downPaymentRatio === 36
+                        ? 'bg-[#fffff1] text-[#252c33] border-[#fffff1] font-semibold shadow-md'
+                        : 'bg-white/5 hover:bg-white/10 text-[#fffff1]/80 border-[#fffff1]/15 text-xs'
+                    }`}
+                  >
+                    <span className="text-xs sm:text-sm font-bold">{isEN ? '36%' : '%36'}</span>
+                  </button>
+
+                  {/* Kendiniz belirleyin (Ziyaretçi kendi miktarını girebilir) */}
+                  <div
+                    className={`col-span-2 py-1.5 px-3 rounded-xl border transition-all flex flex-col justify-between ${
+                      (customAmount !== null || (downPaymentRatio !== 25 && downPaymentRatio !== 36))
+                        ? 'bg-white/10 border-[#fffff1] shadow-md ring-1 ring-[#fffff1]/30'
+                        : 'bg-white/5 border-[#fffff1]/15 hover:border-[#fffff1]/30'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-wider text-[#fffff1]/75 font-semibold block leading-tight">
+                        {isEN ? 'Set your own' : 'Kendiniz belirleyin'}
                       </span>
-                    </button>
-                  ))}
+                      <span className="text-[10px] text-emerald-400 font-mono font-bold">
+                        %{downPaymentRatio}
+                      </span>
+                    </div>
+                    <div className="relative flex items-center mt-0.5">
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={customInputDisplay}
+                        onChange={handleCustomInputChange}
+                        onFocus={() => {
+                          if (customAmount === null) {
+                            setCustomAmount(Math.round((selectedBudget * downPaymentRatio) / 100))
+                          }
+                        }}
+                        placeholder={isEN ? 'Enter amount...' : 'Miktar girin...'}
+                        className="w-full bg-transparent text-[#fffff1] text-xs sm:text-sm font-bold font-mono placeholder-[#fffff1]/30 focus:outline-none pr-5"
+                      />
+                      <span className="absolute right-0 text-xs text-[#fffff1]/60 font-mono font-semibold pointer-events-none">
+                        ₺
+                      </span>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Range Slider for Down Payment (%25 - %75 Esnek) */}
                 <div className="space-y-1">
                   <div className="flex justify-between text-[11px] text-[#fffff1]/60 font-mono">
                     <span>{isEN ? '25% Min' : '%25 Min'}</span>
-                    <span>{isEN ? '36% Max' : '%36 Maks'}</span>
+                    <span>{isEN ? '75% Flexible' : '%75 Esnek'}</span>
                   </div>
                   <input
                     type="range"
                     min="25"
-                    max="36"
+                    max="75"
                     step="1"
                     value={downPaymentRatio}
-                    onChange={(e) => setDownPaymentRatio(Number(e.target.value))}
+                    onChange={(e) => handleSliderChange(Number(e.target.value))}
                     className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#fffff1]"
                   />
+                  {downPaymentRatio < 25 && (
+                    <p className="text-[11px] text-amber-300/90 pt-0.5 flex items-center gap-1 font-light">
+                      <Info size={12} className="flex-shrink-0" />
+                      <span>{isEN ? 'Standard minimum down payment is 25%. Tailored terms available.' : 'Standart asgari peşinat oranı %25\'tir. Özel ödeme koşulları için danışınız.'}</span>
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -369,7 +486,7 @@ export const PaymentModelsSection: React.FC = () => {
               <a
                 href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
                   isEN
-                    ? `Hello Demirtürk İnşaat, I reviewed this plan on your Payment Models calculator:\n\n• Unit Price: ${calculation.formattedBudget} ₺\n• Down Payment (${downPaymentRatio}%): ${calculation.formattedDownPayment} ₺\n• Term: ${termMonths} Months\n• Monthly: ${calculation.formattedMonthly} ₺\n\nI would like to receive detailed information on suitable projects and reservations.`
+                    ? `Hello Demirtürk Construction, I reviewed this plan on your Payment Models calculator:\n\n• Unit Price: ${calculation.formattedBudget} ₺\n• Down Payment (${downPaymentRatio}%): ${calculation.formattedDownPayment} ₺\n• Term: ${termMonths} Months\n• Monthly: ${calculation.formattedMonthly} ₺\n\nI would like to receive detailed information on suitable projects and reservations.`
                     : `Merhaba Demirtürk İnşaat, web sitenizdeki Ödeme Modelleri hesaplayıcısı üzerinden şu planı inceledim:\n\n• Konut Tutarı: ${calculation.formattedBudget} ₺\n• Peşinat (%${downPaymentRatio}): ${calculation.formattedDownPayment} ₺\n• Kalan Vade: ${termMonths} Ay\n• Aylık Senet: ${calculation.formattedMonthly} ₺\n\nBu ödeme planına uygun güncel projeleriniz ve rezervasyon hakkında detaylı bilgi almak istiyorum.`
                 )}`}
                 target="_blank"
@@ -562,7 +679,7 @@ export const PaymentModelsSection: React.FC = () => {
                 <a
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
                     isEN
-                      ? `Hello Demirtürk İnşaat, I submitted my reservation request for the Free Karasu VIP Tour:\n\n• Name: ${tourName || 'Not specified'}\n• Phone: ${tourPhone}\n• Departure: ${tourCity}\n• Transport: ${tourTransportChoice}\n\nI would like to confirm my reservation details.`
+                      ? `Hello Demirtürk Construction, I submitted my reservation request for the Free Karasu VIP Tour:\n\n• Name: ${tourName || 'Not specified'}\n• Phone: ${tourPhone}\n• Departure: ${tourCity}\n• Transport: ${tourTransportChoice}\n\nI would like to confirm my reservation details.`
                       : `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için web sitenizden rezervasyon başvurumu ilettim:\n\n• İsim: ${tourName || 'Belirtilmedi'}\n• Telefon: ${tourPhone}\n• Kalkış Şehri: ${tourCity}\n• Katılım & Ulaşım: ${tourTransportChoice}\n\nTur ve rezervasyon detaylarını teyit etmek istiyorum.`
                   )}`}
                   target="_blank"
@@ -613,9 +730,8 @@ export const PaymentModelsSection: React.FC = () => {
                       className="w-full px-4 py-3 bg-black/25 backdrop-blur-sm border border-[#fffff1]/15 rounded-xl text-sm text-[#fffff1] focus:border-[#fffff1]/40 focus:outline-none transition-colors"
                     >
                       <option value={isEN ? 'Istanbul' : 'İstanbul'}>{isEN ? 'Istanbul' : 'İstanbul'}</option>
-                      <option value={isEN ? 'Kocaeli' : 'Kocaeli'}>{isEN ? 'Kocaeli / Gebze' : 'Kocaeli / Gebze'}</option>
-                      <option value={isEN ? 'Sakarya' : 'Sakarya'}>{isEN ? 'Sakarya / Adapazarı' : 'Sakarya / Adapazarı'}</option>
-                      <option value={isEN ? 'Other City' : 'Diğer Şehir'}>{isEN ? 'Other City' : 'Diğer Şehir'}</option>
+                      <option value="Kocaeli">Kocaeli</option>
+                      <option value="Sakarya">Sakarya</option>
                     </select>
                   </div>
 

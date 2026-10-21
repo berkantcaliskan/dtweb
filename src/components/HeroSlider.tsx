@@ -157,7 +157,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 }}
                 className="glass-blur-box btn-tour px-5 py-3.5 sm:px-6 sm:py-3.5 text-[#fffff1] font-normal text-[13px] sm:text-sm uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 cursor-pointer text-center justify-center flex items-center flex-shrink-0 overflow-hidden outline-none select-none"
               >
-                {t.tourBtn}
+                <span>{t.tourBtn}</span>
               </button>
             </div>
           </div>

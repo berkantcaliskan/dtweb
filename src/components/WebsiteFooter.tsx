@@ -223,7 +223,7 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#fffff1]/60 gap-4">
           <div>
             {isEn
-              ? '© 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. All rights reserved.'
+              ? '© 2003 - 2026 Demirtürk Construction. All rights reserved.'
               : '© 2003 - 2026 Demirtürk İnşaat San. ve Tic. Ltd. Şti. Tüm hakları saklıdır.'}
           </div>
 

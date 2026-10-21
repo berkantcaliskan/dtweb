@@ -175,7 +175,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
           <a
             href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
               isEn
-                ? `Hello Demirtürk İnşaat, I would like to get information regarding your article "${article.title}".`
+                ? `Hello Demirtürk Construction, I would like to get information regarding your article "${article.title}".`
                 : `Merhaba Demirtürk İnşaat, "${article.title}" başlıklı makaleniz hakkında bilgi almak istiyorum.`
             )}`}
             target="_blank"
@@ -282,7 +282,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
         <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-[#fffff1]/20 space-y-5 shadow-xl">
           <div className="flex items-center space-x-2.5 text-xs font-semibold tracking-widest text-[#fffff1] uppercase">
             <span className="w-2 h-2 rounded-full bg-[#fffff1]" />
-            <span>{isEn ? 'DEMİRTÜRK İNŞAAT ENGINEERING PRINCIPLES' : 'DEMİRTÜRK İNŞAAT MÜHENDİSLİK İLKELERİ'}</span>
+            <span>{isEn ? 'DEMİRTÜRK CONSTRUCTION ENGINEERING PRINCIPLES' : 'DEMİRTÜRK İNŞAAT MÜHENDİSLİK İLKELERİ'}</span>
           </div>
           <h3 className="font-theSeasons text-2xl sm:text-3xl font-bold text-[#fffff1]">
             {isEn ? 'Scientific Ground Engineering & Uncompromising Quality in Karasu' : 'Karasu’da Bilimsel Zemin ve Tavizsiz Kalite'}
@@ -296,7 +296,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
             <a
               href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
                 isEn
-                  ? `Hello Demirtürk İnşaat, I read your article "${article.title}". I would like to get information regarding your developments.`
+                  ? `Hello Demirtürk Construction, I read your article "${article.title}". I would like to get information regarding your developments.`
                   : `Merhaba Demirtürk İnşaat, "${article.title}" makalenizi okudum. Projeleriniz hakkında bilgi almak istiyorum.`
               )}`}
               target="_blank"
@@ -395,7 +395,7 @@ export const ArticleDetailView: React.FC<ArticleDetailViewProps> = ({
           </button>
 
           <div className="flex items-center space-x-6 text-xs text-[#fffff1]/60 font-light">
-            <span>© Demirtürk İnşaat</span>
+            <span>© {isEn ? 'Demirtürk Construction' : 'Demirtürk İnşaat'}</span>
             <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-white transition-colors flex items-center space-x-1.5">
               <Phone size={12} />
               <span>{COMPANY_INFO.phone}</span>

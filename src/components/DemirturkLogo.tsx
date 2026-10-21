@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext'
 
 interface DemirturkLogoProps {
   /**
@@ -23,6 +24,9 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
   isScrolled = false,
   isHovered = false,
 }) => {
+  const langContext = useContext(LanguageContext)
+  const isEn = langContext?.language === 'EN'
+
   const isDarkBg = variant === 'dark-bg'
 
   const titleColor = isDarkBg ? 'text-[#fffff1]' : 'text-[#313941]'
@@ -112,20 +116,22 @@ export const DemirturkLogo: React.FC<DemirturkLogoProps> = ({
           DEMİRTÜRK
         </span>
 
-        {/* İ N Ş A A T - Light Plus Jakarta Sans - Flush left with DEMİRTÜRK */}
+        {/* İ N Ş A A T / C O N S T R U C T I O N - Light Plus Jakarta Sans */}
         {showSubtitle && (
           <span
-            className={`text-[6.7px] sm:text-[8.4px] uppercase ${subtitleColor} transition-colors mt-0.5 block text-left`}
+            className={`uppercase ${subtitleColor} transition-all duration-300 mt-0.5 block text-left logo-subtitle lang-translatable ${
+              isEn ? 'text-[5.5px] sm:text-[6.8px]' : 'text-[6.7px] sm:text-[8.4px]'
+            }`}
             style={{
               fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
               fontWeight: 300,
-              letterSpacing: '0.42em',
+              letterSpacing: isEn ? '0.22em' : '0.42em',
               paddingLeft: 0,
               marginLeft: 0,
               lineHeight: 1,
             }}
           >
-            İNŞAAT
+            {isEn ? 'CONSTRUCTION' : 'İNŞAAT'}
           </span>
         )}
       </div>

@@ -48,7 +48,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
   }
 
   const waMessage = isEn
-    ? `Hello Demirtürk İnşaat, I have submitted a reservation for the Complimentary Karasu Discovery Tour via your website:\n\n• Name: ${name || 'Not specified'}\n• Phone: ${phone}\n• Departure City: ${city}\n• Transport: ${getTransportLabel()}\n\nI would like to confirm tour schedule and pickup details.`
+    ? `Hello Demirtürk Construction, I have submitted a reservation for the Complimentary Karasu Discovery Tour via your website:\n\n• Name: ${name || 'Not specified'}\n• Phone: ${phone}\n• Departure City: ${city}\n• Transport: ${getTransportLabel()}\n\nI would like to confirm tour schedule and pickup details.`
     : `Merhaba Demirtürk İnşaat, Ücretsiz Karasu Tanıtım Turu için web sitenizden rezervasyon başvurumu ilettim:\n\n• İsim: ${name || 'Belirtilmedi'}\n• Telefon: ${phone}\n• Kalkış Şehri: ${city}\n• Katılım & Ulaşım: ${getTransportLabel()}\n\nTur ve rezervasyon detaylarını teyit etmek istiyorum.`
 
   return (

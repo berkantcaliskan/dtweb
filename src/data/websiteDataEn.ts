@@ -56,8 +56,8 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
     slug: 'yenisehir-rezidans',
     title: 'Yeni Şehir Phases',
     seriesInfo: '3 Phases',
-    subtitle: '3-Phase Prestigious Coastal Residence Concept in Yalı District, Karasu',
-    slideDescription: 'Underfloor-heated luxury homes with private gardens, semi-Olympic aqua pool, and 3 distinct phases located 800m from the sea in Yalı District.',
+    subtitle: 'Prestigious living inspired by natural stone',
+    slideDescription: 'Prestigious living inspired by natural stone',
     category: 'ongoing',
     categoryLabel: 'Active Development',
     location: 'Yalı Mah., Karasu / Sakarya',
@@ -230,9 +230,9 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
   {
     id: 'asel-doga-evleri',
     slug: 'asel-doga-evleri',
-    title: 'Asel Doğa Evleri',
-    subtitle: 'Boutique Coastal Residences Intertwined with Nature in Aziziye District',
-    slideDescription: 'Underfloor-heated boutique residences with adult and children pools, located walking distance from the beach in Aziziye District.',
+    title: 'Asel Nature Houses',
+    subtitle: 'Where city and nature meet in subtle harmony',
+    slideDescription: 'Where city and nature meet in subtle harmony',
     category: 'ongoing',
     categoryLabel: 'Active Development',
     location: 'Aziziye Mah., Karasu / Sakarya',
@@ -244,7 +244,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
     unitTypes: ['1+1 and 2+1 Residences'],
     seriesInfo: '2 projects • 3rd and 4th coming soon',
     description:
-      'Asel Doğa Residences harmonizes the calm sea breeze of Karasu with modern aesthetics. Situated within walking distance to the beach, this boutique community combines open-air swimming pools, ground-floor garden privileges, and underfloor-heated interiors.',
+      'Asel Nature Houses harmonizes the calm sea breeze of Karasu with modern aesthetics. Situated within walking distance to the beach, this boutique community combines open-air swimming pools, ground-floor garden privileges, and underfloor-heated interiors.',
     architecturalPhilosophy:
       'Human-centric architecture prioritizing wide private balconies, natural sunlight exposure, and robust structural earthquake engineering.',
     heroMedia: {
@@ -252,12 +252,12 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       desktopSrc: '/images/aselforweb.jpeg',
       mobileSrc: '/images/aselforweb.jpeg',
       poster: '/images/aselforweb.jpeg',
-      alt: 'Asel Doğa Evleri Karasu'
+      alt: 'Asel Nature Houses Karasu'
     },
     gallery: [
       {
         url: '/images/aselforweb.jpeg',
-        title: 'Asel Doğa Evleri - Architectural Perspective',
+        title: 'Asel Nature Houses - Architectural Perspective',
         aspect: '16:9'
       }
     ],
@@ -289,7 +289,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'asel-doga-1',
         stageNumber: 1,
-        title: 'Asel Doğa Evleri 1',
+        title: 'Asel Nature Houses 1',
         subtitle: 'Completed flagship project with active family life',
         status: 'Tamamlandı',
         year: '2026',
@@ -298,7 +298,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '850 Metres',
         totalUnits: '12 Residences',
         unitTypes: ['1+1 and 2+1 Residences'],
-        description: 'Completed and delivered on schedule, Asel Doğa 1 offers a tranquil lifestyle with its swimming pool and landscaped gardens.',
+        description: 'Completed and delivered on schedule, Asel Nature Houses 1 offers a tranquil lifestyle with its swimming pool and landscaped gardens.',
         features: [
           'Turnkey Delivered & Inhabited',
           'Aziziye District, Karasu',
@@ -313,7 +313,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'asel-doga-2',
         stageNumber: 2,
-        title: 'Asel Doğa Evleri 2',
+        title: 'Asel Nature Houses 2',
         subtitle: 'Actively progressing sister project in Aziziye District',
         status: 'Satışta, Devam Ediyor',
         year: '2027',
@@ -322,7 +322,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '850 Metres',
         totalUnits: '12 Residences',
         unitTypes: ['1+1 and 2+1 Residences'],
-        description: 'Asel Doğa 2 is currently under active construction, featuring underfloor-heated residences, outdoor swimming pool, and direct company installment options.',
+        description: 'Asel Nature Houses 2 is currently under active construction, featuring underfloor-heated residences, outdoor swimming pool, and direct company installment options.',
         features: [
           'On Sale & Under Construction (Delivery: 2027)',
           'Aziziye District – Surrounded by Greenery',
@@ -337,7 +337,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'asel-doga-3',
         stageNumber: 3,
-        title: 'Asel Doğa Evleri 3',
+        title: 'Asel Nature Houses 3',
         subtitle: 'Upcoming project planned in nature-rich Aziziye District',
         status: 'Yakında',
         year: 'Yakında',
@@ -346,7 +346,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '600 Metres',
         totalUnits: 'Ön Talep',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'The third chapter of the Asel Doğa family, planned 600m from the beach with modern architectural touches.',
+        description: 'The third chapter of the Asel Nature Houses family, planned 600m from the beach with modern architectural touches.',
         features: [
           'Pre-Registration Active',
           '600 Metres to the Beach',
@@ -359,7 +359,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'asel-doga-4',
         stageNumber: 4,
-        title: 'Asel Doğa Evleri 4',
+        title: 'Asel Nature Houses 4',
         subtitle: 'Upcoming fourth phase in prestigious coastal zone',
         status: 'Yakında',
         year: 'Yakında',
@@ -368,7 +368,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '700 Metres',
         totalUnits: 'Ön Talep',
         unitTypes: ['1+1 ve 2+1 Daireler'],
-        description: 'The fourth ring of the concept, featuring high construction standards and flexible payment terms.',
+        description: 'The fourth development of the Asel Nature Houses concept, featuring high construction standards and flexible payment terms.',
         features: [
           'Pre-Registration Active',
           'Boutique Site Layout',
@@ -383,10 +383,10 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
   {
     id: 'almina-evleri',
     slug: 'almina-evleri',
-    title: 'Almina Evleri',
-    seriesInfo: '2 Projects (Almina 1 Delivered • Almina 2 on Sale)',
-    subtitle: 'Coastal living steps away from the beach, commercial avenue, and schools in Yalı District',
-    slideDescription: 'Centrally located coastal homes adjacent to public transit, town avenue, kindergarten and markets, 850m from the beach.',
+    title: 'Almina Houses',
+    seriesInfo: '2 Projects (Almina Houses 1 Delivered • Almina Houses 2 on Sale)',
+    subtitle: 'A vibrant living space where city life never pauses',
+    slideDescription: 'A vibrant living space where city life never pauses',
     category: 'ongoing',
     categoryLabel: 'Active Development',
     location: 'Yalı Mah., Karasu / Sakarya',
@@ -397,7 +397,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
     totalUnits: '33 Residences',
     unitTypes: ['1+1 and 2+1 Residences'],
     description:
-      'Almina Residences sits at the crossroads of beachside bliss and everyday convenience in Karasu Yalı District. Located on Plaj Avenue within easy walking distance to markets, kindergartens, and public transit, it features an outdoor pool, underfloor heating, and direct company financing.',
+      'Almina Houses sits at the crossroads of beachside bliss and everyday convenience in Karasu Yalı District. Located on Plaj Avenue within easy walking distance to markets, kindergartens, and public transit, it features an outdoor pool, underfloor heating, and direct company financing.',
     architecturalPhilosophy:
       'Contemporary architecture framing open sea views and natural sunlight with stepped balconies and wide glazed surfaces ensuring family privacy.',
     heroMedia: {
@@ -405,12 +405,12 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       desktopSrc: '/images/alminaforweb.jpeg',
       mobileSrc: '/images/alminaforweb.jpeg',
       poster: '/images/alminaforweb.jpeg',
-      alt: 'Almina Evleri Karasu'
+      alt: 'Almina Houses Karasu'
     },
     gallery: [
       {
         url: '/images/alminaforweb.jpeg',
-        title: 'Almina Evleri - Architectural Perspective',
+        title: 'Almina Houses - Architectural Perspective',
         aspect: '16:9'
       }
     ],
@@ -426,7 +426,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'almina-1',
         stageNumber: 1,
-        title: 'Almina 1',
+        title: 'Almina Houses 1',
         subtitle: 'Completed and delivered premier project along the beach corridor',
         status: 'Tamamlandı',
         year: '2023',
@@ -435,7 +435,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '750 Metres',
         totalUnits: '24 Residences',
         unitTypes: ['1+1 and 2+1 Residences'],
-        description: 'Successfully completed in 2023, Almina 1 provides a vibrant community life with an outdoor pool and comfortable underfloor-heated apartments.',
+        description: 'Successfully completed in 2023, Almina Houses 1 provides a vibrant community life with an outdoor pool and comfortable underfloor-heated apartments.',
         features: [
           'Turnkey Delivered & Inhabited',
           'Yalı District, Plaj Avenue',
@@ -450,7 +450,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       {
         id: 'almina-2',
         stageNumber: 2,
-        title: 'Almina 2',
+        title: 'Almina Houses 2',
         subtitle: 'Centrally located boutique site currently on sale in Yalı District',
         status: 'Satışta, Devam Ediyor',
         year: '2026',
@@ -459,7 +459,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
         distanceToSea: '850 Metres',
         totalUnits: '9 Residences',
         unitTypes: ['1+1 and 2+1 Residences'],
-        description: 'Almina 2 continues the legacy with 9 boutique residences, swimming pool, underfloor heating, and prime positioning on Karasu’s liveliest avenue.',
+        description: 'Almina Houses 2 continues the legacy with 9 boutique residences, swimming pool, underfloor heating, and prime positioning on Karasu’s liveliest avenue.',
         features: [
           'On Sale & Actively Progressing',
           'Yalı District, Plaj Avenue',
@@ -491,8 +491,8 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
     title: 'Seaside House',
     seriesInfo: 'Completed',
     cardSize: 'standard',
-    subtitle: 'Where the river and the Black Sea converge in an iconic seafront setting',
-    slideDescription: 'Where the river and the Black Sea converge in an iconic seafront setting',
+    subtitle: 'Where the river and the sea meet in a stunning setting',
+    slideDescription: 'Where the river and the sea meet in a stunning setting',
     category: 'completed',
     categoryLabel: 'Completed Landmark',
     location: 'Yalı Mah. Sahil Caddesi, Karasu / Sakarya',
@@ -579,7 +579,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
   {
     id: 'cagdas-evleri',
     slug: 'cagdas-evleri',
-    title: 'Çağdaş Evleri',
+    title: 'Çağdaş Houses',
     seriesInfo: 'Completed',
     cardSize: 'compact',
     subtitle: 'Boutique and comfortable residences completed with contemporary lines',
@@ -593,7 +593,7 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
     totalUnits: '1+1 and 2+1 Residences',
     unitTypes: ['1+1 Residences', '2+1 Residences'],
     description:
-      'Çağdaş Evleri was successfully delivered to owners with modern facade lines, an outdoor swimming pool, and high-quality materials along the Yalı coastline.',
+      'Çağdaş Houses was successfully delivered to owners with modern facade lines, an outdoor swimming pool, and high-quality materials along the Yalı coastline.',
     architecturalPhilosophy:
       'Clean architectural geometry, high-performance structural elements, and climate-resistant building specifications.',
     heroMedia: {
@@ -601,12 +601,12 @@ export const PROJECTS_DATA_EN: ProjectItem[] = [
       desktopSrc: '/images/aselforweb.jpeg',
       mobileSrc: '/images/aselforweb.jpeg',
       poster: '/images/aselforweb.jpeg',
-      alt: 'Çağdaş Evleri Karasu'
+      alt: 'Çağdaş Houses Karasu'
     },
     gallery: [
       {
         url: '/images/aselforweb.jpeg',
-        title: 'Çağdaş Evleri Facade View',
+        title: 'Çağdaş Houses Facade View',
         aspect: '16:9'
       }
     ],
