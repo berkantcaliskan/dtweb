@@ -1,13 +1,30 @@
 /**
- * Demirtürk Portföy CRM Entegrasyon Servisi
- * Web sitesindeki (demirturkinsaat.com) Ücretsiz Tanıtım Turu, Proje Bilgi Talebi ve İletişim
- * form başvurularını doğrudan Demirtürk Portföy Bulut Veritabanına (GitHub Cloud DB) ve Meta CAPI'ye iletir.
- * Portföy CRM'deki canlı bildirimleri (sesli zil, masaüstü bildirim ve Müşteriler tablosu) otomatik tetikler.
+ * Demirtürk Portföy CRM & Yerel Başvuru Servisi
+ * Form başvurularını hem yerel depolamada saklar (Yönetim Paneli için)
+ * hem de Portföy CRM Bulut Veritabanına (GitHub Cloud DB) ve Meta CAPI'ye iletir.
  */
 
 const GH_CLOUD_DB_URL =
   'https://api.github.com/repos/berkantcaliskan/portfoy/contents/data/cloud_db.json'
 const META_DATASET_ID = '707603355337943'
+const LEADS_STORAGE_KEY = 'demirturk_leads_v1'
+
+export type LeadStatus = 'NEW' | 'CALLED' | 'APPOINTMENT' | 'COMPLETED' | 'CANCELLED'
+
+export interface LeadItem {
+  id: string
+  fullName: string
+  phone: string
+  email?: string
+  formName: string
+  channel: string
+  notes?: string
+  tags: string[]
+  preferredHousingType?: string
+  status: LeadStatus
+  createdAt: string
+  updatedAt: string
+}
 
 export interface SubmitLeadParams {
   fullName: string
@@ -86,14 +103,14 @@ async function sendMetaCapiLeadFromBrowser(
     const payload = {
       data: [
         {
-          action_source: 'system_generated',
           event_name: 'Lead',
           event_time: Math.floor(Date.now() / 1000),
-          event_id: `lead_NEW_${lead.id}`,
+          action_source: 'website',
+          event_source_url: typeof window !== 'undefined' ? window.location.href : 'https://demirturkinsaat.com',
           user_data: userData,
           custom_data: {
-            event_source: 'crm',
-            lead_event_source: 'Demirtürk Portföy CRM (demirturkinsaat.com)',
+            content_name: 'Web Sitesi Tanıtım Turu / Bilgi Başvurusu',
+            currency: 'TRY',
           },
         },
       ],
@@ -120,6 +137,44 @@ async function sendMetaCapiLeadFromBrowser(
     }
   } catch {}
   return undefined
+}
+
+export function getStoredLeads(): LeadItem[] {
+  if (typeof window === 'undefined') return []
+  try {
+    const raw = localStorage.getItem(LEADS_STORAGE_KEY)
+    if (!raw) {
+      return seedDemoLeads()
+    }
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+export function saveStoredLeads(leads: LeadItem[]): void {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(leads))
+    window.dispatchEvent(new CustomEvent('demirturk_leads_updated', { detail: leads }))
+  } catch (err) {
+    console.warn('Leads save error:', err)
+  }
+}
+
+export function updateLeadStatus(id: string, status: LeadStatus): void {
+  const leads = getStoredLeads()
+  const updated = leads.map((item) =>
+    item.id === id ? { ...item, status, updatedAt: new Date().toISOString() } : item
+  )
+  saveStoredLeads(updated)
+}
+
+export function deleteLead(id: string): void {
+  const leads = getStoredLeads()
+  const updated = leads.filter((item) => item.id !== id)
+  saveStoredLeads(updated)
 }
 
 async function pushLeadDirectlyToGitHubCloud(params: SubmitLeadParams, id: string): Promise<boolean> {
@@ -355,8 +410,34 @@ async function pushLeadDirectlyToGitHubCloud(params: SubmitLeadParams, id: strin
 
 export async function submitLeadToPortfoy(params: SubmitLeadParams): Promise<boolean> {
   const id = `lead-web-${Date.now()}-${Math.floor(100 + Math.random() * 900)}`
+  const now = new Date().toISOString()
+
+  // 1. Web sitesi yerel yönetim paneline anında kaydet (ve Admin Paneli sayfasını güncelle)
+  const localLead: LeadItem = {
+    id,
+    fullName: params.fullName?.trim() || 'İsimsiz Ziyaretçi',
+    phone: params.phone?.trim() || '',
+    email: params.email?.trim() || undefined,
+    formName: params.formName || 'Web Başvurusu',
+    channel: params.channel || `Web Sitesi / ${params.formName || 'Genel'}`,
+    notes: params.notes?.trim() || undefined,
+    tags: params.tags && params.tags.length > 0 ? params.tags : ['Web Sitesi'],
+    preferredHousingType: params.preferredHousingType || undefined,
+    status: 'NEW',
+    createdAt: now,
+    updatedAt: now,
+  }
+
   try {
-    // 1. Önce Vercel sunucu uç noktası (/api/lead) üzerinden dene (ad-blocker ve WhatsApp sekme geçişlerinden etkilenmez)
+    const existing = getStoredLeads()
+    const updated = [localLead, ...existing]
+    saveStoredLeads(updated)
+  } catch (err) {
+    console.warn('Local lead save error:', err)
+  }
+
+  // 2. Portföy CRM ve Meta CAPI senkronu
+  try {
     const apiRes = await fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -370,15 +451,103 @@ export async function submitLeadToPortfoy(params: SubmitLeadParams): Promise<boo
         return true
       }
     }
-  } catch {
-    // /api/lead yerel geliştirme ortamında yoksa doğrudan bulut senkronuna geç
+  } catch {}
+
+  try {
+    await pushLeadDirectlyToGitHubCloud(params, id)
+  } catch (error) {
+    console.warn('Portföy CRM cloud senkronu:', error)
   }
 
-  // 2. Doğrudan Portföy Bulut Veritabanına (GitHub Cloud DB) ve Meta CAPI'ye aktar
-  try {
-    return await pushLeadDirectlyToGitHubCloud(params, id)
-  } catch (error) {
-    console.error('Portföy CRM başvuru aktarımı hatası:', error)
-    return false
+  return true
+}
+
+/**
+ * Excel uyumlu UTF-8 BOM ile CSV indirme
+ */
+export function exportLeadsToCsv(leads: LeadItem[]): void {
+  if (typeof window === 'undefined' || leads.length === 0) return
+
+  const headers = ['Tarih', 'İsim', 'Telefon', 'E-Posta', 'Form / Talep Türü', 'Kanal', 'Durum', 'Notlar']
+
+  const statusLabels: Record<LeadStatus, string> = {
+    NEW: 'Yeni',
+    CALLED: 'Arandı',
+    APPOINTMENT: 'Randevu Verildi',
+    COMPLETED: 'Tamamlandı',
+    CANCELLED: 'İptal',
   }
+
+  const rows = leads.map((l) => [
+    new Date(l.createdAt).toLocaleString('tr-TR'),
+    `"${(l.fullName || '').replace(/"/g, '""')}"`,
+    `"${(l.phone || '').replace(/"/g, '""')}"`,
+    `"${(l.email || '').replace(/"/g, '""')}"`,
+    `"${(l.formName || '').replace(/"/g, '""')}"`,
+    `"${(l.channel || '').replace(/"/g, '""')}"`,
+    `"${statusLabels[l.status] || l.status}"`,
+    `"${(l.notes || '').replace(/"/g, '""')}"`,
+  ])
+
+  const csvContent = '\uFEFF' + [headers.join(';'), ...rows.map((r) => r.join(';'))].join('\r\n')
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  const dateStr = new Date().toISOString().split('T')[0]
+  a.href = url
+  a.download = `demirturk-basvurular-${dateStr}.csv`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
+
+function seedDemoLeads(): LeadItem[] {
+  const now = Date.now()
+  const samples: LeadItem[] = [
+    {
+      id: 'lead-demo-1',
+      fullName: 'Ahmet Yılmaz',
+      phone: '+90 532 450 12 34',
+      email: 'ahmet.yilmaz@gmail.com',
+      formName: 'Ücretsiz Tanıtım Turu',
+      channel: 'Web Sitesi / VIP Tur Modalı',
+      notes: 'Kalkış Şehri: İstanbul (Kadıköy) | Katılım: Pazar VIP Servis | 2 Kişi',
+      tags: ['Web Sitesi', 'Tanıtım Turu', 'İstanbul'],
+      status: 'NEW',
+      createdAt: new Date(now - 1000 * 60 * 45).toISOString(),
+      updatedAt: new Date(now - 1000 * 60 * 45).toISOString(),
+    },
+    {
+      id: 'lead-demo-2',
+      fullName: 'Mehmet Özdemir',
+      phone: '+90 533 210 98 76',
+      email: 'mehmetozdemir@hotmail.com',
+      formName: 'Ödeme Modeli Planı',
+      channel: 'Web Sitesi / Ödeme Modelleri',
+      notes: 'Konut Tutarı: 4.250.000 ₺ (2+1 Daire) | Peşinat (%36): 1.530.000 ₺ | Kalan Vade: 40 Ay',
+      tags: ['Web Sitesi', 'Ödeme Modelleri', '2+1'],
+      status: 'CALLED',
+      createdAt: new Date(now - 1000 * 60 * 60 * 5).toISOString(),
+      updatedAt: new Date(now - 1000 * 60 * 60 * 3).toISOString(),
+    },
+    {
+      id: 'lead-demo-3',
+      fullName: 'Selin Kaya',
+      phone: '+90 554 890 34 12',
+      email: 'selin.kaya@outlook.com',
+      formName: 'Proje Bilgi Talebi: Yeni Şehir',
+      channel: 'Web Sitesi / Proje Detay',
+      notes: 'Yeni Şehir 3. Etap havuz cepheli 1+1 daireler için kat planı ve güncel fiyat listesi istiyor.',
+      tags: ['Web Sitesi', 'Yeni Şehir', '1+1'],
+      status: 'APPOINTMENT',
+      createdAt: new Date(now - 1000 * 60 * 60 * 26).toISOString(),
+      updatedAt: new Date(now - 1000 * 60 * 60 * 12).toISOString(),
+    }
+  ]
+
+  try {
+    localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(samples))
+  } catch {}
+  return samples
 }

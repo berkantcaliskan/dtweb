@@ -18,6 +18,7 @@ import { ScrollToTop } from './components/ScrollToTop'
 import { ProjectItem } from './types'
 import { PROJECTS_DATA, getLocalizedProjects } from './data/websiteData'
 import { useLanguage } from './context/LanguageContext'
+import { trackPageView } from './services/analyticsService'
 
 export const DemirturkWebsite: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
@@ -47,9 +48,9 @@ export const DemirturkWebsite: React.FC = () => {
     if (pushHistory && window.location.pathname !== targetPath) {
       window.history.pushState({ project: projectSlug }, '', targetPath)
     }
-    document.title = isEn
-      ? `${project.title} | Demirtürk İnşaat Karasu Developments`
-      : `${project.title} | Demirtürk İnşaat Karasu Projeleri`
+    const pTitle = isEn ? `${project.title} | Demirtürk İnşaat Karasu Developments` : `${project.title} | Demirtürk İnşaat Karasu Projeleri`
+    document.title = pTitle
+    trackPageView(targetPath, pTitle)
   }
 
   const handleCloseProject = () => {
@@ -82,7 +83,9 @@ export const DemirturkWebsite: React.FC = () => {
     if (pushHistory && window.location.pathname !== targetPath) {
       window.history.pushState({ article: article.slug }, '', targetPath)
     }
-    document.title = article.seoTitle || `${article.title} | Demirtürk İnşaat`
+    const aTitle = article.seoTitle || `${article.title} | Demirtürk İnşaat`
+    document.title = aTitle
+    trackPageView(targetPath, aTitle)
   }
 
   const handleCloseArticle = () => {
@@ -114,7 +117,9 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/iletisim') {
       window.history.pushState({ modal: 'iletisim' }, '', '/iletisim')
     }
-    document.title = isEn ? 'Contact & Head Office | Demirtürk İnşaat Karasu' : 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+    const cTitle = isEn ? 'Contact & Head Office | Demirtürk İnşaat Karasu' : 'İletişim & Bize Ulaşın | Demirtürk İnşaat Karasu'
+    document.title = cTitle
+    trackPageView('/iletisim', cTitle)
   }
 
   const handleCloseReachUs = () => {
@@ -134,7 +139,9 @@ export const DemirturkWebsite: React.FC = () => {
     if (window.location.pathname !== '/tanitim-turu') {
       window.history.pushState({ modal: 'tanitim-turu' }, '', '/tanitim-turu')
     }
-    document.title = isEn ? 'Complimentary Karasu Discovery Tour | Demirtürk İnşaat' : 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
+    const tTitle = isEn ? 'Complimentary Karasu Discovery Tour | Demirtürk İnşaat' : 'Ücretsiz Karasu Tanıtım Turu | Demirtürk İnşaat'
+    document.title = tTitle
+    trackPageView('/tanitim-turu', tTitle)
   }
 
   const handleCloseTour = () => {
@@ -215,6 +222,7 @@ export const DemirturkWebsite: React.FC = () => {
     if (pushHistory && window.location.pathname !== path) {
       window.history.pushState({ path }, '', path)
     }
+    trackPageView(path, title)
 
     document.title = title
 

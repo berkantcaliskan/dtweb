@@ -1,6 +1,6 @@
 import React from 'react'
 import { COMPANY_INFO, getLocalizedProjects } from '../data/websiteData'
-import { ChevronUp } from 'lucide-react'
+import { ChevronUp, Lock } from 'lucide-react'
 import { DemirturkLogo } from './DemirturkLogo'
 import { useLanguage } from '../context/LanguageContext'
 import { TRANSLATIONS } from '../data/translations'
@@ -234,6 +234,19 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
             <span className="hover:text-[#fffff1] cursor-pointer transition-colors">
               {isEn ? 'Cookie Policy' : 'Çerez Politikası'}
             </span>
+            <a
+              href="/yonetim"
+              onClick={(e) => {
+                e.preventDefault()
+                window.history.pushState({ path: '/yonetim' }, '', '/yonetim')
+                window.dispatchEvent(new PopStateEvent('popstate'))
+              }}
+              className="text-[#fffff1]/25 hover:text-[#fffff1] transition-opacity cursor-pointer p-1 inline-flex items-center"
+              title="Yönetici Girişi"
+              aria-label="Yönetici Girişi"
+            >
+              <Lock size={12} />
+            </a>
             <button
               onClick={scrollToTop}
               className="flex items-center space-x-1.5 text-[#fffff1]/70 hover:text-[#fffff1] transition-colors ml-4 cursor-pointer"

@@ -9,13 +9,11 @@ export const COMPANY_INFO = {
   subtagline: '20 yılı aşkın mühendislik birikimiyle temelden çatıya geleceğe değer katan yaşam alanları inşa ediyoruz.',
   address: 'Doğu Karadeniz Cd. No: 1, Aziziye, Karasu / Sakarya',
   phoneNumbers: [
-    '+90 531 373 00 54',
-    '+90 530 102 40 01'
+    '+90 531 373 00 54'
   ],
   phone: '+90 531 373 00 54',
   landlinePhone: '0264 718 00 54',
   mobilePhone: '+90 531 373 00 54',
-  secondaryPhone: '+90 530 102 40 01',
   materialsPhone: '+90 545 305 53 54',
   materialsWhatsapp: '905453055354',
   whatsapp: '905313730054',
