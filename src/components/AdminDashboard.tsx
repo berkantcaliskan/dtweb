@@ -5,6 +5,9 @@ import {
   deleteLead,
   exportLeadsToCsv,
   submitLeadToPortfoy,
+  fetchCloudLeads,
+  updateCloudLeadStatus,
+  deleteCloudLead,
   LeadItem,
   LeadStatus,
 } from '../services/leadService'
@@ -60,6 +63,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToWebsite 
   const [activeTab, setActiveTab] = useState<'leads' | 'analytics' | 'settings'>('leads')
   const [leads, setLeads] = useState<LeadItem[]>([])
   const [analytics, setAnalytics] = useState<AnalyticsSummary | null>(null)
+  const [isSyncing, setIsSyncing] = useState<boolean>(false)
+  const [lastSyncTime, setLastSyncTime] = useState<string>('')
 
   // Filters & Search
   const [searchQuery, setSearchQuery] = useState('')
@@ -75,21 +80,49 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToWebsite 
   const [gaInput, setGaInput] = useState(() => getGoogleAnalyticsId())
   const [gaSuccess, setGaSuccess] = useState(false)
 
-  // Load data
+  // Load data (Local + Cloud Sync)
   const loadData = () => {
     setLeads(getStoredLeads())
     setAnalytics(getAnalyticsSummary())
   }
 
+  const syncWithCloud = async () => {
+    setIsSyncing(true)
+    try {
+      const cloudData = await fetchCloudLeads()
+      setLeads(cloudData)
+      setLastSyncTime(
+        new Date().toLocaleTimeString('tr-TR', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        })
+      )
+    } catch (e) {
+      console.warn('Bulut senkronizasyonu hatası:', e)
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
   useEffect(() => {
     if (isAuthenticated) {
       loadData()
+      syncWithCloud()
+
       const handleLeadsUpdated = () => {
         setLeads(getStoredLeads())
       }
       window.addEventListener('demirturk_leads_updated', handleLeadsUpdated)
+
+      // 30 saniyede bir otomatik arka plan canlı senkronizasyonu
+      const interval = setInterval(() => {
+        syncWithCloud()
+      }, 30000)
+
       return () => {
         window.removeEventListener('demirturk_leads_updated', handleLeadsUpdated)
+        clearInterval(interval)
       }
     }
   }, [isAuthenticated])
@@ -115,15 +148,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToWebsite 
     sessionStorage.removeItem(SESSION_AUTH_KEY)
   }
 
-  const handleUpdateStatus = (id: string, newStatus: LeadStatus) => {
+  const handleUpdateStatus = async (id: string, newStatus: LeadStatus) => {
     updateLeadStatus(id, newStatus)
     setLeads(getStoredLeads())
+    await updateCloudLeadStatus(id, newStatus)
   }
 
-  const handleDeleteLead = (id: string, name: string) => {
+  const handleDeleteLead = async (id: string, name: string) => {
     if (window.confirm(`"${name}" adlı başvuru silinsin mi?`)) {
       deleteLead(id)
       setLeads(getStoredLeads())
+      await deleteCloudLead(id)
     }
   }
 
@@ -420,12 +455,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToWebsite 
           </div>
 
           <div className="flex items-center space-x-2">
+            <div className="hidden sm:flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-1.5 rounded-xl text-[11px] text-emerald-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Canlı Bulut Senkronu</span>
+              {lastSyncTime && (
+                <span className="text-emerald-400/60 font-mono text-[10px]">
+                  ({lastSyncTime})
+                </span>
+              )}
+            </div>
             <button
-              onClick={loadData}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#fffff1]/80 hover:text-white border border-[#fffff1]/10 transition-all cursor-pointer"
-              title="Verileri Yenile"
+              onClick={syncWithCloud}
+              disabled={isSyncing}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-[#fffff1]/90 hover:text-white border border-[#fffff1]/15 text-xs font-medium transition-all cursor-pointer disabled:opacity-60"
+              title="Bulut Veritabanından Canlı Yenile"
             >
-              <RefreshCw size={14} />
+              <RefreshCw size={13} className={isSyncing ? 'animate-spin text-emerald-400' : ''} />
+              <span className="hidden sm:inline">
+                {isSyncing ? 'Yenileniyor...' : 'Canlı Yenile'}
+              </span>
             </button>
           </div>
         </div>

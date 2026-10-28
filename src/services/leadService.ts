@@ -177,6 +177,204 @@ export function deleteLead(id: string): void {
   saveStoredLeads(updated)
 }
 
+/**
+ * Canlı Portföy Bulut Veritabanından (GitHub Cloud DB) tüm gerçek başvuruları çeker.
+ * Herhangi bir cihazdan panele girildiğinde canlı veriyi sağlar.
+ */
+export async function fetchCloudLeads(): Promise<LeadItem[]> {
+  try {
+    const token = getGitHubTokenRuntime()
+    const res = await fetch(`${GH_CLOUD_DB_URL}?ref=main&t=${Date.now()}`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!res.ok) {
+      return getStoredLeads()
+    }
+
+    const data = await res.json()
+    if (!data || !data.content) {
+      return getStoredLeads()
+    }
+
+    const rawContent = decodeBase64Utf8(data.content)
+    const cloudStore = JSON.parse(rawContent) || {}
+    const rawLeads = JSON.parse(cloudStore.demirturk_leads_v2 || '[]')
+    if (!Array.isArray(rawLeads)) return getStoredLeads()
+
+    const cloudMapped: LeadItem[] = rawLeads.map((l: any) => {
+      let status: LeadStatus = 'NEW'
+      const s = String(l.stage || '').toUpperCase()
+      if (s === 'CONTACTED' || l.callStatus === 'CALLED') status = 'CALLED'
+      else if (s === 'MEETING' || s === 'APPOINTMENT') status = 'APPOINTMENT'
+      else if (s === 'WON' || s === 'COMPLETED') status = 'COMPLETED'
+      else if (s === 'LOST' || s === 'CANCELLED') status = 'CANCELLED'
+      else status = 'NEW'
+
+      const firstInquiry = Array.isArray(l.inquiries) && l.inquiries.length > 0 ? l.inquiries[0] : null
+
+      return {
+        id: l.id || `lead-${Date.now()}`,
+        fullName: l.fullName || 'İsimsiz Ziyaretçi',
+        phone: l.phone || '',
+        email: l.email || undefined,
+        formName: l.formName || firstInquiry?.formName || 'Web Başvurusu',
+        channel: l.channel || firstInquiry?.channel || 'Web Sitesi',
+        notes: l.notes || firstInquiry?.notes || undefined,
+        tags: Array.isArray(l.tags) && l.tags.length > 0 ? l.tags : ['Web Sitesi'],
+        preferredHousingType: l.preferredHousingType || firstInquiry?.preferredHousingType || undefined,
+        status,
+        createdAt: l.createdAt || new Date().toISOString(),
+        updatedAt: l.updatedAt || l.createdAt || new Date().toISOString(),
+      }
+    })
+
+    // En yeniden eskiye sırala
+    cloudMapped.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+
+    // Yerel hafızaya da yazarak anında açılmasını sağla
+    saveStoredLeads(cloudMapped)
+    return cloudMapped
+  } catch (err) {
+    console.warn('Canlı bulut başvuruları çekilemedi, yerel veri kullanılıyor:', err)
+    return getStoredLeads()
+  }
+}
+
+/**
+ * Bir başvurunun durumunu canlı Bulut Veritabanında (GitHub Cloud DB) günceller.
+ */
+export async function updateCloudLeadStatus(id: string, status: LeadStatus): Promise<boolean> {
+  updateLeadStatus(id, status) // Yerelde anında güncelle
+
+  try {
+    const token = getGitHubTokenRuntime()
+    const getRes = await fetch(`${GH_CLOUD_DB_URL}?ref=main&t=${Date.now()}`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    if (!getRes.ok) return false
+    const meta = await getRes.json()
+    const currentSha = meta?.sha
+    const rawContent = meta?.content ? decodeBase64Utf8(meta.content) : '{}'
+    const cloudStore = JSON.parse(rawContent) || {}
+    let leads = JSON.parse(cloudStore.demirturk_leads_v2 || '[]')
+    if (!Array.isArray(leads)) leads = []
+
+    const stageMap: Record<LeadStatus, string> = {
+      NEW: 'NEW',
+      CALLED: 'CONTACTED',
+      APPOINTMENT: 'MEETING',
+      COMPLETED: 'WON',
+      CANCELLED: 'LOST',
+    }
+
+    const targetIdx = leads.findIndex((l: any) => l.id === id)
+    if (targetIdx !== -1) {
+      const existing = leads[targetIdx]
+      const newStage = stageMap[status] || 'NEW'
+      leads[targetIdx] = {
+        ...existing,
+        stage: newStage,
+        callStatus: status === 'CALLED' ? 'CALLED' : existing.callStatus,
+        updatedAt: new Date().toISOString(),
+        stageHistory: [
+          ...(Array.isArray(existing.stageHistory) ? existing.stageHistory : []),
+          {
+            id: `sh-admin-${Date.now()}`,
+            fromStage: existing.stage,
+            toStage: newStage,
+            changedByUserId: 'admin',
+            changedByUserName: 'Web Yönetim Paneli',
+            changedAt: new Date().toISOString(),
+            note: `Durum güncellendi: ${status}`,
+          },
+        ],
+      }
+
+      cloudStore.demirturk_leads_v2 = JSON.stringify(leads)
+      const newJsonStr = JSON.stringify(cloudStore, null, 2)
+      await fetch(GH_CLOUD_DB_URL, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `chore(web-admin): update lead ${id} to ${status}`,
+          content: encodeUtf8Base64(newJsonStr),
+          branch: 'main',
+          sha: currentSha,
+        }),
+      })
+      return true
+    }
+    return false
+  } catch (err) {
+    console.warn('updateCloudLeadStatus error:', err)
+    return false
+  }
+}
+
+/**
+ * Bir başvuruyu canlı Bulut Veritabanından siler.
+ */
+export async function deleteCloudLead(id: string): Promise<boolean> {
+  deleteLead(id) // Yerelde anında sil
+
+  try {
+    const token = getGitHubTokenRuntime()
+    const getRes = await fetch(`${GH_CLOUD_DB_URL}?ref=main&t=${Date.now()}`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    if (!getRes.ok) return false
+    const meta = await getRes.json()
+    const currentSha = meta?.sha
+    const rawContent = meta?.content ? decodeBase64Utf8(meta.content) : '{}'
+    const cloudStore = JSON.parse(rawContent) || {}
+    let leads = JSON.parse(cloudStore.demirturk_leads_v2 || '[]')
+    let deletedIds = JSON.parse(cloudStore.demirturk_deleted_ids_v1 || '[]')
+    if (!Array.isArray(leads)) leads = []
+    if (!Array.isArray(deletedIds)) deletedIds = []
+
+    leads = leads.filter((l: any) => l.id !== id)
+    if (!deletedIds.includes(id)) {
+      deletedIds.push(id)
+    }
+
+    cloudStore.demirturk_leads_v2 = JSON.stringify(leads)
+    cloudStore.demirturk_deleted_ids_v1 = JSON.stringify(deletedIds)
+    const newJsonStr = JSON.stringify(cloudStore, null, 2)
+    await fetch(GH_CLOUD_DB_URL, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: `chore(web-admin): delete lead ${id}`,
+        content: encodeUtf8Base64(newJsonStr),
+        branch: 'main',
+        sha: currentSha,
+      }),
+    })
+    return true
+  } catch (err) {
+    console.warn('deleteCloudLead error:', err)
+    return false
+  }
+}
+
 async function pushLeadDirectlyToGitHubCloud(params: SubmitLeadParams, id: string): Promise<boolean> {
   const phone = params.phone.trim()
   if (!phone) return false
@@ -412,7 +610,7 @@ export async function submitLeadToPortfoy(params: SubmitLeadParams): Promise<boo
   const id = `lead-web-${Date.now()}-${Math.floor(100 + Math.random() * 900)}`
   const now = new Date().toISOString()
 
-  // 1. Web sitesi yerel yönetim paneline anında kaydet (ve Admin Paneli sayfasını güncelle)
+  // 1. Web sitesi yerel yönetim paneline anında kaydet
   const localLead: LeadItem = {
     id,
     fullName: params.fullName?.trim() || 'İsimsiz Ziyaretçi',
