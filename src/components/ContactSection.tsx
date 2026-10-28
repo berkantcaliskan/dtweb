@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageSquare, Send, Check } from 'lucide-react'
 import { COMPANY_INFO } from '../data/websiteData'
+import { submitLeadToPortfoy } from '../services/leadService'
 
 export const ContactSection: React.FC = () => {
   const [formName, setFormName] = useState('')
@@ -12,6 +13,16 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formPhone.trim()) return
+
+    submitLeadToPortfoy({
+      fullName: formName,
+      phone: formPhone,
+      formName: formSubject.includes('Tur') ? 'Ücretsiz Tanıtım Turu' : 'Bize Ulaşın / İletişim',
+      channel: 'Web Sitesi / İletişim Formu',
+      preferredHousingType: formSubject.includes('Tur') ? 'Tanıtım Turu' : formSubject,
+      notes: `Konu: ${formSubject} | Mesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`,
+      tags: ['Web Sitesi', formSubject.includes('Tur') ? 'Tanıtım Turu' : 'İletişim', formSubject],
+    })
 
     const text = encodeURIComponent(
       `Merhaba Demirtürk İnşaat,\nKonu: ${formSubject}\nİsim: ${formName || 'Belirtilmedi'}\nTelefon: ${formPhone}\nMesaj: ${formMessage || 'Web sitesi üzerinden randevu/bilgi talebi'}`

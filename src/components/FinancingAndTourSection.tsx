@@ -21,6 +21,7 @@ export const FinancingAndTourSection: React.FC = () => {
       phone: tourPhone,
       formName: 'Ücretsiz Tanıtım Turu',
       channel: 'Web Sitesi / Finansman & Tanıtım Turu Bölümü',
+      preferredHousingType: 'Tanıtım Turu',
       notes: `Kalkış Şehri: ${tourCity} | Katılım Şekli: ${tourTransportChoice}`,
       tags: ['Web Sitesi', 'Tanıtım Turu', tourCity, tourTransportChoice === 'Kendi Aracımla Geleceğim' ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })

@@ -38,9 +38,10 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onCl
     submitLeadToPortfoy({
       fullName: name,
       phone: phone,
-      formName: isEn ? 'Complimentary Discovery Tour' : 'Ücretsiz Tanıtım Turu',
-      channel: isEn ? 'Website / VIP Tour Modal (EN)' : 'Web Sitesi / Ücretsiz Tanıtım Turu Modalı',
-      notes: `${isEn ? 'Departure' : 'Kalkış Şehri'}: ${city} | ${isEn ? 'Transport' : 'Katılım Şekli'}: ${actualTransport}`,
+      formName: 'Ücretsiz Tanıtım Turu',
+      channel: isEn ? 'Web Sitesi / Ücretsiz Tanıtım Turu Modalı (EN)' : 'Web Sitesi / Ücretsiz Tanıtım Turu Modalı',
+      preferredHousingType: 'Tanıtım Turu',
+      notes: `Kalkış Şehri: ${city} | Katılım Şekli: ${transportChoice === 'own' ? 'Kendi Aracımla Geleceğim' : 'Pazar Günü (VIP Servis)'}`,
       tags: ['Web Sitesi', 'Tanıtım Turu', city, transportChoice === 'own' ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })
 

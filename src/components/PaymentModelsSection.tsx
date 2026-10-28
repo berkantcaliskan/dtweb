@@ -115,9 +115,10 @@ export const PaymentModelsSection: React.FC = () => {
     submitLeadToPortfoy({
       fullName: tourName,
       phone: tourPhone,
-      formName: isEN ? 'Free VIP Tour (EN)' : 'Ücretsiz Tanıtım Turu',
-      channel: isEN ? 'Website / Payment Models & VIP Tour Section' : 'Web Sitesi / Ödeme Modelleri & Tanıtım Turu Bölümü',
-      notes: `Departure: ${tourCity} | Transport: ${tourTransportChoice}`,
+      formName: 'Ücretsiz Tanıtım Turu',
+      channel: isEN ? 'Web Sitesi / Ödeme Modelleri & Tanıtım Turu Bölümü (EN)' : 'Web Sitesi / Ödeme Modelleri & Tanıtım Turu Bölümü',
+      preferredHousingType: 'Tanıtım Turu',
+      notes: `Kalkış Şehri: ${tourCity} | Katılım Şekli: ${tourTransportChoice}`,
       tags: ['Web Sitesi', 'Ödeme Modelleri', 'Tanıtım Turu', tourCity, tourTransportChoice.includes('Aracı') || tourTransportChoice.includes('Own') ? 'Kendi Aracı' : 'Pazar VIP Servis'],
     })
 
