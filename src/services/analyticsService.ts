@@ -348,9 +348,15 @@ export function getAnalyticsSummary(): AnalyticsSummary {
   }
 }
 
+const DEFAULT_GA_ID = 'G-91652CJ7BY'
+
 export function getGoogleAnalyticsId(): string {
-  if (typeof window === 'undefined') return 'G-YB7WKWP2EM'
-  return localStorage.getItem(GA4_STORAGE_KEY) || 'G-YB7WKWP2EM'
+  if (typeof window === 'undefined') return DEFAULT_GA_ID
+  const stored = localStorage.getItem(GA4_STORAGE_KEY)
+  if (!stored || stored === 'G-YB7WKWP2EM') {
+    return DEFAULT_GA_ID
+  }
+  return stored
 }
 
 export function setGoogleAnalyticsId(id: string): void {
@@ -369,7 +375,10 @@ export function initGoogleAnalytics(): void {
   const gaId = getGoogleAnalyticsId()
   if (!gaId || !gaId.startsWith('G-')) return
 
-  if (document.getElementById('demirturk-ga4-script')) return
+  // Zaten index.html veya dinamik olarak yüklendiyse mükerrer oluşturma
+  if ((window as any).gtag || document.getElementById('demirturk-ga4-script') || document.querySelector('script[src*="googletagmanager.com"]')) {
+    return
+  }
 
   const script = document.createElement('script')
   script.id = 'demirturk-ga4-script'
@@ -383,7 +392,7 @@ export function initGoogleAnalytics(): void {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '${gaId}', { send_page_view: false });
+    gtag('config', '${gaId}');
   `
   document.head.appendChild(inlineScript)
 }
