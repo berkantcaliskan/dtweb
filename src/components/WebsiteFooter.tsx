@@ -170,6 +170,18 @@ export const WebsiteFooter: React.FC<WebsiteFooterProps> = ({
               </li>
               <li>
                 <a 
+                  href="/karasuyu-kesfedin" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onNavigate) onNavigate('/karasuyu-kesfedin')
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  {nav.discoverKarasu}
+                </a>
+              </li>
+              <li>
+                <a 
                   href="/yapi-malzemeleri" 
                   onClick={(e) => {
                     e.preventDefault()

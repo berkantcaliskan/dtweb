@@ -36,6 +36,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     { label: t.payment, href: '/odeme-modelleri' },
     { label: t.architecture, href: '/mimari-yaklasim' },
     { label: t.articles, href: '/makaleler' },
+    { label: t.discoverKarasu, href: '/karasuyu-kesfedin' },
     { label: t.materials, href: '/yapi-malzemeleri' },
     { label: t.contact, href: '/iletisim' },
   ], [t])
@@ -45,12 +46,12 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
   // Initial estimate based on window width
   const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1200
   const [visibleCount, setVisibleCount] = useState<number>(() => {
-    if (initialWidth >= 1600) return 7
-    if (initialWidth >= 1440) return 6
-    if (initialWidth >= 1260) return 5
-    if (initialWidth >= 1080) return 4
-    if (initialWidth >= 900) return 3
-    if (initialWidth >= 720) return 2
+    if (initialWidth >= 1680) return 7
+    if (initialWidth >= 1500) return 6
+    if (initialWidth >= 1320) return 5
+    if (initialWidth >= 1140) return 4
+    if (initialWidth >= 960) return 3
+    if (initialWidth >= 760) return 2
     if (initialWidth >= 540) return 1
     return 0
   })
@@ -111,7 +112,7 @@ export const WebsiteNavbar: React.FC<WebsiteNavbarProps> = ({
     const phoneW = phoneMeasureRef.current?.offsetWidth || 155
     const hamburgerW = hamburgerMeasureRef.current?.offsetWidth || 44
 
-    const DEFAULT_LINK_WIDTHS = [85, 165, 155, 95, 160, 85]
+    const DEFAULT_LINK_WIDTHS = [85, 165, 155, 95, 175, 160, 85]
     const linkWidths = navLinks.map((_, i) => {
       const el = linkMeasureRefs.current[i]
       return el && el.offsetWidth > 0 ? el.offsetWidth : DEFAULT_LINK_WIDTHS[i] || 120

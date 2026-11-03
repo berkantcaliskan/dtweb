@@ -99,6 +99,18 @@
     </image:image>
   </url>
 
+  <!-- Karasu'yu Keşfedin -->
+  <url>
+    <loc>https://demirturkinsaat.com/karasuyu-kesfedin</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://demirturkinsaat.com/images/aselforweb.jpeg</image:loc>
+      <image:title>Karasu'yu Keşfedin - Demirtürk İnşaat</image:title>
+    </image:image>
+  </url>
+
   <!-- Önemli Sayfa Bölümleri -->
   <url>
     <loc>https://demirturkinsaat.com/#projeler</loc>

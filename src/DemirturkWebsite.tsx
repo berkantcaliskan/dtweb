@@ -6,6 +6,7 @@ import { ProjectsGrid } from './components/ProjectsGrid'
 import { ArchitecturePhilosophy } from './components/ArchitecturePhilosophy'
 import { MaterialAndEngineering } from './components/MaterialAndEngineering'
 import { ArticlesSection, ArticleItem, getLocalizedArticles } from './components/ArticlesSection'
+import { DiscoverKarasuSection } from './components/DiscoverKarasuSection'
 import { ArticleDetailView } from './components/ArticleDetailView'
 import { ReachUsSection } from './components/ReachUsSection'
 import { PaymentModelsSection } from './components/PaymentModelsSection'
@@ -193,6 +194,10 @@ export const DemirturkWebsite: React.FC = () => {
       path = '/makaleler'
       selector = '#makaleler'
       title = isEn ? 'Karasu Real Estate Insights & Articles | Demirtürk İnşaat' : 'Karasu Gayrimenkul Rehberi & Makaleler | Demirtürk İnşaat'
+    } else if (target === '/karasuyu-kesfedin' || target === '#karasuyu-kesfedin' || target === '/karasu' || target === '#karasu' || target === '/discover-karasu') {
+      path = '/karasuyu-kesfedin'
+      selector = '#karasuyu-kesfedin'
+      title = isEn ? "Discover Karasu & Regional Living | Demirtürk İnşaat" : "Karasu'yu Keşfedin & Bölge Rehberi | Demirtürk İnşaat"
     } else if (target === '/yapi-malzemeleri' || target === '#yapi-malzemeleri' || target === '/malzeme' || target === '#malzeme') {
       path = '/yapi-malzemeleri'
       selector = '#yapi-malzemeleri'
@@ -320,6 +325,11 @@ export const DemirturkWebsite: React.FC = () => {
         return
       }
 
+      if (pathname === '/karasuyu-kesfedin' || pathname === '/karasu' || pathname === '/discover-karasu') {
+        handleNavigate('/karasuyu-kesfedin', false)
+        return
+      }
+
       if (pathname === '/yapi-malzemeleri' || pathname === '/malzeme' || pathname === '/malzemeler') {
         handleNavigate('/yapi-malzemeleri', false)
         return
@@ -421,7 +431,13 @@ export const DemirturkWebsite: React.FC = () => {
           {/* 4. MAKALELER (#makaleler) */}
           <ArticlesSection onSelectArticle={handleSelectArticle} />
 
-          {/* 5. YAPI MALZEMELERİ (#yapi-malzemeleri) */}
+          {/* 5. KARASU'YU KEŞFEDİN (#karasuyu-kesfedin) */}
+          <DiscoverKarasuSection 
+            onOpenTour={handleOpenTour}
+            onNavigate={handleNavigate}
+          />
+
+          {/* 6. YAPI MALZEMELERİ (#yapi-malzemeleri) */}
           <MaterialAndEngineering />
 
           {/* 6. İLETİŞİM (#iletisim & #ulasin) */}

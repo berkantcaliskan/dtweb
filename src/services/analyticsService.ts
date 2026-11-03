@@ -349,8 +349,8 @@ export function getAnalyticsSummary(): AnalyticsSummary {
 }
 
 export function getGoogleAnalyticsId(): string {
-  if (typeof window === 'undefined') return ''
-  return localStorage.getItem(GA4_STORAGE_KEY) || ''
+  if (typeof window === 'undefined') return 'G-YB7WKWP2EM'
+  return localStorage.getItem(GA4_STORAGE_KEY) || 'G-YB7WKWP2EM'
 }
 
 export function setGoogleAnalyticsId(id: string): void {
